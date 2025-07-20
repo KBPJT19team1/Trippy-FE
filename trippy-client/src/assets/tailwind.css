@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* font-light */
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 300;
+  src: url('public/fonts/SpoqaHanSansNeo-Light.ttf');
+}
+/* font-normal */
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 400;
+  src: url('public/fonts/SpoqaHanSansNeo-Regular.ttf');
+}
+/* font-medium */
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 500;
+  src: url('public/fonts/SpoqaHanSansNeo-Medium.ttf');
+}
+/* font-bold */
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 700;
+  src: url('public/fonts/SpoqaHanSansNeo-Bold.ttf');
+}
+
+@layer components {
+  .title1 {
+    @apply text-xxl font-bold;
+  }
+  .title2 {
+    @apply text-xl font-bold;
+  }
+  .title3 {
+    @apply text-lg font-bold;
+  }
+  .title4 {
+    @apply text-lg font-medium;
+  }
+
+  .subtitle1 {
+    @apply text-md font-bold;
+  }
+  .subtitle2 {
+    @apply text-sm font-bold;
+  }
+
+  .body1 {
+    @apply text-md font-normal;
+  }
+  .body2 {
+    @apply text-sm font-normal;
+  }
+
+  .caption1 {
+    @apply text-xs font-normal;
+  }
+  .caption2 {
+    @apply text-xs font-medium;
+  }
+  .caption3 {
+    @apply text-xxs font-medium;
+  }
+  .caption4 {
+    @apply text-[0.625rem] font-medium;
+  }
+
+  .button1 {
+    @apply text-md font-bold;
+  }
+  .button2 {
+    @apply text-sm font-bold;
+  }
+}

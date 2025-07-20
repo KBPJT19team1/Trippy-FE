@@ -1,5 +1,5 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router';
+import { RouterView } from 'vue-router';
 import TopNavigationBar from '@/components/layouts/TopNavigationBar.vue';
 import BottomNavigationBar from '@/components/layouts/BottomNavigationBar.vue';
 </script>
@@ -8,19 +8,13 @@ import BottomNavigationBar from '@/components/layouts/BottomNavigationBar.vue';
   <div class="font-sans flex justify-center">
     <div class="relative w-[375px] bg-gray-100 min-h-screen">
       <TopNavigationBar />
-<!--      <header>-->
-<!--        <div class="wrapper">-->
-<!--          <nav>-->
-<!--            <RouterLink to="/">Home</RouterLink>-->
-<!--            <RouterLink to="/about">About</RouterLink>-->
-<!--          </nav>-->
-<!--        </div>-->
-<!--      </header>-->
+
       <div class='pt-[100px] pb-[90px]'>
         <div class='p-4 flex flex-col items-center'>
           <RouterView />
         </div>
       </div>
+
       <BottomNavigationBar />
     </div>
   </div>

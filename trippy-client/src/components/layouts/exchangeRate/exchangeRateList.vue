@@ -115,7 +115,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="exchange-list">
+  <div class="exchange-list w-[30vw]">
     <h2 class="font-bold">오늘의 환율 리스트</h2>
 
     <div v-if="loading">데이터 불러오는 중...</div>
@@ -148,10 +148,10 @@ onMounted(async () => {
         </div>
       </li>
     </ul>
-  </div>
-  <div>
-    <button>
-      <img src="@/assets/exchangeButton.png" alt="환전버튼 이미지" />
+    <button
+      class="w-[100%] h-[4vw] bg-gradient-to-b from-[#236fff] to-[#938aff] text-white font-bold rounded"
+    >
+      환전하기
     </button>
   </div>
 </template>

@@ -21,10 +21,6 @@ const todayForm = formatDate(today);
 // console.log(yesterdayForm);
 // console.log(todayForm);
 
-const exchangeRates = ref([]);
-const loading = ref(true);
-const error = ref("");
-
 // 국기로 변환하기 위한 국가별 통화코드
 const getCountryCode = (curUnitRaw) => {
   // 괄호가 포함된 경우 제거: "JPY(100)" → "JPY"
@@ -94,6 +90,10 @@ const getCountryCode = (curUnitRaw) => {
   return map[curUnit] || "un"; // 기본값: 'un' (unknown)
 };
 
+const exchangeRates = ref([]);
+const loading = ref(true);
+const error = ref("");
+
 onMounted(async () => {
   try {
     // const urlYest =
@@ -115,7 +115,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="exchange-list w-[30vw]">
+  <div class="exchange-list max-w-[16rem] pb-4">
     <h2 class="font-bold">오늘의 환율 리스트</h2>
 
     <div v-if="loading">데이터 불러오는 중...</div>
@@ -149,7 +149,7 @@ onMounted(async () => {
       </li>
     </ul>
     <button
-      class="w-[100%] h-[4vw] bg-gradient-to-b from-[#236fff] to-[#938aff] text-white font-bold rounded"
+      class="w-[100%] h-[2rem] bg-gradient-to-b from-[#236fff] to-[#938aff] text-white font-bold rounded"
     >
       환전하기
     </button>

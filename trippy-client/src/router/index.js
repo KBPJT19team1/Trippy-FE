@@ -3,7 +3,6 @@ import HomeView from "@/views/HomeView.vue";
 import PaymentView from "@/views/PaymentView.vue";
 import TravelLogsView from "@/views/TravelLogsView.vue";
 import MenuView from "@/views/MenuView.vue";
-import ExchangeRateList from "@/components/layouts/exchangeRate/exchangeRateList.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,12 +11,6 @@ const router = createRouter({
       path: "/",
       name: "home",
       component: HomeView,
-      children: [
-        {
-          path: "exchangeRate",
-          component: ExchangeRateList,
-        },
-      ],
     },
     {
       path: "/payment",
@@ -33,6 +26,11 @@ const router = createRouter({
       path: "/menu",
       name: "menu",
       component: MenuView,
+    },
+    {
+      path: "/exchangeRate",
+      name: "ExchangeRate",
+      component: () => import("../views/exchangeRate/exchangeRateList.vue"),
     },
   ],
 });

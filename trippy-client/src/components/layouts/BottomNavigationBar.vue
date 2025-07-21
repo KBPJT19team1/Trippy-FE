@@ -1,13 +1,22 @@
 <script setup>
-import { RouterLink } from 'vue-router';
+import { RouterLink, useRoute } from 'vue-router';
+import { computed } from 'vue';
 import { Icon } from '@iconify/vue'
 import PayIcon from '@/assets/svg/payment-icon.svg';
 import LogIcon from '@/assets/svg/log-icon.svg';
+import NextButton from '../common/NextButton.vue';
+
+const route = useRoute();
+
+const hiddenRoutes = ['/group-account', '/group-account/step1', '/group-account/step2']
+const isHidden = computed(() => hiddenRoutes.includes(route.path));
+
+
 </script>
 
 <template>
   <div class="bg-white h-[90px] w-full absolute fixed bottom-0 flex justify-center">
-    <div class='h-[56px] mb-[34px] flex align-center items-center gap-14'>
+    <div v-if="!isHidden" class='h-[56px] mb-[34px] flex align-center items-center gap-14'>
       <RouterLink to="/">
         <div class='text-gray-400 flex flex-col items-center hover:text-gray-600'>
           <Icon icon='material-symbols:home-rounded' class='w-[28px] h-auto' />
@@ -36,5 +45,6 @@ import LogIcon from '@/assets/svg/log-icon.svg';
         </div>
       </RouterLink>
     </div>
+    <NextButton v-if="isHidden" class="h-12 w-[21.4375rem] rounded-[0.625rem]" />
   </div>
 </template>

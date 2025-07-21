@@ -1,0 +1,17 @@
+{
+	"Vue Base Template": {
+	  "prefix": "vuebase",
+	  "body": [
+		"<script setup>",
+		"</script>",
+		"",
+		"<template>",
+		"  <div>hi</div>",
+		"</template>",
+		"",
+		"<style scoped>",
+		"</style>"
+	  ],
+	  "description": "Vue 기본 템플릿"
+	}
+  }

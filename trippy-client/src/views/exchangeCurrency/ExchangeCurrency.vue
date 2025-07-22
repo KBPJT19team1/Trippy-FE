@@ -1,9 +1,12 @@
 <script setup>
 import { ref, onMounted } from "vue";
+import { computed } from "vue";
 
-const authkey = "GjQsQVgpvzVBDpVwgRKtr94WExGLpcEN";
+//수출입은행 현재환율api 인증키
+const authkey = "수출입은행 현재환율 api 인증키 부분";
 
 // yyyymmdd 형식 만들어주는 부분
+// api에 날짜 넣어야 하므로 format 만들어줌.
 const formatDate = (date) => {
   const yyyy = date.getFullYear();
   const mm = String(date.getMonth() + 1).padStart(2, "0"); // 0~11
@@ -11,17 +14,19 @@ const formatDate = (date) => {
   return `${yyyy}${mm}${dd}`;
 };
 
-// 어제 날짜 조회 => 어제꺼랑 비교해서 계산 가능하니까
+// 환율 api 사용할 때 (개발용)
+// 어제 날짜 조회 => 어제꺼랑 비교해서 계산하니까
 const today = new Date();
 const yesterday = new Date();
 yesterday.setDate(today.getDate() - 1);
+
 const yesterdayForm = formatDate(yesterday);
 const todayForm = formatDate(today);
 
 // console.log(yesterdayForm);
 // console.log(todayForm);
 
-// 국기로 변환하기 위한 국가별 통화코드
+// 국기 표시를 위한 국가별 통화코드 함수
 const getCountryCode = (curUnitRaw) => {
   // 괄호가 포함된 경우 제거: "JPY(100)" → "JPY"
   const curUnit = curUnitRaw.replace(/\(.*\)/, "").trim();
@@ -90,51 +95,75 @@ const getCountryCode = (curUnitRaw) => {
   return map[curUnit] || "un"; // 기본값: 'un' (unknown)
 };
 
-// const exchangeRates = ref([]);
-// const loading = ref(true);
-// const error = ref("");
+const exchangeRates = ref([]);
+const loading = ref(true);
+const error = ref("");
 
-// onMounted(async () => {
-//   try {
-//     // const urlYest =
-//     // "https://oapi.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=${authkey}&searchdate=${yesterdayForm}&data=AP01";
+const todayRates = computed(() =>
+  exchangeRates.value.filter((item) => item.deal_ymd === todayForm),
+);
 
-//     // const urlToday =
-//     // "https://oapi.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=${authkey}&searchdate=${todayForm}&data=AP01";
+const yesterdayRates = computed(() =>
+  exchangeRates.value.filter((item) => item.deal_ymd === yesterdayForm),
+);
 
-//     const res = await fetch("/exchange_dummy.json");
-//     const data = await res.json();
-//     exchangeRates.value = data;
-//   } catch (e) {
-//     error.value = "환율 데이터를 불러오는 데 실패했습니다.";
-//     console.error(e);
-//   } finally {
-//     loading.value = false;
-//   }
-// });
+// 오늘 통화코드(cur_unit)에 해당하는 어제 환율 찾는 함수
+const getYesterdayRate = (curUnit) => {
+  const found = yesterdayRates.value.find((item) => item.cur_unit === curUnit);
+  return found?.deal_bas_r || null;
+};
+
+onMounted(async () => {
+  try {
+    // 어제 환율 url
+    // const urlYest =
+    // "https://oapi.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=${authkey}&searchdate=${yesterdayForm}&data=AP01";
+
+    // 오늘 환율 url
+    // const urlToday =
+    // "https://oapi.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=${authkey}&searchdate=${todayForm}&data=AP01";
+
+    // const response = await axios.get('http://localhost:8080/api/exchange');
+    // exchangeRates.value = response.data;
+
+    const res = await fetch("/exchange_dummy.json");
+    const data = await res.json();
+    exchangeRates.value = data;
+
+    // ------------
+  } catch (e) {
+    error.value = "환율 데이터를 불러오는 데 실패했습니다.";
+    console.error(e);
+  } finally {
+    loading.value = false;
+  }
+});
 </script>
 
 <template>
-  <div>
-    <h2>어떤 돈으로 환전할까요?</h2>
+  <div class="exchange-list w-11/12 flex flex-col h-full">
+    <h3 class="font-semibold text-xl">어떤 돈으로 환전할까요?</h3>
+    <br />
+
     <div v-if="loading">데이터 불러오는 중...</div>
     <div v-else-if="error" class="text-center text-red-500">{{ error }}</div>
 
-    <ul v-else class="divide-y divide-gray-200">
+    <ul v-else class="divide-y divide-gray-200 flex-1 overflow-scroll">
       <li
-        v-for="item in exchangeRates"
+        v-for="item in todayRates"
         :key="item.cur_unit"
-        class="flex items-center justify-between py-3"
+        class="flex items-center justify-between py-4"
       >
         <div class="flex">
-          <div class="w-10">
+          <span class="w-10">
+            <!-- 국기 표현 부분 -->
             <img
               :src="`https://flagcdn.com/w40/${getCountryCode(item.cur_unit)}.png`"
               :alt="item.cur_nm"
-              class="w-8 h-6 rounded"
+              class="w-[10vw] h-[6vw] rounded"
             />
-          </div>
-          <span class="font-semibold text-sm text-gray-900">{{ item.cur_nm }}</span>
+          </span>
+          <span class="font-semibold text-sm text-gray-900 px-4">{{ item.cur_nm }}</span>
         </div>
       </li>
     </ul>

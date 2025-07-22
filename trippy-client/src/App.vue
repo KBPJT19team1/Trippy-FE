@@ -6,7 +6,7 @@ import BottomNavigationBar from '@/components/layouts/BottomNavigationBar.vue';
 
 <template>
   <div class="font-sans flex justify-center text-black">
-    <div class="relative w-[375px] bg-gray-100 min-h-screen">
+    <div class="relative w-[375px] bg-gray-100 h-[875px]">
       <TopNavigationBar />
 
       <div class='pt-[100px] pb-[90px]'>

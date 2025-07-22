@@ -11,21 +11,25 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
+      meta: { title: '홈' },
     },
     {
       path: '/payment',
       name: 'payment',
       component: PaymentView,
+      meta: { title: '결제' },
     },
     {
       path: '/travel-logs',
       name: 'travel-logs',
       component: TravelLogsView,
+      meta: { title: '여행 로그' },
     },
     {
       path: '/menu',
       name: 'menu',
       component: MenuView,
+      meta: { title: '메뉴' },
     },
   ],
 });

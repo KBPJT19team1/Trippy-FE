@@ -10,7 +10,7 @@ import ExchangeRateItems from '@/components/home/ExchangeRateItems.vue';
 <template>
   <main class='w-full flex flex-col gap-8'>
     <div class='flex flex-col gap-4'>
-      <ToggleSwitch />
+      <ToggleSwitch label="모임통장 보기" />
       <AccountCard />
     </div>
 

@@ -1,10 +1,15 @@
 <script setup>
-import { ref } from 'vue'
+import { ref } from 'vue';
 
-const isClicked = ref(false)
+const isClicked = ref(false);
+
 const toggle = () => {
   isClicked.value = !isClicked.value
-}
+};
+
+const props = defineProps({
+  label: String,
+});
 </script>
 
 <template>
@@ -24,12 +29,13 @@ const toggle = () => {
       />
     </button>
     <span
+      v-if="label"
       :class="[
       'caption2',
       isClicked ? 'text-blue-400' : 'text-gray-400'
     ]"
     >
-      모임통장 보기
+      {{ label }}
     </span>
   </div>
 </template>

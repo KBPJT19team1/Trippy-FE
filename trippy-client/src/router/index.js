@@ -27,11 +27,6 @@ const router = createRouter({
       name: 'menu',
       component: MenuView,
     },
-    {
-      path: '/notifications',
-      name: 'notifications',
-      component: HomeView,
-    },
   ],
 });
 

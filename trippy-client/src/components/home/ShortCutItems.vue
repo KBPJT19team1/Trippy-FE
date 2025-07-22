@@ -32,8 +32,8 @@ const shortcutItems = [
     class='w-full'
   >
     <RouterLink :to='item.to'>
-      <div class='w-full h-24 bg-white rounded-xl flex flex-col items-center justify-center gap-1'>
-        <Icon :icon='item.icon' class='w-8 h-8 text-blue-300 hover:text-blue-400' />
+      <div class='w-full h-24 bg-white rounded-xl flex flex-col items-center justify-center gap-1 hover:opacity-75'>
+        <Icon :icon='item.icon' class='w-8 h-8 text-blue-300' />
         <p class='caption3 text-gray-600 text-center whitespace-pre-line'>{{ item.title }}</p>
       </div>
     </RouterLink>

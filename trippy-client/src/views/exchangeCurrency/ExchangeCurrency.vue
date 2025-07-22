@@ -164,6 +164,7 @@ onMounted(async () => {
             />
           </span>
           <span class="font-semibold text-sm text-gray-900 px-4">{{ item.cur_nm }}</span>
+          <icon></icon>
         </div>
       </li>
     </ul>

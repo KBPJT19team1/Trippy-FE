@@ -37,7 +37,10 @@ const router = createRouter({
       path: '/personal-accounts/import',
       name: 'import-personal-accounts',
       component: ImportAccountView,
-      meta: { title: '계좌 불러오기' },
+      meta: {
+        title: '계좌 불러오기',
+        bgColor: 'white',
+      },
     },
   ],
 });

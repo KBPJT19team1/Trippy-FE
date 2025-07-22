@@ -3,6 +3,8 @@ import HomeView from "@/views/HomeView.vue";
 import PaymentView from "@/views/PaymentView.vue";
 import TravelLogsView from "@/views/TravelLogsView.vue";
 import MenuView from "@/views/MenuView.vue";
+import MapView from "@/views/MapView.vue";
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -28,15 +30,16 @@ const router = createRouter({
       component: MenuView,
     },
     {
-      path: "/exchangeRate",
+      path: "/exchange-rate",
       name: "ExchangeRate",
       component: () => import("../views/exchangeRate/exchangeRateList.vue"),
     },
     {
-      path: "/exchangeCurrency",
+      path: "/exchange-currency",
       name: "ExchangeCurrency",
       component: () => import("../views/exchangeCurrency/ExchangeCurrency.vue"),
     },
+    { path: "/map", name: "map", component: MapView },
   ],
 });
 

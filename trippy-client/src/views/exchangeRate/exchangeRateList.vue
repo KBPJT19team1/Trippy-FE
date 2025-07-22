@@ -1,5 +1,7 @@
 <script setup>
+import { Icon } from "@iconify/vue";
 import { ref, onMounted } from "vue";
+import { computed } from "vue";
 
 //수출입은행 현재환율api 인증키
 const authkey = "수출입은행 현재환율 api 인증키 부분";
@@ -18,6 +20,7 @@ const formatDate = (date) => {
 const today = new Date();
 const yesterday = new Date();
 yesterday.setDate(today.getDate() - 1);
+
 const yesterdayForm = formatDate(yesterday);
 const todayForm = formatDate(today);
 
@@ -97,6 +100,20 @@ const exchangeRates = ref([]);
 const loading = ref(true);
 const error = ref("");
 
+const todayRates = computed(() =>
+  exchangeRates.value.filter((item) => item.deal_ymd === todayForm),
+);
+
+const yesterdayRates = computed(() =>
+  exchangeRates.value.filter((item) => item.deal_ymd === yesterdayForm),
+);
+
+// 오늘 통화코드(cur_unit)에 해당하는 어제 환율 찾는 함수
+const getYesterdayRate = (curUnit) => {
+  const found = yesterdayRates.value.find((item) => item.cur_unit === curUnit);
+  return found?.deal_bas_r || null;
+};
+
 onMounted(async () => {
   try {
     // 어제 환율 url
@@ -107,9 +124,14 @@ onMounted(async () => {
     // const urlToday =
     // "https://oapi.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=${authkey}&searchdate=${todayForm}&data=AP01";
 
+    // const response = await axios.get('http://localhost:8080/api/exchange');
+    // exchangeRates.value = response.data;
+
     const res = await fetch("/exchange_dummy.json");
     const data = await res.json();
     exchangeRates.value = data;
+
+    // ------------
   } catch (e) {
     error.value = "환율 데이터를 불러오는 데 실패했습니다.";
     console.error(e);
@@ -120,38 +142,60 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="exchange-list w-full max-w-[calc(100%-8vw)]">
-    <h2 class="font-bold">오늘의 환율 리스트</h2>
+  <div class="flex items-center h-12 pl-[6vw] pr-4">
+    <button>
+      <icon
+        class="flex absolute left-[6vw] w-[6vw] h-[6vw]"
+        icon="material-symbols:arrow-back-ios-new-rounded"
+      ></icon>
+    </button>
+    <h2 class="mx-auto font-bold text-lg">환율</h2>
+  </div>
+  <br />
+  <div class="exchange-list w-11/12 flex flex-col h-full">
+    <h3 class="font-semibold text-xl">오늘의 환율 정보</h3>
+    <br />
 
     <div v-if="loading">데이터 불러오는 중...</div>
     <div v-else-if="error" class="text-center text-red-500">{{ error }}</div>
 
-    <ul v-else class="divide-y divide-gray-200">
+    <ul v-else class="divide-y divide-gray-200 flex-1 overflow-scroll">
       <li
-        v-for="item in exchangeRates"
+        v-for="item in todayRates"
         :key="item.cur_unit"
-        class="flex items-center justify-between py-3"
+        class="flex items-center justify-between py-4"
       >
         <div class="flex">
-          <td class="w-10">
+          <span class="w-10">
             <img
               :src="`https://flagcdn.com/w40/${getCountryCode(item.cur_unit)}.png`"
               :alt="item.cur_nm"
-              class="w-8 h-6 rounded"
+              class="w-[10vw] h-[6vw] rounded"
             />
-          </td>
-          <span class="font-semibold text-sm text-gray-900">{{ item.cur_nm }}</span>
-        </div>
-        <div class="flex flex-col text-right text-sm">
-          <span class="text-xs font-semibold">{{ item.deal_bas_r }}원</span>
-          <span
-            class="text-sm text-right"
-            :class="parseFloat(item.deal_bas_r) < 0 ? 'text-red-500' : 'text-blue-500'"
-          >
-            <!-- 현재 환율 더미데이터가 string이라서 삼항연산자 작동 안 함. -->
-            <!-- 실제 데이터 들어왔을 때 빨강/파랑 표시 예정 -->
-            {{ item.deal_bas_r }}원
           </span>
+          <span class="font-semibold text-sm text-gray-900 px-4">{{ item.cur_nm }}</span>
+        </div>
+        <div class="flex flex-col text-right text-m">
+          <span class="text-sm font-semibold">{{ item.deal_bas_r }}원</span>
+          <li>
+            <span
+              class="text-xs text-right"
+              :class="{
+                'text-red-600':
+                  parseFloat(item.deal_bas_r) - parseFloat(getYesterdayRate(item.cur_unit)) < 0,
+                'text-blue-600':
+                  parseFloat(item.deal_bas_r) - parseFloat(getYesterdayRate(item.cur_unit)) >= 0,
+              }"
+            >
+              <!-- 실제 데이터 들어왔을 때 빨강/파랑 표시 예정 -->
+              {{
+                (parseFloat(item.deal_bas_r) - parseFloat(getYesterdayRate(item.cur_unit))).toFixed(
+                  2,
+                )
+              }}원
+            </span>
+            <!-- 전일대비 환율 등락률 표시해야 함 -->
+          </li>
         </div>
       </li>
     </ul>

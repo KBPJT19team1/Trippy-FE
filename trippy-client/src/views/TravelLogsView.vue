@@ -1,12 +1,12 @@
 <script setup>
-import { useRouter } from "vue-router"; // ✅ 1. 라우터 사용
+import { useRouter } from "vue-router";
 import RoundedCard from "@/components/common/RoundedCard.vue";
 import sampleImage from "@/assets/image.png";
 
-const router = useRouter(); // ✅ 2. 라우터 인스턴스 생성
+const router = useRouter(); 
 
 function handleClick() {
-  router.push("/map"); // ✅ 3. 클릭 시 '/map' 경로로 이동
+  router.push("/map");  
 }
 </script>
 

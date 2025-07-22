@@ -8,7 +8,7 @@ const toggle = () => {
 </script>
 
 <template>
-  <div class="flex items-center">
+  <div class="flex items-center gap-2">
     <button
       @click="toggle"
       :class="[
@@ -23,5 +23,13 @@ const toggle = () => {
         ]"
       />
     </button>
+    <span
+      :class="[
+      'caption2',
+      isClicked ? 'text-blue-400' : 'text-gray-400'
+    ]"
+    >
+      모임통장 보기
+    </span>
   </div>
 </template>

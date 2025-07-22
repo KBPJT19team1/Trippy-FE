@@ -17,7 +17,7 @@
 <script setup>
 defineProps({
   tabs: { type: Array, required: true },
-  tab: { type: String, required: true },
+  tab: { type: String, required: false },
 });
 
 defineEmits(["update:tab"]);

@@ -4,6 +4,7 @@ import PaymentView from "@/views/PaymentView.vue";
 import TravelLogsView from "@/views/TravelLogsView.vue";
 import MenuView from "@/views/MenuView.vue";
 import IdView from "@/views/identification/IdView.vue";
+import MapView from "@/views/MapView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -43,6 +44,7 @@ const router = createRouter({
       name: "/identification/registration",
       component: () => import("@/views/identification/IdRegistration.vue"),
     },
+    { path: "/map", name: "map", component: MapView },
   ],
 });
 

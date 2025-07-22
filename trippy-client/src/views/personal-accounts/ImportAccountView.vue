@@ -1,15 +1,22 @@
 <script setup>
-import TrippyLogo from '@/assets/svg/trippy-logo.svg'
+import { ref, computed } from 'vue'
+
+import FirstStep from '@/components/personal-accounts/import-accounts/FirstStep.vue';
+
+const views = [FirstStep]
+const currentIndex = ref(0)
+
+const currentView = computed(() => views[currentIndex.value])
+
+function goNext() {
+  if (currentIndex.value < views.length - 1) {
+    currentIndex.value++
+  }
+}
 </script>
 
 <template>
   <main class="w-full bg-white h-full">
-    <div class="flex flex-col gap-2 mt-16">
-      <h1 class="title2">내 자산을 한눈에 확인해요!</h1>
-      <p class="body1">간편하게 내 계좌 목록을 불러올 수 있어요.</p>
-    </div>
-    <div class="w-full flex justify-center mt-36">
-      <TrippyLogo class="w-36" />
-    </div>
+    <component :is="currentView" @next="goNext" />
   </main>
 </template>

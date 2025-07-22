@@ -9,10 +9,10 @@ const props = defineProps({
 
 })
 
-const emits = defineEmits(['AllCheck'])
+const emits = defineEmits(['click',])
 
 const onClick = () => {
-  emits("AllClick")
+  emits("click");
 }
 </script>
 
@@ -21,7 +21,7 @@ const onClick = () => {
   <div class="flex justify-center h-12 w-[21.4375rem] rounded-[0.625rem]">
     <button class="flex items-center justify-between h-12  w-[21.4375rem] rounded-[0.625rem] text-white button1"
       @click="onClick">
-      <div class="flex items-center gap-2 button1">
+      <div class="flex items-center gap-2 button~1">
         <Icon icon="material-symbols:check-circle-outline-rounded" class="size-7 pl-2 w-9" />
         {{ props.title }}
       </div>

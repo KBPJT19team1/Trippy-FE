@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, ref, nextTick } from 'vue';
 import AgreementCheck from '@/components/common/AgreementCheck.vue';
 import NextButton from '@/components/common/NextButton.vue';
 import AgreementItemTitle from '@/components/groupAccount/AgreementItemTitle.vue';
@@ -24,10 +24,15 @@ const email = ref("")
 const toggleAllCheck = () => {
   const newState = !allChecked.value;
   checkedItems.value = checkedItems.value.map(() => newState);
+  if (newState) {
+    nextTick(() => {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    });
+  }
 };
 
 
-const checkedItems = ref(new Array(7).fill(false));
+const checkedItems = ref(new Array(6).fill(false));
 
 const allChecked = computed(() => checkedItems.value.every(v => v));
 const isEmailValid = computed(() => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value));
@@ -44,7 +49,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="text-center subtitle1">
+  <div class="text-center subtitle1 mt-5">
     <p>입출금통장 개설을 위해 <br> 약관 및 상품설명서를 꼭 확인해 주세요</p>
   </div>
 

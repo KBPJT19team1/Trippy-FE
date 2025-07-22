@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, nextTick } from "vue";
 
 const mapElement = ref(null);
 const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
@@ -24,7 +24,10 @@ function loadGoogleMapsScript(apiKey) {
 
 onMounted(async () => {
   try {
+    await nextTick(); // DOM 렌더 완료 후
+
     await loadGoogleMapsScript(apiKey);
+
     new window.google.maps.Map(mapElement.value, {
       center: { lat: 37.5665, lng: 126.978 },
       zoom: 12,
@@ -36,7 +39,5 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="w-full h-screen">
-    <div ref="mapElement" class="w-full h-full" />
-  </div>
+  <div ref="mapElement" class="w-full" style="height: calc(100vh - 222px)" />
 </template>

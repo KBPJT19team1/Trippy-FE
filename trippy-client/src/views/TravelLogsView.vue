@@ -3,10 +3,10 @@ import { useRouter } from "vue-router";
 import RoundedCard from "@/components/common/RoundedCard.vue";
 import sampleImage from "@/assets/image.png";
 
-const router = useRouter(); 
+const router = useRouter();
 
 function handleClick() {
-  router.push("/map");  
+  router.push("/map");
 }
 </script>
 

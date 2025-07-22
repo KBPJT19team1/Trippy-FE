@@ -10,9 +10,6 @@
     </div>
   </div>
   <!-- TODO: 버튼 붙이기 -->
-  <div>
-    <button></button>
-  </div>
 </template>
 
 <script setup>

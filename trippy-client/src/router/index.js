@@ -3,7 +3,7 @@ import HomeView from "@/views/HomeView.vue";
 import PaymentView from "@/views/PaymentView.vue";
 import TravelLogsView from "@/views/TravelLogsView.vue";
 import MenuView from "@/views/MenuView.vue";
-import GroupAccount from "@/router/groupAccount";
+import MapView from "@/views/MapView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -28,6 +28,7 @@ const router = createRouter({
       name: "menu",
       component: MenuView,
     },
+    { path: "/map", name: "map", component: MapView },
     ...GroupAccount,
   ],
 });

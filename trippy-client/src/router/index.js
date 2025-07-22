@@ -4,6 +4,8 @@ import PaymentView from '@/views/PaymentView.vue';
 import TravelLogsView from '@/views/TravelLogsView.vue';
 import MenuView from '@/views/MenuView.vue';
 
+import ImportAccountView from '@/views/personal-accounts/ImportAccountView.vue';
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -30,6 +32,12 @@ const router = createRouter({
       name: 'menu',
       component: MenuView,
       meta: { title: '메뉴' },
+    },
+    {
+      path: '/personal-accounts/import',
+      name: 'import-personal-accounts',
+      component: ImportAccountView,
+      meta: { title: '계좌 불러오기' },
     },
   ],
 });

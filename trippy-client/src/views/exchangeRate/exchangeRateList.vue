@@ -1,9 +1,11 @@
 <script setup>
 import { ref, onMounted } from "vue";
 
-const authkey = "GjQsQVgpvzVBDpVwgRKtr94WExGLpcEN";
+//수출입은행 현재환율api 인증키
+const authkey = "수출입은행 현재환율 api 인증키 부분";
 
 // yyyymmdd 형식 만들어주는 부분
+// api에 날짜 넣어야 하므로 format 만들어줌.
 const formatDate = (date) => {
   const yyyy = date.getFullYear();
   const mm = String(date.getMonth() + 1).padStart(2, "0"); // 0~11
@@ -11,7 +13,8 @@ const formatDate = (date) => {
   return `${yyyy}${mm}${dd}`;
 };
 
-// 어제 날짜 조회 => 어제꺼랑 비교해서 계산 가능하니까
+// 환율 api 사용할 때 (개발용)
+// 어제 날짜 조회 => 어제꺼랑 비교해서 계산하니까
 const today = new Date();
 const yesterday = new Date();
 yesterday.setDate(today.getDate() - 1);
@@ -21,7 +24,7 @@ const todayForm = formatDate(today);
 // console.log(yesterdayForm);
 // console.log(todayForm);
 
-// 국기로 변환하기 위한 국가별 통화코드
+// 국기 표시를 위한 국가별 통화코드 함수
 const getCountryCode = (curUnitRaw) => {
   // 괄호가 포함된 경우 제거: "JPY(100)" → "JPY"
   const curUnit = curUnitRaw.replace(/\(.*\)/, "").trim();
@@ -96,9 +99,11 @@ const error = ref("");
 
 onMounted(async () => {
   try {
+    // 어제 환율 url
     // const urlYest =
     // "https://oapi.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=${authkey}&searchdate=${yesterdayForm}&data=AP01";
 
+    // 오늘 환율 url
     // const urlToday =
     // "https://oapi.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=${authkey}&searchdate=${todayForm}&data=AP01";
 
@@ -115,7 +120,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="exchange-list max-w-[16rem] pb-4">
+  <div class="exchange-list w-full max-w-[calc(100%-8vw)]">
     <h2 class="font-bold">오늘의 환율 리스트</h2>
 
     <div v-if="loading">데이터 불러오는 중...</div>
@@ -143,11 +148,14 @@ onMounted(async () => {
             class="text-sm text-right"
             :class="parseFloat(item.deal_bas_r) < 0 ? 'text-red-500' : 'text-blue-500'"
           >
+            <!-- 현재 환율 더미데이터가 string이라서 삼항연산자 작동 안 함. -->
+            <!-- 실제 데이터 들어왔을 때 빨강/파랑 표시 예정 -->
             {{ item.deal_bas_r }}원
           </span>
         </div>
       </li>
     </ul>
+    <!--  현재 환전하기 버튼 임시로 만듦. 버튼 컴포넌트 삽입해야 함. -->
     <button
       class="w-[100%] h-[2rem] bg-gradient-to-b from-[#236fff] to-[#938aff] text-white font-bold rounded"
     >

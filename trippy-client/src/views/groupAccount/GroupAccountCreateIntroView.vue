@@ -1,7 +1,7 @@
 <script setup>
 
 import NextButton from '@/components/common/NextButton.vue'
-import TrippyLogo from '../assets/svg/trippy-logo.svg'
+import TrippyLogo from '@/assets/svg/trippy-logo.svg'
 
 </script>
 

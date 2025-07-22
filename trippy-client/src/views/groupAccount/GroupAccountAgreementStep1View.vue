@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed, watch } from 'vue';
-import TrippyLogo from '../assets/svg/trippy-logo.svg';
+import TrippyLogo from '@/assets/svg/trippy-logo.svg';
 import AgreementCheck from '@/components/common/AgreementCheck.vue';
 import AgreementItem from '@/components/common/AgreementItem.vue';
 import { agreementStep1, agreementStep2 } from '@/_dummy/agreement_dummy';

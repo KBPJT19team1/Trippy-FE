@@ -8,8 +8,11 @@ import LogIcon from '@/assets/svg/log-icon.svg';
 
 const route = useRoute();
 
-const hiddenRoutes = ['/group-account', '/group-account/step1', '/group-account/step2']
-const isHidden = computed(() => hiddenRoutes.includes(route.path));
+const hiddenPrefixes = ['/group-account'];
+
+const isHidden = computed(() =>
+  hiddenPrefixes.some(prefix => route.path.startsWith(prefix))
+);
 
 
 </script>

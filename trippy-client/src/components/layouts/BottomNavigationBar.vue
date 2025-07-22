@@ -35,7 +35,6 @@ import LogIcon from '@/assets/svg/log-icon.svg';
           <p class='caption3'>메뉴</p>
         </div>
       </RouterLink>
-
     </div>
   </div>
 </template>

@@ -31,7 +31,17 @@ const router = createRouter({
     {
       path: "/identification",
       name: "identification",
-      component: IdView,
+      component: () => import("@/views/identification/IdView.vue"),
+    },
+    {
+      path: "/identification/guide",
+      name: "/identification/guide",
+      component: () => import("@/views/identification/IdCaptureGuideView.vue"),
+    },
+    {
+      path: "/identification/registration",
+      name: "/identification/registration",
+      component: () => import("@/views/identification/IdRegistration.vue"),
     },
   ],
 });

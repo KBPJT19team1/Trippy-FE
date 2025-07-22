@@ -1,5 +1,4 @@
 <script setup>
-import { Icon } from "@iconify/vue";
 import { ref, onMounted } from "vue";
 import { computed } from "vue";
 
@@ -142,16 +141,6 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="flex items-center h-12 pl-[6vw] pr-4">
-    <button>
-      <icon
-        class="flex absolute left-[6vw] w-[6vw] h-[6vw]"
-        icon="material-symbols:arrow-back-ios-new-rounded"
-      ></icon>
-    </button>
-    <h2 class="mx-auto font-bold text-lg">환율</h2>
-  </div>
-  <br />
   <div class="exchange-list w-11/12 flex flex-col h-full">
     <h3 class="font-semibold text-xl">오늘의 환율 정보</h3>
     <br />
@@ -167,6 +156,7 @@ onMounted(async () => {
       >
         <div class="flex">
           <span class="w-10">
+            <!-- 국기 표현 부분 -->
             <img
               :src="`https://flagcdn.com/w40/${getCountryCode(item.cur_unit)}.png`"
               :alt="item.cur_nm"
@@ -177,32 +167,35 @@ onMounted(async () => {
         </div>
         <div class="flex flex-col text-right text-m">
           <span class="text-sm font-semibold">{{ item.deal_bas_r }}원</span>
-          <li>
-            <span
-              class="text-xs text-right"
-              :class="{
-                'text-red-600':
-                  parseFloat(item.deal_bas_r) - parseFloat(getYesterdayRate(item.cur_unit)) < 0,
-                'text-blue-600':
-                  parseFloat(item.deal_bas_r) - parseFloat(getYesterdayRate(item.cur_unit)) >= 0,
-              }"
-            >
-              <!-- 실제 데이터 들어왔을 때 빨강/파랑 표시 예정 -->
+          <li
+            :class="{
+              'text-red':
+                parseFloat(item.deal_bas_r) - parseFloat(getYesterdayRate(item.cur_unit)) >= 0,
+              'text-blue-400':
+                parseFloat(item.deal_bas_r) - parseFloat(getYesterdayRate(item.cur_unit)) < 0,
+            }"
+          >
+            <span class="text-xs text-right">
               {{
                 (parseFloat(item.deal_bas_r) - parseFloat(getYesterdayRate(item.cur_unit))).toFixed(
                   2,
                 )
               }}원
             </span>
-            <!-- 전일대비 환율 등락률 표시해야 함 -->
+            <span class="text-xs">{{
+              "(" +
+              (
+                (parseFloat(item.deal_bas_r) - parseFloat(getYesterdayRate(item.cur_unit))) /
+                parseFloat(getYesterdayRate(item.cur_unit))
+              ).toFixed(2) +
+              "%)"
+            }}</span>
           </li>
         </div>
       </li>
     </ul>
     <!--  현재 환전하기 버튼 임시로 만듦. 버튼 컴포넌트 삽입해야 함. -->
-    <button
-      class="w-[100%] h-[2rem] bg-gradient-to-b from-[#236fff] to-[#938aff] text-white font-bold rounded"
-    >
+    <button class="w-[100%] h-[2rem] bg-main-gradient text-white font-bold rounded">
       환전하기
     </button>
   </div>

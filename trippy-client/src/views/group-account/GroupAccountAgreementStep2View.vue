@@ -2,11 +2,11 @@
 import { computed, onMounted, ref, nextTick } from 'vue';
 import AgreementCheck from '@/components/common/AgreementCheck.vue';
 import NextButton from '@/components/common/NextButton.vue';
-import AgreementItemTitle from '@/components/groupAccount/AgreementItemTitle.vue';
+import AgreementItemTitle from '@/components/group-account/AgreementItemTitle.vue';
 import { agreementStep3, agreementStep4, agreementStep5, agreementStep6, agreementStep7, agreementStep8 } from '@/_dummy/agreement_dummy';
 import { useGroupAccountStore } from '@/stores/groupAccountStore';
-import AgreementListItem from '@/components/groupAccount/AgreementListItem.vue';
-import AccountNotice from '@/components/groupAccount/AccountNotice.vue';
+import AgreementListItem from '@/components/group-account/AgreementListItem.vue';
+import AccountNotice from '@/components/group-account/AccountNotice.vue';
 import EmailInput from '@/components/common/EmailInput.vue';
 
 const groupAccountStore = useGroupAccountStore();

@@ -1,7 +1,7 @@
 // src/stores/exchangeStore.js
 import { defineStore } from "pinia";
 import { ref, computed } from "vue";
-import exchangeRatesRaw from "@/../_dummy/exchange_dummy.json";
+import exchangeRatesRaw from "@/_dummy/exchange_dummy.json";
 
 export const useExchangeStore = defineStore("exchange", () => {
   const exchangeRates = ref(exchangeRatesRaw);
@@ -24,8 +24,8 @@ export const useExchangeStore = defineStore("exchange", () => {
   // const yesterdayForm = formatDate(yesterday);
 
   // (개발용) 다음 날짜로 지정해둠
-  const todayForm = "20250723";
-  const yesterdayForm = "20250722";
+  const todayForm = "20250722";
+  const yesterdayForm = "20250721";
 
   const todayRates = computed(() =>
     exchangeRates.value.filter((item) => item.deal_ymd === todayForm),
@@ -116,5 +116,6 @@ export const useExchangeStore = defineStore("exchange", () => {
     todayForm,
     yesterdayForm,
     loading,
+    formatDate,
   };
 });

@@ -5,6 +5,7 @@ import TravelLogsView from "@/views/TravelLogsView.vue";
 import MenuView from "@/views/MenuView.vue";
 import IdView from "@/views/identification/IdView.vue";
 import MapView from "@/views/MapView.vue";
+import GroupAccount from "./groupAccount.js";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -43,8 +44,18 @@ const router = createRouter({
       path: "/identification/registration",
       name: "/identification/registration",
       component: () => import("@/views/identification/IdRegistration.vue"),
+      path: "/exchange-rates",
+      name: "ExchangeRate",
+      component: () => import("../views/exchangeRate/ExchangeRateList.vue"),
+    },
+    {
+      path: "/exchange-currency",
+      name: "ExchangeCurrency",
+      component: () => import("../views/exchangeCurrency/ExchangeCurrencySelect.vue"),
     },
     { path: "/map", name: "map", component: MapView },
+
+    ...GroupAccount,
   ],
 });
 

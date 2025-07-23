@@ -4,7 +4,7 @@ import PaymentView from "@/views/PaymentView.vue";
 import TravelLogsView from "@/views/TravelLogsView.vue";
 import MenuView from "@/views/MenuView.vue";
 import MapView from "@/views/MapView.vue";
-import AirTicketView from "@/views/airTicket/AirTicketView.vue";
+import AirTicketView from "@/views/air-ticket/AirTicketView.vue";
 import GroupAccount from "./groupAccount.js";
 
 const router = createRouter({

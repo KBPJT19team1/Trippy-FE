@@ -8,12 +8,18 @@
     <div class="mt-20 flex-1 flex flex-col items-center justify-center">
       <img :src="Idcard" class="w-[19.5rem] h-auto mb-2" />
     </div>
+
+    <!-- TODO: 버튼 -->
+    <button
+      class="w-full py-3 rounded-lg bg-gradient-to-b from-blue-400 via-blue-600 to-blue-400 items-center text-white font-semibold text-center shadow-sm"
+    >
+      주민등록증 촬영 시작하기
+    </button>
   </div>
-  <!-- TODO: 버튼 붙이기 -->
 </template>
 
 <script setup>
 import Idcard from "@/assets/Idcard.png";
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>

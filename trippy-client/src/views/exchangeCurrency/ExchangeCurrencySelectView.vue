@@ -33,7 +33,7 @@ onMounted(async () => {
     <div v-if="loading">데이터 불러오는 중...</div>
     <div v-else-if="error" class="text-center text-red-500">{{ error }}</div>
 
-    <ul v-else class="divide-y divide-gray-200 flex-1 overflow-scroll">
+    <ul v-else class="divide-y divide-gray-200 flex-1 overflow-auto">
       <li
         v-for="item in todayRates"
         :key="item.cur_unit"
@@ -45,17 +45,14 @@ onMounted(async () => {
             <img
               :src="`https://flagcdn.com/w40/${getCountryCode(item.cur_unit)}.png`"
               :alt="item.cur_nm"
-              class="w-[10vw] h-[6vw] rounded"
+              class="w-10 h-7 rounded"
             />
           </span>
           <span class="font-semibold text-sm text-gray-600 px-4">{{ item.cur_nm }}</span>
         </div>
         <div>
-          <button class="p-3">
-            <Icon
-              class="right-6 w-[6vw] h-[6vw] text-gray-400"
-              icon="material-symbols:check"
-            ></Icon>
+          <button class="p-2">
+            <Icon class="right-6 w-[2vw] h-auto text-gray-400" icon="material-symbols:check"></Icon>
           </button>
         </div>
       </li>

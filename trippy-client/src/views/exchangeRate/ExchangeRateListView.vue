@@ -1,12 +1,17 @@
 <script setup>
 import { useExchangeStore } from "@/stores/exchangeStore.js";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 
 const exchangeStore = useExchangeStore();
 
 const { todayRates, loading, getYesterdayRate, getCountryCode } = exchangeStore;
 
 const error = ref("");
+
+onMounted(() => {
+  // 컴포넌트가 처음 화면에 나타났을 때 실행할 코드
+  console.log(todayRates);
+});
 </script>
 
 <template>
@@ -24,14 +29,12 @@ const error = ref("");
         class="flex items-center justify-between py-4"
       >
         <div class="flex">
-          <span class="w-10">
-            <!-- 국기 표현 부분 -->
-            <img
-              :src="`https://flagcdn.com/w40/${getCountryCode(item.cur_unit)}.png`"
-              :alt="item.cur_nm"
-              class="w-[10vw] h-[6vw] rounded"
-            />
-          </span>
+          <!-- 국기 표현 부분 -->
+          <img
+            :src="`https://flagcdn.com/w40/${getCountryCode(item.cur_unit)}.png`"
+            :alt="item.cur_nm"
+            class="w-[10vw] h-auto rounded"
+          />
           <span class="font-semibold text-sm text-gray-900 px-4">{{ item.cur_nm }}</span>
         </div>
         <div class="flex flex-col text-right text-m">

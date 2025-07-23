@@ -1,13 +1,13 @@
 // src/stores/exchangeStore.js
 import { defineStore } from "pinia";
 import { ref, computed } from "vue";
-import exchangeRatesRaw from "@/../_dummy/exchange_dummy.json";
+import exchangeRatesRaw from "@/../src/_dummy/exchange_dummy.json";
 
 export const useExchangeStore = defineStore("exchange", () => {
   const exchangeRates = ref(exchangeRatesRaw);
   const loading = ref(false);
 
-  // 수출입은행 현재환율 api 연결 시 사용할 함수.
+  // api 연결 시 사용할 함수.
   const formatDate = (date) => {
     const yyyy = date.getFullYear();
     const mm = String(date.getMonth() + 1).padStart(2, "0");
@@ -24,8 +24,8 @@ export const useExchangeStore = defineStore("exchange", () => {
   // const yesterdayForm = formatDate(yesterday);
 
   // (개발용) 다음 날짜로 지정해둠
-  const todayForm = "20250723";
-  const yesterdayForm = "20250722";
+  const todayForm = "20250722";
+  const yesterdayForm = "20250721";
 
   const todayRates = computed(() =>
     exchangeRates.value.filter((item) => item.deal_ymd === todayForm),

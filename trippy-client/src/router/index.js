@@ -5,7 +5,6 @@ import TravelLogsView from "@/views/TravelLogsView.vue";
 import MenuView from "@/views/MenuView.vue";
 import MapView from "@/views/MapView.vue";
 
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -30,14 +29,14 @@ const router = createRouter({
       component: MenuView,
     },
     {
-      path: "/exchange-rate",
+      path: "/exchange-rates",
       name: "ExchangeRate",
-      component: () => import("../views/exchangeRate/exchangeRateList.vue"),
+      component: () => import("../views/exchangeRate/ExchangeRateList.vue"),
     },
     {
       path: "/exchange-currency",
       name: "ExchangeCurrency",
-      component: () => import("../views/exchangeCurrency/ExchangeCurrency.vue"),
+      component: () => import("../views/exchangeCurrency/ExchangeCurrencySelect.vue"),
     },
     { path: "/map", name: "map", component: MapView },
   ],

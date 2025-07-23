@@ -10,7 +10,7 @@ import { Icon } from "@iconify/vue"; // Iconify 컴포넌트 불러오기
     >
       <!-- Iconify 아이콘 사용 -->
       <Icon icon="material-symbols:settings-rounded" class="w-[24px] h-[24px]" />
-      <span class="text-[18px] leading-[27px] font-medium"> 설정 </span>
+      <span class="title4"> 설정 </span>
     </div>
   </RouterLink>
 </template>

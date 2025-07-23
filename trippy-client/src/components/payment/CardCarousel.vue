@@ -30,7 +30,6 @@ function onSlideChange(swiper) {
       @slideChange="onSlideChange"
     >
       <SwiperSlide v-for="(card, index) in cards" :key="card.id" class="flex justify-center">
-        <!-- 추가 감싸는 div에 transform/scale 적용 -->
         <div
           class="flex flex-col items-center transition-all duration-300 ease-in-out transform"
           :class="index === activeIndex ? 'scale-100 opacity-100' : 'scale-90 opacity-50'"
@@ -38,7 +37,7 @@ function onSlideChange(swiper) {
           <img :src="card.image" alt="카드" class="w-[180px] rounded-xl" />
           <p
             v-if="index === activeIndex"
-            class="mt-[8px] text-sm text-gray-700 text-center transition-opacity duration-300"
+            class="mt-[8px] caption1 text-center transition-opacity duration-300 text-gray-700"
           >
             {{ card.name }}
           </p>

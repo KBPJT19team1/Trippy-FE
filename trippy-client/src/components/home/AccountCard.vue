@@ -24,6 +24,7 @@ const accountData = reactive({
         </div>
       </div>
     </RouterLink>
+
     <div v-if="data" class="flex flex-col text-white gap-3 my-auto">
       <div class="flex justify-between">
         <p class="caption2">{{ accountData.name }}님의 계좌</p>

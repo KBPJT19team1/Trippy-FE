@@ -1,9 +1,7 @@
 <script setup>
-
+import PaymentCard from "@/components/payment/PaymentCard.vue";
 </script>
 
 <template>
-  <main>
-    <h1>payment</h1>
-  </main>
+  <PaymentCard />
 </template>

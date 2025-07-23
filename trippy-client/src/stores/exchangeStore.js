@@ -1,7 +1,7 @@
 // src/stores/exchangeStore.js
 import { defineStore } from "pinia";
 import { ref, computed } from "vue";
-import exchangeRatesRaw from "@/../src/_dummy/exchange_dummy.json";
+import exchangeRatesRaw from "@/_dummy/exchange_dummy.json";
 
 export const useExchangeStore = defineStore("exchange", () => {
   const exchangeRates = ref(exchangeRatesRaw);
@@ -116,5 +116,6 @@ export const useExchangeStore = defineStore("exchange", () => {
     todayForm,
     yesterdayForm,
     loading,
+    formatDate,
   };
 });

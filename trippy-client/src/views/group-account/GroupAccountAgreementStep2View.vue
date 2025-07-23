@@ -2,7 +2,7 @@
 import { computed, onMounted, ref, nextTick } from "vue";
 import AgreementCheck from "@/components/common/AgreementCheck.vue";
 import NextButton from "@/components/common/NextButton.vue";
-import AgreementItemTitle from "@/components/groupAccount/AgreementItemTitle.vue";
+import AgreementItemTitle from "@/components/group-account/AgreementItemTitle.vue";
 import {
   agreementStep3,
   agreementStep4,

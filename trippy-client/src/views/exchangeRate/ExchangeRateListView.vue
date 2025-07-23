@@ -1,7 +1,6 @@
 <script setup>
 import { useExchangeStore } from "@/stores/exchangeStore.js";
 import { onMounted, ref } from "vue";
-import { ref } from "vue";
 
 const exchangeStore = useExchangeStore();
 
@@ -23,46 +22,6 @@ onMounted(() => {
     <div v-if="loading">데이터 불러오는 중...</div>
     <div v-else-if="error" class="text-center text-red-500">{{ error }}</div>
 
-    <ul v-else class="divide-y divide-gray-200 flex-1 overflow-scroll">
-      <li
-        v-for="item in todayRates"
-        :key="item.cur_unit"
-        class="flex items-center justify-between py-4"
-      >
-        <div class="flex">
-          <!-- 국기 표현 부분 -->
-          <img
-            :src="`https://flagcdn.com/w40/${getCountryCode(item.cur_unit)}.png`"
-            :alt="item.cur_nm"
-            class="w-[10vw] h-auto rounded"
-          />
-          <span class="font-semibold text-sm text-gray-900 px-4">{{ item.cur_nm }}</span>
-        </div>
-        <div class="flex flex-col text-right text-m">
-          <span class="text-sm font-semibold">{{ item.deal_bas_r }}원</span>
-          <div
-            :class="{
-              'text-red':
-                parseFloat(item.deal_bas_r) - parseFloat(getYesterdayRate(item.cur_unit)) >= 0,
-              'text-blue-400':
-                parseFloat(item.deal_bas_r) - parseFloat(getYesterdayRate(item.cur_unit)) < 0,
-            }"
-          >
-            <span class="text-xs text-right">
-              {{
-                (parseFloat(item.deal_bas_r) - parseFloat(getYesterdayRate(item.cur_unit))).toFixed(
-                  2,
-                )
-              }}원
-            </span>
-            <span class="text-xs">{{
-              "(" +
-              (
-                (parseFloat(item.deal_bas_r) - parseFloat(getYesterdayRate(item.cur_unit))) /
-                parseFloat(getYesterdayRate(item.cur_unit))
-              ).toFixed(2) +
-              "%)"
-            }}</span>
     <div
       v-else
       class="w-full overflow-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
@@ -73,20 +32,21 @@ onMounted(() => {
           :key="item.cur_unit"
           class="flex items-center justify-between py-4"
         >
+          <!-- 왼쪽: 국기 + 통화명 -->
           <div class="flex">
             <div class="w-10">
-              <!-- 국기 표현 부분 -->
               <img
                 :src="`https://flagcdn.com/w40/${getCountryCode(item.cur_unit)}.png`"
                 :alt="item.cur_nm"
                 class="w-10 h-7 rounded"
               />
             </div>
-            <span class="font-semibold text-sm text-gray-900 px-4">{{ item.cur_nm }}</span>
+            <span class="font-semibold text-sm text-gray-900 px-4">
+              {{ item.cur_nm }}
+            </span>
           </div>
-        </div>
-      </li>
-    </ul>
+
+          <!-- 오른쪽: 환율 정보 -->
           <div class="flex flex-col text-right text-m">
             <span class="text-sm font-semibold">{{ item.deal_bas_r }}원</span>
             <div
@@ -104,23 +64,28 @@ onMounted(() => {
                   ).toFixed(2)
                 }}원
               </span>
-              <span class="text-xs">{{
-                "(" +
-                (
-                  (parseFloat(item.deal_bas_r) - parseFloat(getYesterdayRate(item.cur_unit))) /
-                  parseFloat(getYesterdayRate(item.cur_unit))
-                ).toFixed(2) +
-                "%)"
-              }}</span>
+              <span class="text-xs">
+                {{
+                  "(" +
+                  (
+                    (parseFloat(item.deal_bas_r) - parseFloat(getYesterdayRate(item.cur_unit))) /
+                    parseFloat(getYesterdayRate(item.cur_unit))
+                  ).toFixed(2) +
+                  "%)"
+                }}
+              </span>
             </div>
           </div>
         </li>
       </ul>
     </div>
-    <!--  현재 환전하기 버튼 임시로 만듦. 버튼 컴포넌트 삽입해야 함. -->
-    <button class="w-[100%] h-[2rem] bg-main-gradient text-white font-bold rounded">
-      환전하기
-    </button>
+
+    <!-- 환전하기 버튼 -->
+    <div>
+      <button class="w-[100%] h-[2rem] bg-main-gradient text-white font-bold rounded mt-4">
+        환전하기
+      </button>
+    </div>
   </div>
 </template>
 

@@ -23,7 +23,7 @@ export const useExchangeStore = defineStore("exchange", () => {
   // const todayForm = formatDate(today);
   // const yesterdayForm = formatDate(yesterday);
 
-  // (개발용) 다음 날짜로 지정해둠
+  // (개발용) 임시 날짜로 지정해둠
   const todayForm = "20250722";
   const yesterdayForm = "20250721";
 
@@ -107,6 +107,11 @@ export const useExchangeStore = defineStore("exchange", () => {
     return map[curUnit] || "un";
   };
 
+  const selectedCurrencyCode = ref(null);
+  const setSelectedCurrencyCode = (code) => {
+    selectedCurrencyCode.value = code;
+  };
+
   return {
     exchangeRates,
     todayRates,
@@ -117,5 +122,7 @@ export const useExchangeStore = defineStore("exchange", () => {
     yesterdayForm,
     loading,
     formatDate,
+    selectedCurrencyCode,
+    setSelectedCurrencyCode,
   };
 });

@@ -8,7 +8,12 @@ const authkey = "수출입은행 현재환율 api 인증키 부분";
 
 const exchangeStore = useExchangeStore();
 
-const { getCountryCode, todayRates } = exchangeStore;
+const { getCountryCode, todayRates, setSelectedCurrencyCode } = exchangeStore;
+
+const handleSelect = (code) => {
+  setSelectedCurrencyCode(code);
+  console.log("사용자가 선택한 통화코드 : ", code);
+};
 
 const loading = ref(true);
 const error = ref("");
@@ -51,7 +56,7 @@ onMounted(async () => {
           <span class="font-semibold text-sm text-gray-600 px-4">{{ item.cur_nm }}</span>
         </div>
         <div>
-          <button class="p-2">
+          <button @click="handleSelect(item.cur_unit)" class="p-2">
             <Icon class="right-6 w-[2vw] h-auto text-gray-400" icon="material-symbols:check"></Icon>
           </button>
         </div>

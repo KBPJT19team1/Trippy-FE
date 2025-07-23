@@ -1,7 +1,7 @@
 <script setup>
 import { RouterLink } from 'vue-router';
-import { Icon } from '@iconify/vue'
-import TrippyLogo from '@/assets/svg/trippy-logo.svg'
+import { Icon } from '@iconify/vue';
+import TrippyLogo from '@/assets/svg/trippy-logo.svg';
 </script>
 
 <template>

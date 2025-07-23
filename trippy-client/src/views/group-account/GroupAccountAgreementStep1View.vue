@@ -6,7 +6,7 @@ import AgreementItem from '@/components/common/AgreementItem.vue';
 import { agreementStep1, agreementStep2 } from '@/_dummy/agreement_dummy';
 import NextButton from '@/components/common/NextButton.vue';
 import EmailInput from '@/components/common/EmailInput.vue';
-import AccountNotice from '@/components/groupAccount/AccountNotice.vue';
+import AccountNotice from '@/components/group-account/AccountNotice.vue';
 import { useGroupAccountStore } from '@/stores/groupAccountStore';
 
 const email = ref('');

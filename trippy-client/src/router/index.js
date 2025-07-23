@@ -4,6 +4,7 @@ import PaymentView from "@/views/PaymentView.vue";
 import TravelLogsView from "@/views/TravelLogsView.vue";
 import MenuView from "@/views/MenuView.vue";
 import MapView from "@/views/MapView.vue";
+import AirTicketView from "@/views/airTicket/AirTicketView.vue";
 import GroupAccount from "./groupAccount.js";
 
 const router = createRouter({
@@ -28,6 +29,11 @@ const router = createRouter({
       path: "/menu",
       name: "menu",
       component: MenuView,
+    },
+    {
+      path: "/tickets",
+      name: "AirTicket",
+      component: AirTicketView,
     },
     {
       path: "/exchange-rates",

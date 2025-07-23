@@ -3,23 +3,14 @@ import { computed, onMounted, ref, nextTick } from 'vue';
 import AgreementCheck from '@/components/common/AgreementCheck.vue';
 import NextButton from '@/components/common/NextButton.vue';
 import AgreementItemTitle from '@/components/groupAccount/AgreementItemTitle.vue';
-import { agreementStep3 } from '@/_dummy/agreement_dummy';
-import { agreementStep4 } from '@/_dummy/agreement_dummy';
-import { agreementStep5 } from '@/_dummy/agreement_dummy';
-import { agreementStep6 } from '@/_dummy/agreement_dummy';
-import { agreementStep7 } from '@/_dummy/agreement_dummy';
-import { agreementStep8 } from '@/_dummy/agreement_dummy';
-
+import { agreementStep3, agreementStep4, agreementStep5, agreementStep6, agreementStep7, agreementStep8 } from '@/_dummy/agreement_dummy';
 import { useGroupAccountStore } from '@/stores/groupAccountStore';
-
 import AgreementListItem from '@/components/groupAccount/AgreementListItem.vue';
 import AccountNotice from '@/components/groupAccount/AccountNotice.vue';
 import EmailInput from '@/components/common/EmailInput.vue';
 
 const groupAccountStore = useGroupAccountStore();
-
 const email = ref("")
-
 // 전체 선택 클릭 핸들러
 const toggleAllCheck = () => {
   const newState = !allChecked.value;
@@ -27,33 +18,28 @@ const toggleAllCheck = () => {
   if (newState) {
     nextTick(() => {
       window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    });
+    })
   }
 };
 
-
 const checkedItems = ref(new Array(6).fill(false));
-
 const allChecked = computed(() => checkedItems.value.every(v => v));
 const isEmailValid = computed(() => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value));
 const formValid = computed(() => allChecked.value && isEmailValid.value);
 
 const onClick = (idx) => {
   checkedItems.value[idx] = checkedItems.value[idx] == false ? true : false
-}
+};
 
 onMounted(() => {
   email.value = groupAccountStore.emaile
-})
-
+});
 </script>
 
 <template>
   <div class="text-center subtitle1 mt-5">
     <p>입출금통장 개설을 위해 <br> 약관 및 상품설명서를 꼭 확인해 주세요</p>
   </div>
-
-
   <AgreementCheck class="mt-7" :class="[!allChecked ? 'bg-gray-400' : 'bg-main-gradient']"
     :title="'Trippy 입출금 통장 상품설명서'" @click="toggleAllCheck" />
 
@@ -95,7 +81,6 @@ onMounted(() => {
     <AgreementItemTitle :title="agreementStep8[0].title" :visible="checkedItems[5]" @click="() => onClick(5)" />
     <AccountNotice :title="agreementStep8[0].subtitle[0]" class="caption1 text-gray-400" />
   </div>
-
 
   <NextButton title="다음" To="group-account-step3" :visible="formValid" />
 </template>

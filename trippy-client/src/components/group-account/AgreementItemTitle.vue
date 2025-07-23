@@ -1,17 +1,15 @@
 <script setup>
 import { defineProps, defineEmits } from 'vue';
-import { Icon } from '@iconify/vue'
+import { Icon } from '@iconify/vue';
 
 const props = defineProps({
   title: String,
   visible: Boolean
-})
-
-const emits = defineEmits(["click"])
-
+});
+const emits = defineEmits(["click"]);
 const onClick = () => {
-  emits("click")
-}
+  emits("click");
+};
 </script>
 
 <template>

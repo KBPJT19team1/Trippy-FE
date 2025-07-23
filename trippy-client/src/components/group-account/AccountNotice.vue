@@ -3,8 +3,7 @@ import { defineProps } from 'vue';
 
 const props = defineProps({
   title: String
-})
-
+});
 </script>
 
 <template>

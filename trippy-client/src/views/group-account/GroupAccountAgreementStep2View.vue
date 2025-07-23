@@ -32,7 +32,7 @@ const onClick = (idx) => {
 };
 
 onMounted(() => {
-  email.value = groupAccountStore.emaile
+  email.value = groupAccountStore.email
 });
 </script>
 

@@ -48,12 +48,12 @@ const router = createRouter({
     {
       path: "/exchange-rates",
       name: "ExchangeRate",
-      component: () => import("../views/exchangeRate/ExchangeRateList.vue"),
+      component: () => import("../views/exchangeRate/ExchangeRateListView.vue"),
     },
     {
       path: "/exchange-currency",
       name: "ExchangeCurrency",
-      component: () => import("../views/exchangeCurrency/ExchangeCurrencySelect.vue"),
+      component: () => import("../views/exchangeCurrency/ExchangeCurrencySelectView.vue"),
     },
     { path: "/map", name: "map", component: MapView },
 

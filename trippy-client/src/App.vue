@@ -1,12 +1,12 @@
 <script setup>
 import { computed } from "vue";
-import { RouterView, useRoute } from 'vue-router';
-import TopNavigationBar from '@/components/layouts/TopNavigationBar.vue';
-import BottomNavigationBar from '@/components/layouts/BottomNavigationBar.vue';
+import { RouterView, useRoute } from "vue-router";
+import TopNavigationBar from "@/components/layouts/TopNavigationBar.vue";
+import BottomNavigationBar from "@/components/layouts/BottomNavigationBar.vue";
 
 const route = useRoute();
 
-const bgColor = computed(() => route.meta.bgColor || '');
+const bgColor = computed(() => route.meta.bgColor || "");
 </script>
 
 <template>
@@ -14,8 +14,8 @@ const bgColor = computed(() => route.meta.bgColor || '');
     <div :class="['relative w-[375px] h-[812px]', bgColor ? 'bg-white' : 'bg-gray-100']">
       <TopNavigationBar />
 
-      <div class='pt-[100px] pb-[90px] h-full'>
-        <div class='p-4 flex flex-col items-center h-full'>
+      <div class="pt-[100px] pb-[90px] h-full">
+        <div class="p-4 flex flex-col items-center h-full">
           <RouterView />
         </div>
       </div>

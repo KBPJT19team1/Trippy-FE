@@ -1,12 +1,12 @@
 <script setup>
-import { defineEmits } from 'vue';
-import TrippyLogo from '@/assets/svg/trippy-logo.svg'
-import NextButton from '@/components/common/NextButton.vue';
+import { defineEmits } from "vue";
+import TrippyLogo from "@/assets/svg/trippy-logo.svg";
+import NextButton from "@/components/common/NextButton.vue";
 
-const emit = defineEmits(['next']);
+const emit = defineEmits(["next"]);
 
 function handleNextClick() {
-  emit('next');
+  emit("next");
 }
 </script>
 
@@ -19,10 +19,6 @@ function handleNextClick() {
     <div class="w-full flex justify-center">
       <TrippyLogo class="w-36" />
     </div>
-    <NextButton
-      title="계좌 불러오기"
-      :disabled="false"
-      @click="handleNextClick"
-    />
+    <NextButton title="계좌 불러오기" :disabled="false" @click="handleNextClick" />
   </div>
 </template>

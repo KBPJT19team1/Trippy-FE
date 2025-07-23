@@ -3,8 +3,6 @@ import { defineEmits } from 'vue';
 import TrippyLogo from '@/assets/svg/trippy-logo.svg'
 import NextButton from '@/components/common/NextButton.vue';
 
-const visible = true;
-
 const emit = defineEmits(['next']);
 
 function handleNextClick() {
@@ -14,7 +12,7 @@ function handleNextClick() {
 
 <template>
   <div class="flex flex-col h-full justify-between">
-    <div class="flex flex-col gap-2 mt-12">
+    <div class="flex flex-col gap-2 mt-10">
       <h1 class="title2">내 자산을 한눈에 확인해요!</h1>
       <p class="body1">간편하게 내 계좌 목록을 불러올 수 있어요.</p>
     </div>
@@ -23,7 +21,7 @@ function handleNextClick() {
     </div>
     <NextButton
       title="계좌 불러오기"
-      :visible="visible"
+      :disabled="false"
       @click="handleNextClick"
     />
   </div>

@@ -44,6 +44,8 @@ const router = createRouter({
       path: "/identification/registration",
       name: "/identification/registration",
       component: () => import("@/views/identification/IdRegistration.vue"),
+    },
+    {
       path: "/exchange-rates",
       name: "ExchangeRate",
       component: () => import("../views/exchangeRate/ExchangeRateList.vue"),

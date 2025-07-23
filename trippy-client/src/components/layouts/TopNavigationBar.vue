@@ -1,6 +1,5 @@
 <script setup>
-import { RouterLink } from 'vue-router';
-import { useRoute } from 'vue-router';
+import { RouterLink, useRoute } from 'vue-router';
 import { computed } from 'vue';
 
 import { Icon } from '@iconify/vue'

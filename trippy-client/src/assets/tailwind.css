@@ -5,23 +5,30 @@
 /* font-light */
 @font-face {
   font-family: "Spoqa Han Sans Neo";
+  font-family: "Spoqa Han Sans Neo";
   font-weight: 300;
+  src: url("public/fonts/SpoqaHanSansNeo-Light.ttf");
   src: url("public/fonts/SpoqaHanSansNeo-Light.ttf");
 }
 /* font-normal */
 @font-face {
   font-family: "Spoqa Han Sans Neo";
+  font-family: "Spoqa Han Sans Neo";
   font-weight: 400;
+  src: url("public/fonts/SpoqaHanSansNeo-Regular.ttf");
   src: url("public/fonts/SpoqaHanSansNeo-Regular.ttf");
 }
 /* font-medium */
 @font-face {
   font-family: "Spoqa Han Sans Neo";
+  font-family: "Spoqa Han Sans Neo";
   font-weight: 500;
+  src: url("public/fonts/SpoqaHanSansNeo-Medium.ttf");
   src: url("public/fonts/SpoqaHanSansNeo-Medium.ttf");
 }
 /* font-bold */
 @font-face {
+  font-family: "Spoqa Han Sans Neo";
   font-family: "Spoqa Han Sans Neo";
   font-weight: 700;
   src: url("public/fonts/SpoqaHanSansNeo-Bold.ttf");

@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "date": "2025-06-01",
+    "date": "2025-07-25",
     "dayOfWeek": "토",
     "reservationCode": "H48VNF",
     "departure": {
@@ -24,7 +24,7 @@
   },
   {
     "id": 2,
-    "date": "2025-07-03",
+    "date": "2025-07-25",
     "dayOfWeek": "수",
     "reservationCode": "A29XLM",
     "departure": {
@@ -47,7 +47,7 @@
   },
   {
     "id": 3,
-    "date": "2025-07-18",
+    "date": "2025-07-26",
     "dayOfWeek": "금",
     "reservationCode": "Z93YTR",
     "departure": {

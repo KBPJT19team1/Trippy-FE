@@ -1,11 +1,31 @@
 <script setup>
 import { Icon } from "@iconify/vue";
-defineProps({
+import { ref, computed } from "vue";
+import TicketModal from "@/components/air-ticket/TicketModal.vue";
+
+const props = defineProps({
   ticket: {
     type: Object,
     required: true,
   },
 });
+
+// 출발일시 계산
+const departureDateTime = computed(() => {
+  const dateStr = `${props.ticket.date}T${props.ticket.departure.time}:00`;
+  return new Date(dateStr);
+});
+
+// 24시간 이내 여부
+const isAvailable = computed(() => {
+  const departureDateTime = new Date(`${props.ticket.date}T${props.ticket.departure.time}`);
+  const now = new Date();
+  const diffMs = departureDateTime.getTime() - now.getTime();
+  const diffHours = diffMs / (1000 * 60 * 60);
+  return diffHours <= 24;
+});
+
+const showModal = ref(false);
 </script>
 
 <template>
@@ -67,10 +87,24 @@ defineProps({
     </div>
 
     <!-- 하단 버튼 (전체 너비) -->
-    <div class="mt-4">
+    <!-- <div class="mt-4">
       <button class="w-full rounded-xl bg-blue-200 text-blue-400 text-button2 py-3 text-center">
         모바일 티켓 보기
       </button>
+    </div> -->
+    <div class="mt-4">
+      <button
+        :disabled="!isAvailable"
+        :class="[
+          'w-full rounded-xl py-3 text-center text-button2',
+          isAvailable ? 'bg-blue-200 text-blue-400' : 'bg-gray-200 text-gray-400',
+        ]"
+      >
+        {{ isAvailable ? "모바일 티켓 보기" : "모바일 탑승권 발급 전입니다." }}
+      </button>
     </div>
+
+    <!-- 티켓 모달 -->
+    <TicketModal v-if="showModal" :ticket="props.ticket" @close="showModal = false" />
   </div>
 </template>

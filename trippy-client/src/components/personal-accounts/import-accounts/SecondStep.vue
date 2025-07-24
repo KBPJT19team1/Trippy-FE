@@ -3,7 +3,7 @@ import { ref, computed, watch } from "vue";
 
 import Input from "@/components/common/Input.vue";
 import RegistNumberInput from "@/components/common/RegistNumberInput.vue";
-import SlidingModal from "@/components/common/SlidingModal.vue";
+import TermsModal from "@/components/common/TermsModal.vue";
 import NextButton from "@/components/common/NextButton.vue";
 
 const showModal = ref(false);
@@ -34,6 +34,6 @@ const openModal = () => {
       <NextButton title="다음" :disabled="!isAllFilled" @click="openModal" />
     </div>
 
-    <SlidingModal v-model="showModal"> 약관 동의해라 </SlidingModal>
+    <TermsModal v-model="showModal"> 약관 동의해라 </TermsModal>
   </div>
 </template>

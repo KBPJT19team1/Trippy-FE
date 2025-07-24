@@ -33,7 +33,7 @@ const formatResidentId = () => {
     </div>
     <!-- 입력부 -->
     <div class="mt-5">
-      <div>
+      <div class="mb-3">
         <label class="body2"> 이름 </label>
         <div class="flex items-center justify-between border rounded-md px-3 py-2">
           <input class="text-gray-800" v-model="name" :readonly="!editingName" />
@@ -43,7 +43,7 @@ const formatResidentId = () => {
         </div>
       </div>
 
-      <div>
+      <div class="mb-3">
         <label class="body2"> 주민등록번호 </label>
         <div class="flex items-center border rounded-md px-3 py-2">
           <input
@@ -71,8 +71,9 @@ const formatResidentId = () => {
       </div>
     </div>
 
+    <!-- TODO: 하단 바 없애고 위치 조정 -->
     <!-- 촬영 or 등록 버튼 -->
-    <div class="flex gap-3 mt-10">
+    <div class="flex gap-3 mt-4">
       <!-- 다시 촬영 버튼 -->
       <button
         class="flex-1 py-2 rounded-lg bg-blue-200 text-blue-600 button1 text-center shadow-sm"
@@ -80,7 +81,7 @@ const formatResidentId = () => {
         다시 촬영
       </button>
 
-      <!-- 등록하기 버튼: 임시 -->
+      <!-- 등록하기 버튼 -->
       <button
         class="flex-1 py-3 rounded-lg bg-main-gradient text-white button1 text-center shadow-sm"
       >

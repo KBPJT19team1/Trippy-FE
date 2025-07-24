@@ -6,30 +6,30 @@ import sampleImage from "@/assets/image.png";
 const router = useRouter();
 
 const travelLogs = [
-  {
-    id: 1,
-    title: "제주도 여행",
-    dateRange: "2025.07.14 ~ 2025.07.16",
-    description: "리포트 발급 전! 우리 어떻게 해볼까요?",
-    memberCount: 3,
-    imageUrl: sampleImage,
-  },
-  {
-    id: 2,
-    title: "강릉 당일치기",
-    dateRange: "2025.08.03",
-    description: "맛집 탐방과 해변 산책",
-    memberCount: 2,
-    imageUrl: "https://via.placeholder.com/400x150?text=Gangneung",
-  },
-  {
-    id: 3,
-    title: "부산 여행",
-    dateRange: "2025.09.10 ~ 2025.09.12",
-    description: "야경, 해운대, 그리고 밀면",
-    memberCount: 4,
-    imageUrl: "https://via.placeholder.com/400x150?text=Busan",
-  },
+  // {
+  //   id: 1,
+  //   title: "제주도 여행",
+  //   dateRange: "2025.07.14 ~ 2025.07.16",
+  //   description: "리포트 발급 전! 우리 어떻게 해볼까요?",
+  //   memberCount: 3,
+  //   imageUrl: sampleImage,
+  // },
+  // {
+  //   id: 2,
+  //   title: "강릉 당일치기",
+  //   dateRange: "2025.08.03",
+  //   description: "맛집 탐방과 해변 산책",
+  //   memberCount: 2,
+  //   imageUrl: "https://via.placeholder.com/400x150?text=Gangneung",
+  // },
+  // {
+  //   id: 3,
+  //   title: "부산 여행",
+  //   dateRange: "2025.09.10 ~ 2025.09.12",
+  //   description: "야경, 해운대, 그리고 밀면",
+  //   memberCount: 4,
+  //   imageUrl: "https://via.placeholder.com/400x150?text=Busan",
+  // },
 ];
 
 function handleClick(id) {
@@ -39,6 +39,12 @@ function handleClick(id) {
 
 <template>
   <main class="w-full flex flex-col gap-8">
+    <div
+      v-if="travelLogs.length === 0"
+      class="absolute inset-0 flex items-center justify-center pointer-events-none"
+    >
+      <p class="text-black text-xl font-semibold">첫 여행을 기록해보세요!</p>
+    </div>
     <RoundedCard
       v-for="log in travelLogs"
       :key="log.id"

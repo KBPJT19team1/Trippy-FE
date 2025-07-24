@@ -5,7 +5,6 @@ import TravelLogsView from "@/views/TravelLogsView.vue";
 import MenuView from "@/views/MenuView.vue";
 import MapView from "@/views/MapView.vue";
 import GroupAccount from "./groupAccount.js";
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -20,6 +19,12 @@ const router = createRouter({
       component: PaymentView,
     },
     {
+      path: "/payment/settings",
+      name: "PaymentSettings",
+      component: () => import("@/views/payment/PaymentSettingsView.vue"),
+    },
+
+    {
       path: "/travel-logs",
       name: "travel-logs",
       component: TravelLogsView,
@@ -29,10 +34,11 @@ const router = createRouter({
       name: "menu",
       component: MenuView,
     },
+
     {
       path: "/exchange-rates",
       name: "ExchangeRate",
-      component: () => import("../views/exchangeRate/ExchangeRateListView.vue"),
+      component: () => import("../views/exchangeRate/exchangeRateListView.vue"),
     },
     {
       path: "/exchange-currency",

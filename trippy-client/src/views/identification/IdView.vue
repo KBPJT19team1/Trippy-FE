@@ -22,17 +22,6 @@ const maskedId = computed(() => {
 <style scoped>
 .card-header-gradient {
   background: linear-gradient(90deg, #6ae4ff 0%, #236fff 43.23%, #236fff 58.33%, #a38eff 100%);
-  border-radius: 10px 10px 0 0;
-}
-.card-footer-button {
-  background: linear-gradient(
-    152.02deg,
-    #6ae4ff -45.76%,
-    #236fff 25.9%,
-    #236fff 50.94%,
-    #a38eff 120.01%
-  );
-  border-radius: 0 0 10px 10px;
 }
 </style>
 
@@ -84,15 +73,15 @@ const maskedId = computed(() => {
         <div class="mt-4 flex w-full items-center-justify-start px-4">
           <div class="flex flex-col">
             <!-- 안내 문구 -->
-            <p class="text-gray-500 text-xxs">모바일 신분증 확인 서비스</p>
+            <p class="text-gray-500 caption4">모바일 신분증 확인 서비스</p>
             <!-- 이름 -->
-            <h2 class="mt-1 text-xl font-semibold">홍길동</h2>
+            <h2 class="mt-1 title1">홍길동</h2>
 
             <div v-if="showDetail">
-              <div class="mt-1 text-xl font-semibold">
+              <div class="mt-1 title2">
                 <h2>{{ maskedId }}</h2>
               </div>
-              <div class="mt-9">
+              <div class="mt-9 body2">
                 <p>서울 특별시 광진구 능동로 195-16</p>
               </div>
             </div>
@@ -110,7 +99,7 @@ const maskedId = computed(() => {
                 <div class="h-1 bg-blue-500 rounded-full" style="width: 70%"></div>
               </div>
               <!-- 남은 시간 -->
-              <p class="text-gray-400 text-xxs">남은 시간: 8초</p>
+              <p class="text-gray-400 caption3">남은 시간: 8초</p>
             </div>
 
             <div v-else>
@@ -133,13 +122,13 @@ const maskedId = computed(() => {
         <div class="p-4 mt-auto">
           <div class="flex items-center justify-between">
             <!-- TODO: 링크 걸어두기 -->
-            <p class="text-gray-500 text-xxs">법적 효력 안내 ></p>
-            <p class="text-sm font-semibold">2019.12.13.</p>
+            <p class="text-gray-500 caption2">법적 효력 안내 ></p>
+            <p class="subtitle2">2019.12.13.</p>
           </div>
         </div>
         <!-- 상세정보 표시버튼 -->
         <button
-          class="card-footer-button w-full py-3 rounded-b-lg shadow-md bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold text-center"
+          class="bg-main-gradient w-full py-3 rounded-b-lg shadow-md text-white font-bold text-center"
           @click="showDetail = !showDetail"
         >
           {{ showDetail ? "QR 정보 표시" : "상세정보 표시" }}

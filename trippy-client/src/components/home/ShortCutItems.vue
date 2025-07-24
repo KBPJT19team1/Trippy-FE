@@ -14,6 +14,7 @@ const shortcutItems = [
   },
   {
     icon: "material-symbols:airplane-ticket",
+<<<<<<< HEAD
     title: "항공권\n확인하기",
     to: "/check/tickets",
   },
@@ -27,6 +28,16 @@ const shortcutItems = [
     title: "번역하기",
     to: "/translation",
   },
+=======
+    title: "항공권/바우처\n확인하기",
+    to: "/tickets",
+  },
+  {
+    icon: "material-symbols:g-translate",
+    title: "번역하기",
+    to: "/translation",
+  },
+>>>>>>> df1719a (style : prettier 적용)
 ];
 </script>
 

@@ -83,7 +83,15 @@ const updateIsCheckedAll = () => {
       style="max-height: 80vh"
     >
       <div class="py-4 overflow-y-auto max-h-[calc(80vh-56px)] flex flex-col gap-4">
-        <p class="px-4 body2 text-gray-400">회원가입을 위한 동의가 필요합니다.</p>
+        <div class="flex justify-between px-4 text-gray-400">
+          <p class="body2">회원가입을 위한 동의가 필요합니다.</p>
+          <Icon
+            icon="material-symbols:close-rounded"
+            class="size-5 hover:text-gray-600"
+            @click="closeModal"
+          />
+        </div>
+
         <div class="flex gap-2 px-4">
           <Icon
             :icon="isCheckedAll ? 'material-symbols:check-circle-rounded' : 'material-symbols:check-circle-outline-rounded'"
@@ -140,12 +148,6 @@ const updateIsCheckedAll = () => {
           </div>
         </div>
       </div>
-      <button
-        class="w-full py-3 text-center bg-gray-100 text-sm text-gray-600 border-t"
-        @click="close"
-      >
-        닫기
-      </button>
     </div>
   </div>
 </template>

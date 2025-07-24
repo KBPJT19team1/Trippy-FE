@@ -15,7 +15,7 @@ import {
 import { useGroupAccountStore } from "@/stores/groupAccountStore";
 import AgreementListItem from "@/components/group-account/AgreementListItem.vue";
 import AccountNotice from "@/components/group-account/AccountNotice.vue";
-import EmailInput from "@/components/common/inputs/EmailInput.vue";
+import EmailInput from "@/components/common/EmailInput.vue";
 
 const groupAccountStore = useGroupAccountStore();
 const email = ref("");
@@ -45,7 +45,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="text-center subtitle1 mt-5xs">
+  <div class="text-center subtitle1 mt-5">
     <p>
       입출금통장 개설을 위해 <br />
       약관 및 상품설명서를 꼭 확인해 주세요

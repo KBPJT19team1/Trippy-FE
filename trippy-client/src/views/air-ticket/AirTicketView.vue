@@ -6,7 +6,7 @@ import dummyTickets from "@/_dummy/airTicket_dummy.json"; //더미 -> 나중에 
 import QuickReloadButton from "@/components/common/QuickReloadButton.vue";
 import LoadingOverlay from "@/components/common/LoadingOverlay.vue";
 import EmptyTicket from "@/components/air-ticket/EmptyTicket.vue";
-import TicketList from "@/components/air-ticket/TicketItem.vue";
+import TicketCard from "@/components/air-ticket/TicketItem.vue";
 
 const store = useAirTicketStore();
 const { tickets } = storeToRefs(store);
@@ -35,12 +35,12 @@ const onReload = () => {
     </div>
 
     <!-- 항공권 있을 때 -->
-    <div v-else>
-      <TicketList :tickets="tickets" />
+    <div v-else class="flex flex-col gap-4">
+      <TicketCard v-for="ticket in tickets" :key="ticket.id" :ticket="ticket" />
     </div>
 
     <!-- 하단 퀵 버튼 => ❌애 문제 있음 -->
-    <div class="fixed bottom-8 right-5 z-50">
+    <div class="fixed bottom-7 ml-48 z-50">
       <QuickReloadButton @reload="onReload" />
     </div>
   </main>

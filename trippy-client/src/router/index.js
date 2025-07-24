@@ -4,6 +4,7 @@ import PaymentView from "@/views/PaymentView.vue";
 import TravelLogsView from "@/views/TravelLogsView.vue";
 import MenuView from "@/views/MenuView.vue";
 import MapView from "@/views/MapView.vue";
+import AirTicketView from "@/views/air-ticket/AirTicketView.vue";
 import GroupAccount from "./groupAccount.js";
 
 const router = createRouter({
@@ -30,6 +31,11 @@ const router = createRouter({
       component: MenuView,
     },
     {
+      path: "/tickets",
+      name: "AirTicket",
+      component: AirTicketView,
+    },
+    {
       path: "/identification",
       name: "identification",
       component: () => import("@/views/identification/IdView.vue"),
@@ -47,7 +53,7 @@ const router = createRouter({
     {
       path: "/exchange-rates",
       name: "ExchangeRate",
-      component: () => import("../views/exchangeRate/ExchangeRateListView.vue"),
+      component: () => import("../views/exchangeRate/exchangeRateListView.vue"),
     },
     {
       path: "/exchange-currency",

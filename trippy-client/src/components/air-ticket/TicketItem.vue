@@ -1,0 +1,76 @@
+<script setup>
+import { Icon } from "@iconify/vue";
+defineProps({
+  ticket: {
+    type: Object,
+    required: true,
+  },
+});
+</script>
+
+<template>
+  <div class="w-full bg-white rounded-xl shadow-md px-4 py-3 flex flex-col">
+    <!-- 날짜 & 예약번호 -->
+    <div class="flex justify-between text-gray-500 caption2 mt-2">
+      <span>{{ ticket.date }}({{ ticket.dayOfWeek }})</span>
+      <span>예약번호: {{ ticket.reservationCode }}</span>
+    </div>
+
+    <!-- 도시 & 공항 코드 -->
+    <div class="relative flex justify-between items-center mt-3.5">
+      <div class="flex flex-col ml-2">
+        <span class="text-black subtitle1">{{ ticket.departure.city }}</span>
+        <span class="text-gray-500 body2">{{ ticket.departure.code }}</span>
+      </div>
+
+      <div class="absolute left-1/2 -translate-x-1/2">
+        <Icon icon="material-symbols:flight-takeoff" class="w-8 h-8 text-black" />
+      </div>
+
+      <div class="flex flex-col items-end mr-2">
+        <span class="text-black subtitle1">{{ ticket.arrival.city }}</span>
+        <span class="text-gray-500 body2">{{ ticket.arrival.code }}</span>
+      </div>
+    </div>
+
+    <!-- 시간 + 라인 -->
+    <div class="flex items-center justify-between m-2">
+      <span class="text-black text-subtitle1">{{ ticket.departure.time }}</span>
+      <div class="relative flex-1 flex items-center mx-2 h-2">
+        <div class="absolute top-1/2 left-0 w-full h-[1px] bg-gray-300 -translate-y-1/2"></div>
+        <div class="z-10 w-1 h-1 rounded-full bg-purple"></div>
+        <div class="flex-1"></div>
+        <div class="z-10 w-1 h-1 rounded-full bg-purple"></div>
+      </div>
+
+      <span class="text-black text-subtitle1">{{ ticket.arrival.time }}</span>
+    </div>
+
+    <!-- 항공 정보 영역 -->
+    <div class="mt-1 text-gray-500 text-body2 flex flex-col gap-1 ml-2 mr-2">
+      <div class="flex items-center gap-1">
+        <Icon icon="material-symbols:travel" class="w-3 h-3" />
+        <span class="caption3">{{ ticket.flight.airline }} {{ ticket.flight.flightNo }}</span>
+      </div>
+
+      <div class="flex justify-between">
+        <div class="flex items-center gap-1">
+          <Icon icon="material-symbols:luggage-rounded" class="w-3 h-3" />
+          <span class="caption3">{{ ticket.flight.baggage }}</span>
+        </div>
+
+        <div class="flex items-center gap-1">
+          <Icon icon="material-symbols:airline-seat-recline-extra-rounded" class="w-3 h-3" />
+          <span class="caption3">{{ ticket.flight.seatType }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 하단 버튼 (전체 너비) -->
+    <div class="mt-4">
+      <button class="w-full rounded-xl bg-blue-200 text-blue-400 text-button2 py-3 text-center">
+        모바일 티켓 보기
+      </button>
+    </div>
+  </div>
+</template>

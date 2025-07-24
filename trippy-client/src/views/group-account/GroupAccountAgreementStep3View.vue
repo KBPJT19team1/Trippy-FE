@@ -39,6 +39,7 @@ watch(allChecked, () => {
     groupAccountStore.setGroupAccountInfo(groupAccountPassword.value, groupAccountName.value)
   }
 });
+
 </script>
 
 <template>

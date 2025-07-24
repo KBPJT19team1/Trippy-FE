@@ -76,14 +76,14 @@ const formatResidentId = () => {
     <div class="flex gap-3 mt-4">
       <!-- 다시 촬영 버튼 -->
       <button
-        class="flex-1 py-2 rounded-lg bg-blue-200 text-blue-600 button1 text-center shadow-sm"
+        class="flex-1 py-2 rounded-lg bg-blue-200 text-blue-600 button1 text-center shadow-sm hover:opacity-90"
       >
         다시 촬영
       </button>
 
       <!-- 등록하기 버튼 -->
       <button
-        class="flex-1 py-3 rounded-lg bg-main-gradient text-white button1 text-center shadow-sm"
+        class="flex-1 py-3 rounded-lg bg-main-gradient text-white button1 text-center shadow-sm hover:opacity-90"
       >
         등록하기
       </button>

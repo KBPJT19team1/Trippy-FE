@@ -130,7 +130,7 @@ const maskedId = computed(() => {
         </div>
         <!-- 상세정보 표시버튼 -->
         <button
-          class="bg-main-gradient w-full py-3 rounded-b-lg shadow-md text-white font-bold text-center"
+          class="bg-main-gradient w-full py-3 rounded-b-lg shadow-md text-white font-bold text-center hover:opacity-90"
           @click="showDetail = !showDetail"
         >
           {{ showDetail ? "QR 정보 표시" : "상세정보 표시" }}

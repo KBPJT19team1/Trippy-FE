@@ -1,3 +1,12 @@
+<script setup>
+defineProps({
+  tabs: { type: Array, required: true },
+  tab: { type: String, required: false },
+});
+
+defineEmits(["update:tab"]);
+</script>
+
 <template>
   <div class="flex w-full border-b bg-white">
     <button
@@ -13,12 +22,3 @@
     </button>
   </div>
 </template>
-
-<script setup>
-defineProps({
-  tabs: { type: Array, required: true },
-  tab: { type: String, required: false },
-});
-
-defineEmits(["update:tab"]);
-</script>

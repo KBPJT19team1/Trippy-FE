@@ -1,3 +1,7 @@
+<script setup>
+import Idcard from "@/assets/Idcard.png";
+</script>
+
 <template>
   <div class="w-full h-[34rem] rounded-xl shadow-md bg-white flex flex-col">
     <!-- 민증 조회 뷰 -->
@@ -53,7 +57,3 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import Idcard from "@/assets/Idcard.png";
-</script>

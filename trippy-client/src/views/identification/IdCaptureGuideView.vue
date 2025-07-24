@@ -1,3 +1,7 @@
+<script setup>
+import Idcard from "@/assets/Idcard.png";
+</script>
+
 <template>
   <div class="w-full h-[34rem] bg-white">
     <div class="mt-5">
@@ -11,9 +15,3 @@
   </div>
   <!-- TODO: 버튼 붙이기 -->
 </template>
-
-<script setup>
-import Idcard from "@/assets/Idcard.png";
-</script>
-
-<style lang="scss" scoped></style>

@@ -10,6 +10,7 @@ export const bankAccounts = [
     logo: kookminLogo,
     accountNumber: "123-45-678901",
     accountType: "보통예금",
+    balance: 100000000,
   },
   {
     bankCode: "NH",
@@ -17,6 +18,7 @@ export const bankAccounts = [
     logo: nonghyeopLogo,
     accountNumber: "302-01-987654",
     accountType: "보통예금",
+    balance: 200000000,
   },
   {
     bankCode: "SH",
@@ -24,6 +26,7 @@ export const bankAccounts = [
     logo: shinhanLogo,
     accountNumber: "110-234-567890",
     accountType: "저축예금",
+    balance: 300000000,
   },
   {
     bankCode: "HN",
@@ -31,5 +34,14 @@ export const bankAccounts = [
     logo: hanaLogo,
     accountNumber: "020-123-456789",
     accountType: "보통예금",
+    balance: 400000000,
+  },
+  {
+    bankCode: "KB",
+    bankName: "국민은행",
+    logo: kookminLogo,
+    accountNumber: "999-88-777777",
+    accountType: "외화예금",
+    balance: 50000,
   },
 ];

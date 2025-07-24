@@ -8,6 +8,7 @@ import GroupAccount from "./groupAccount.js";
 import ExchangeRateListView from "@/views/exchangeRate/ExchangeRateListView.vue";
 import ExchangeCurrencySelectView from "@/views/exchangeCurrency/ExchangeCurrencySelectView.vue";
 import ExchangeCurrencyAccountView from "@/views/exchangeCurrency/ExchangeCurrencyAccountView.vue";
+import ExchangeCurrencyAmountView from "@/views/exchangeCurrency/ExchangeCurrencyAmountView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -46,6 +47,11 @@ const router = createRouter({
       path: "/exchange-currency-account",
       name: "ExchangeCurrencyAccount",
       component: ExchangeCurrencyAccountView,
+    },
+    {
+      path: "/exchange-currency-amount",
+      name: "ExchangeCurrencyAmount",
+      component: ExchangeCurrencyAmountView,
     },
     { path: "/map", name: "map", component: MapView },
 

@@ -2,6 +2,7 @@
 import { defineStore } from "pinia";
 import { ref, computed } from "vue";
 import exchangeRatesRaw from "@/_dummy/exchange_dummy.json";
+import { bankAccounts } from "@/_dummy/bankAccounts_dummy.js";
 
 export const useExchangeStore = defineStore("exchange", () => {
   const exchangeRates = ref(exchangeRatesRaw);
@@ -119,6 +120,22 @@ export const useExchangeStore = defineStore("exchange", () => {
     selectedAccount.value = account;
   };
 
+  const selectedTodayRate = computed(() => {
+    if (!selectedCurrencyCode.value) return null;
+    return todayRates.value.find((item) => item.cur_unit === selectedCurrencyCode.value);
+  });
+
+  const selectedCurrencyName = computed(() => {
+    if (!selectedCurrencyCode.value) return null;
+    const match = todayRates.value.find((item) => item.cur_unit === selectedCurrencyCode.value);
+    return match?.cur_nm || null;
+  });
+
+  const accounts = ref(bankAccounts);
+  const foreignCurrencyAccount = computed(() =>
+    accounts.value.find((acc) => acc.accountType === "외화예금"),
+  );
+
   return {
     exchangeRates,
     todayRates,
@@ -133,5 +150,9 @@ export const useExchangeStore = defineStore("exchange", () => {
     setSelectedCurrencyCode,
     selectedAccount,
     setSelectedAccount,
+    selectedTodayRate,
+    selectedCurrencyName,
+    accounts,
+    foreignCurrencyAccount,
   };
 });

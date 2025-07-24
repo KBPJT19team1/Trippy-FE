@@ -2,6 +2,7 @@
 import { bankAccounts } from "@/_dummy/bankAccounts_dummy";
 import { useExchangeStore } from "@/stores/exchangeStore";
 import { storeToRefs } from "pinia";
+import { useRouter } from "vue-router";
 
 const accountStore = useExchangeStore();
 const { selectedAccount } = storeToRefs(accountStore);
@@ -10,6 +11,11 @@ const { setSelectedAccount } = accountStore;
 const handleSelect = (account) => {
   setSelectedAccount(account);
   console.log("사용자가 선택한 계좌번호 : ", account);
+};
+
+const router = useRouter();
+const goToAmountView = () => {
+  router.push("/exchange-currency-amount");
 };
 </script>
 
@@ -43,8 +49,12 @@ const handleSelect = (account) => {
     </ul>
   </div>
   <div>
-    <!-- 버튼 삽입 영역 -->
-    <button class="w-[21.4375rem] h-[3rem] bg-main-gradient text-white font-bold rounded mt-4">
+    <!-- 버튼 컴포넌트 삽입 영역 -->
+    <button
+      :disabled="!selectedAccount"
+      class="w-[21.4375rem] h-[3rem] bg-main-gradient text-white font-bold rounded mt-4 disabled:bg-gray-300 disabled:cursor-not-allowed"
+      @click="goToAmountView"
+    >
       다음
     </button>
   </div>

@@ -5,7 +5,7 @@ import DefaultProfile from "@/assets/default_profile.png";
 import DefaultQr from "@/assets/default_qr.png";
 import { computed, ref } from "vue";
 
-const isRegistered = ref(true); // 임시로 고정 설정
+const isRegistered = ref(false); // 임시로 고정 설정
 const currentTab = ref("주민등록");
 const showDetail = ref(false);
 const toggleOn = ref(false);
@@ -29,7 +29,6 @@ const maskedId = computed(() => {
   <div class="w-full">
     <TabMenu :tabs="['주민등록', '여권']" v-model:tab="currentTab" />
 
-    <!-- 색깔,  임시로 넣은거 피그마 참고하고 다시 넣기 -->
     <div v-if="currentTab === '주민등록'">
       <!-- 신분증 등록 안 된 경우 -->
       <div
@@ -39,7 +38,7 @@ const maskedId = computed(() => {
         <div class="flex-1 flex flex-col items-center justify-center">
           <img :src="Idcard" class="w-[15rem] h-auto mb-2" />
           <!-- 안내 문구 -->
-          <p class="text-center text-gray-700">
+          <p class="text-center text-gray-700 body1">
             모바일 주민등록증 확인 서비스를<br />
             등록 하시겠습니까?
           </p>

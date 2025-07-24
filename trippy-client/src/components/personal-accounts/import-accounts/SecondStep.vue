@@ -26,14 +26,13 @@ const openModal = () => {
 </script>
 
 <template>
-  <div>
+  <div class="flex flex-col h-full justify-between">
     <div class="flex flex-col gap-8">
       <Input label="이름" placeholder="이름을 입력해 주세요." v-model="name" />
       <RegistNumberInput v-model="registNumber" />
       <Input label="휴대폰 번호" placeholder="예) 01012345678" v-model="phoneNumber" />
-      <NextButton title="다음" :disabled="!isAllFilled" @click="openModal" />
     </div>
-
+    <NextButton title="다음" :disabled="!isAllFilled" @click="openModal" />
     <TermsModal v-model="showModal"> 약관 동의해라 </TermsModal>
   </div>
 </template>

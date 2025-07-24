@@ -20,12 +20,6 @@ const maskedId = computed(() => {
 });
 </script>
 
-<style scoped>
-.card-header-gradient {
-  background: linear-gradient(90deg, #6ae4ff 0%, #236fff 43.23%, #236fff 58.33%, #a38eff 100%);
-}
-</style>
-
 <template>
   <div class="w-full">
     <TabMenu :tabs="['주민등록', '여권']" v-model:tab="currentTab" />
@@ -62,7 +56,7 @@ const maskedId = computed(() => {
         <!-- 안내 문구 -->
         <!-- 글씨 크기가 더 작아야 해서 0.62rem으로 일단 넣음 -->
         <div
-          class="card-header-gradient w-full text-white flex flex-col text-[0.62rem] py-1 rounded-t-xl whitespace-nowrap"
+          class="bg-header-gradient w-full text-white flex flex-col text-[0.62rem] py-1 rounded-t-xl whitespace-nowrap"
         >
           주민등록증 이미지 위변조 및 부정 사용 금지(위반 시 3년 이하의 징역 또는 3천만원 벌금)
         </div>

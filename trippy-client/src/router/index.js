@@ -34,6 +34,21 @@ const router = createRouter({
       component: MenuView,
     },
     {
+      path: "/identification",
+      name: "identification",
+      component: () => import("@/views/identification/IdView.vue"),
+    },
+    {
+      path: "/identification/guide",
+      name: "/identification/guide",
+      component: () => import("@/views/identification/IdCaptureGuideView.vue"),
+    },
+    {
+      path: "/identification/registration",
+      name: "/identification/registration",
+      component: () => import("@/views/identification/IdRegistrationView.vue"),
+    },
+    {
       path: "/exchange-rates",
       name: "ExchangeRate",
       component: ExchangeRateListView,

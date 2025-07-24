@@ -22,7 +22,7 @@ const focusInput = () => {
     class="flex items-center
  justify-between bg-white m-2 w-full h-15 p-4 rounded-xl shadow-custom body2 text-gray-600 focus-within:ring-1 ring-blue">
     <p>{{ props.title }}</p>
-    <input type="number" class="sr-only" v-model="pin" @input="onInput" ref="hiddenInput" />
+    <input type="number" inputmode="numeric" class="sr-only" v-model="pin" @input="onInput" ref="hiddenInput" />
     <div class="flex gap-2">
       <div v-for="i in 4" :key="i" :class="[i <= pin.length ? 'bg-main-gradient' : 'bg-gray-300']"
         class="bg-gray-300 w-4 h-4 rounded-[50%]"></div>

@@ -36,6 +36,7 @@ const toggleItem = (index) => {
   checkedItems.value[index] = !checkedItems.value[index];
 };
 </script>
+
 <template>
   <div class="con">
     <TrippyLogo class="w-64 mt-30 m-auto mt-[8.5vh]" />

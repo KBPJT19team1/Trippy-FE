@@ -17,6 +17,7 @@ const focusInput = () => {
   hiddenInput.value?.focus()
 }
 </script>
+
 <template>
   <div @click="focusInput"
     class="flex items-center
@@ -29,4 +30,5 @@ const focusInput = () => {
     </div>
   </div>
 </template>
+
 <style scoped></style>

@@ -39,11 +39,10 @@ watch(allChecked, () => {
     groupAccountStore.setGroupAccountInfo(groupAccountPassword.value, groupAccountName.value)
   }
 });
-
 </script>
 
 <template>
-  <div class="bg-main-gradient mt-10 w-full h-40 p-4 rounded-xl">
+  <div class="bg-main-gradient w-full h-40 p-4 rounded-xl">
     <div class="flex gap-2 flex-col items-center justify-center h-full text-white">
       <p class="title2">Trippy</p>
       <p class="title1">모임통장</p>

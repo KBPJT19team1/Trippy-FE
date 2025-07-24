@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, defineEmits } from "vue";
+import { ref, watch, defineEmits, computed } from "vue";
 
 import { Icon } from "@iconify/vue";
 import { terms } from '@/_dummy/terms.js';
@@ -68,8 +68,8 @@ const updateIsCheckedAll = () => {
   );
 };
 
-// 필수 항목이 모두 동의되었는지 확인
-const isAllRequiredChecked = () => {
+// 필수 항목 동의 시에만 다음 버튼 활성화
+const isNextEnabled = computed(() => {
   return termsData.value.every((section) => {
     if (section.required) {
       const sectionChecked = section.checked;
@@ -81,15 +81,10 @@ const isAllRequiredChecked = () => {
 
     return true;
   });
-};
+});
 
 const handleNextClick = () => {
-  const isPossibleGoNext = isAllRequiredChecked();
-
-  if (isPossibleGoNext)
-    emit("next");
-  else
-    console.log("필수 항목을 동의해주세요.");
+  emit("next");
 };
 </script>
 
@@ -176,7 +171,7 @@ const handleNextClick = () => {
       <NextButton
         title="다음"
         class="px-4"
-        :disabled="false"
+        :disabled="!isNextEnabled"
         @click="handleNextClick"
       />
     </div>

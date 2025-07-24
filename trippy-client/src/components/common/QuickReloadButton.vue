@@ -9,7 +9,7 @@ const onClick = () => {
 </script>
 
 <template>
-  <div class="absolute bottom-6 right-4 z-50">
+  <div>
     <button
       @click="onClick"
       class="flex items-center gap-2 px-4 py-3 bg-main-gradient text-white rounded-full shadow-md hover:opacity-90 transition"

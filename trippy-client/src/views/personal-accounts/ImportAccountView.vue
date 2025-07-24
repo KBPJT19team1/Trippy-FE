@@ -3,9 +3,10 @@ import { ref, computed } from "vue";
 
 import FirstStep from "@/components/personal-accounts/import-accounts/FirstStep.vue";
 import SecondStep from "@/components/personal-accounts/import-accounts/SecondStep.vue";
+import ThirdStep from "@/components/personal-accounts/import-accounts/ThirdStep.vue";
 
-const views = [FirstStep, SecondStep];
-const currentIndex = ref(0);
+const views = [FirstStep, SecondStep, ThirdStep];
+const currentIndex = ref(2);
 
 const currentView = computed(() => views[currentIndex.value]);
 

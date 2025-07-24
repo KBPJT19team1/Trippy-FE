@@ -1,11 +1,13 @@
 <script setup>
 import Idcard from "@/assets/Idcard.png";
 import DocumentPreview from "@/components/identification/CapturePreview.vue";
+import EditableField from "@/components/identification/EditableField.vue";
 import { ref } from "vue";
 
 const name = ref("홍길동");
 const residentId = ref("010123-1234567");
 const issueDate = ref("2019년 12월 13일");
+const editingField = ref({ name: false, id: false, date: false });
 
 // 각 필드 편집 모드 상태
 const editingName = ref(false);
@@ -28,43 +30,30 @@ const formatResidentId = () => {
     <DocumentPreview :image="Idcard" message="주민등록증 정보를 확인해주세요." />
 
     <!-- 입력부 -->
+
     <div class="mt-5">
-      <div class="mb-3">
-        <label class="body2"> 이름 </label>
-        <div class="flex items-center justify-between border rounded-md px-3 py-2">
-          <input class="text-gray-800" v-model="name" :readonly="!editingName" />
-          <button class="text-gray-400 body2 font-medium body2" @click="editingName = !editingName">
-            {{ editingName ? "완료" : "수정" }}
-          </button>
-        </div>
-      </div>
+      <EditableField
+        label="이름"
+        v-model="name"
+        :readonly="!editingField.name"
+        @toggleEdit="editingField.name = !editingField.name"
+      />
 
-      <div class="mb-3">
-        <label class="body2"> 주민등록번호 </label>
-        <div class="flex items-center border rounded-md px-3 py-2">
-          <input
-            class="text-gray-800 flex-1 text-left body2"
-            v-model="residentId"
-            maxlength="14"
-            :readonly="!editingResidentId"
-            @input="formatResidentId"
-          />
+      <EditableField
+        label="주민등록번호"
+        v-model="residentId"
+        :readonly="!editingField.id"
+        :formatter="formatResidentId"
+        maxlength="14"
+        @toggleEdit="editingField.id = !editingField.id"
+      />
 
-          <button class="text-gray-400 body2" @click="editingResidentId = !editingResidentId">
-            {{ editingResidentId ? "완료" : "수정" }}
-          </button>
-        </div>
-      </div>
-
-      <div>
-        <label class="body2"> 발급일자 </label>
-        <div class="flex items-center justify-between border rounded-md px-3 py-2">
-          <input class="text-gray-800 body2" v-model="issueDate" :readonly="!editingIssueDate" />
-          <button class="text-gray-400 body2" @click="editingIssueDate = !editingIssueDate">
-            {{ editingIssueDate ? "완료" : "수정" }}
-          </button>
-        </div>
-      </div>
+      <EditableField
+        label="발급일자"
+        v-model="issueDate"
+        :readonly="!editingField.date"
+        @toggleEdit="editingField.date = !editingField.date"
+      />
     </div>
 
     <!-- TODO: 하단 바 없애고 위치 조정 -->

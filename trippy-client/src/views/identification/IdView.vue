@@ -1,11 +1,12 @@
 <script setup>
 import Idcard from "@/assets/Idcard.png";
 import TabMenu from "@/components/common/TabMenu.vue";
-import DefaultProfile from "@/assets/default_profile.png";
+import DefaultProfile from "@/assets/svg/person.svg";
+
 import DefaultQr from "@/assets/default_qr.png";
 import { computed, ref } from "vue";
 
-const isRegistered = ref(false); // 임시로 고정 설정
+const isRegistered = ref(true); // 임시로 고정 설정
 const currentTab = ref("주민등록");
 const showDetail = ref(false);
 const toggleOn = ref(false);
@@ -30,7 +31,7 @@ const maskedId = computed(() => {
     <TabMenu :tabs="['주민등록', '여권']" v-model:tab="currentTab" />
 
     <div v-if="currentTab === '주민등록'">
-      <!-- 신분증 등록 안 된 경우 -->
+      <!-- ----------------신분증 등록 안 된 경우---------------- -->
       <div
         v-if="!isRegistered"
         class="w-full h-[32rem] rounded-xl shadow-md bg-white flex flex-col"
@@ -46,13 +47,13 @@ const maskedId = computed(() => {
 
         <!-- 등록 버튼 -->
         <button
-          class="card-footer-button w-full py-3 rounded-b-lg shadow-md text-white font-bold text-center mt-auto"
+          class="card-footer-button w-full py-3 rounded-b-lg shadow-md text-white bg-main-gradient button1 text-center mt-auto"
         >
           주민등록증 등록
         </button>
       </div>
 
-      <!-- 신분증 등록된 경우 -->
+      <!-- ----------------신분증 등록된 경우----------------  -->
       <div
         v-else
         class="w-full h-[32rem] rounded-xl shadow-md flex flex-col"
@@ -67,7 +68,9 @@ const maskedId = computed(() => {
         </div>
 
         <!-- 디폴트 프로필 -->
-        <img :src="DefaultProfile" />
+        <div class="bg-gray-200 flex flex-col h-48 justify-end items-center">
+          <DefaultProfile class="w-40 h-[9.5rem]" alt="profile" />
+        </div>
 
         <div class="mt-4 flex w-full items-center-justify-start px-4">
           <div class="flex flex-col">

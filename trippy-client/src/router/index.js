@@ -3,7 +3,6 @@ import HomeView from "@/views/HomeView.vue";
 import PaymentView from "@/views/PaymentView.vue";
 import TravelLogsView from "@/views/TravelLogsView.vue";
 import MenuView from "@/views/MenuView.vue";
-import IdView from "@/views/identification/IdView.vue";
 import MapView from "@/views/MapView.vue";
 import GroupAccount from "./groupAccount.js";
 
@@ -43,7 +42,7 @@ const router = createRouter({
     {
       path: "/identification/registration",
       name: "/identification/registration",
-      component: () => import("@/views/identification/IdRegistration.vue"),
+      component: () => import("@/views/identification/IdRegistrationView.vue"),
     },
     {
       path: "/exchange-rates",

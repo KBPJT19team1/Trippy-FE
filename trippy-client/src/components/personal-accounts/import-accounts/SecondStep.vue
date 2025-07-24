@@ -33,6 +33,6 @@ const openModal = () => {
       <Input label="휴대폰 번호" placeholder="예) 01012345678" v-model="phoneNumber" />
     </div>
     <NextButton title="다음" :disabled="!isAllFilled" @click="openModal" />
-    <TermsModal v-model="showModal"> 약관 동의해라 </TermsModal>
+    <TermsModal v-model="showModal" @next="$emit('next')" />
   </div>
 </template>

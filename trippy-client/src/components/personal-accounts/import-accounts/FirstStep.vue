@@ -4,10 +4,6 @@ import TrippyLogo from "@/assets/svg/trippy-logo.svg";
 import NextButton from "@/components/common/NextButton.vue";
 
 const emit = defineEmits(["next"]);
-
-function handleNextClick() {
-  emit("next");
-}
 </script>
 
 <template>
@@ -19,6 +15,6 @@ function handleNextClick() {
     <div class="w-full flex justify-center">
       <TrippyLogo class="w-36" />
     </div>
-    <NextButton title="계좌 불러오기" :disabled="false" @click="handleNextClick" />
+    <NextButton title="계좌 불러오기" :disabled="false" @click="emit('next')" />
   </div>
 </template>

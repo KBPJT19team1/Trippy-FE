@@ -1,17 +1,18 @@
 <script setup>
+import { ref, watch, defineEmits } from "vue";
+
 import { Icon } from "@iconify/vue";
-import { ref, watch } from "vue";
 import { terms } from '@/_dummy/terms.js';
+import NextButton from "@/components/common/NextButton.vue";
 
 const props = defineProps({
   modelValue: Boolean,
 });
 
-const emit = defineEmits(["update:modelValue"]);
+const emit = defineEmits(["update:modelValue", "next"]);
 
 const isOpen = ref(props.modelValue);
 const isCheckedAll = ref(false);
-
 const termsData = ref(terms);
 
 watch(
@@ -66,6 +67,30 @@ const updateIsCheckedAll = () => {
     subtitle.checked && subtitle.contents.every((content) => content.checked)
   );
 };
+
+// 필수 항목이 모두 동의되었는지 확인
+const isAllRequiredChecked = () => {
+  return termsData.value.every((section) => {
+    if (section.required) {
+      const sectionChecked = section.checked;
+      const allContentsChecked = section.contents.every(
+        (content) => !content.required || content.checked
+      );
+      return sectionChecked && allContentsChecked;
+    }
+
+    return true;
+  });
+};
+
+const handleNextClick = () => {
+  const isPossibleGoNext = isAllRequiredChecked();
+
+  if (isPossibleGoNext)
+    emit("next");
+  else
+    console.log("필수 항목을 동의해주세요.");
+};
 </script>
 
 <template>
@@ -75,7 +100,7 @@ const updateIsCheckedAll = () => {
     @click.self="closeModal"
   >
     <div
-      class="w-full max-w-[375px] rounded-t-2xl bg-white transition-transform duration-300"
+      class="w-full max-w-[375px] pb-[34px] rounded-t-2xl bg-white transition-transform duration-300"
       :class="{
         'translate-y-0': isOpen,
         'translate-y-full': !isOpen,
@@ -148,6 +173,12 @@ const updateIsCheckedAll = () => {
           </div>
         </div>
       </div>
+      <NextButton
+        title="다음"
+        class="px-4"
+        :disabled="false"
+        @click="handleNextClick"
+      />
     </div>
   </div>
 </template>

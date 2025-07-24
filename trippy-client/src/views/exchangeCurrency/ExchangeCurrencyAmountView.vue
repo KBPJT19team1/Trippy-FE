@@ -20,6 +20,17 @@ const { setSelectedAccount } = accountStore;
 const loading = ref(true);
 const error = ref("");
 
+// div 부분 영역 클릭해도 입력칸 활성화되는 코드
+const foreignInputRef = ref(null);
+const krwInputRef = ref(null);
+
+const focusForeignInput = () => {
+  foreignInputRef.value?.focus();
+};
+const focusKrwInput = () => {
+  krwInputRef.value?.focus();
+};
+
 // 입력값 환율 자동 계산해주는 부분
 const foreignAmount = ref("");
 const krwAmount = ref("");
@@ -83,14 +94,14 @@ onMounted(async () => {
   </div>
   <br />
 
-  <div class="flex justify-between w-full h-20 bg-gray-200 rounded">
+  <div class="flex justify-between w-full h-20 bg-gray-200 rounded" @click="focusForeignInput">
     <div class="my-auto ml-5">
       <p class="subtitle2">{{ selectedCurrencyName }}</p>
       <p>잔액 : {{ foreignCurrencyAccount.balance }} {{ selectedCurrencyCode }}</p>
     </div>
     <div class="flex gap-2 my-auto mr-5">
-      <!-- 입력값 문자형 임 -->
       <input
+        ref="foreignInputRef"
         type="text"
         v-model="foreignAmount"
         @input="foreignAmount = foreignAmount.replace(/[^0-9]/g, '')"
@@ -105,14 +116,14 @@ onMounted(async () => {
     <triangle class="scale-y-[-1] m-1"></triangle>
   </div>
 
-  <div class="flex justify-between w-full h-20 bg-gray-200 rounded">
+  <div class="flex justify-between w-full h-20 bg-gray-200 rounded" @click="focusKrwInput">
     <div class="my-auto ml-5">
       <p class="subtitle2">대한민국 원</p>
       <p>잔액 : {{ selectedAccount.balance }} 원</p>
     </div>
     <div class="flex gap-2 my-auto mr-5">
-      <!-- 입력값 문자형임 -->
       <input
+        ref="krwInputRef"
         type="text"
         v-model="krwAmount"
         @input="krwAmount = krwAmount.replace(/[^0-9]/g, '')"

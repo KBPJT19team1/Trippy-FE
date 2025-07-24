@@ -1,5 +1,6 @@
 <script setup>
 import Idcard from "@/assets/Idcard.png";
+import DocumentPreview from "@/components/identification/CapturePreview.vue";
 import { ref } from "vue";
 
 const name = ref("홍길동");
@@ -23,14 +24,9 @@ const formatResidentId = () => {
 
 <template>
   <div class="w-full h-[34rem] rounded-xl shadow-md bg-white flex flex-col">
-    <!-- 민증 조회 뷰 -->
-    <div class="flex flex-col items-center justify-center">
-      <div>
-        <img :src="Idcard" class="w-[19.5rem] h-auto mb-2 border-4 border-green rounded-lg p-1" />
-        <!-- 다시 확인해주세요 글씨 -->
-        <p class="text-gray-400 subtitle1 text-center">주민등록증 정보를 확인해주세요.</p>
-      </div>
-    </div>
+    <!-- 민증 미리보기 -->
+    <DocumentPreview :image="Idcard" message="주민등록증 정보를 확인해주세요." />
+
     <!-- 입력부 -->
     <div class="mt-5">
       <div class="mb-3">

@@ -39,7 +39,7 @@ const onReload = () => {
       <TicketCard v-for="ticket in tickets" :key="ticket.id" :ticket="ticket" />
     </div>
 
-    <!-- 하단 퀵 버튼 => ❌애 문제 있음 -->
+    <!-- 하단 퀵 버튼-->
     <div class="fixed bottom-7 ml-48 z-50">
       <QuickReloadButton @reload="onReload" />
     </div>

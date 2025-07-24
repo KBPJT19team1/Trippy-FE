@@ -1,7 +1,15 @@
 <script setup>
-import { defineEmits } from "vue";
+import { defineEmits, defineProps } from "vue";
+
+const props = defineProps({
+  modelValue: String,
+});
 
 const emit = defineEmits(["resendCode"]);
+
+const onInput = (e) => {
+  emit("update:modelValue", e.target.value.replace(/[^0-9]/g, ""));
+};
 </script>
 
 <template>
@@ -16,7 +24,7 @@ const emit = defineEmits(["resendCode"]);
         maxlength="6"
         class="w-full h-12 p-4 rounded-xl bg-gray-100"
         placeholder="인증번호를 입력하세요"
-        @input="$event.target.value = $event.target.value.replace(/[^0-9]/g, '')"
+        @input="onInput"
       />
       <button
         @click="emit('resendCode')"

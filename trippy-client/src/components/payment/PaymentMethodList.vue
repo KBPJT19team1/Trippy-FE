@@ -1,4 +1,4 @@
-<!-- src/components/payment/PaymentMethodList.vue -->
+git checkout feature/#1<!-- src/components/payment/PaymentMethodList.vue -->
 <script setup>
 import PaymentMethodItem from "./PaymentMethodItem.vue";
 

@@ -1,6 +1,6 @@
 <script setup>
 import Idcard from "@/assets/Idcard.png";
-import TabMenu from "@/components/TabMenu.vue";
+import TabMenu from "@/components/common/TabMenu.vue";
 
 import { ref } from "vue";
 

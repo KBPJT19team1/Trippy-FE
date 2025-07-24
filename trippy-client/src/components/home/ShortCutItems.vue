@@ -5,7 +5,7 @@ const shortcutItems = [
   {
     icon: "material-symbols:currency-exchange-rounded",
     title: "환전하기",
-    to: "/exchange",
+    to: "/exchange-currency",
   },
   {
     icon: "material-symbols:id-card-rounded",

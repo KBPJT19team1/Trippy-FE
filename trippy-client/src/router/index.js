@@ -5,6 +5,9 @@ import TravelLogsView from "@/views/TravelLogsView.vue";
 import MenuView from "@/views/MenuView.vue";
 import MapView from "@/views/MapView.vue";
 import GroupAccount from "./groupAccount.js";
+import ExchangeRateListView from "@/views/exchangeRate/ExchangeRateListView.vue";
+import ExchangeCurrencySelectView from "@/views/exchangeCurrency/ExchangeCurrencySelectView.vue";
+import ExchangeCurrencyAccountView from "@/views/exchangeCurrency/ExchangeCurrencyAccountView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,12 +35,17 @@ const router = createRouter({
     {
       path: "/exchange-rates",
       name: "ExchangeRate",
-      component: () => import("../views/exchangeRate/ExchangeRateListView.vue"),
+      component: ExchangeRateListView,
     },
     {
       path: "/exchange-currency",
       name: "ExchangeCurrency",
-      component: () => import("../views/exchangeCurrency/ExchangeCurrencySelectView.vue"),
+      component: ExchangeCurrencySelectView,
+    },
+    {
+      path: "/exchange-currency-account",
+      name: "ExchangeCurrencyAccount",
+      component: ExchangeCurrencyAccountView,
     },
     { path: "/map", name: "map", component: MapView },
 

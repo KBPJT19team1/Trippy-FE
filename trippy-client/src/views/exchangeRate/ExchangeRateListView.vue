@@ -32,7 +32,6 @@ onMounted(() => {
           :key="item.cur_unit"
           class="flex items-center justify-between py-4"
         >
-          <!-- 왼쪽: 국기 + 통화명 -->
           <div class="flex">
             <div class="w-10">
               <img
@@ -45,8 +44,6 @@ onMounted(() => {
               {{ item.cur_nm }}
             </span>
           </div>
-
-          <!-- 오른쪽: 환율 정보 -->
           <div class="flex flex-col text-right text-m">
             <span class="text-sm font-semibold">{{ item.deal_bas_r }}원</span>
             <div
@@ -79,8 +76,6 @@ onMounted(() => {
         </li>
       </ul>
     </div>
-
-    <!-- 환전하기 버튼 -->
     <div>
       <button class="w-[100%] h-[2rem] bg-main-gradient text-white font-bold rounded mt-4">
         환전하기

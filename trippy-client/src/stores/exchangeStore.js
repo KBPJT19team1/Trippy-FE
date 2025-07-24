@@ -108,8 +108,15 @@ export const useExchangeStore = defineStore("exchange", () => {
   };
 
   const selectedCurrencyCode = ref(null);
+
   const setSelectedCurrencyCode = (code) => {
     selectedCurrencyCode.value = code;
+  };
+
+  const selectedAccount = ref(null);
+
+  const setSelectedAccount = (account) => {
+    selectedAccount.value = account;
   };
 
   return {
@@ -124,5 +131,7 @@ export const useExchangeStore = defineStore("exchange", () => {
     formatDate,
     selectedCurrencyCode,
     setSelectedCurrencyCode,
+    selectedAccount,
+    setSelectedAccount,
   };
 });

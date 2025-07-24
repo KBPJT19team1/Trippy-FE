@@ -38,7 +38,7 @@ function handleClick(id) {
 </script>
 
 <template>
-  <main class="pt-2 pb-4 px-2 h-[calc(100vh-190px)] space-y-4 overflow-y-scroll hide-scrollbar">
+  <main class="w-full flex flex-col gap-8">
     <RoundedCard
       v-for="log in travelLogs"
       :key="log.id"

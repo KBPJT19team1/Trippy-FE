@@ -14,8 +14,13 @@ const shortcutItems = [
   },
   {
     icon: "material-symbols:airplane-ticket",
-    title: "항공권/바우처\n확인하기",
-    to: "/tickets",
+    title: "항공권\n확인하기",
+    to: "/check/tickets",
+  },
+  {
+    icon: "heroicons:ticket-solid",
+    title: "바우처\n확인하기",
+    to: "/check/bouchers",
   },
   {
     icon: "material-symbols:g-translate",

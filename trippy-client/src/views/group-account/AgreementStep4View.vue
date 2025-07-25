@@ -3,6 +3,8 @@ import { ref } from "vue";
 import accountList from "@/_dummy/accountList_dummy.json";
 import RepresentativeAccountList from "@/components/group-account/RepresentativeAccountList.vue";
 import { useGroupAccountStore } from "@/stores/groupAccountStore";
+import NextButton from "@/components/common/NextButton.vue";
+import router from "@/router";
 
 const groupAccountStore = useGroupAccountStore();
 
@@ -17,15 +19,24 @@ const selectAccount = (account) => {
 </script>
 
 <template>
-  <div>
-    <p class="title1 text-center mt-40">대표계좌를 설정해 주세요</p>
+  <div class="flex flex-col h-full w-full bg-white justify-between">
+    <div>
+      <div>
+        <p class="title1 text-center mt-40">대표계좌를 설정해 주세요</p>
+      </div>
+      <RepresentativeAccountList
+        :accountList="accountList"
+        @selectAccount="selectAccount"
+        :accountBank="selectAccountBank"
+        :accountNumber="selectAccountNumber"
+      />
+    </div>
+    <NextButton
+      :title="'다음'"
+      :disabled="!selectAccountBank"
+      @click="router.push({ name: 'group-account-create-complete' })"
+    />
   </div>
-  <RepresentativeAccountList
-    :accountList="accountList"
-    @selectAccount="selectAccount"
-    :accountBank="selectAccountBank"
-    :accountNumber="selectAccountNumber"
-  />
 </template>
 
 <style scoped></style>

@@ -46,7 +46,10 @@ const selectAccount = (account) => {
       />
     </div>
 
-    <div class="w-full bg-white rounded-xl border-[1px] border-gray" v-if="isOpen">
+    <div
+      class="w-full bg-white rounded-xl border-[1px] h-[16rem] border-gray overflow-scroll"
+      v-if="isOpen"
+    >
       <ul class="p-2">
         <li
           v-for="account in props.accountList"

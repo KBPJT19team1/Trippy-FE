@@ -1,15 +1,29 @@
 import { createRouter, createWebHistory } from "vue-router";
+
+import DefaultLayout from "@/layouts/DefaultLayout.vue";
+import TabViewLayout from "@/layouts/TabViewLayout.vue";
+
 import HomeView from "@/views/HomeView.vue";
 import PaymentView from "@/views/PaymentView.vue";
 import TravelLogsView from "@/views/TravelLogsView.vue";
 import MenuView from "@/views/MenuView.vue";
 import MapView from "@/views/MapView.vue";
+
+import IdCaptureGuideView from "@/views/identification/IdCaptureGuideView.vue";
+import IdRegistrationView from "@/views/identification/IdRegistrationView.vue";
+
+import ExchangeRateListView from "@/views/exchange-rate/ExchangeRateListView.vue";
+import ExchangeCurrencySelectView from "@/views/exchange-currency/ExchangeCurrencySelectView.vue";
+
+import IDView from "@/views/identification/IdView.vue";
 import AirTicketView from "@/views/air-ticket/AirTicketView.vue";
+
 import GroupAccount from "./groupAccount.js";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    // DefaultLayout
     {
       path: "/",
       name: "home",
@@ -53,26 +67,13 @@ const router = createRouter({
     {
       path: "/exchange-rates",
       name: "ExchangeRate",
-      component: () => import("@/views/exchange-rate/ExchangeRateListView.vue"),
+      component: () => import("../views/exchange-rate/ExchangeRateListView.vue"),
     },
     {
       path: "/exchange-currency",
       name: "ExchangeCurrency",
-      component: () => import("@/views/exchange-currency/SelectView.vue"),
+      component: () => import("../views/exchange-currency/ExchangeCurrencySelectView.vue"),
     },
-    {
-      path: "/exchange-currency-account",
-      name: "ExchangeCurrencyAccount",
-      component: () => import("@/views/exchange-currency/SelectAcountView.vue"),
-    },
-    {
-      path: "/exchange-currency-amount",
-      name: "ExchangeCurrencyAmount",
-      component: () => import("@/views/exchange-currency/InputAmountView.vue"),
-    },
-    { path: "/map", name: "map", component: MapView },
-
-    ...GroupAccount,
   ],
 });
 

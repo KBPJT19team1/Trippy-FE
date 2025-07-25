@@ -10,7 +10,7 @@ import BottomNavigationBar from "@/components/layouts/BottomNavigationBar.vue";
       <TopNavigationBar />
 
       <div class="pt-[100px] pb-[90px]">
-        <div class="p-4 flex flex-col items-center">
+        <div class="flex flex-col items-center">
           <RouterView />
         </div>
       </div>

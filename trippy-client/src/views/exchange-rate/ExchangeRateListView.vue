@@ -4,7 +4,6 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 
 const exchangeStore = useExchangeStore();
-
 const { todayRates, loading, getYesterdayRate, getCountryCode } = exchangeStore;
 
 const error = ref("");

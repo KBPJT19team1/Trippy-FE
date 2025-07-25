@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { useExchangeStore } from "@/stores/exchangeStore.js";
 import { Icon } from "@iconify/vue";
 import { useRouter } from "vue-router";
@@ -13,7 +13,6 @@ const { getCountryCode, todayRates, setSelectedCurrencyCode } = exchangeStore;
 
 const handleSelect = (code) => {
   setSelectedCurrencyCode(code);
-  console.log("사용자가 선택한 통화코드 : ", code);
 };
 
 const router = useRouter();
@@ -21,7 +20,7 @@ const goToAccountView = () => {
   router.push("/exchange-currency-account");
 };
 
-const loading = ref(true);
+const loading = ref(false);
 const error = ref("");
 </script>
 

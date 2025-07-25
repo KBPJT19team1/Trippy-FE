@@ -10,7 +10,6 @@ const { setSelectedAccount } = accountStore;
 
 const handleSelect = (account) => {
   setSelectedAccount(account);
-  console.log("사용자가 선택한 계좌번호 : ", account);
 };
 
 const router = useRouter();

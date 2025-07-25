@@ -78,7 +78,7 @@ watch(foreignAmount, (newVal) => {
     </div>
     <br />
 
-    <div class="flex justify-between w-full h-20 bg-gray-200 rounded" @click="focusForeignInput">
+    <div class="flex justify-between w-full h-20 bg-gray-200 rounded-xl" @click="focusForeignInput">
       <div class="my-auto ml-5">
         <p class="subtitle2">{{ selectedCurrencyName }}</p>
         <p class="whitespace-nowrap">
@@ -102,7 +102,7 @@ watch(foreignAmount, (newVal) => {
       <triangle class="scale-y-[-1] m-1"></triangle>
     </div>
 
-    <div class="flex justify-between w-full h-20 bg-gray-200 rounded" @click="focusKrwInput">
+    <div class="flex justify-between w-full h-20 bg-gray-200 rounded-xl" @click="focusKrwInput">
       <div class="my-auto ml-5">
         <p class="subtitle2">대한민국 원</p>
         <p class="whitespace-nowrap">잔액 : {{ selectedAccount.balance }} 원</p>

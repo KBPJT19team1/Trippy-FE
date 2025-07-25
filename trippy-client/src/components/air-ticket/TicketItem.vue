@@ -16,16 +16,23 @@ const departureDateTime = computed(() => {
   return new Date(dateStr);
 });
 
+const showModal = ref(false);
+
+// 탑승 시간이 현재보다 이전이면 true
+const isExpired = computed(() => {
+  const departureDateTime = new Date(`${props.ticket.date}T${props.ticket.departure.time}`);
+  const now = new Date();
+  return departureDateTime < now;
+});
+
 // 24시간 이내 여부
 const isAvailable = computed(() => {
   const departureDateTime = new Date(`${props.ticket.date}T${props.ticket.departure.time}`);
   const now = new Date();
   const diffMs = departureDateTime.getTime() - now.getTime();
   const diffHours = diffMs / (1000 * 60 * 60);
-  return diffHours <= 24;
+  return diffHours <= 24 && diffHours > 0; // 지난 티켓은 false
 });
-
-const showModal = ref(false);
 </script>
 
 <template>
@@ -86,7 +93,8 @@ const showModal = ref(false);
       </div>
     </div>
 
-    <div class="mt-4">
+    <!-- 버튼은 isExpired가 false일 때만 보임 -->
+    <div class="mt-4" v-if="!isExpired">
       <button
         :disabled="!isAvailable"
         @click="showModal = true"

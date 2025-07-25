@@ -2,12 +2,12 @@
   {
     "id": 1,
     "date": "2025-07-25",
-    "dayOfWeek": "토",
+    "dayOfWeek": "금",
     "reservationCode": "H48VNF",
     "departure": {
       "city": "서울(인천)",
       "code": "ICN",
-      "time": "13:15"
+      "time": "18:15"
     },
     "arrival": {
       "city": "오사카",
@@ -26,7 +26,7 @@
   {
     "id": 2,
     "date": "2025-07-25",
-    "dayOfWeek": "수",
+    "dayOfWeek": "금",
     "reservationCode": "A29XLM",
     "departure": {
       "city": "부산(김해)",

@@ -86,15 +86,10 @@ const showModal = ref(false);
       </div>
     </div>
 
-    <!-- 하단 버튼 (전체 너비) -->
-    <!-- <div class="mt-4">
-      <button class="w-full rounded-xl bg-blue-200 text-blue-400 text-button2 py-3 text-center">
-        모바일 티켓 보기
-      </button>
-    </div> -->
     <div class="mt-4">
       <button
         :disabled="!isAvailable"
+        @click="showModal = true"
         :class="[
           'w-full rounded-xl py-3 text-center text-button2',
           isAvailable ? 'bg-blue-200 text-blue-400' : 'bg-gray-200 text-gray-400',

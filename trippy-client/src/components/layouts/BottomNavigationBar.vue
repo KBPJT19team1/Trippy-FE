@@ -6,7 +6,8 @@ import PayIcon from "@/assets/svg/payment-icon.svg";
 import LogIcon from "@/assets/svg/log-icon.svg";
 
 const route = useRoute();
-const hiddenPrefixes = ["/group-account", "/tickets"];
+
+const hiddenPrefixes = ["/group-account", "/personal-accounts", "/tickets"];
 const isHidden = computed(() => hiddenPrefixes.some((prefix) => route.path.startsWith(prefix)));
 </script>
 

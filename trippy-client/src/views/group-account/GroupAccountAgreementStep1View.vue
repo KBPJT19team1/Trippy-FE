@@ -1,11 +1,12 @@
 <script setup>
+import router from "@/router";
 import { ref, computed, watch } from "vue";
 import TrippyLogo from "@/assets/svg/trippy-logo.svg";
 import AgreementCheck from "@/components/common/AgreementCheck.vue";
 import AgreementItem from "@/components/group-account/AgreementItem.vue";
 import { agreementStep1, agreementStep2 } from "@/_dummy/agreement_dummy";
 import NextButton from "@/components/common/NextButton.vue";
-import EmailInput from "@/components/common/EmailInput.vue";
+import EmailInput from "@/components/common/inputs/EmailInput.vue";
 import AccountNotice from "@/components/group-account/AccountNotice.vue";
 import { useGroupAccountStore } from "@/stores/groupAccountStore";
 
@@ -50,7 +51,11 @@ const toggleItem = (index) => {
     <AccountNotice class="mt-1 caption3 text-gray-400 text-center" v-for="(item, index) in agreementStep2" :key="index"
       :title="item.title" />
   </div>
-  <NextButton title="다음" To="group-account-step2" :visible="formValid" />
+  <NextButton
+    title="다음"
+    :disabled="!formValid"
+    @click="router.push({ name: 'group-account-step2' })"
+  />
 </template>
 
 <style scoped></style>

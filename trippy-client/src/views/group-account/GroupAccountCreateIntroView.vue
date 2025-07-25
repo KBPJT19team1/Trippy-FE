@@ -1,4 +1,5 @@
 <script setup>
+import router from "@/router";
 import NextButton from "@/components/common/NextButton.vue";
 import TrippyLogo from "@/assets/svg/trippy-logo.svg";
 </script>
@@ -12,7 +13,11 @@ import TrippyLogo from "@/assets/svg/trippy-logo.svg";
     </div>
     <TrippyLogo class="w-[18rem] h-auto mt-[5rem]" />
   </div>
-  <NextButton :title="'모임계좌 만들기'" :visible="true" :To="'group-account-step1'" />
+  <NextButton
+    :title="'모임계좌 만들기'"
+    :disabled="false"
+    @click="router.push({ name: 'group-account-step1' })"
+  />
 </template>
 
 <style scoped></style>

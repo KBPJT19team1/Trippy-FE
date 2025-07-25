@@ -1,21 +1,23 @@
 <script setup>
-defineProps({
+import { defineProps, defineEmits } from "vue";
+
+const props = defineProps({
   tabs: { type: Array, required: true },
   tab: { type: String, required: false },
 });
 
-defineEmits(["update:tab"]);
+const emit = defineEmits(["update:tab"]);
 </script>
 
 <template>
-  <div class="flex w-full border-b bg-white">
+  <div class="flex w-full bg-white">
     <button
-      v-for="tabItem in tabs"
+      v-for="tabItem in props.tabs"
       :key="tabItem"
-      @click="$emit('update:tab', tabItem)"
+      @click="emit('update:tab', tabItem)"
       :class="[
-        'py-2 text-base font-medium transition-colors flex-1',
-        tab === tabItem ? 'text-blue-500 border-b-2 border-blue-500' : 'text-gray-400',
+        'py-2 button1 transition-colors flex-1',
+        props.tab === tabItem ? 'text-blue-500 border-b border-blue-500' : 'text-gray-400 border-b border-gray-300',
       ]"
     >
       {{ tabItem }}

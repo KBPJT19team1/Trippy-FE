@@ -24,7 +24,7 @@ import ExchangeRateItems from "@/components/home/ExchangeRateItems.vue";
     <div class="flex flex-col gap-1">
       <div class="flex justify-between items-center">
         <h2 class="subtitle2">환율 정보</h2>
-        <RouterLink to="/exchange-rates">
+        <RouterLink to="/exchange-rate">
           <div class="text-gray-400 flex items-center gap-1 hover:text-gray-600">
             <span class="caption2">환율 조회</span>
             <Icon icon="material-symbols:arrow-back-ios-rounded" class="w-3 h-3 rotate-180" />

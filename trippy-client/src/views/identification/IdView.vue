@@ -1,13 +1,18 @@
 <script setup>
-import Idcard from "@/assets/Idcard.png";
-import TabMenu from "@/components/common/TabMenu.vue";
-import DefaultProfile from "@/assets/svg/person.svg";
+import { computed, ref, defineProps } from "vue";
 
+import Idcard from "@/assets/Idcard.png";
+import DefaultProfile from "@/assets/svg/person.svg";
 import DefaultQr from "@/assets/default_qr.png";
-import { computed, ref } from "vue";
+
+const props = defineProps({
+  currentTab: {
+    type: String,
+    required: true,
+  },
+});
 
 const isRegistered = ref(true); // 임시로 고정 설정
-const currentTab = ref("주민등록");
 const showDetail = ref(false);
 const toggleOn = ref(false);
 
@@ -22,9 +27,7 @@ const maskedId = computed(() => {
 
 <template>
   <div class="w-full">
-    <TabMenu :tabs="['주민등록', '여권']" v-model:tab="currentTab" />
-
-    <div v-if="currentTab === '주민등록'">
+    <div v-if="props.currentTab === '주민등록'">
       <!-- ----------------신분증 등록 안 된 경우---------------- -->
       <div
         v-if="!isRegistered"
@@ -132,7 +135,7 @@ const maskedId = computed(() => {
       </div>
     </div>
 
-    <div v-if="currentTab === '여권'">
+    <div v-if="props.currentTab === '여권'">
       <h1>여권</h1>
     </div>
   </div>

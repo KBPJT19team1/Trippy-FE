@@ -1,4 +1,5 @@
 <script setup>
+import router from "@/router";
 import { computed, onMounted, ref, nextTick } from "vue";
 import AgreementCheck from "@/components/common/AgreementCheck.vue";
 import NextButton from "@/components/common/NextButton.vue";
@@ -14,7 +15,7 @@ import {
 import { useGroupAccountStore } from "@/stores/groupAccountStore";
 import AgreementListItem from "@/components/group-account/AgreementListItem.vue";
 import AccountNotice from "@/components/group-account/AccountNotice.vue";
-import EmailInput from "@/components/common/EmailInput.vue";
+import EmailInput from "@/components/common/inputs/EmailInput.vue";
 
 const groupAccountStore = useGroupAccountStore();
 const email = ref("");
@@ -128,7 +129,11 @@ onMounted(() => {
     <AccountNotice :title="agreementStep8[0].subtitle[0]" class="caption1 text-gray-400" />
   </div>
 
-  <NextButton title="다음" To="group-account-step3" :visible="formValid" />
+  <NextButton
+    title="다음"
+    :disabled="!formValid"
+    @click="router.push({ name: 'group-account-step3' })"
+  />
 </template>
 
 <style scoped>

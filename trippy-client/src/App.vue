@@ -1,16 +1,21 @@
 <script setup>
-import { RouterView } from "vue-router";
+import { computed } from "vue";
+import { RouterView, useRoute } from "vue-router";
 import TopNavigationBar from "@/components/layouts/TopNavigationBar.vue";
 import BottomNavigationBar from "@/components/layouts/BottomNavigationBar.vue";
+
+const route = useRoute();
+
+const bgColor = computed(() => route.meta.bgColor || "");
 </script>
 
 <template>
   <div class="font-sans flex justify-center text-black">
-    <div class="relative w-[375px] bg-gray-100 min-h-screen">
+    <div :class="['relative w-[375px] h-[812px]', bgColor ? 'bg-white' : 'bg-gray-100']">
       <TopNavigationBar />
 
-      <div class="pt-[100px] pb-[90px]">
-        <div class="flex flex-col items-center">
+      <div class="pt-[100px] pb-[34px] h-full">
+        <div class="flex flex-col items-center h-full">
           <RouterView />
         </div>
       </div>

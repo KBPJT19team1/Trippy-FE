@@ -1,6 +1,6 @@
 <!-- src/views/payments/PaymentSettingsView.vue -->
 <script setup>
-import PaymentMethodList from "@/components/payment/PaymentMethodList.vue";
+import PaymentMethodList from "@/components/payment/CardList.vue";
 import KbLogo from "@/assets/svg/card/kb.svg";
 import ShinhanLogo from "@/assets/svg/card/shinhan.svg";
 import HanaLogo from "@/assets/svg/card/hana.svg";

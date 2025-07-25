@@ -1,5 +1,5 @@
 <script setup>
-import PaymentMethodItem from "./PaymentMethodItem.vue";
+import PaymentMethodItem from "./CardListItem.vue";
 
 const props = defineProps({
   cards: {

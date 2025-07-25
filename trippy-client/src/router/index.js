@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "@/views/HomeView.vue";
-import PaymentView from "@/views/PaymentView.vue";
+import PaymentView from "@/views/payment/PaymentView.vue";
 import TravelLogsView from "@/views/TravelLogsView.vue";
 import MenuView from "@/views/MenuView.vue";
 import MapView from "@/views/MapView.vue";
@@ -22,7 +22,7 @@ const router = createRouter({
     {
       path: "/payment/settings",
       name: "PaymentSettings",
-      component: () => import("@/views/payment/PaymentSettingsView.vue"),
+      component: () => import("@/views/payment/SettingsView.vue"),
     },
 
     {

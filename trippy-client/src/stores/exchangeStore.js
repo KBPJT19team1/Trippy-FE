@@ -3,6 +3,7 @@ import { defineStore } from "pinia";
 import { ref, computed } from "vue";
 import exchangeRatesRaw from "@/_dummy/exchange_dummy.json";
 import { bankAccounts } from "@/_dummy/bankAccounts_dummy.js";
+import { currencyToCountryMap } from "@/assets/currencyToCountryCodes";
 
 export const useExchangeStore = defineStore("exchange", () => {
   const exchangeRates = ref(exchangeRatesRaw);
@@ -43,69 +44,7 @@ export const useExchangeStore = defineStore("exchange", () => {
 
   const getCountryCode = (curUnitRaw) => {
     const curUnit = curUnitRaw.replace(/\(.*\)/, "").trim();
-
-    const map = {
-      USD: "us",
-      JPY: "jp",
-      EUR: "eu",
-      CNY: "cn",
-      HKD: "hk",
-      TWD: "tw",
-      GBP: "gb",
-      AUD: "au",
-      CAD: "ca",
-      CHF: "ch",
-      SEK: "se",
-      NZD: "nz",
-      THB: "th",
-      SGD: "sg",
-      RUB: "ru",
-      INR: "in",
-      MXN: "mx",
-      PHP: "ph",
-      ZAR: "za",
-      TRY: "tr",
-      BRL: "br",
-      MYR: "my",
-      IDR: "id",
-      SAR: "sa",
-      AED: "ae",
-      BHD: "bh",
-      VND: "vn",
-      KZT: "kz",
-      QAR: "qa",
-      EGP: "eg",
-      KWD: "kw",
-      BND: "bn",
-      PKR: "pk",
-      JOD: "jo",
-      CZK: "cz",
-      HUF: "hu",
-      PLN: "pl",
-      DKK: "dk",
-      NOK: "no",
-      BGN: "bg",
-      RON: "ro",
-      HRK: "hr",
-      UAH: "ua",
-      ARS: "ar",
-      CLP: "cl",
-      COP: "co",
-      PEN: "pe",
-      ISK: "is",
-      KRW: "kr",
-      LKR: "lk",
-      NGN: "ng",
-      MAD: "ma",
-      ILS: "il",
-      TND: "tn",
-      XOF: "sn",
-      XAF: "cm",
-      BSD: "bs",
-      DOP: "do",
-    };
-
-    return map[curUnit] || "un";
+    return currencyToCountryMap[curUnit] || "un";
   };
 
   const selectedCurrencyCode = ref(null);

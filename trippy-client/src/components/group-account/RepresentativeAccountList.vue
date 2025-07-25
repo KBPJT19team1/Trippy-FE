@@ -17,6 +17,7 @@ const openList = () => {
 };
 
 const selectAccount = (account) => {
+  isOpen.value = !isOpen.value;
   emits("selectAccount", account);
 };
 </script>

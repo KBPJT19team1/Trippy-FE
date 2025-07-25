@@ -10,7 +10,7 @@ const shortcutItems = [
   {
     icon: "material-symbols:id-card-rounded",
     title: "신분증/여권\n확인하기",
-    to: "/id-cards",
+    to: "/identification",
   },
   {
     icon: "material-symbols:airplane-ticket",

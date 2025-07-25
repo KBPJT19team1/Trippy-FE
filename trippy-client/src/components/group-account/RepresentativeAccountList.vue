@@ -27,11 +27,11 @@ const selectAccount = (account) => {
   <div class="w-full">
     <div
       @click="openList"
-      class="text-center border-[1px] border-gray-black bg-white rounded-xl h-16 mt-10 flex items-center justify-center gap-8"
+      class="text-center border-[1px] border-gray bg-white rounded-xl h-16 mt-10 flex items-center justify-center gap-8"
     >
       <p
         class="button1 text-center ml-20 flex-1"
-        :class="props.accountBank ? 'text-black' : 'text-gray-400'"
+        :class="props.accountBank ? 'text-gray-700' : 'text-gray-400'"
       >
         {{
           props.accountBank && props.accountNumber
@@ -46,10 +46,7 @@ const selectAccount = (account) => {
       />
     </div>
 
-    <div
-      class="w-full mt-[-2.5vh] bg-white rounded-xl pt-12 border-[1px] border-gray-black"
-      v-if="isOpen"
-    >
+    <div class="w-full bg-white rounded-xl border-[1px] border-gray" v-if="isOpen">
       <ul class="p-2">
         <li
           v-for="account in props.accountList"

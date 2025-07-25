@@ -32,17 +32,17 @@ const router = createRouter({
     {
       path: "/identification",
       name: "identification",
-      component: () => import("@/views/identification/IdView.vue"),
+      component: () => import("@/views/identification/resident-card/ResidentCardView.vue"),
     },
     {
       path: "/identification/guide",
       name: "/identification/guide",
-      component: () => import("@/views/identification/IdCaptureGuideView.vue"),
+      component: () => import("@/views/identification/resident-card/CaptureGuideView.vue"),
     },
     {
       path: "/identification/registration",
       name: "/identification/registration",
-      component: () => import("@/views/identification/IdRegistrationView.vue"),
+      component: () => import("@/views/identification/resident-card/RegistrationView.vue"),
     },
     {
       path: "/exchange-rates",

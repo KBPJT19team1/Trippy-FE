@@ -11,6 +11,7 @@ import Toggle from "@/components/identification/Toggle.vue";
 import HeaderNotice from "@/components/identification/HeaderNotice.vue";
 import ToggleVueButton from "@/components/identification/ToggleVueButton.vue";
 import QrDisplay from "@/components/identification/QrDisplay.vue";
+import FooterInfo from "@/components/identification/FooterInfo.vue";
 
 const isRegistered = ref(true); // 임시로 고정 설정
 const currentTab = ref("주민등록");
@@ -82,7 +83,6 @@ const maskedId = computed(() => {
             <div v-if="!showDetail">
               <QrDisplay :qrImage="DefaultQr" :progress="70" :timeLeft="8" />
             </div>
-
             <div v-else>
               <!-- 토글 -->
               <Toggle v-model="toggleOn" />
@@ -91,13 +91,7 @@ const maskedId = computed(() => {
         </div>
 
         <!-- 법적 효력 안내 -->
-        <div class="p-4 mt-auto">
-          <div class="flex items-center justify-between">
-            <!-- TODO: 링크 걸어두기 -->
-            <p class="text-gray-500 caption2">법적 효력 안내 ></p>
-            <p class="subtitle2">2019.12.13.</p>
-          </div>
-        </div>
+        <FooterInfo infoText="법적 효력 안내 >" date="2019.12.13." />
 
         <!-- 상세정보 표시버튼 -->
         <ToggleVueButton v-model="showDetail" detailText="상세정보 표시" qrText="QR정보 표기" />

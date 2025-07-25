@@ -1,12 +1,18 @@
 <script setup>
 import { useExchangeStore } from "@/stores/exchangeStore.js";
 import { onMounted, ref } from "vue";
+import { useRouter } from "vue-router";
 
 const exchangeStore = useExchangeStore();
 
 const { todayRates, loading, getYesterdayRate, getCountryCode } = exchangeStore;
 
 const error = ref("");
+
+const router = useRouter();
+const goToExchangeCurrencyiew = () => {
+  router.push("/exchange-currency");
+};
 
 onMounted(() => {
   // 컴포넌트가 처음 화면에 나타났을 때 실행할 코드
@@ -78,6 +84,10 @@ onMounted(() => {
     </div>
     <div>
       <button class="w-[100%] h-[2rem] bg-main-gradient text-white font-bold rounded mt-4">
+      <button
+        @click="goToExchangeCurrencyiew"
+        class="w-[100%] h-[2rem] bg-main-gradient text-white font-bold rounded mt-4"
+      >
         환전하기
       </button>
     </div>

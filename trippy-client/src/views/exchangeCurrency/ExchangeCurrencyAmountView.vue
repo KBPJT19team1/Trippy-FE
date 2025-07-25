@@ -85,65 +85,61 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="flex gap-12">
-    <p class="subtitle2">1 {{ selectedCurrencyCode }} = {{ selectedTodayRate.deal_bas_r }} 원</p>
-    <div class="flex text-gray-500">
-      <a class="subtitle2">원하는 환율에 사기</a>
-      <Icon icon="ic:round-navigate-next" class="w-[1.3rem] h-[1.3rem]"></Icon>
+  <div class="w-full flex flex-col items-center p-4">
+    <div class="flex gap-12">
+      <p class="subtitle2">1 {{ selectedCurrencyCode }} = {{ selectedTodayRate.deal_bas_r }} 원</p>
+      <div class="flex text-gray-500">
+        <a class="subtitle2">원하는 환율에 사기</a>
+        <Icon icon="ic:round-navigate-next" class="w-[1.3rem] h-[1.3rem]"></Icon>
+      </div>
+    </div>
+    <br />
+
+    <div class="flex justify-between w-full h-20 bg-gray-200 rounded" @click="focusForeignInput">
+      <div class="my-auto ml-5">
+        <p class="subtitle2">{{ selectedCurrencyName }}</p>
+        <p class="whitespace-nowrap">
+          잔액 : {{ foreignCurrencyAccount.balance }} {{ selectedCurrencyCode }}
+        </p>
+      </div>
+      <div class="flex gap-2 my-auto mr-5">
+        <input
+          ref="foreignInputRef"
+          type="text"
+          v-model="foreignAmount"
+          @input="foreignAmount = foreignAmount.replace(/[^0-9]/g, '')"
+          class="bg-transparent w-full sm:w-[6rem] text-right"
+        />
+        <p>{{ selectedCurrencyCode }}</p>
+      </div>
+    </div>
+
+    <div class="flex flex-col justify-center my-2">
+      <triangle class="m-1"></triangle>
+      <triangle class="scale-y-[-1] m-1"></triangle>
+    </div>
+
+    <div class="flex justify-between w-full h-20 bg-gray-200 rounded" @click="focusKrwInput">
+      <div class="my-auto ml-5">
+        <p class="subtitle2">대한민국 원</p>
+        <p class="whitespace-nowrap">잔액 : {{ selectedAccount.balance }} 원</p>
+      </div>
+      <div class="flex gap-2 my-auto mr-5">
+        <input
+          ref="krwInputRef"
+          type="text"
+          v-model="krwAmount"
+          @input="krwAmount = krwAmount.replace(/[^0-9]/g, '')"
+          class="bg-transparent w-full sm:w-[6rem] text-right"
+        />
+        <p>KRW</p>
+      </div>
     </div>
   </div>
   <br />
-
-  <div class="flex justify-between w-full h-20 bg-gray-200 rounded" @click="focusForeignInput">
-    <div class="my-auto ml-5">
-      <p class="subtitle2">{{ selectedCurrencyName }}</p>
-      <p>잔액 : {{ foreignCurrencyAccount.balance }} {{ selectedCurrencyCode }}</p>
-    </div>
-    <div class="flex gap-2 my-auto mr-5">
-      <input
-        ref="foreignInputRef"
-        type="text"
-        v-model="foreignAmount"
-        @input="foreignAmount = foreignAmount.replace(/[^0-9]/g, '')"
-        class="bg-transparent w-[6rem] text-right"
-      />
-      <p>{{ selectedCurrencyCode }}</p>
-    </div>
-  </div>
-
   <div>
-    <triangle class="m-1"></triangle>
-    <triangle class="scale-y-[-1] m-1"></triangle>
+    <button class="w-[23rem] h-[3rem] bg-main-gradient text-white font-bold">확인</button>
   </div>
-
-  <div class="flex justify-between w-full h-20 bg-gray-200 rounded" @click="focusKrwInput">
-    <div class="my-auto ml-5">
-      <p class="subtitle2">대한민국 원</p>
-      <p>잔액 : {{ selectedAccount.balance }} 원</p>
-    </div>
-    <div class="flex gap-2 my-auto mr-5">
-      <input
-        ref="krwInputRef"
-        type="text"
-        v-model="krwAmount"
-        @input="krwAmount = krwAmount.replace(/[^0-9]/g, '')"
-        class="bg-transparent w-[6rem] text-right"
-      />
-      <p>KRW</p>
-      <!-- 외화계좌 잔액으로 넣어야 함 -->
-    </div>
-  </div>
-
-  <br />
-  <div class="flex gap-4">
-    <p>
-      {{ selectedAccount.bankName }}
-    </p>
-    <p>
-      {{ selectedAccount.accountNumber }}
-    </p>
-  </div>
-  <div></div>
 </template>
 
 <style></style>

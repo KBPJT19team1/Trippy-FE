@@ -6,7 +6,7 @@ import SecondStep from "@/components/personal-accounts/import-accounts/SecondSte
 import ThirdStep from "@/components/personal-accounts/import-accounts/ThirdStep.vue";
 
 const views = [FirstStep, SecondStep, ThirdStep];
-const currentIndex = ref(1);
+const currentIndex = ref(2);
 
 const currentView = computed(() => views[currentIndex.value]);
 

@@ -4,11 +4,19 @@ import { ref, defineProps, defineEmits, watch } from "vue";
 const props = defineProps({
   title: String,
   modelValue: Boolean,
+  isSuccess: Boolean,
 });
 
-const emit = defineEmits(["update:modelValue"]);
+const emit = defineEmits(["update:modelValue", "next"]);
 
-const closeModal = () => {
+const handleClick = () => {
+  // SMS 인증 성공시
+  if (props.isSuccess) {
+    emit("update:modelValue", false);
+    emit("next");
+    return;
+  }
+
   emit("update:modelValue", false);
 };
 </script>
@@ -24,7 +32,7 @@ const closeModal = () => {
       </div>
       <button
         class="body1 w-full h-11 border-t rounded-b-xl text-white bg-main-gradient"
-        @click="closeModal"
+        @click="handleClick"
       >
         확인
       </button>

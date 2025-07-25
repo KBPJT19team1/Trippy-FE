@@ -9,6 +9,7 @@ const isResend = ref(false);
 const inputCode = ref("");
 const isCodeValid = ref(null);
 const isOpenModal = ref(false);
+const modalTitle = ref("");
 
 const correctCode = "123456";
 
@@ -21,14 +22,12 @@ const handleNext = () => {
   isCodeValid.value = inputCode.value === correctCode;
 
   if (isCodeValid.value) {
-
+    modalTitle.value = "인증이 완료되었습니다.";
     isOpenModal.value = true;
-    console.log("ok");
   } else {
-    console.log("틀림");
+    modalTitle.value = "인증번호가 틀렸습니다.";
     isOpenModal.value = true;
   }
-  console.log(isOpenModal.value);
 }
 </script>
 
@@ -46,6 +45,11 @@ const handleNext = () => {
       :disabled="inputCode.length !== 6"
       @click="handleNext"
     />
-    <AlertModal v-model="isOpenModal" title="인증번호가 틀렸습니다." />
+    <AlertModal
+      v-model="isOpenModal"
+      :title="modalTitle"
+      :isSuccess="isCodeValid"
+      @next="$emit('next')"
+    />
   </div>
 </template>

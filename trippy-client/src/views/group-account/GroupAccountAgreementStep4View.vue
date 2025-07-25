@@ -18,7 +18,7 @@ const selectAccount = (account) => {
 
 <template>
   <div>
-    <p class="title1 mt-40">대표계좌를 설정해 주세요</p>
+    <p class="title1 text-center mt-40">대표계좌를 설정해 주세요</p>
   </div>
   <RepresentativeAccountList
     :accountList="accountList"

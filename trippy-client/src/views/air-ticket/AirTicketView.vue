@@ -25,7 +25,7 @@ const onReload = () => {
 </script>
 
 <template>
-  <main class="w-full flex flex-col gap-8">
+  <main class="w-full flex flex-col gap-8 relative">
     <!-- 로딩 블러 오버레이 -->
     <LoadingOverlay v-if="isLoading" message="예약한 항공권을 불러오고 있습니다." />
 

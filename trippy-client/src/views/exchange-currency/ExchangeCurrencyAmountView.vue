@@ -70,18 +70,6 @@ watch(foreignAmount, (newVal) => {
   updatingFromForeign = true;
   krwAmount.value = (foreign * rate).toFixed(0);
 });
-
-onMounted(async () => {
-  try {
-    console.log("선택한 계좌는 ", selectedAccount.value);
-    console.log("선택한 통화는 ", selectedCurrencyCode.value);
-  } catch (e) {
-    error.value = "환율 데이터를 불러오는 데 실패했습니다.";
-    console.error(e);
-  } finally {
-    loading.value = false;
-  }
-});
 </script>
 
 <template>

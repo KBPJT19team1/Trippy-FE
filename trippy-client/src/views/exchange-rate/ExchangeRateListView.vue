@@ -13,11 +13,6 @@ const router = useRouter();
 const goToExchangeCurrencyiew = () => {
   router.push("/exchange-currency");
 };
-
-onMounted(() => {
-  // 컴포넌트가 처음 화면에 나타났을 때 실행할 코드
-  console.log(todayRates);
-});
 </script>
 
 <template>

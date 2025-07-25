@@ -8,6 +8,9 @@ import { computed, ref } from "vue";
 import IdCardUnregistrated from "@/components/identification/IdCardUnregisterd.vue";
 import IdCardUnregisterd from "@/components/identification/IdCardUnregisterd.vue";
 import Toggle from "@/components/identification/Toggle.vue";
+import HeaderNotice from "@/components/identification/HeaderNotice.vue";
+import ToggleVueButton from "@/components/identification/ToggleVueButton.vue";
+import QrDisplay from "@/components/identification/QrDisplay.vue";
 
 const isRegistered = ref(true); // 임시로 고정 설정
 const currentTab = ref("주민등록");
@@ -47,11 +50,9 @@ const maskedId = computed(() => {
       >
         <!-- 안내 문구 -->
         <!-- 글씨 크기가 더 작아야 해서 0.62rem으로 일단 넣음 -->
-        <div
-          class="bg-header-gradient w-full text-white flex flex-col text-[0.62rem] py-1 rounded-t-xl whitespace-nowrap"
-        >
-          주민등록증 이미지 위변조 및 부정 사용 금지(위반 시 3년 이하의 징역 또는 3천만원 벌금)
-        </div>
+        <HeaderNotice
+          text="주민등록증 이미지 위변조 및 부정 사용 금지(위반 시 3년 이하의 징역 또는 3천만원 벌금)"
+        />
 
         <!-- 디폴트 프로필 -->
         <div class="bg-gray-200 flex flex-col h-48 justify-end items-center">
@@ -79,15 +80,7 @@ const maskedId = computed(() => {
           <div class="flex flex-col item-center ml-auto">
             <!-- QR -->
             <div v-if="!showDetail">
-              <div class="w-32 h-32 mb-3 bg-white-300 rounded-md flex item-center justify-center">
-                <img :src="DefaultQr" alt="QR Code" class="max-w-full max-h-full" />
-              </div>
-              <!-- 진행바 -->
-              <div class="w-full h-1 bg-gray-200 rounded-full mt-1">
-                <div class="h-1 bg-blue-500 rounded-full" style="width: 70%"></div>
-              </div>
-              <!-- 남은 시간 -->
-              <p class="text-gray-400 caption3">남은 시간: 8초</p>
+              <QrDisplay :qrImage="DefaultQr" :progress="70" :timeLeft="8" />
             </div>
 
             <div v-else>
@@ -105,13 +98,9 @@ const maskedId = computed(() => {
             <p class="subtitle2">2019.12.13.</p>
           </div>
         </div>
+
         <!-- 상세정보 표시버튼 -->
-        <button
-          class="bg-main-gradient w-full py-3 rounded-b-lg shadow-md text-white font-bold text-center hover:opacity-90"
-          @click="showDetail = !showDetail"
-        >
-          {{ showDetail ? "QR 정보 표시" : "상세정보 표시" }}
-        </button>
+        <ToggleVueButton v-model="showDetail" detailText="상세정보 표시" qrText="QR정보 표기" />
       </div>
     </div>
 

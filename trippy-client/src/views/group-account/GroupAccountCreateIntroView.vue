@@ -10,7 +10,7 @@ import TrippyLogo from "@/assets/svg/trippy-logo.svg";
       <br />
       함께 쓰고 같이 보는 모임통장
     </div>
-    <TrippyLogo class="w-[25vh] h-[auto] mt-[10vh] flex justfiy-center" />
+    <TrippyLogo class="w-[18rem] h-auto mt-[5rem]" />
   </div>
   <NextButton :title="'모임계좌 만들기'" :visible="true" :To="'group-account-step1'" />
 </template>

@@ -14,7 +14,6 @@ import {
 import { useGroupAccountStore } from "@/stores/groupAccountStore";
 import AgreementListItem from "@/components/group-account/AgreementListItem.vue";
 import AccountNotice from "@/components/group-account/AccountNotice.vue";
-
 import EmailInput from "@/components/common/EmailInput.vue";
 
 const groupAccountStore = useGroupAccountStore();
@@ -40,7 +39,7 @@ const onClick = (idx) => {
 };
 
 onMounted(() => {
-  email.value = groupAccountStore.emaile;
+  email.value = groupAccountStore.email;
 });
 </script>
 

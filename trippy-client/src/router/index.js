@@ -5,10 +5,10 @@ import TravelLogsView from "@/views/TravelLogsView.vue";
 import MenuView from "@/views/MenuView.vue";
 import MapView from "@/views/MapView.vue";
 import GroupAccount from "./groupAccount.js";
-import ExchangeRateListView from "@/views/exchangeRate/ExchangeRateListView.vue";
-import ExchangeCurrencySelectView from "@/views/exchangeCurrency/ExchangeCurrencySelectView.vue";
-import ExchangeCurrencyAccountView from "@/views/exchangeCurrency/ExchangeCurrencyAccountView.vue";
-import ExchangeCurrencyAmountView from "@/views/exchangeCurrency/ExchangeCurrencyAmountView.vue";
+import ExchangeRateListView from "@/views/exchange-rate/ExchangeRateListView.vue";
+import ExchangeCurrencySelectView from "@/views/exchange-currency/ExchangeCurrencySelectView.vue";
+import ExchangeCurrencyAccountView from "@/views/exchange-currency/ExchangeCurrencyAccountView.vue";
+import ExchangeCurrencyAmountView from "@/views/exchange-currency/ExchangeCurrencyAmountView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

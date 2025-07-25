@@ -83,7 +83,6 @@ onMounted(() => {
       </ul>
     </div>
     <div>
-      <button class="w-[100%] h-[2rem] bg-main-gradient text-white font-bold rounded mt-4">
       <button
         @click="goToExchangeCurrencyiew"
         class="w-[100%] h-[2rem] bg-main-gradient text-white font-bold rounded mt-4"

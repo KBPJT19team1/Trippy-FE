@@ -1,0 +1,71 @@
+[
+  {
+    "id": 1,
+    "date": "2025-06-01",
+    "dayOfWeek": "토",
+    "reservationCode": "H48VNF",
+    "departure": {
+      "city": "서울(인천)",
+      "code": "ICN",
+      "time": "13:15"
+    },
+    "arrival": {
+      "city": "오사카",
+      "code": "KIX",
+      "time": "15:15"
+    },
+    "flight": {
+      "airline": "에어서울",
+      "flightNo": "RS0713",
+      "seatType": "일반석",
+      "baggage": "무료수하물 1개"
+    },
+    "used": false
+  },
+  {
+    "id": 2,
+    "date": "2025-07-03",
+    "dayOfWeek": "수",
+    "reservationCode": "A29XLM",
+    "departure": {
+      "city": "부산(김해)",
+      "code": "PUS",
+      "time": "09:00"
+    },
+    "arrival": {
+      "city": "도쿄(하네다)",
+      "code": "HND",
+      "time": "11:20"
+    },
+    "flight": {
+      "airline": "대한항공",
+      "flightNo": "KE2711",
+      "seatType": "비즈니스석",
+      "baggage": "무료수하물 2개"
+    },
+    "used": false
+  },
+  {
+    "id": 3,
+    "date": "2025-07-18",
+    "dayOfWeek": "금",
+    "reservationCode": "Z93YTR",
+    "departure": {
+      "city": "제주",
+      "code": "CJU",
+      "time": "17:45"
+    },
+    "arrival": {
+      "city": "서울(김포)",
+      "code": "GMP",
+      "time": "18:55"
+    },
+    "flight": {
+      "airline": "제주항공",
+      "flightNo": "7C112",
+      "seatType": "일반석",
+      "baggage": "수하물 없음"
+    },
+    "used": true
+  }
+]

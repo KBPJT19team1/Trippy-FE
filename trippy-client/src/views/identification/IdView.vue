@@ -2,7 +2,6 @@
 import { computed, ref, defineProps } from "vue";
 
 import Idcard from "@/assets/Idcard.png";
-import TabMenu from "@/components/common/TabMenu.vue";
 import DefaultProfile from "@/assets/svg/person.svg";
 import DefaultQr from "@/assets/default_qr.png";
 
@@ -14,7 +13,6 @@ const props = defineProps({
 });
 
 const isRegistered = ref(true); // 임시로 고정 설정
-const currentTab = ref("주민등록");
 const showDetail = ref(false);
 const toggleOn = ref(false);
 

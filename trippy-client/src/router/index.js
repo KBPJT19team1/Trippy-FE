@@ -88,13 +88,12 @@ const router = createRouter({
           component: IDView,
           meta: { tabs: ["주민등록", "여권"] },
         },
+        {
+          path: "tickets",
+          name: "AirTicket",
+          component: AirTicketView,
+        },
       ],
-    },
-
-    {
-      path: "/tickets",
-      name: "AirTicket",
-      component: AirTicketView,
     },
   ],
 });

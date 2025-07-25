@@ -7,9 +7,7 @@ import HomeView from "@/views/HomeView.vue";
 import PaymentView from "@/views/PaymentView.vue";
 import TravelLogsView from "@/views/TravelLogsView.vue";
 import MenuView from "@/views/MenuView.vue";
-
-import AirTicketView from "@/views/air-ticket/AirTicketView.vue";
-
+import MapView from "@/views/travel-logs/MapView.vue";
 import GroupAccount from "./groupAccount.js";
 
 import ImportAccountView from "@/views/personal-accounts/ImportAccountView.vue";

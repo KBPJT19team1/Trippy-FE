@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink } from "vue-router";
+import { Icon } from "@iconify/vue";
 
 defineProps({
   imageUrl: String,
@@ -35,9 +36,16 @@ defineProps({
 
       <!-- 리포트 링크 & 인원 수 -->
       <div class="flex justify-between items-center text-sm">
-        <RouterLink to="/report" class="text-blue-600 hover:underline truncate">
+        <RouterLink
+          to="/report"
+          class="flex items-center gap-1 hover:underline truncate"
+          :class="isReportGenerated ? 'text-blue-600' : 'text-gray-400'"
+          @click.stop
+        >
           {{ isReportGenerated ? "여행 리포트 발행 완료" : "여행 리포트 발행하기" }}
+          <Icon icon="streamline:receipt-add" class="w-4 h-4" />
         </RouterLink>
+
         <span class="text-gray-500 flex items-center">👤 {{ memberCount }}</span>
       </div>
     </div>

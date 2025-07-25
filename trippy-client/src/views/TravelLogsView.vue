@@ -6,9 +6,7 @@ import emptyImage from "@/assets/travelLogEmpty.png";
 import { Icon } from "@iconify/vue";
 import { computed } from "vue";
 
-const 
- = use
-();
+const router = useRouter();
 
 const travelLogs = [
   {
@@ -25,7 +23,7 @@ const travelLogs = [
     dateRange: "2024.08.03",
     memberCount: 2,
     imageUrl: sampleImage,
-    isReportGenerated: false,
+    isReportGenerated: true,
   },
   {
     id: 3,
@@ -33,7 +31,7 @@ const travelLogs = [
     dateRange: "2025.09.10 ~ 2025.09.12",
     memberCount: 4,
     imageUrl: sampleImage,
-    isReportGenerated: true,
+    isReportGenerated: false,
   },
 ];
 
@@ -90,7 +88,7 @@ function handleAddLog() {
           :title="log.title"
           :dateRange="log.dateRange"
           :memberCount="log.memberCount"
-          :isReportGenerated="log.isReportGenerated"
+          :isReportGenerated="Boolean(log.isReportGenerated)"
           :onClick="() => handleClick(log.id)"
         />
       </div>

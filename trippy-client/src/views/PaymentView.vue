@@ -5,3 +5,4 @@ import PaymentCard from "@/components/payment/PaymentCard.vue";
 <template>
   <PaymentCard />
 </template>
+ 

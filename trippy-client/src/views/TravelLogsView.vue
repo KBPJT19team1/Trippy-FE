@@ -6,32 +6,34 @@ import emptyImage from "@/assets/travelLogEmpty.png";
 import { Icon } from "@iconify/vue";
 import { computed } from "vue";
 
-const router = useRouter();
+const 
+ = use
+();
 
 const travelLogs = [
   {
     id: 2,
     title: "제주도 여행",
     dateRange: "2025.07.14 ~ 2025.07.16",
-    description: "리포트 발급 전! 우리 어떻게 해볼까요?",
     memberCount: 3,
     imageUrl: sampleImage,
+    isReportGenerated: true,
   },
   {
     id: 1,
     title: "강릉 당일치기",
     dateRange: "2024.08.03",
-    description: "맛집 탐방과 해변 산책",
     memberCount: 2,
     imageUrl: sampleImage,
+    isReportGenerated: false,
   },
   {
     id: 3,
     title: "부산 여행",
     dateRange: "2025.09.10 ~ 2025.09.12",
-    description: "야경, 해운대, 그리고 밀면",
     memberCount: 4,
     imageUrl: sampleImage,
+    isReportGenerated: true,
   },
 ];
 
@@ -87,8 +89,8 @@ function handleAddLog() {
           :imageUrl="log.imageUrl"
           :title="log.title"
           :dateRange="log.dateRange"
-          :description="log.description"
           :memberCount="log.memberCount"
+          :isReportGenerated="log.isReportGenerated"
           :onClick="() => handleClick(log.id)"
         />
       </div>

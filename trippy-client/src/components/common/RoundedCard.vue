@@ -1,10 +1,13 @@
 <script setup>
+import { RouterLink } from "vue-router";
+
 defineProps({
   imageUrl: String,
   title: String,
   dateRange: String,
   memberCount: Number,
   onClick: Function,
+  isReportGenerated: Boolean,
 });
 </script>
 
@@ -31,12 +34,11 @@ defineProps({
       </div>
 
       <!-- 리포트 링크 & 인원 수 -->
-      <div class="flex justify-between items-center text-sm text-blue-600 hover:underline">
-        <a href="/report" class="truncate">
-          여행 리포트 발행하기
-          <!-- 또는 "여행 리포트 발행 완료" (조건에 따라 바꿔도 됨) -->
-        </a>
-        <span class="text-gray-500 text-sm flex items-center"> 👤 {{ memberCount }} </span>
+      <div class="flex justify-between items-center text-sm">
+        <RouterLink to="/report" class="text-blue-600 hover:underline truncate">
+          {{ isReportGenerated ? "여행 리포트 발행 완료" : "여행 리포트 발행하기" }}
+        </RouterLink>
+        <span class="text-gray-500 flex items-center">👤 {{ memberCount }}</span>
       </div>
     </div>
   </div>

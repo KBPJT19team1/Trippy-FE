@@ -10,6 +10,11 @@ const emit = defineEmits(["resendCode"]);
 const onInput = (e) => {
   emit("update:modelValue", e.target.value.replace(/[^0-9]/g, ""));
 };
+
+const handleClick = () => {
+  emit("update:modelValue", "");
+  emit('resendCode');
+};
 </script>
 
 <template>
@@ -21,13 +26,14 @@ const onInput = (e) => {
     <div class="relative">
       <input
         type="text"
+        :value="modelValue"
         maxlength="6"
         class="w-full h-12 p-4 rounded-xl bg-gray-100"
         placeholder="인증번호를 입력하세요"
         @input="onInput"
       />
       <button
-        @click="emit('resendCode')"
+        @click="handleClick"
         class="absolute right-4 top-1/2 -translate-y-1/2 text-blue-400 hover:bg-gray-200 p-1 rounded-lg"
       >
         재전송

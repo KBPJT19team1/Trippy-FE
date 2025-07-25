@@ -1,4 +1,5 @@
 <script setup>
+import router from "@/router";
 import { ref, computed, watch } from "vue";
 import TrippyLogo from "@/assets/svg/trippy-logo.svg";
 import AgreementCheck from "@/components/common/AgreementCheck.vue";
@@ -62,7 +63,11 @@ const toggleItem = (index) => {
       :title="item.title"
     />
   </div>
-  <NextButton title="다음" To="group-account-step2" :visible="formValid" />
+  <NextButton
+    title="다음"
+    :disabled="!formValid"
+    @click="router.push({ name: 'group-account-step2' })"
+  />
 </template>
 
 <style scoped></style>

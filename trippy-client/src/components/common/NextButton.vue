@@ -1,5 +1,4 @@
 <script setup>
-import router from "@/router";
 import { defineEmits } from "vue";
 
 const props = defineProps({
@@ -10,10 +9,6 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["click"]);
-
-// const handleClick = () => {
-//   router.push({ name: props.to })
-// };
 
 function handleClick() {
   emit("click");

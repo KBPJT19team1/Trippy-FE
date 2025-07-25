@@ -9,7 +9,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="w-full bg-white rounded-xl shadow-md px-4 py-3 flex flex-col">
+  <div class="w-full bg-white rounded-xl shadow-custom px-4 py-3 flex flex-col">
     <!-- 날짜 & 예약번호 -->
     <div class="flex justify-between text-gray-500 caption2 mt-2">
       <span>{{ ticket.date }}({{ ticket.dayOfWeek }})</span>

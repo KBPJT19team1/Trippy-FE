@@ -31,6 +31,21 @@ const router = createRouter({
       component: MenuView,
     },
     {
+      path: "/identification",
+      name: "identification",
+      component: () => import("@/views/identification/IdView.vue"),
+    },
+    {
+      path: "/identification/guide",
+      name: "/identification/guide",
+      component: () => import("@/views/identification/IdCaptureGuideView.vue"),
+    },
+    {
+      path: "/identification/registration",
+      name: "/identification/registration",
+      component: () => import("@/views/identification/IdRegistrationView.vue"),
+    },
+    {
       path: "/tickets",
       name: "AirTicket",
       component: AirTicketView,
@@ -38,12 +53,12 @@ const router = createRouter({
     {
       path: "/exchange-rates",
       name: "ExchangeRate",
-      component: () => import("../views/exchangeRate/exchangeRateListView.vue"),
+      component: () => import("../views/exchange-rate/ExchangeRateListView.vue"),
     },
     {
       path: "/exchange-currency",
       name: "ExchangeCurrency",
-      component: () => import("../views/exchangeCurrency/ExchangeCurrencySelectView.vue"),
+      component: () => import("../views/exchange-currency/ExchangeCurrencySelectView.vue"),
     },
     { path: "/map", name: "map", component: MapView },
 

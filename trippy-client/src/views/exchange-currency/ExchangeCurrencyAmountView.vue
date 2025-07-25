@@ -1,10 +1,9 @@
 <script setup>
-import { onMounted, ref, watch } from "vue";
+import { ref, watch } from "vue";
 import { useExchangeStore } from "@/stores/exchangeStore";
 import { storeToRefs } from "pinia";
 import { Icon } from "@iconify/vue";
 import triangle from "@/assets/svg/triangle.svg";
-import exchangeRates from "@/_dummy/exchange_dummy.json";
 
 const accountStore = useExchangeStore();
 
@@ -15,10 +14,6 @@ const {
   selectedCurrencyName,
   foreignCurrencyAccount,
 } = storeToRefs(accountStore);
-const { setSelectedAccount } = accountStore;
-
-const loading = ref(true);
-const error = ref("");
 
 // div 부분 영역 클릭해도 입력칸 활성화되는 코드
 const foreignInputRef = ref(null);

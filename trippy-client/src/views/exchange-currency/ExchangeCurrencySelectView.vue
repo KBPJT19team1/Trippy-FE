@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 import { useExchangeStore } from "@/stores/exchangeStore.js";
 import { Icon } from "@iconify/vue";
 import { useRouter } from "vue-router";

@@ -1,6 +1,6 @@
 <script setup>
 import { useExchangeStore } from "@/stores/exchangeStore.js";
-import { onMounted, ref } from "vue";
+import { ref } from "vue";
 import { useRouter } from "vue-router";
 
 const exchangeStore = useExchangeStore();

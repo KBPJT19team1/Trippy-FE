@@ -24,4 +24,9 @@ export default [
     name: "group-account-step4",
     component: () => import("../views/group-account/GroupAccountAgreementStep4View.vue"),
   },
+  {
+    path: "/group-account/create-complete",
+    name: "group-account-create-complete",
+    component: () => import("../views/group-account/CreateCompleteView.vue"),
+  },
 ];

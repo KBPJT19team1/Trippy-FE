@@ -5,6 +5,9 @@ import DefaultProfile from "@/assets/svg/person.svg";
 
 import DefaultQr from "@/assets/default_qr.png";
 import { computed, ref } from "vue";
+import IdCardUnregistrated from "@/components/identification/IdCardUnregisterd.vue";
+import IdCardUnregisterd from "@/components/identification/IdCardUnregisterd.vue";
+import Toggle from "@/components/identification/Toggle.vue";
 
 const isRegistered = ref(true); // 임시로 고정 설정
 const currentTab = ref("주민등록");
@@ -24,27 +27,16 @@ const maskedId = computed(() => {
   <div class="w-full">
     <TabMenu :tabs="['주민등록', '여권']" v-model:tab="currentTab" />
 
+    <!-- TODO: 나중에 특정 라우터로 이동 -->
     <div v-if="currentTab === '주민등록'">
       <!-- ----------------신분증 등록 안 된 경우---------------- -->
-      <div
-        v-if="!isRegistered"
-        class="w-full h-[32rem] rounded-xl shadow-md bg-white flex flex-col"
-      >
-        <div class="flex-1 flex flex-col items-center justify-center">
-          <img :src="Idcard" class="w-[15rem] h-auto mb-2" />
-          <!-- 안내 문구 -->
-          <p class="text-center text-gray-700 body1">
-            모바일 주민등록증 확인 서비스를<br />
-            등록 하시겠습니까?
-          </p>
-        </div>
-
-        <!-- 등록 버튼 -->
-        <button
-          class="card-footer-button w-full py-3 rounded-b-lg shadow-md text-white bg-main-gradient button1 text-center mt-auto"
-        >
-          주민등록증 등록
-        </button>
+      <div v-if="!isRegistered">
+        <IdCardUnregisterd
+          v-if="!isRegistered"
+          :image="Idcard"
+          docType="주민등록증"
+          @registerClick="() => console.log('주민등록증 등록 클릭')"
+        />
       </div>
 
       <!-- ----------------신분증 등록된 경우----------------  -->
@@ -100,16 +92,7 @@ const maskedId = computed(() => {
 
             <div v-else>
               <!-- 토글 -->
-              <label class="inline-flex items-center cursor-pointer">
-                <input type="checkbox" v-model="toggleOn" class="sr-only" />
-
-                <div class="w-14 h-6 bg-black rounded-full relative transition-colors duration-300">
-                  <div
-                    class="w-5 h-5 bg-white rounded-full absolute top-0.5 left-0.5 transition-transform duration-300"
-                    :class="{ 'translate-x-8': toggleOn }"
-                  ></div>
-                </div>
-              </label>
+              <Toggle v-model="toggleOn" />
             </div>
           </div>
         </div>

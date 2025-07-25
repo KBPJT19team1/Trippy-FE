@@ -1,5 +1,6 @@
 <script setup>
 import Idcard from "@/assets/Idcard.png";
+import ActionButtons from "@/components/identification/ActionButtons.vue";
 import DocumentPreview from "@/components/identification/CapturePreview.vue";
 import EditableField from "@/components/identification/EditableField.vue";
 import { ref } from "vue";
@@ -58,20 +59,6 @@ const formatResidentId = () => {
 
     <!-- TODO: 하단 바 없애고 위치 조정 -->
     <!-- 촬영 or 등록 버튼 -->
-    <div class="flex gap-3 mt-4">
-      <!-- 다시 촬영 버튼 -->
-      <button
-        class="flex-1 py-2 rounded-lg bg-blue-200 text-blue-600 button1 text-center shadow-sm hover:opacity-90"
-      >
-        다시 촬영
-      </button>
-
-      <!-- 등록하기 버튼 -->
-      <button
-        class="flex-1 py-3 rounded-lg bg-main-gradient text-white button1 text-center shadow-sm hover:opacity-90"
-      >
-        등록하기
-      </button>
-    </div>
+    <ActionButtons @leftClick="console.log('다시 촬영')" @rightClick="console.log('등록')" />
   </div>
 </template>

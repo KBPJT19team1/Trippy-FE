@@ -6,10 +6,6 @@ import MenuView from "@/views/MenuView.vue";
 import MapView from "@/views/MapView.vue";
 import AirTicketView from "@/views/air-ticket/AirTicketView.vue";
 import GroupAccount from "./groupAccount.js";
-import ExchangeRateListView from "@/views/exchange-rate/ExchangeRateListView.vue";
-import ExchangeCurrencySelectView from "@/views/exchange-currency/ExchangeCurrencySelectView.vue";
-import ExchangeCurrencyAccountView from "@/views/exchange-currency/ExchangeCurrencyAccountView.vue";
-import ExchangeCurrencyAmountView from "@/views/exchange-currency/ExchangeCurrencyAmountView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -57,22 +53,22 @@ const router = createRouter({
     {
       path: "/exchange-rates",
       name: "ExchangeRate",
-      component: ExchangeRateListView,
+      ccomponent: () => import("@/views/exchange-rate/ExchangeRateListView.vue"),
     },
     {
       path: "/exchange-currency",
       name: "ExchangeCurrency",
-      component: ExchangeCurrencySelectView,
+      component: () => import("@/views/exchange-currency/SelectCurrencyView.vue"),
     },
     {
       path: "/exchange-currency-account",
       name: "ExchangeCurrencyAccount",
-      component: ExchangeCurrencyAccountView,
+      component: () => import("@/views/exchange-currency/SelectAcountToExchangeView.vue"),
     },
     {
       path: "/exchange-currency-amount",
       name: "ExchangeCurrencyAmount",
-      component: ExchangeCurrencyAmountView,
+      component: () => import("@/views/exchange-currency/InputAmountToExchangeView.vue"),
     },
     { path: "/map", name: "map", component: MapView },
 

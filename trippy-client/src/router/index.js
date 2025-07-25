@@ -20,6 +20,8 @@ import AirTicketView from "@/views/air-ticket/AirTicketView.vue";
 
 import GroupAccount from "./groupAccount.js";
 
+import ImportAccountView from "@/views/personal-accounts/ImportAccountView.vue";
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -32,11 +34,13 @@ const router = createRouter({
           path: "",
           name: "home",
           component: HomeView,
+          meta: { title: "홈" },
         },
         {
           path: "payment",
           name: "payment",
           component: PaymentView,
+          meta: { title: "결제" },
         },
         {
           path: "/payment/settings",
@@ -47,11 +51,22 @@ const router = createRouter({
           path: "travel-logs",
           name: "travel-logs",
           component: TravelLogsView,
+          meta: { title: "여행 로그" },
         },
         {
           path: "menu",
           name: "menu",
           component: MenuView,
+          meta: { title: "메뉴" },
+        },
+        {
+          path: "/personal-accounts/import",
+          name: "import-personal-accounts",
+          component: ImportAccountView,
+          meta: {
+            title: "계좌 불러오기",
+            bgColor: "white",
+          },
         },
         {
           path: "identification/guide",

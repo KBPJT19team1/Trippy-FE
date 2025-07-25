@@ -12,6 +12,7 @@ import HeaderNotice from "@/components/identification/HeaderNotice.vue";
 import ToggleVueButton from "@/components/identification/ToggleVueButton.vue";
 import QrDisplay from "@/components/identification/QrDisplay.vue";
 import FooterInfo from "@/components/identification/FooterInfo.vue";
+import DetailInfo from "@/components/identification/DetailInfo.vue";
 
 const isRegistered = ref(true); // 임시로 고정 설정
 const currentTab = ref("주민등록");
@@ -50,7 +51,6 @@ const maskedId = computed(() => {
         :class="{ 'bg-gray-100': showDetail, 'bg-white': !showDetail }"
       >
         <!-- 안내 문구 -->
-        <!-- 글씨 크기가 더 작아야 해서 0.62rem으로 일단 넣음 -->
         <HeaderNotice
           text="주민등록증 이미지 위변조 및 부정 사용 금지(위반 시 3년 이하의 징역 또는 3천만원 벌금)"
         />
@@ -61,21 +61,13 @@ const maskedId = computed(() => {
         </div>
 
         <div class="mt-4 flex w-full items-center-justify-start px-4">
-          <div class="flex flex-col">
-            <!-- 안내 문구 -->
-            <p class="text-gray-500 caption4">모바일 신분증 확인 서비스</p>
-            <!-- 이름 -->
-            <h2 class="mt-1 title1">홍길동</h2>
-
-            <div v-if="showDetail">
-              <div class="mt-1 title2">
-                <h2>{{ maskedId }}</h2>
-              </div>
-              <div class="mt-9 body2">
-                <p>서울 특별시 광진구 능동로 195-16</p>
-              </div>
-            </div>
-          </div>
+          <DetailInfo
+            name="홍길동"
+            :maskedId="maskedId"
+            :idNumber="'010123-1234567'"
+            address="서울 특별시 광진구 능동로 195-16"
+            :showDetail="showDetail"
+          />
 
           <!-- 내용 -->
           <div class="flex flex-col item-center ml-auto">

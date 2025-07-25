@@ -2,17 +2,16 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
 import TabViewLayout from "@/layouts/TabViewLayout.vue";
+import ImportAccountView from "@/views/personal-accounts/ImportAccountView.vue";
 
 import HomeView from "@/views/HomeView.vue";
 import PaymentView from "@/views/PaymentView.vue";
 import TravelLogsView from "@/views/TravelLogsView.vue";
 import MenuView from "@/views/MenuView.vue";
 
-import AirTicketView from "@/views/air-ticket/AirTicketView.vue";
-
 import GroupAccount from "./groupAccount.js";
-
-import ImportAccountView from "@/views/personal-accounts/ImportAccountView.vue";
+import Identification from "./identification.js";
+import identification from "./identification.js";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -56,16 +55,6 @@ const router = createRouter({
           },
         },
         {
-          path: "identification/guide",
-          name: "identification/guide",
-          component: () => import("@/views/identification/resident-card/CaptureGuideView.vue"),
-        },
-        {
-          path: "identification/registration",
-          name: "identification/registration",
-          component: () => import("@/views/identification/resident-card/RegistrationView.vue"),
-        },
-        {
           path: "exchange-rate",
           name: "ExchangeRate",
           component: () => import("@/views/exchange-rate/ExchangeRateListView.vue"),
@@ -81,6 +70,7 @@ const router = createRouter({
           component: () => import("@/views/MapView.vue"),
         },
         ...GroupAccount,
+        ...identification,
       ],
     },
     // TabViewLayout (탭 메뉴 사용하는 뷰)

@@ -11,6 +11,12 @@ import MapView from "@/views/travel-logs/MapView.vue";
 import GroupAccount from "./groupAccount.js";
 
 import ImportAccountView from "@/views/personal-accounts/ImportAccountView.vue";
+import IdCaptureGuideView from "@/views/identification/IdCaptureGuideView.vue";
+import IdRegistrationView from "@/views/identification/IdRegistrationView.vue";
+import ExchangeRateListView from "@/views/exchange-rate/ExchangeRateListView.vue";
+import ExchangeCurrencySelectView from "@/views/exchange-currency/ExchangeCurrencySelectView.vue";
+import IdView from "@/views/identification/IdView.vue";
+import AirTicketView from "@/views/air-ticket/AirTicketView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -104,7 +110,7 @@ const router = createRouter({
         {
           path: "identification",
           name: "identification",
-          component: () => import("@/views/identification/resident-card/ResidentCardView.vue"),
+          component: IdView,
           meta: { tabs: ["주민등록", "여권"] },
         },
         {

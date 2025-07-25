@@ -1,9 +1,9 @@
 <script setup>
 import { ref, watch } from "vue";
 
-import Input from "@/components/common/Input.vue";
-import RegistNumberInput from "@/components/common/RegistNumberInput.vue";
-import TermsModal from "@/components/common/TermsModal.vue";
+import Input from "@/components/common/inputs/Input.vue";
+import RegistNumberInput from "@/components/common/inputs/RegistNumberInput.vue";
+import TermsModal from "@/components/common/modals/TermsModal.vue";
 import NextButton from "@/components/common/NextButton.vue";
 
 const showModal = ref(false);

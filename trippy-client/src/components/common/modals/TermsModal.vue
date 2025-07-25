@@ -11,20 +11,8 @@ const props = defineProps({
 
 const emit = defineEmits(["update:modelValue", "next"]);
 
-const isOpen = ref(props.modelValue);
 const isCheckedAll = ref(false);
 const termsData = ref(terms);
-
-watch(
-  () => props.modelValue,
-  (val) => {
-    isOpen.value = val;
-  },
-);
-
-const closeModal = () => {
-  emit("update:modelValue", false);
-};
 
 // 전체 동의
 const checkAll = () => {
@@ -83,6 +71,10 @@ const isNextEnabled = computed(() => {
   });
 });
 
+const closeModal = () => {
+  emit("update:modelValue", false);
+};
+
 const handleNextClick = () => {
   emit("next");
 };
@@ -90,15 +82,15 @@ const handleNextClick = () => {
 
 <template>
   <div
-    v-if="isOpen"
+    v-if="props.modelValue"
     class="fixed inset-0 z-50 flex items-end justify-center bg-black/40"
     @click.self="closeModal"
   >
     <div
       class="w-full max-w-[375px] pb-[34px] rounded-t-2xl bg-white transition-transform duration-300"
       :class="{
-        'translate-y-0': isOpen,
-        'translate-y-full': !isOpen,
+        'translate-y-0': props.modelValue,
+        'translate-y-full': !props.modelValue,
       }"
       style="max-height: 80vh"
     >

@@ -14,7 +14,7 @@ import {
 import { useGroupAccountStore } from "@/stores/groupAccountStore";
 import AgreementListItem from "@/components/groupAccount/AgreementListItem.vue";
 import AccountNotice from "@/components/groupAccount/AccountNotice.vue";
-import EmailInput from "@/components/common/EmailInput.vue";
+import EmailInput from "@/components/common/inputs/EmailInput.vue";
 
 const groupAccountStore = useGroupAccountStore();
 const email = ref("");

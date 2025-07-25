@@ -1,9 +1,9 @@
 <script setup>
 import { ref } from "vue";
 
-import SMSCodeInput from '@/components/common/SMSCodeInput.vue';
+import SMSCodeInput from '@/components/common/inputs/SMSCodeInput.vue';
 import NextButton from '@/components/common/NextButton.vue';
-import AlertModal from '@/components/common/AlertModal.vue';
+import AlertModal from '@/components/common/modals/AlertModal.vue';
 
 const isResend = ref(false);
 const inputCode = ref("");

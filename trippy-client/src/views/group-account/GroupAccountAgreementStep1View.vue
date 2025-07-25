@@ -3,7 +3,7 @@ import router from "@/router";
 import { ref, computed, watch } from "vue";
 import TrippyLogo from "@/assets/svg/trippy-logo.svg";
 import AgreementCheck from "@/components/common/AgreementCheck.vue";
-import AgreementItem from "@/components/common/AgreementItem.vue";
+import AgreementItem from "@/components/group-account/AgreementItem.vue";
 import { agreementStep1, agreementStep2 } from "@/_dummy/agreement_dummy";
 import NextButton from "@/components/common/NextButton.vue";
 import EmailInput from "@/components/common/inputs/EmailInput.vue";
@@ -37,31 +37,19 @@ const toggleItem = (index) => {
   checkedItems.value[index] = !checkedItems.value[index];
 };
 </script>
+
 <template>
   <div class="con">
     <TrippyLogo class="w-64 mt-30 m-auto mt-[8.5vh]" />
-    <AgreementCheck
-      @click="toggleAllCheck"
-      :class="[!allChecked ? 'bg-gray-400' : 'bg-main-gradient']"
-      class="mt-14"
-      title="전체 동의"
-    />
+    <AgreementCheck @click="toggleAllCheck" :class="[!allChecked ? 'bg-gray-400' : 'bg-main-gradient']" class="mt-14"
+      title="전체 동의" />
   </div>
-  <AgreementItem
-    v-for="(item, index) in agreementStep1"
-    :key="index"
-    :title="item.title"
-    :visible="checkedItems[index]"
-    @click="() => toggleItem(index)"
-  />
+  <AgreementItem v-for="(item, index) in agreementStep1" :key="index" :title="item.title" :visible="checkedItems[index]"
+    @click="() => toggleItem(index)" />
   <EmailInput class="mt-2" v-model="email" />
   <div class="mt-5">
-    <AccountNotice
-      class="mt-1 caption3 text-gray-400 text-center"
-      v-for="(item, index) in agreementStep2"
-      :key="index"
-      :title="item.title"
-    />
+    <AccountNotice class="mt-1 caption3 text-gray-400 text-center" v-for="(item, index) in agreementStep2" :key="index"
+      :title="item.title" />
   </div>
   <NextButton
     title="다음"

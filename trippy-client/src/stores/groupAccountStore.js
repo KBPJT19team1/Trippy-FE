@@ -1,12 +1,24 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
-export const useGroupAccountStore = defineStore("counter", () => {
-  const emaile = ref("");
+export const useGroupAccountStore = defineStore("groupAccount", () => {
+  const email = ref("");
+  const groupAccountPassword = ref("");
+  const groupAccountName = ref("");
 
-  const emailSet = (email) => {
-    emaile.value = email;
+  const emailSet = (newEmail) => {
+    email.value = newEmail;
+  };
+  const setGroupAccountInfo = (password, name) => {
+    groupAccountPassword.value = password;
+    groupAccountName.value = name;
   };
 
-  return { emaile, emailSet };
+  return {
+    email,
+    groupAccountPassword,
+    groupAccountName,
+    emailSet,
+    setGroupAccountInfo,
+  };
 });

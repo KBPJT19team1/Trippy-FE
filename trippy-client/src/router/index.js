@@ -58,17 +58,17 @@ const router = createRouter({
     {
       path: "/exchange-currency",
       name: "ExchangeCurrency",
-      component: () => import("@/views/exchange-currency/SelectCurrencyView.vue"),
+      component: () => import("@/views/exchange-currency/SelectView.vue"),
     },
     {
       path: "/exchange-currency-account",
       name: "ExchangeCurrencyAccount",
-      component: () => import("@/views/exchange-currency/SelectAcountToExchangeView.vue"),
+      component: () => import("@/views/exchange-currency/SelectAcountView.vue"),
     },
     {
       path: "/exchange-currency-amount",
       name: "ExchangeCurrencyAmount",
-      component: () => import("@/views/exchange-currency/InputAmountToExchangeView.vue"),
+      component: () => import("@/views/exchange-currency/InputAmountView.vue"),
     },
     { path: "/map", name: "map", component: MapView },
 

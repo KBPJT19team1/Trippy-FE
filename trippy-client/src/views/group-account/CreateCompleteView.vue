@@ -17,6 +17,12 @@ onMounted(() => {
     .replace(/\. /g, ".")
     .replace("오전", "")
     .replace("오후", "");
+
+  let accountNumber = "191";
+  for (let i = 0; i < 11; i++) {
+    accountNumber += Math.floor(Math.random() * 10);
+  }
+  groupAcountStore.setGroupAccountNumber(accountNumber);
 });
 </script>
 
@@ -32,7 +38,7 @@ onMounted(() => {
         <p>계좌</p>
         <div class="flex flex-col items-end">
           <p>{{ groupAcountStore.groupAccountName }}의 통장</p>
-          <p>{{}}18447665765</p>
+          <p>{{ groupAcountStore.groupAccountNumber }}</p>
         </div>
       </div>
       <div class="flex justify-between w-full px-3 py-5 text-body2 border-b border-gray-300">
@@ -46,6 +52,7 @@ onMounted(() => {
         @click="ifcopyModal = true"
       >
         <p>초대링크 복사</p>
+
         <copyIcon />
       </div>
     </div>

@@ -7,6 +7,8 @@ export const useGroupAccountStore = defineStore("groupAccount", () => {
   const groupAccountPassword = ref("");
   //모임계좌이름
   const groupAccountName = ref("");
+  //모임계좌번호
+  const groupAccountNumber = ref("");
   //모임주 대표계좌 선택
   const representativeAccount = ref("");
   //모임주 대표계좌 은행
@@ -25,14 +27,20 @@ export const useGroupAccountStore = defineStore("groupAccount", () => {
     representativeAccountBank.value = bank;
   };
 
+  const setGroupAccountNumber = (number) => {
+    groupAccountNumber.value = number;
+  };
+
   return {
     email,
     groupAccountPassword,
     groupAccountName,
     representativeAccount,
     representativeAccountBank,
+    groupAccountNumber,
     emailSet,
     setGroupAccountInfo,
     setRepresentativeAccount,
+    setGroupAccountNumber,
   };
 });

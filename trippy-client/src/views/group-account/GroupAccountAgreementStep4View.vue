@@ -3,6 +3,7 @@ import { ref } from "vue";
 import accountList from "@/_dummy/accountList_dummy.json";
 import RepresentativeAccountList from "@/components/group-account/RepresentativeAccountList.vue";
 import { useGroupAccountStore } from "@/stores/groupAccountStore";
+import AccountNotice from "@/components/group-account/AccountNotice.vue";
 
 const groupAccountStore = useGroupAccountStore();
 

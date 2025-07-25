@@ -1,6 +1,7 @@
 <script setup>
 import { Icon } from "@iconify/vue";
 import { defineProps, ref } from "vue";
+import AccountNotice from "./AccountNotice.vue";
 
 const props = defineProps({
   accountList: Array,
@@ -60,6 +61,12 @@ const selectAccount = (account) => {
         </li>
       </ul>
     </div>
+
+    <AccountNotice
+      v-if="!isOpen"
+      :title="'*정산하기 및 환급받을 계좌로 사용됩니다.'"
+      class="mt-10 caption2"
+    />
   </div>
 </template>
 

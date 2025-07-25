@@ -16,12 +16,6 @@ watch([front, back], () => {
 
   emit("update:modelValue", combined);
 });
-
-// const onInput = (e) => {
-//   const value = e.target.value.replace(/[^0-9]/g, '');
-//
-//   emit('update:modelValue', value);
-// };
 </script>
 
 <template>

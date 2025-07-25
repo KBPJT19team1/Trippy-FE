@@ -11,7 +11,6 @@ const currentIndex = ref(0);
 const currentView = computed(() => views[currentIndex.value]);
 
 function goNext() {
-  console.log("goNext");
   if (currentIndex.value < views.length - 1) {
     currentIndex.value++;
   }

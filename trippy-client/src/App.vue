@@ -15,7 +15,7 @@ const bgColor = computed(() => route.meta.bgColor || "");
       <TopNavigationBar />
 
       <div class="pt-[100px] pb-[34px] h-full">
-        <div class="px-4 pt-4 flex flex-col items-center h-full">
+        <div class="flex flex-col items-center h-full">
           <RouterView />
         </div>
       </div>

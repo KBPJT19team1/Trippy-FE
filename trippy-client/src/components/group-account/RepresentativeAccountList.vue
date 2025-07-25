@@ -27,7 +27,7 @@ const selectAccount = (account) => {
   <div class="w-full">
     <div
       @click="openList"
-      class="text-center bg-gray-200 rounded-xl h-16 mt-10 flex items-center justify-center gap-8"
+      class="text-center border-[1px] border-gray-black bg-white rounded-xl h-16 mt-10 flex items-center justify-center gap-8"
     >
       <p
         class="button1 text-center ml-20 flex-1"
@@ -46,15 +46,18 @@ const selectAccount = (account) => {
       />
     </div>
 
-    <div class="w-full bg-gray-200 mt-[-2vh] rounded-xl pt-5" v-if="isOpen">
+    <div
+      class="w-full mt-[-2.5vh] bg-white rounded-xl pt-12 border-[1px] border-gray-black"
+      v-if="isOpen"
+    >
       <ul class="p-2">
         <li
           v-for="account in props.accountList"
           :key="account.account"
-          class="hover:bg-gray-300 rounded-xl h-9 cursor-pointer transition-colors duration-200"
+          class="hover:bg-gray-100 rounded-xl h-auto cursor-pointer transition-colors duration-200"
           @click="selectAccount(account)"
         >
-          <div class="flex justify-between items-center pt-2 mx-3">
+          <div class="flex justify-between items-center h-10 mx-3">
             <p class="body2">{{ account.bankName }}</p>
             <p class="body2">{{ account.account }}</p>
           </div>

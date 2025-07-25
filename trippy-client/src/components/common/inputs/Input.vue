@@ -20,6 +20,7 @@ const onInput = (e) => {
     <p class="body1 text-gray-400">{{ label }}</p>
     <input
       type="text"
+      :value="modelValue"
       :placeholder="placeholder"
       :maxlength="label === '휴대폰 번호' ? 11 : undefined"
       @input="onInput"

@@ -14,4 +14,9 @@ export default [
     name: "group-account-step2",
     component: () => import("../views/group-account/GroupAccountAgreementStep2View.vue"),
   },
+  {
+    path: "/group-account/step3",
+    name: "group-account-step3",
+    component: () => import("../views/group-account/GroupAccountAgreementStep3View.vue"),
+  },
 ];

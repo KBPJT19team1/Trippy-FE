@@ -19,13 +19,17 @@ import EmailInput from "@/components/common/EmailInput.vue";
 
 const groupAccountStore = useGroupAccountStore();
 const email = ref("");
+const scrollContainer = ref(null);
 // 전체 선택 클릭 핸들러
 const toggleAllCheck = () => {
   const newState = !allChecked.value;
   checkedItems.value = checkedItems.value.map(() => newState);
   if (newState) {
     nextTick(() => {
-      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+      scrollContainer.value?.scrollTo({
+        top: scrollContainer.value.scrollHeight,
+        behavior: "smooth",
+      });
     });
   }
 };
@@ -46,7 +50,10 @@ onMounted(() => {
 
 <template>
   <div class="flex h-full flex-col justify-between">
-    <div class="flex flex-col h-full overflow-scroll [&::-webkit-scrollbar]:hidden">
+    <div
+      class="flex flex-col h-full overflow-scroll [&::-webkit-scrollbar]:hidden"
+      ref="scrollContainer"
+    >
       <div class="text-center subtitle1 mt-5xs">
         <p>
           입출금통장 개설을 위해 <br />

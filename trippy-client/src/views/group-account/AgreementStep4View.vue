@@ -1,42 +1,39 @@
 <script setup>
-import { ref } from "vue";
-import accountList from "@/_dummy/accountList_dummy.json";
-import RepresentativeAccountList from "@/components/group-account/RepresentativeAccountList.vue";
-import { useGroupAccountStore } from "@/stores/groupAccountStore";
+import { ref, watch } from "vue";
+
+import Input from "@/components/common/inputs/TextInput.vue";
+import RegistNumberInput from "@/components/common/inputs/RegistNumberInput.vue";
+import TermsModal from "@/components/common/modals/TermsModal.vue";
 import NextButton from "@/components/common/NextButton.vue";
 import router from "@/router";
 
-const groupAccountStore = useGroupAccountStore();
+const showModal = ref(false);
 
-const selectAccountNumber = ref("");
-const selectAccountBank = ref("");
+const name = ref("");
+const registNumber = ref("");
+const phoneNumber = ref("");
+const isAllFilled = ref(false);
 
-const selectAccount = (account) => {
-  selectAccountBank.value = account.bankName;
-  selectAccountNumber.value = account.account;
-  groupAccountStore.setRepresentativeAccount(selectAccountNumber.value, selectAccountBank.value);
+watch([name, registNumber, phoneNumber], () => {
+  isAllFilled.value =
+    name.value.trim() !== "" &&
+    registNumber.value.trim().length === 8 &&
+    phoneNumber.value.trim().length >= 10;
+});
+
+const openModal = () => {
+  showModal.value = true;
 };
 </script>
 
 <template>
-  <div class="flex flex-col h-full w-full bg-white justify-between">
-    <div>
-      <div>
-        <p class="title1 text-center mt-40">대표계좌를 설정해 주세요</p>
-      </div>
-      <RepresentativeAccountList
-        :accountList="accountList"
-        @selectAccount="selectAccount"
-        :accountBank="selectAccountBank"
-        :accountNumber="selectAccountNumber"
-      />
+  <div class="flex flex-col h-full justify-between">
+    <div class="flex flex-col gap-8">
+      <Input label="이름" placeholder="이름을 입력해 주세요." v-model="name" />
+      <RegistNumberInput v-model="registNumber" />
+      <Input label="휴대폰 번호" placeholder="예) 01012345678" v-model="phoneNumber" />
     </div>
-    <NextButton
-      :title="'다음'"
-      :disabled="!selectAccountBank"
-      @click="router.push({ name: 'group-account-create-complete' })"
-    />
+    <NextButton title="다음" :disabled="!isAllFilled" @click="openModal" />
+    <TermsModal v-model="showModal" @next="router.push({ name: 'group-account-step5' })" />
   </div>
 </template>
-
-<style scoped></style>

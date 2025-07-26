@@ -25,6 +25,11 @@ export default [
     component: () => import("../views/group-account/AgreementStep4View.vue"),
   },
   {
+    path: "/group-account/step5",
+    name: "group-account-step5",
+    component: () => import("../views/group-account/AgreementStep5View.vue"),
+  },
+  {
     path: "/group-account/create-complete",
     name: "group-account-create-complete",
     component: () => import("../views/group-account/CreateCompleteView.vue"),

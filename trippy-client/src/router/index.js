@@ -12,9 +12,6 @@ import MapView from "@/views/MapView.vue";
 import IdCaptureGuideView from "@/views/identification/IdCaptureGuideView.vue";
 import IdRegistrationView from "@/views/identification/IdRegistrationView.vue";
 
-import ExchangeRateListView from "@/views/exchange-rate/ExchangeRateListView.vue";
-import ExchangeCurrencySelectView from "@/views/exchange-currency/SelectView.vue";
-
 import IDView from "@/views/identification/IdView.vue";
 import AirTicketView from "@/views/air-ticket/AirTicketView.vue";
 
@@ -89,7 +86,7 @@ const router = createRouter({
           component: () => import("@/views/exchange-currency/SelectAccountView.vue"),
         },
         {
-          path: "exchange-currency-ammount",
+          path: "exchange-currency-amount",
           name: "ExchangeCurrencyInputAmount",
           component: () => import("@/views/exchange-currency/InputAmountView.vue"),
         },

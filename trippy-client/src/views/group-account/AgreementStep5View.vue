@@ -1,42 +1,51 @@
 <script setup>
 import { ref } from "vue";
-import accountList from "@/_dummy/accountList_dummy.json";
-import RepresentativeAccountList from "@/components/group-account/RepresentativeAccountList.vue";
-import { useGroupAccountStore } from "@/stores/groupAccountStore";
+
+import SMSCodeInput from "@/components/common/inputs/SMSCodeInput.vue";
 import NextButton from "@/components/common/NextButton.vue";
+import AlertModal from "@/components/common/modals/AlertModal.vue";
 import router from "@/router";
 
-const groupAccountStore = useGroupAccountStore();
+const isResend = ref(false);
+const inputCode = ref("");
+const isCodeValid = ref(null);
+const isOpenModal = ref(false);
+const modalTitle = ref("");
 
-const selectAccountNumber = ref("");
-const selectAccountBank = ref("");
+const correctCode = "123456";
 
-const selectAccount = (account) => {
-  selectAccountBank.value = account.bankName;
-  selectAccountNumber.value = account.account;
-  groupAccountStore.setRepresentativeAccount(selectAccountNumber.value, selectAccountBank.value);
+const resendCode = () => {
+  isResend.value = true;
+  isCodeValid.value = null;
+};
+
+const handleNext = () => {
+  isCodeValid.value = inputCode.value === correctCode;
+
+  if (isCodeValid.value) {
+    modalTitle.value = "인증이 완료되었습니다.";
+    isOpenModal.value = true;
+  } else {
+    modalTitle.value = "인증번호가 틀렸습니다.";
+    isOpenModal.value = true;
+  }
 };
 </script>
 
 <template>
-  <div class="flex flex-col h-full w-full bg-white justify-between">
-    <div>
-      <div>
-        <p class="title1 text-center mt-40">대표계좌를 설정해 주세요</p>
-      </div>
-      <RepresentativeAccountList
-        :accountList="accountList"
-        @selectAccount="selectAccount"
-        :accountBank="selectAccountBank"
-        :accountNumber="selectAccountNumber"
-      />
+  <div class="h-full flex flex-col justify-between">
+    <div class="flex flex-col gap-4">
+      <h3 class="body1 mb-4">SMS로 인증번호를 전송하였습니다.</h3>
+      <SMSCodeInput v-model="inputCode" @resendCode="resendCode" />
+      <p v-if="isResend" class="caption1 text-blue-400">인증번호가 재전송되었습니다.</p>
+      <p class="caption1 text-gray-400">* 인증문자가 오지 않는다면 114 스팸차단을 확인해 보세요.</p>
     </div>
-    <NextButton
-      :title="'다음'"
-      :disabled="!selectAccountBank"
-      @click="router.push({ name: 'group-account-create-complete' })"
+    <NextButton title="확인" class="px-4" :disabled="inputCode.length !== 6" @click="handleNext" />
+    <AlertModal
+      v-model="isOpenModal"
+      :title="modalTitle"
+      :isSuccess="isCodeValid"
+      @next="router.push({ name: 'group-account-step6' })"
     />
   </div>
 </template>
-
-<style scoped></style>

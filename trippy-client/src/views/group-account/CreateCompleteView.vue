@@ -11,6 +11,16 @@ const groupAcountStore = useGroupAccountStore();
 
 const ifcopyModal = ref(false);
 
+const inviteLink = "https://www.naver.com/";
+const copyInviteLink = async () => {
+  try {
+    await navigator.clipboard.writeText(inviteLink);
+    ifcopyModal.value = true;
+  } catch (err) {
+    console.error("클립보드 복사 실패:", err);
+  }
+};
+
 onMounted(() => {
   groupAcountStore.setGroupAccountCreateDate();
 });
@@ -39,7 +49,7 @@ onMounted(() => {
       </div>
       <div
         class="mr-4 py-3 subtitle2 flex items-center gap-1 justify-end hover:cursor-pointer"
-        @click="ifcopyModal = true"
+        @click="copyInviteLink"
       >
         <p>초대링크 복사</p>
 

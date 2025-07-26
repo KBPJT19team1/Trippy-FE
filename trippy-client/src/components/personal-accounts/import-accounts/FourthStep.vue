@@ -1,6 +1,20 @@
 <script setup>
+import { ref, watch, computed, defineEmits } from "vue";
 import { Icon } from '@iconify/vue';
 import NextButton from '@/components/common/NextButton.vue';
+
+const isChecked1 = ref(false);
+const isChecked2 = ref(false);
+const isChecked3 = ref(false);
+const isButtonDisabled = ref(true);
+
+const isCheckedAll = computed(() => isChecked1.value && isChecked2.value && isChecked3.value);
+
+const emit = defineEmits(["next"]);
+
+watch([isCheckedAll], () => {
+  isButtonDisabled.value = false;
+});
 </script>
 
 <template>
@@ -72,9 +86,17 @@ import NextButton from '@/components/common/NextButton.vue';
         </p>
       </div>
 
-      <div class="flex items-center w-full h-12 px-2 bg-gray-500 rounded-xl gap-1 text-white">
-        <Icon icon="material-symbols:check-circle-outline-rounded" class="size-7 pl-2 w-9" />
-        <span class="body1">[필수] 계좌 입∙출금처, 거래메모를 볼게요</span>
+      <div
+        :class="[
+          'flex items-center w-full h-12 px-1 rounded-xl gap-2',
+          isChecked1 ? 'text-blue-400 bg-blue-200' : 'text-gray-500 bg-blue-100'
+        ]">
+        <Icon
+          :icon="isChecked1 ? 'material-symbols:check-circle-rounded' : 'material-symbols:check-circle-outline-rounded'"
+          class="size-7 pl-2 w-9"
+          @click="isChecked1 = !isChecked1"
+        />
+        <span class="body1 text-gray-600">[필수] 계좌 입∙출금처, 거래메모를 볼게요</span>
       </div>
     </div>
 
@@ -133,20 +155,39 @@ import NextButton from '@/components/common/NextButton.vue';
       </div>
 
       <div class="flex flex-col gap-1">
-        <div class="flex items-center w-full h-12 px-2 bg-gray-500 rounded-xl gap-1 text-white">
-          <Icon icon="material-symbols:check-circle-outline-rounded" class="size-7 pl-2 w-9" />
-          <span class="body1">[필수] 개인신용 정보 수집 ∙ 이용 동의</span>
+        <div
+          :class="[
+          'flex items-center w-full h-12 px-1 rounded-xl gap-2',
+          isChecked2 ? 'text-blue-400 bg-blue-200' : 'text-gray-500 bg-blue-100'
+        ]">
+          <Icon
+            :icon="isChecked2 ? 'material-symbols:check-circle-rounded' : 'material-symbols:check-circle-outline-rounded'"
+            class="size-7 pl-2 w-9"
+            @click="isChecked2 = !isChecked2"
+          />
+          <span class="body1 text-gray-600">[필수] 개인신용 정보 수집 ∙ 이용 동의</span>
         </div>
 
-        <div class="flex items-center w-full h-12 px-2 bg-gray-500 rounded-xl gap-1 text-white">
-          <Icon icon="material-symbols:check-circle-outline-rounded" class="size-7 pl-2 w-9" />
-          <span class="body1">[필수] 개인신용정보 제공 동의</span>
+        <div
+          :class="[
+          'flex items-center w-full h-12 px-1 rounded-xl gap-2',
+          isChecked3 ? 'text-blue-400 bg-blue-200' : 'text-gray-500 bg-blue-100'
+        ]">
+          <Icon
+            :icon="isChecked3 ? 'material-symbols:check-circle-rounded' : 'material-symbols:check-circle-outline-rounded'"
+            class="size-7 pl-2 w-9"
+            @click="isChecked3 = !isChecked3"
+          />
+          <span class="body1 text-gray-600">[필수] 개인신용정보 제공 동의</span>
         </div>
       </div>
     </div>
     <div class="w-full mb-[34px]">
-      <NextButton title="필수 동의하기" disabled="true" />
+      <NextButton
+        title="필수 동의하기"
+        :disabled="isButtonDisabled"
+        @click="emit('next')"
+      />
     </div>
-
   </div>
 </template>

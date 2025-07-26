@@ -8,12 +8,15 @@ const isChecked2 = ref(false);
 const isChecked3 = ref(false);
 const isButtonDisabled = ref(true);
 
-const isCheckedAll = computed(() => isChecked1.value && isChecked2.value && isChecked3.value);
-
 const emit = defineEmits(["next"]);
 
-watch([isCheckedAll], () => {
-  isButtonDisabled.value = false;
+watch([isChecked1, isChecked2, isChecked3], () => {
+  if ([isChecked1.value, isChecked2.value, isChecked3.value].every(Boolean)) {
+    isButtonDisabled.value = false;
+    return;
+  }
+
+  isButtonDisabled.value = true;
 });
 </script>
 

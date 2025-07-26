@@ -28,9 +28,10 @@ const toggleAllCheck = () => {
 };
 
 //이메일 입력 하면 자동으로 pinia에 저장
-watch(email, (newVal) => {
-  groupAccountStore.emailSet(newVal);
-});
+const onClick = () => {
+  groupAccountStore.emailSet(email.value);
+  router.push({ name: "group-account-create-step2" });
+};
 
 // 개별 선택 핸들러
 const toggleItem = (index) => {
@@ -67,11 +68,7 @@ const toggleItem = (index) => {
         />
       </div>
     </div>
-    <NextButton
-      title="다음"
-      :disabled="!formValid"
-      @click="router.push({ name: 'group-account-step2' })"
-    />
+    <NextButton title="다음" :disabled="!formValid" @click="onClick" />
   </div>
 </template>
 

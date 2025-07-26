@@ -16,13 +16,11 @@ const goToExchangeCurrencyView = () => {
 </script>
 
 <template>
-  <div class="exchange-list w-11/12 flex flex-col h-full">
+  <div class="w-11/12 flex flex-col h-full">
     <h3 class="font-semibold text-xl">오늘의 환율 정보</h3>
     <br />
-
     <div v-if="loading">데이터 불러오는 중...</div>
     <div v-else-if="error" class="text-center text-red-500">{{ error }}</div>
-
     <div
       v-else
       class="w-full overflow-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"

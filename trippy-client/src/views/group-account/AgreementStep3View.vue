@@ -47,49 +47,48 @@ watch(allChecked, () => {
 </script>
 
 <template>
-  <div class="bg-main-gradient w-full h-40 p-4 rounded-xl">
-    <div class="flex gap-2 flex-col items-center justify-center h-full text-white">
-      <p class="title2">Trippy</p>
-      <p class="title1">모임통장</p>
+  <div class="flex flex-col h-full justify-between">
+    <div class="overflow-scroll [&::-webkit-scrollbar]:hidden">
+      <div class="bg-main-gradient w-full h-40 p-4 rounded-xl">
+        <div class="flex gap-2 flex-col items-center justify-center h-full text-white">
+          <p class="title2">Trippy</p>
+          <p class="title1">모임통장</p>
+        </div>
+      </div>
+      <div class="w-full h-[8rem] flex flex-col items-center mt-5">
+        <AgreementAccountPassword v-model="groupAccountPassword" :title="'통장 비밀번호 설정'" />
+        <AgreementAccountPassword v-model="passwordChecked" :title="'통장 비밀번호 확인'" />
+        <p
+          v-if="passwordCheckedMessage"
+          :class="[isPinMatched ? 'text-blue-600' : 'text-red']"
+          class="caption3"
+        >
+          {{ passwordCheckedMessage }}
+        </p>
+      </div>
+      <div class="w-full">
+        <p class="subtitle2 mt-10 ml-2">계좌 이름을 지어주세요</p>
+        <div class="shadow-custom w-full h-25 bg-black"></div>
+        <input
+          type="text"
+          placeholder="모임통장 이름"
+          v-model="groupAccountName"
+          class="w-full h-16 text-center rounded-xl mt-3 shadow-custom body1"
+        />
+      </div>
+      <AccountNotice
+        class="mt-12 text-center"
+        :title="'고객님의 자산을 안전하게 보호하고 전화 금융사기의 피해를 예방하고자 금융거래목적에 대해 질문드립니다.'"
+      />
+      <YesNoSelector
+        v-for="(message, i) in messages"
+        :key="i"
+        :title="message"
+        v-model="YesNoChecked[i]"
+      />
     </div>
+    <NextButton :title="'다음'" :To="'group-account-step4'" :visible="allChecked" />
   </div>
-
-  <div class="w-full h-[8rem] flex flex-col items-center mt-5">
-    <AgreementAccountPassword v-model="groupAccountPassword" :title="'통장 비밀번호 설정'" />
-    <AgreementAccountPassword v-model="passwordChecked" :title="'통장 비밀번호 확인'" />
-    <p
-      v-if="passwordCheckedMessage"
-      :class="[isPinMatched ? 'text-blue-600' : 'text-red']"
-      class="caption3"
-    >
-      {{ passwordCheckedMessage }}
-    </p>
-  </div>
-
-  <div class="w-full">
-    <p class="subtitle2 mt-10 ml-2">계좌 이름을 지어주세요</p>
-    <div class="shadow-custom w-full h-25 bg-black"></div>
-    <input
-      type="text"
-      placeholder="모임통장 이름"
-      v-model="groupAccountName"
-      class="w-full h-16 text-center rounded-xl mt-3 shadow-custom body1"
-    />
-  </div>
-
-  <AccountNotice
-    class="mt-12 text-center"
-    :title="'고객님의 자산을 안전하게 보호하고 전화 금융사기의 피해를 예방하고자 금융거래목적에 대해 질문드립니다.'"
-  />
-
-  <YesNoSelector
-    v-for="(message, i) in messages"
-    :key="i"
-    :title="message"
-    v-model="YesNoChecked[i]"
-  />
-
-  <NextButton :title="'다음'" :To="'group-account-step4'" :visible="allChecked" />
 </template>
 
 <style scoped></style>

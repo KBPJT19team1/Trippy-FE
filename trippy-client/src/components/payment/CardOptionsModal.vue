@@ -1,4 +1,6 @@
 <script setup>
+import XButton from "@/assets/svg/x_button.svg"; // SVG를 컴포넌트로 import
+
 const props = defineProps({
   card: Object,
 });
@@ -18,8 +20,10 @@ const handleClose = () => {
     <div class="bg-white w-full rounded-t-xl p-6 max-w-[375px]">
       <div class="flex justify-between items-center mb-4">
         <div class="title4">{{ card.name }}</div>
-        <button @click="handleClose">
-          <span class="text-xl">✕</span>
+
+        <!-- SVG 컴포넌트 사용 -->
+        <button @click="handleClose" aria-label="닫기 버튼">
+          <XButton class="w-6 h-6" />
         </button>
       </div>
 

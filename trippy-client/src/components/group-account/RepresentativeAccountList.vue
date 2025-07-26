@@ -42,12 +42,12 @@ const selectAccount = (account) => {
       <Icon
         icon="material-symbols:keyboard-arrow-down-rounded"
         class="transform size-9 w-12"
-        :class="isOpen ? '' : 'rotate-180'"
+        :class="isOpen ? 'rotate-180' : ''"
       />
     </div>
 
     <div
-      class="w-full bg-white rounded-xl border-[1px] h-[16rem] border-gray overflow-scroll"
+      class="w-full bg-white rounded-xl border-[1px] h-[16rem] border-gray overflow-scroll [&::-webkit-scrollbar]:hidden"
       v-if="isOpen"
     >
       <ul class="p-2">

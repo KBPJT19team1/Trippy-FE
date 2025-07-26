@@ -4,23 +4,15 @@ import copyIcon from "@/assets/svg/copy-icon.svg";
 import TrippyLogo from "@/assets/svg/trippy-logo.svg";
 import NextButton from "@/components/common/NextButton.vue";
 import AlertModal from "@/components/common/modals/AlertModal.vue";
-import router from "@/router";
 import { useGroupAccountStore } from "@/stores/groupAccountStore";
+import router from "@/router";
+
 const groupAcountStore = useGroupAccountStore();
-const createDateTime = ref("");
 
 const ifcopyModal = ref(false);
 
 onMounted(() => {
-  createDateTime.value = new Date().toLocaleString("ko-KR", {
-    hour12: false,
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-  });
+  groupAcountStore.setGroupAccountCreateDate();
 });
 </script>
 
@@ -42,7 +34,7 @@ onMounted(() => {
       <div class="flex justify-between w-full px-3 py-5 text-body2 border-b border-gray-300">
         <p>모임통장 개설일</p>
         <div class="flex flex-col items-end">
-          <p class="subtitle2">{{ createDateTime }}</p>
+          <p class="subtitle2">{{ groupAcountStore.groupAccountCreateDate }}</p>
         </div>
       </div>
       <div

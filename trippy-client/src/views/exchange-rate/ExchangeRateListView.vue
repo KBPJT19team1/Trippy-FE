@@ -2,6 +2,7 @@
 import { useExchangeStore } from "@/stores/exchangeStore.js";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import NextButton from "@/components/common/NextButton.vue";
 
 const exchangeStore = useExchangeStore();
 const { todayRates, loading, getYesterdayRate, getCountryCode } = exchangeStore;
@@ -9,7 +10,7 @@ const { todayRates, loading, getYesterdayRate, getCountryCode } = exchangeStore;
 const error = ref("");
 
 const router = useRouter();
-const goToExchangeCurrencyiew = () => {
+const goToExchangeCurrencyView = () => {
   router.push("/exchange-currency");
 };
 </script>
@@ -77,12 +78,7 @@ const goToExchangeCurrencyiew = () => {
       </ul>
     </div>
     <div>
-      <button
-        @click="goToExchangeCurrencyiew"
-        class="w-[100%] h-[2rem] bg-main-gradient text-white font-bold rounded mt-4"
-      >
-        환전하기
-      </button>
+      <next-button title="환전하기" @click="goToExchangeCurrencyView"></next-button>
     </div>
   </div>
 </template>

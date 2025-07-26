@@ -3,6 +3,7 @@ import { bankAccounts } from "@/_dummy/bankAccounts_dummy";
 import { useExchangeStore } from "@/stores/exchangeStore";
 import { storeToRefs } from "pinia";
 import { useRouter } from "vue-router";
+import NextButton from "@/components/common/NextButton.vue";
 
 const accountStore = useExchangeStore();
 const { selectedAccount } = storeToRefs(accountStore);
@@ -48,14 +49,7 @@ const goToAmountView = () => {
     </ul>
   </div>
   <div>
-    <!-- 버튼 컴포넌트 삽입 영역 -->
-    <button
-      :disabled="!selectedAccount"
-      class="w-[21.4375rem] h-[3rem] bg-main-gradient text-white font-bold rounded mt-4 disabled:bg-gray-300 disabled:cursor-not-allowed"
-      @click="goToAmountView"
-    >
-      다음
-    </button>
+    <next-button title="다음" @click="goToAmountView" :disabled="!selectedAccount"></next-button>
   </div>
 </template>
 

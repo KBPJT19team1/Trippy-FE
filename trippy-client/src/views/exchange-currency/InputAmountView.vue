@@ -4,6 +4,7 @@ import { useExchangeStore } from "@/stores/exchangeStore";
 import { storeToRefs } from "pinia";
 import { Icon } from "@iconify/vue";
 import triangle from "@/assets/svg/triangle.svg";
+import NextButton from "@/components/common/NextButton.vue";
 
 const accountStore = useExchangeStore();
 
@@ -121,7 +122,7 @@ watch(foreignAmount, (newVal) => {
   </div>
   <br />
   <div>
-    <button class="w-[23rem] h-[3rem] bg-main-gradient text-white font-bold">확인</button>
+    <next-button title="확인" @click="goToAmountView"></next-button>
   </div>
 </template>
 

@@ -1,5 +1,6 @@
 <script setup>
-import XButton from "@/assets/svg/x_button.svg"; // SVG를 컴포넌트로 import
+import XButton from "@/assets/svg/x_button.svg";
+import { Icon } from "@iconify/vue";
 
 const props = defineProps({
   card: Object,
@@ -21,7 +22,6 @@ const handleClose = () => {
       <div class="flex justify-between items-center mb-4">
         <div class="title4">{{ card.name }}</div>
 
-        <!-- SVG 컴포넌트 사용 -->
         <button @click="handleClose" aria-label="닫기 버튼">
           <XButton class="w-6 h-6" />
         </button>
@@ -29,10 +29,19 @@ const handleClose = () => {
 
       <div class="text-sm text-gray-500 mb-4">{{ card.number }}</div>
 
-      <ul class="space-y-4">
-        <li class="text-base">별명설정</li>
-        <li class="text-base">주카드 설정</li>
-        <li class="text-base text-red-500">카드삭제</li>
+      <ul class="divide-y divide-[#E5E8EB]">
+        <li class="flex justify-between items-center py-4 text-base">
+          <span>별명 설정</span>
+          <Icon icon="material-symbols:chevron-right-rounded" class="text-gray-400 w-7 h-7" />
+        </li>
+        <li class="flex justify-between items-center py-4 text-base">
+          <span>주카드 설정</span>
+          <Icon icon="material-symbols:chevron-right-rounded" class="text-gray-400 w-7 h-7" />
+        </li>
+        <li class="flex justify-between items-center py-4 text-base text-red">
+          <span>카드 삭제</span>
+          <Icon icon="material-symbols:chevron-right-rounded" class="text-gray-400 w-7 h-7" />
+        </li>
       </ul>
     </div>
   </div>

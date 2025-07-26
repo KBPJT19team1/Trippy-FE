@@ -1,6 +1,6 @@
 <script setup>
 import router from "@/router";
-import { ref, computed, watch } from "vue";
+import { ref, computed } from "vue";
 import TrippyLogo from "@/assets/svg/trippy-logo.svg";
 import AgreementCheck from "@/components/common/AgreementCheck.vue";
 import AgreementItem from "@/components/group-account/AgreementItem.vue";

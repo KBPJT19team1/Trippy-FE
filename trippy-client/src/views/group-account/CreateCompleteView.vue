@@ -12,17 +12,15 @@ const createDateTime = ref("");
 const ifcopyModal = ref(false);
 
 onMounted(() => {
-  createDateTime.value = new Date()
-    .toLocaleString({ hour12: false })
-    .replace(/\. /g, ".")
-    .replace("오전", "")
-    .replace("오후", "");
-
-  let accountNumber = "191";
-  for (let i = 0; i < 11; i++) {
-    accountNumber += Math.floor(Math.random() * 10);
-  }
-  groupAcountStore.setGroupAccountNumber(accountNumber);
+  createDateTime.value = new Date().toLocaleString("ko-KR", {
+    hour12: false,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  });
 });
 </script>
 

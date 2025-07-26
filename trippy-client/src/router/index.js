@@ -7,12 +7,12 @@ import HomeView from "@/views/HomeView.vue";
 import PaymentView from "@/views/PaymentView.vue";
 import TravelLogsView from "@/views/TravelLogsView.vue";
 import MenuView from "@/views/MenuView.vue";
-import MapView from "@/views/MapView.vue";
 
 import IdCaptureGuideView from "@/views/identification/IdCaptureGuideView.vue";
 import IdRegistrationView from "@/views/identification/IdRegistrationView.vue";
 
 import IDView from "@/views/identification/IdView.vue";
+
 import AirTicketView from "@/views/air-ticket/AirTicketView.vue";
 
 import GroupAccount from "./groupAccount.js";
@@ -63,12 +63,12 @@ const router = createRouter({
         {
           path: "identification/guide",
           name: "identification/guide",
-          component: IdCaptureGuideView,
+          component: () => import("@/views/identification/resident-card/CaptureGuideView.vue"),
         },
         {
           path: "identification/registration",
           name: "identification/registration",
-          component: IdRegistrationView,
+          component: () => import("@/views/identification/resident-card/RegistrationView.vue"),
         },
         {
           path: "exchange-rate",
@@ -93,7 +93,7 @@ const router = createRouter({
         {
           path: "map",
           name: "map",
-          component: MapView,
+          component: () => import("@/views/MapView.vue"),
         },
         ...GroupAccount,
       ],
@@ -107,13 +107,13 @@ const router = createRouter({
         {
           path: "identification",
           name: "identification",
-          component: IDView,
+          component: () => import("@/views/identification/resident-card/ResidentCardView.vue"),
           meta: { tabs: ["주민등록", "여권"] },
         },
         {
           path: "tickets",
           name: "AirTicket",
-          component: AirTicketView,
+          component: () => import("@/views/air-ticket/AirTicketView.vue"),
         },
       ],
     },

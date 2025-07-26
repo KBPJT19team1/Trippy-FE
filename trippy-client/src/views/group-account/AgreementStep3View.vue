@@ -77,7 +77,7 @@ const onClick = () => {
         />
       </div>
       <AccountNotice
-        class="mt-12 text-center"
+        class="mt-12 text-center w-[19rem]"
         :title="'고객님의 자산을 안전하게 보호하고 전화 금융사기의 피해를 예방하고자 금융거래목적에 대해 질문드립니다.'"
       />
       <YesNoSelector

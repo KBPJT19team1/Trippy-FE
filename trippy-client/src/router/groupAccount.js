@@ -13,7 +13,7 @@ export default [
     name: "group-account-create-step1",
     component: () => import("../views/group-account/AgreementStep1View.vue"),
     meta: {
-      title: "계모임계좌 만들기",
+      title: "모임계좌 만들기",
       bgColor: "white",
     },
   },

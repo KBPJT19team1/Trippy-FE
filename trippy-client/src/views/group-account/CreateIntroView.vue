@@ -17,7 +17,7 @@ import TrippyLogo from "@/assets/svg/trippy-logo.svg";
     <NextButton
       :title="'모임계좌 만들기'"
       :disabled="false"
-      @click="router.push({ name: 'group-account-step1' })"
+      @click="router.push({ name: 'group-account-create-step1' })"
     />
   </div>
 </template>

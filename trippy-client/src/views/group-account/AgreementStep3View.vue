@@ -3,6 +3,7 @@ import NextButton from "@/components/common/NextButton.vue";
 import AccountNotice from "@/components/group-account/AccountNotice.vue";
 import AgreementAccountPassword from "@/components/group-account/AgreementAccountPassword.vue";
 import YesNoSelector from "@/components/group-account/YesNoSelector.vue";
+import router from "@/router";
 import { useGroupAccountStore } from "@/stores/groupAccountStore";
 import { watch, ref, computed } from "vue";
 
@@ -39,16 +40,15 @@ watch([groupAccountPassword, passwordChecked], () => {
   }
 });
 
-watch(allChecked, () => {
-  if (allChecked.value) {
-    groupAccountStore.setGroupAccountInfo(groupAccountPassword.value, groupAccountName.value);
-  }
-});
+const onClick = () => {
+  groupAccountStore.setGroupAccountInfo(groupAccountPassword.value, groupAccountName.value);
+  router.push({ name: "group-account-create-step4" });
+};
 </script>
 
 <template>
   <div class="flex flex-col h-full justify-between">
-    <div class="overflow-scroll [&::-webkit-scrollbar]:hidden">
+    <div class="overflow-scroll px-1 [&::-webkit-scrollbar]:hidden">
       <div class="bg-main-gradient w-full h-40 p-4 rounded-xl">
         <div class="flex gap-2 flex-col items-center justify-center h-full text-white">
           <p class="title2">Trippy</p>
@@ -87,7 +87,7 @@ watch(allChecked, () => {
         v-model="YesNoChecked[i]"
       />
     </div>
-    <NextButton :title="'다음'" :To="'group-account-step4'" :visible="allChecked" />
+    <NextButton :title="'다음'" :disabled="!allChecked" @click="onClick" />
   </div>
 </template>
 

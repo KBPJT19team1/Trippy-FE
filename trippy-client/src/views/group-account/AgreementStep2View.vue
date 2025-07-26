@@ -134,7 +134,7 @@ onMounted(() => {
     <NextButton
       title="다음"
       :disabled="!formValid"
-      @click="router.push({ name: 'group-account-step3' })"
+      @click="router.push({ name: 'group-account-create-step3' })"
     />
   </div>
 </template>

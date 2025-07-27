@@ -92,12 +92,12 @@ watch([isChecked1, isChecked2, isChecked3], () => {
       <div
         :class="[
           'flex items-center w-full h-12 px-1 rounded-xl gap-1',
-          isChecked1 ? 'text-blue-400 bg-blue-200' : 'text-gray-500 bg-blue-100'
-        ]">
+          isChecked1 ? 'text-blue-400 bg-blue-200' : 'text-gray-500 bg-blue-100']"
+        @click="isChecked1 = !isChecked1"
+      >
         <Icon
           :icon="isChecked1 ? 'material-symbols:check-circle-rounded' : 'material-symbols:check-circle-outline-rounded'"
           class="size-7 pl-2 w-9"
-          @click="isChecked1 = !isChecked1"
         />
         <span class="body1 text-gray-600">[필수] 계좌 입∙출금처, 거래메모를 볼게요</span>
       </div>
@@ -161,12 +161,12 @@ watch([isChecked1, isChecked2, isChecked3], () => {
         <div
           :class="[
           'flex items-center w-full h-12 px-1 rounded-xl gap-1',
-          isChecked2 ? 'text-blue-400 bg-blue-200' : 'text-gray-500 bg-blue-100'
-        ]">
+          isChecked2 ? 'text-blue-400 bg-blue-200' : 'text-gray-500 bg-blue-100']"
+          @click="isChecked2 = !isChecked2"
+        >
           <Icon
             :icon="isChecked2 ? 'material-symbols:check-circle-rounded' : 'material-symbols:check-circle-outline-rounded'"
             class="size-7 pl-2 w-9"
-            @click="isChecked2 = !isChecked2"
           />
           <span class="body1 text-gray-600">[필수] 개인신용 정보 수집 ∙ 이용 동의</span>
         </div>
@@ -174,12 +174,12 @@ watch([isChecked1, isChecked2, isChecked3], () => {
         <div
           :class="[
           'flex items-center w-full h-12 px-1 rounded-xl gap-1',
-          isChecked3 ? 'text-blue-400 bg-blue-200' : 'text-gray-500 bg-blue-100'
-        ]">
+          isChecked3 ? 'text-blue-400 bg-blue-200' : 'text-gray-500 bg-blue-100']"
+          @click="isChecked3 = !isChecked3"
+        >
           <Icon
             :icon="isChecked3 ? 'material-symbols:check-circle-rounded' : 'material-symbols:check-circle-outline-rounded'"
             class="size-7 pl-2 w-9"
-            @click="isChecked3 = !isChecked3"
           />
           <span class="body1 text-gray-600">[필수] 개인신용정보 제공 동의</span>
         </div>

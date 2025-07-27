@@ -18,4 +18,13 @@ export default [
     },
     component: () => import("@/views/identification/passport/CaptureGuideView.vue"),
   },
+  {
+    path: "passport/registration",
+    name: "passport/registration",
+    meta: {
+      title: "여권 등록",
+      bgColor: "white",
+    },
+    component: () => import("@/views/identification/passport/RegistrationView.vue"),
+  },
 ];

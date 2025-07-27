@@ -17,6 +17,7 @@ import ExchangeRateListView from "@/views/exchange-rate/ExchangeRateListView.vue
 import ExchangeCurrencySelectView from "@/views/exchange-currency/ExchangeCurrencySelectView.vue";
 import IdView from "@/views/identification/IdView.vue";
 import AirTicketView from "@/views/air-ticket/AirTicketView.vue";
+import travelLog from "./travelLog.js";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -99,6 +100,7 @@ const router = createRouter({
           component: () => import("@/views/MapView.vue"),
         },
         ...GroupAccount,
+        ...travelLog,
       ],
     },
     // TabViewLayout (탭 메뉴 사용하는 뷰)

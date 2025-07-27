@@ -55,7 +55,7 @@ function generateReport(event) {
       </div>
 
       <!-- 리포트 링크 & 인원 수 -->
-      <div class="flex justify-between items-center text-sm">
+      <!-- <div class="flex justify-between items-center text-sm">
         <div
           to="/report"
           class="flex items-center gap-1 hover:underline truncate"
@@ -65,6 +65,23 @@ function generateReport(event) {
           {{ props.isReportGenerated ? "여행 리포트 발행 완료" : "여행 리포트 발행하기" }}
           <Icon icon="streamline:receipt-add" class="w-4 h-4" />
         </div>
+        <span class="text-gray-500 flex items-center">👤 {{ memberCount }}</span>
+      </div> -->
+      <!-- 리포트 링크 & 인원 수 -->
+      <div class="flex justify-between items-center text-sm">
+        <button
+          class="flex items-center gap-1 px-3 py-1 rounded-md transition font-medium cursor-pointer hover:bg-blue-50 focus:outline-none"
+          :class="
+            isReportGenerated
+              ? 'text-blue-600 border border-blue-600'
+              : 'text-gray-600 border border-gray-400'
+          "
+          @click.stop="handleReportClick"
+        >
+          {{ isReportGenerated ? "여행 리포트 발행 완료" : "여행 리포트 발행하기" }}
+          <Icon icon="streamline:receipt-add" class="w-4 h-4" />
+        </button>
+
         <span class="text-gray-500 flex items-center">👤 {{ memberCount }}</span>
       </div>
     </div>

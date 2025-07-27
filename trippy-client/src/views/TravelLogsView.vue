@@ -112,13 +112,13 @@ function handleGroupClick() {
     </div>
 
     <button
-      class="absolute bottom-24 right-5 z-30 bg-blue-500 hover:bg-blue-600 text-white w-14 h-14 rounded-full shadow-lg text-3xl flex items-center justify-center"
+      class="absolute bottom-28 right-5 z-30 bg-blue-500 hover:bg-blue-600 text-white w-14 h-14 rounded-full shadow-lg text-3xl flex items-center justify-center"
       @click="toggleOptions"
     >
       <Icon icon="material-symbols:add-2-rounded" class="w-8 h-8" />
     </button>
     <!-- 옵션 버튼들 -->
-    <div v-if="showOptions" class="absolute bottom-40 right-5 z-40">
+    <div v-if="showOptions" class="absolute bottom-44 right-5 z-40">
       <div
         class="bg-gradient-to-b from-blue-500 to-blue-400 text-white rounded-xl shadow-lg w-36 py-2"
       >

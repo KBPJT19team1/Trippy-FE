@@ -14,7 +14,11 @@ const selectAccountBank = ref("");
 const selectAccount = (account) => {
   selectAccountBank.value = account.bankName;
   selectAccountNumber.value = account.account;
+};
+
+const onClick = () => {
   groupAccountStore.setRepresentativeAccount(selectAccountNumber.value, selectAccountBank.value);
+  router.push({ name: "group-account-create-complete" });
 };
 </script>
 
@@ -31,11 +35,7 @@ const selectAccount = (account) => {
         :accountNumber="selectAccountNumber"
       />
     </div>
-    <NextButton
-      :title="'다음'"
-      :disabled="!selectAccountBank"
-      @click="router.push({ name: 'group-account-create-complete' })"
-    />
+    <NextButton :title="'다음'" :disabled="!selectAccountBank" @click="onClick" />
   </div>
 </template>
 

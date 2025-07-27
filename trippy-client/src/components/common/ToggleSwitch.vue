@@ -2,9 +2,11 @@
 import { ref } from "vue";
 
 const isClicked = ref(false);
+const emits = defineEmits(["click"]);
 
 const toggle = () => {
   isClicked.value = !isClicked.value;
+  emits("click");
 };
 
 const props = defineProps({

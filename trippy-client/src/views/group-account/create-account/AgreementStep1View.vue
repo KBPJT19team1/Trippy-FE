@@ -1,6 +1,6 @@
 <script setup>
 import router from "@/router";
-import { ref, computed, watch } from "vue";
+import { ref, computed } from "vue";
 import TrippyLogo from "@/assets/svg/trippy-logo.svg";
 import AgreementCheck from "@/components/common/AgreementCheck.vue";
 import AgreementItem from "@/components/group-account/AgreementItem.vue";
@@ -28,9 +28,10 @@ const toggleAllCheck = () => {
 };
 
 //이메일 입력 하면 자동으로 pinia에 저장
-watch(email, (newVal) => {
-  groupAccountStore.emailSet(newVal);
-});
+const onClick = () => {
+  groupAccountStore.emailSet(email.value);
+  router.push({ name: "group-account-create-step2" });
+};
 
 // 개별 선택 핸들러
 const toggleItem = (index) => {
@@ -39,23 +40,36 @@ const toggleItem = (index) => {
 </script>
 
 <template>
-  <div class="con">
-    <TrippyLogo class="w-64 mt-30 m-auto mt-[8.5vh]" />
-    <AgreementCheck @click="toggleAllCheck" :class="[!allChecked ? 'bg-gray-400' : 'bg-main-gradient']" class="mt-14"
-      title="전체 동의" />
+  <div class="flex flex-col h-full overflow-hidden justify-between">
+    <div>
+      <div>
+        <TrippyLogo class="w-64 m-auto mt-[4vh]" />
+        <AgreementCheck
+          @click="toggleAllCheck"
+          :class="[!allChecked ? 'bg-gray-400' : 'bg-main-gradient']"
+          class="mt-14"
+          title="전체 동의"
+        />
+      </div>
+      <AgreementItem
+        v-for="(item, index) in agreementStep1"
+        :key="index"
+        :title="item.title"
+        :visible="checkedItems[index]"
+        @click="() => toggleItem(index)"
+      />
+      <EmailInput class="mt-2" v-model="email" />
+      <div class="mt-5">
+        <AccountNotice
+          class="mt-1 caption3 text-gray-400 text-center"
+          v-for="(item, index) in agreementStep2"
+          :key="index"
+          :title="item.title"
+        />
+      </div>
+    </div>
+    <NextButton title="다음" :disabled="!formValid" @click="onClick" />
   </div>
-  <AgreementItem v-for="(item, index) in agreementStep1" :key="index" :title="item.title" :visible="checkedItems[index]"
-    @click="() => toggleItem(index)" />
-  <EmailInput class="mt-2" v-model="email" />
-  <div class="mt-5">
-    <AccountNotice class="mt-1 caption3 text-gray-400 text-center" v-for="(item, index) in agreementStep2" :key="index"
-      :title="item.title" />
-  </div>
-  <NextButton
-    title="다음"
-    :disabled="!formValid"
-    @click="router.push({ name: 'group-account-step2' })"
-  />
 </template>
 
 <style scoped></style>

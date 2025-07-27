@@ -8,7 +8,9 @@ export const useGroupAccountStore = defineStore("groupAccount", () => {
   //모임계좌이름
   const groupAccountName = ref("");
   //모임계좌번호
-  const groupAccountNumber = ref("");
+  const groupAccountNumber = ref("123456");
+  //모임계좌 생성 날짜
+  const groupAccountCreateDate = ref("");
   //모임주 대표계좌 선택
   const representativeAccount = ref("");
   //모임주 대표계좌 은행
@@ -31,6 +33,18 @@ export const useGroupAccountStore = defineStore("groupAccount", () => {
     groupAccountNumber.value = number;
   };
 
+  const setGroupAccountCreateDate = () => {
+    groupAccountCreateDate.value = new Date().toLocaleString("ko-KR", {
+      hour12: false,
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    });
+  };
+
   return {
     email,
     groupAccountPassword,
@@ -38,9 +52,11 @@ export const useGroupAccountStore = defineStore("groupAccount", () => {
     representativeAccount,
     representativeAccountBank,
     groupAccountNumber,
+    groupAccountCreateDate,
     emailSet,
     setGroupAccountInfo,
     setRepresentativeAccount,
     setGroupAccountNumber,
+    setGroupAccountCreateDate,
   };
 });

@@ -45,7 +45,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="text-center subtitle1 mt-5">
+  <div class="text-center subtitle1 mt-5xs">
     <p>
       입출금통장 개설을 위해 <br />
       약관 및 상품설명서를 꼭 확인해 주세요

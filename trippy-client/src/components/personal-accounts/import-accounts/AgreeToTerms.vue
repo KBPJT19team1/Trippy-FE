@@ -21,7 +21,7 @@ watch([isChecked1, isChecked2, isChecked3], () => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-8 overflow-scroll relative">
+  <div class="flex flex-col gap-8 overflow-scroll relative pb-24">
     <div class="flex flex-col gap-4">
       <div class="flex flex-col gap-1">
         <h2 class="title3">정보를 확인하기 위한 동의문이에요</h2>
@@ -91,7 +91,7 @@ watch([isChecked1, isChecked2, isChecked3], () => {
 
       <div
         :class="[
-          'flex items-center w-full h-12 px-1 rounded-xl gap-2',
+          'flex items-center w-full h-12 px-1 rounded-xl gap-1',
           isChecked1 ? 'text-blue-400 bg-blue-200' : 'text-gray-500 bg-blue-100'
         ]">
         <Icon
@@ -160,7 +160,7 @@ watch([isChecked1, isChecked2, isChecked3], () => {
       <div class="flex flex-col gap-1">
         <div
           :class="[
-          'flex items-center w-full h-12 px-1 rounded-xl gap-2',
+          'flex items-center w-full h-12 px-1 rounded-xl gap-1',
           isChecked2 ? 'text-blue-400 bg-blue-200' : 'text-gray-500 bg-blue-100'
         ]">
           <Icon
@@ -173,7 +173,7 @@ watch([isChecked1, isChecked2, isChecked3], () => {
 
         <div
           :class="[
-          'flex items-center w-full h-12 px-1 rounded-xl gap-2',
+          'flex items-center w-full h-12 px-1 rounded-xl gap-1',
           isChecked3 ? 'text-blue-400 bg-blue-200' : 'text-gray-500 bg-blue-100'
         ]">
           <Icon

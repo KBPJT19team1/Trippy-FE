@@ -21,7 +21,7 @@ watch([isChecked1, isChecked2, isChecked3], () => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-8 overflow-scroll">
+  <div class="flex flex-col gap-8 overflow-scroll relative">
     <div class="flex flex-col gap-4">
       <div class="flex flex-col gap-1">
         <h2 class="title3">정보를 확인하기 위한 동의문이에요</h2>
@@ -185,7 +185,7 @@ watch([isChecked1, isChecked2, isChecked3], () => {
         </div>
       </div>
     </div>
-    <div class="w-full mb-[34px]">
+    <div class="fixed bottom-0 left-0 right-0 z-50 w-full max-w-full pb-[34px] px-4 bg-white md:max-w-[375px] md:mx-auto">
       <NextButton
         title="필수 동의하기"
         :disabled="isButtonDisabled"

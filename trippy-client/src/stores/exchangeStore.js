@@ -2,12 +2,14 @@
 import { defineStore } from "pinia";
 import { ref, computed } from "vue";
 import exchangeRatesRaw from "@/_dummy/exchange_dummy.json";
+import { bankAccounts } from "@/_dummy/bankAccounts_dummy.js";
+import { currencyToCountryMap } from "@/assets/currencyToCountryCodes.js";
 
 export const useExchangeStore = defineStore("exchange", () => {
   const exchangeRates = ref(exchangeRatesRaw);
   const loading = ref(false);
 
-  // 수출입은행 현재환율 api 연결 시 사용할 함수.
+  // api 연결 시 사용할 함수.
   const formatDate = (date) => {
     const yyyy = date.getFullYear();
     const mm = String(date.getMonth() + 1).padStart(2, "0");
@@ -23,7 +25,7 @@ export const useExchangeStore = defineStore("exchange", () => {
   // const todayForm = formatDate(today);
   // const yesterdayForm = formatDate(yesterday);
 
-  // (개발용) 다음 날짜로 지정해둠
+  // (개발용) 임시 날짜로 지정해둠
   const todayForm = "20250722";
   const yesterdayForm = "20250721";
 
@@ -42,70 +44,36 @@ export const useExchangeStore = defineStore("exchange", () => {
 
   const getCountryCode = (curUnitRaw) => {
     const curUnit = curUnitRaw.replace(/\(.*\)/, "").trim();
-
-    const map = {
-      USD: "us",
-      JPY: "jp",
-      EUR: "eu",
-      CNY: "cn",
-      HKD: "hk",
-      TWD: "tw",
-      GBP: "gb",
-      AUD: "au",
-      CAD: "ca",
-      CHF: "ch",
-      SEK: "se",
-      NZD: "nz",
-      THB: "th",
-      SGD: "sg",
-      RUB: "ru",
-      INR: "in",
-      MXN: "mx",
-      PHP: "ph",
-      ZAR: "za",
-      TRY: "tr",
-      BRL: "br",
-      MYR: "my",
-      IDR: "id",
-      SAR: "sa",
-      AED: "ae",
-      BHD: "bh",
-      VND: "vn",
-      KZT: "kz",
-      QAR: "qa",
-      EGP: "eg",
-      KWD: "kw",
-      BND: "bn",
-      PKR: "pk",
-      JOD: "jo",
-      CZK: "cz",
-      HUF: "hu",
-      PLN: "pl",
-      DKK: "dk",
-      NOK: "no",
-      BGN: "bg",
-      RON: "ro",
-      HRK: "hr",
-      UAH: "ua",
-      ARS: "ar",
-      CLP: "cl",
-      COP: "co",
-      PEN: "pe",
-      ISK: "is",
-      KRW: "kr",
-      LKR: "lk",
-      NGN: "ng",
-      MAD: "ma",
-      ILS: "il",
-      TND: "tn",
-      XOF: "sn",
-      XAF: "cm",
-      BSD: "bs",
-      DOP: "do",
-    };
-
-    return map[curUnit] || "un";
+    return currencyToCountryMap[curUnit] || "un";
   };
+
+  const selectedCurrencyCode = ref(null);
+
+  const setSelectedCurrencyCode = (code) => {
+    selectedCurrencyCode.value = code;
+  };
+
+  const selectedAccount = ref(null);
+
+  const setSelectedAccount = (account) => {
+    selectedAccount.value = account;
+  };
+
+  const selectedTodayRate = computed(() => {
+    if (!selectedCurrencyCode.value) return null;
+    return todayRates.value.find((item) => item.cur_unit === selectedCurrencyCode.value);
+  });
+
+  const selectedCurrencyName = computed(() => {
+    if (!selectedCurrencyCode.value) return null;
+    const match = todayRates.value.find((item) => item.cur_unit === selectedCurrencyCode.value);
+    return match?.cur_nm || null;
+  });
+
+  const accounts = ref(bankAccounts);
+  const foreignCurrencyAccount = computed(() =>
+    accounts.value.find((acc) => acc.accountType === "외화예금"),
+  );
 
   return {
     exchangeRates,
@@ -117,5 +85,13 @@ export const useExchangeStore = defineStore("exchange", () => {
     yesterdayForm,
     loading,
     formatDate,
+    selectedCurrencyCode,
+    setSelectedCurrencyCode,
+    selectedAccount,
+    setSelectedAccount,
+    selectedTodayRate,
+    selectedCurrencyName,
+    accounts,
+    foreignCurrencyAccount,
   };
 });

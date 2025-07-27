@@ -5,7 +5,6 @@ import DefaultProfile from "@/assets/svg/person.svg";
 
 import DefaultQr from "@/assets/default_qr.png";
 import { computed, ref } from "vue";
-import IdCardUnregistrated from "@/components/identification/IdCardUnregisterd.vue";
 import IdCardUnregisterd from "@/components/identification/IdCardUnregisterd.vue";
 import Toggle from "@/components/identification/Toggle.vue";
 import HeaderNotice from "@/components/identification/HeaderNotice.vue";
@@ -14,8 +13,8 @@ import QrDisplay from "@/components/identification/QrDisplay.vue";
 import FooterInfo from "@/components/identification/FooterInfo.vue";
 import DetailInfo from "@/components/identification/DetailInfo.vue";
 
-const isRegistered = ref(true); // 임시로 고정 설정
-const currentTab = ref("주민등록");
+const isRegistered = ref(false); // 임시로 고정 설정
+const currentTab = ref("여권");
 const showDetail = ref(false);
 const toggleOn = ref(false);
 
@@ -91,7 +90,14 @@ const maskedId = computed(() => {
     </div>
 
     <div v-if="currentTab === '여권'">
-      <h1>여권</h1>
+      <div v-if="!isRegistered">
+        <IdCardUnregisterd
+          v-if="!isRegistered"
+          :image="Idcard"
+          docType="여권"
+          @registerClick="() => console.log('여권 등록 클릭')"
+        />
+      </div>
     </div>
   </div>
 </template>

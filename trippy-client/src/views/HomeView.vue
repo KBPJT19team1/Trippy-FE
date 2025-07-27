@@ -8,7 +8,7 @@ import ExchangeRateItems from "@/components/home/ExchangeRateItems.vue";
 </script>
 
 <template>
-  <main class="w-full flex flex-col gap-8">
+  <main class="w-full h-full flex flex-col gap-8">
     <div class="flex flex-col gap-4">
       <ToggleSwitch label="모임통장 보기" />
       <AccountCard />

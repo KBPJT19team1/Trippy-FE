@@ -1,12 +1,19 @@
 <script setup>
 import { useRouter } from "vue-router";
-import RoundedCard from "@/components/common/RoundedCard.vue";
+import RoundedCard from "@/components/travel-logs/RoundedCard.vue";
 import sampleImage from "@/assets/image.png";
 import emptyImage from "@/assets/travelLogEmpty.png";
 import { Icon } from "@iconify/vue";
-import { computed } from "vue";
+import { computed, ref } from "vue";
 
 const router = useRouter();
+
+const showOptions = ref(false);
+const showGroupModal = ref(false); // 단체 여행 클릭 시 모달
+
+function toggleOptions() {
+  showOptions.value = !showOptions.value;
+}
 
 const travelLogs = [
   {
@@ -56,10 +63,20 @@ function handleClick(id) {
 function handleAddLog() {
   router.push("/new-log"); // 실제 경로에 맞게 수정하세요
 }
+function handleGroupClick() {
+  showOptions.value = false;
+  showGroupModal.value = true;
+}
 </script>
 
 <template>
-  <main class="w-full flex flex-col gap-8">
+  <main class="relative w-full flex flex-col gap-8">
+    <!-- 배경 오버레이 -->
+    <div
+      v-if="showOptions"
+      class="fixed inset-0 bg-black bg-opacity-40 z-20"
+      @click="showOptions = false"
+    ></div>
     <div
       v-if="travelLogs.length === 0"
       class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-0"
@@ -96,9 +113,59 @@ function handleAddLog() {
 
     <button
       class="absolute bottom-24 right-5 z-30 bg-blue-500 hover:bg-blue-600 text-white w-14 h-14 rounded-full shadow-lg text-3xl flex items-center justify-center"
-      @click="handleAddLog"
+      @click="toggleOptions"
     >
       <Icon icon="material-symbols:add-2-rounded" class="w-8 h-8" />
     </button>
+    <!-- 옵션 버튼들 -->
+    <div v-if="showOptions" class="absolute bottom-40 right-5 z-40">
+      <div
+        class="bg-gradient-to-b from-blue-500 to-blue-400 text-white rounded-xl shadow-lg w-36 py-2"
+      >
+        <!-- 수정된 버튼 -->
+        <button
+          class="w-full px-4 py-2 flex items-center gap-2 hover:bg-blue-600"
+          @click="handleGroupClick"
+        >
+          <Icon icon="mdi:account-group" class="w-5 h-5" />
+          <span>단체 여행</span>
+        </button>
+        <div class="border-t border-white opacity-30 mx-2 my-1"></div>
+        <button
+          class="w-full px-4 py-2 flex items-center gap-2 hover:bg-blue-600"
+          @click="router.push('/new-log')"
+        >
+          <Icon icon="mdi:account" class="w-5 h-5" />
+          <span>개인 여행</span>
+        </button>
+      </div>
+    </div>
+    <!-- 단체 여행 모달 -->
+    <div
+      v-if="showGroupModal"
+      class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50"
+    >
+      <div class="bg-white w-80 rounded-xl p-6 shadow-lg text-center">
+        <h2 class="text-lg font-semibold text-black mb-2">모임 계좌를 만들기 전이에요</h2>
+        <p class="text-sm text-gray-600 mb-6">
+          단체 여행 로그를 기록하려면<br />
+          Trippy의 모임 계좌가 필요해요
+        </p>
+        <div class="flex justify-between gap-4">
+          <button
+            class="flex-1 py-2 bg-gray-200 rounded-lg text-gray-800 font-semibold hover:bg-gray-300"
+            @click="showGroupModal = false"
+          >
+            취소
+          </button>
+          <button
+            class="flex-1 py-2 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600"
+            @click="router.push('/group-account/create')"
+          >
+            만들러 가기
+          </button>
+        </div>
+      </div>
+    </div>
   </main>
 </template>

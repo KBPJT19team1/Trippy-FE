@@ -98,6 +98,7 @@ const router = createRouter({
           path: "account-list",
           name: "account-list",
           component: () => import("@/views/AccountListview.vue"),
+          meta: { title: "계좌 목록", bgColor: "wihte" },
         },
         ...GroupAccount,
       ],

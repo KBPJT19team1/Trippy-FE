@@ -2,7 +2,7 @@
 import Idcard from "@/assets/Idcard.png";
 import ActionButtons from "@/components/identification/ActionButtons.vue";
 import DocumentPreview from "@/components/identification/CapturePreview.vue";
-import EditableField from "@/components/identification/EditableField.vue";
+import EditableField from "@/components/identification/EditableInput.vue";
 import { ref } from "vue";
 
 const name = ref("홍길동");

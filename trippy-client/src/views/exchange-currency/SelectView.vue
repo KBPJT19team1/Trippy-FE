@@ -32,7 +32,7 @@ const error = ref("");
     <div v-if="loading">데이터 불러오는 중...</div>
     <div v-else-if="error" class="text-center text-red-500">{{ error }}</div>
 
-    <ul v-else class="divide-y divide-gray-200 flex-1 overflow-auto">
+    <ul v-else class="divide-y divide-gray-200 flex-1 overflow-auto hide-scrollbar">
       <li
         v-for="item in todayRates"
         :key="item.cur_unit"
@@ -64,4 +64,14 @@ const error = ref("");
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+/* 스크롤바 숨기는 css */
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE, Edge */
+  scrollbar-width: none; /* Firefox */
+}
+</style>

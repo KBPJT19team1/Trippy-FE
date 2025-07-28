@@ -14,7 +14,7 @@ const goToHomeView = () => {
 </script>
 
 <template>
-  <div class="flex flex-col h-full justify-center items-center gap-6">
+  <div class="flex flex-col h-full justify-center items-center gap-4 -mt-10">
     <div><TrippyLogo class="w-40 h-auto m-2" /></div>
 
     <div class="text-center title1">
@@ -30,7 +30,6 @@ const goToHomeView = () => {
       </div>
     </div>
   </div>
-
   <div>
     <NextButton title="확인" @click="goToHomeView"></NextButton>
   </div>

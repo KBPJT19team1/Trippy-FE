@@ -6,7 +6,7 @@ import AccountIcon from "@/assets/svg/account-icon.svg";
 import { useAccountStore } from "@/stores/accountStore";
 import { Icon } from "@iconify/vue";
 import { onMounted, ref, watch, nextTick, computed } from "vue";
-import CreateAccountButton from "@/components/account/CreateAccountButton.vue";
+import QuickAddButton from "@/components/buttons/QuickAddButton.vue";
 
 const accountStore = useAccountStore();
 const showGroupAccount = ref(false);
@@ -69,16 +69,15 @@ watch(showGroupAccount, async () => {
       </div>
     </div>
 
-    <div
-      class="flex justify-end mt-3"
-      v-if="accountList.length === 0"
-      @click="
-        showGroupAccount
-          ? router.push({ name: 'group-account-create' })
-          : router.push({ name: 'import-personal-accounts' })
       "
-    >
-      <CreateAccountButton />
+    <div class="flex justify-end mt-3" v-if="accountList.length === 0">
+      <QuickAddButton
+        @click="
+          showGroupAccount
+            ? router.push({ name: 'group-account-create' })
+            : router.push({ name: 'import-personal-accounts' })
+        "
+      />
     </div>
   </div>
 </template>

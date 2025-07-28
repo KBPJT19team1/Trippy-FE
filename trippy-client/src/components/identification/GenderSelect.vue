@@ -17,7 +17,7 @@ const onChange = (event) => {
     <select
       :value="modelValue"
       @change="onChange"
-      class="w-full border rounded-md px-3 py-2 text-gray-800 body2 bg-white appearance-none"
+      class="w-full h-[3.25rem] border-[1px] border-gray-300 rounded-xl text-gray-400 body1 px-4 appearance-none"
     >
       <option value="M">M</option>
       <option value="F">F</option>

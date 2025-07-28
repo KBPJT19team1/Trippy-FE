@@ -18,15 +18,15 @@ const goToHomeView = () => {
     <div><TrippyLogo class="w-40 h-auto m-2" /></div>
 
     <div class="text-center title1">
-      <p>{{ inputForeignAmount }} {{ selectedCurrencyCode }}</p>
+      <p>{{ inputForeignAmount.toLocaleString() }} {{ selectedCurrencyCode }}</p>
       <p>환전이 완료되었습니다.</p>
     </div>
 
     <div class="flex justify-between text-gray-500 gap-6">
       <p>환전 금액</p>
       <div class="flex flex-row">
-        <p>{{ inputKrwAmount }} 원 →</p>
-        <p class="ml-1">{{ inputForeignAmount }}{{ selectedCurrencyCode }}</p>
+        <p>{{ Number(inputKrwAmount).toLocaleString() }} 원 →</p>
+        <p class="ml-1">{{ inputForeignAmount.toLocaleString() }}{{ selectedCurrencyCode }}</p>
       </div>
     </div>
   </div>

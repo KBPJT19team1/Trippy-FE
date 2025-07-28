@@ -68,9 +68,7 @@ onMounted(async () => {
       />
     </div>
 
-    <div>
-      <NextButton :title="'다음'" :disabled="!memberChecked" @click="onClick" />
-    </div>
+    <NextButton :title="'다음'" :disabled="!memberChecked" @click="onClick" />
   </div>
 </template>
 

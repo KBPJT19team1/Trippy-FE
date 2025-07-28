@@ -52,6 +52,16 @@ const router = createRouter({
           },
         },
         {
+          path: "/payment/settings/:id/nickname",
+          name: "CardNickname",
+          component: () => import("@/views/payment/CardNicknameView.vue"),
+          meta: {
+            title: "별명 설정",
+            bgColor: "white",
+          },
+        },
+
+        {
           path: "travel-logs",
           name: "travel-logs",
           component: TravelLogsView,

@@ -68,11 +68,7 @@ const toggleItem = (index) => {
         />
       </div>
     </div>
-    <NextButton
-      title="다음"
-      :disabled="!formValid"
-      @click="router.push({ name: 'group-account-step2' })"
-    />
+    <NextButton title="다음" :disabled="!formValid" @click="onClick" />
   </div>
 </template>
 

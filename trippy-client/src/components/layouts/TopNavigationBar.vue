@@ -11,7 +11,7 @@ const pageTitle = computed(() => route.meta.title || "");
 </script>
 
 <template>
-  <div class="bg-white h-[100px] w-full absolute fixed top-0">
+  <div class="bg-white h-[100px] w-full fixed top-0 z-50 md:max-w-[375px] md:mx-auto">
     <div
       v-if="pageTitle === '홈'"
       class="h-[56px] px-4 mt-11 flex align-center items-center justify-between"

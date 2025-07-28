@@ -75,9 +75,9 @@
   }
 
   .button1 {
-    @apply text-md font-bold;
+    @apply text-md font-medium;
   }
   .button2 {
-    @apply text-sm font-bold;
+    @apply text-sm font-medium;
   }
 }

@@ -68,9 +68,18 @@ const router = createRouter({
         {
           path: "/personal-accounts/import",
           name: "import-personal-accounts",
-          component: ImportAccountView,
+          component: () => import("@/views/personal-accounts/ImportAccountView.vue"),
           meta: {
             title: "계좌 불러오기",
+            bgColor: "white",
+          },
+        },
+        {
+          path: "/personal-accounts/detail",
+          name: "personal-accounts-detail",
+          component: () => import("@/views/personal-accounts/DetailView.vue"),
+          meta: {
+            title: "계좌 내역",
             bgColor: "white",
           },
         },

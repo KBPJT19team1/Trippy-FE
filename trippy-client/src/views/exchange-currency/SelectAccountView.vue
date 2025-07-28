@@ -37,7 +37,7 @@ const goToAmountView = () => {
         <ul class="mx-3">
           <h3 class="subtitle1 gap-8">내 계좌</h3>
           <li
-            class="flex gap-4 cursor-pointer my-2"
+            class="flex gap-4 cursor-pointer my-5"
             v-for="account in bankAccounts"
             :key="account.accountNumber"
             @click="handleSelect(account)"

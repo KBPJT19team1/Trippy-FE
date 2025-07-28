@@ -100,16 +100,15 @@ const goToFinishView = () => {
   <div class="flex flex-col h-full justify-between">
     <div>
       <div class="w-full flex flex-col items-center p-4">
-        <div class="flex items-center gap-10">
-          <p class="subtitle2">
+        <div class="flex flex-wrap w-full items-center justify-between">
+          <p class="subtitle2 break-words">
             1 {{ selectedCurrencyCode }} = {{ selectedTodayRate.deal_bas_r }} 원
           </p>
-          <div class="flex text-gray-500 items-center">
-            <a class="subtitle2">원하는 환율에 사기</a>
+          <div class="flex text-gray-500 break-words items-center">
+            <a class="subtitle2"> 원하는 환율에 사기</a>
             <Icon icon="ic:round-navigate-next" class="w-8 h-auto"></Icon>
           </div>
         </div>
-        <br />
 
         <div
           class="flex justify-between w-full h-20 bg-gray-200 rounded-xl"

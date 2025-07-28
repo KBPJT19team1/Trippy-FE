@@ -11,6 +11,8 @@ import MenuView from "@/views/MenuView.vue";
 import GroupAccount from "./groupAccount.js";
 
 import ImportAccountView from "@/views/personal-accounts/ImportAccountView.vue";
+import IdView from "@/views/identification//resident-card/ResidentCardView.vue";
+import travelLog from "./travelLog.js";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -118,6 +120,7 @@ const router = createRouter({
           component: () => import("@/views/MapView.vue"),
         },
         ...GroupAccount,
+        ...travelLog,
       ],
     },
     // TabViewLayout (탭 메뉴 사용하는 뷰)
@@ -129,7 +132,7 @@ const router = createRouter({
         {
           path: "identification",
           name: "identification",
-          component: () => import("@/views/identification/resident-card/ResidentCardView.vue"),
+          component: IdView,
           meta: { tabs: ["주민등록", "여권"] },
         },
         {

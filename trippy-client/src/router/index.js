@@ -12,7 +12,6 @@ import MenuView from "@/views/MenuView.vue";
 import identification from "@/router/identification.js";
 import GroupAccount from "./groupAccount.js";
 
-import ImportAccountView from "@/views/personal-accounts/ImportAccountView.vue";
 import IdView from "@/views/identification//resident-card/ResidentCardView.vue";
 import travelLog from "./travelLog.js";
 

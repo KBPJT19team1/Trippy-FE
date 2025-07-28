@@ -4,16 +4,14 @@ const logoUrl = new URL("@/assets/svg/trippy.svg", import.meta.url).href;
 </script>
 
 <template>
-  <div class="w-[23.4375rem] h-[20rem] flex justify-center overflow-hidden">
-    <div class="flex flex-col items-center justify-end mb-0">
-      <!-- 비행기 이미지 -->
-      <img
-        :src="planeUrl"
-        class="w-[4vw] h-auto overflow-hidden -mb-8 -mr-4 z-[2] animate-[flyInOut_4s_ease-in-out_infinite] origin-center"
-      />
-      <!-- 텍스트 로고 -->
-      <img :src="logoUrl" class="mt-[1.75rem] w-[12.5rem]" />
-    </div>
+  <div class="flex flex-col items-center justify-end mb-0">
+    <!-- 비행기 이미지 -->
+    <img
+      :src="planeUrl"
+      class="w-[4vw] h-auto overflow-hidden -mb-8 -mr-4 z-[2] animate-[flyInOut_4s_ease-in-out_infinite] origin-center"
+    />
+    <!-- 텍스트 로고 -->
+    <img :src="logoUrl" class="mt-[1.75rem] w-[12.5rem]" />
   </div>
 </template>
 

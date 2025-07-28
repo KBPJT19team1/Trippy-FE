@@ -94,11 +94,6 @@ const router = createRouter({
           component: () => import("@/views/exchange-currency/InputAmountView.vue"),
           meta: { title: "환전", bgColor: "white" },
         },
-        {
-          path: "map",
-          name: "map",
-          component: () => import("@/views/MapView.vue"),
-        },
         ...GroupAccount,
         ...travelLog,
       ],

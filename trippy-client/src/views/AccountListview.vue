@@ -63,7 +63,7 @@ watch(showGroupAccount, async () => {
           v-for="(account, i) in accountList"
           :key="i"
           :account="account"
-          :ifGroupAccount="showGroupAccount"
+          :isGroupAccount="showGroupAccount"
           class="my-3"
         />
       </div>

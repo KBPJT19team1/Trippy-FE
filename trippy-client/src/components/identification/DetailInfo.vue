@@ -5,6 +5,9 @@ const props = defineProps({
   englishName: { type: String, default: "" },
   maskedId: { type: String, default: "" }, // 마스킹된 주민등록번호
   idNumber: { type: String, default: "" }, // 원래 주민등록번호
+  nation: { type: String, default: "" },
+  birthDate: { type: String, default: "" },
+  gender: { type: String, default: "" },
   address: { type: String, default: "" }, // 주소
   showDetail: { type: Boolean, default: false }, // 상세보기 여부
 });
@@ -28,8 +31,8 @@ const props = defineProps({
       <!-- 주소 -->
       <div class="mt-9">
         <p v-if="currentTab === '주민등록'" class="body2">{{ address }}</p>
-        <p v-if="currentTab === '여권'" class="body1">2001.02.16 / FEMALE</p>
-        <p v-if="currentTab === '여권'" class="body1">REPUBLIC OF KOREA</p>
+        <p v-if="currentTab === '여권'" class="body1">{{ birthDate }} / {{ gender }}</p>
+        <p v-if="currentTab === '여권'" class="body1">{{ nation }}</p>
       </div>
     </div>
   </div>

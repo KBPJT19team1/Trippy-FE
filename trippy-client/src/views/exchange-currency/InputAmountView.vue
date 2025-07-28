@@ -57,7 +57,7 @@ watch(krwAmount, (newVal) => {
   foreignAmount.value = (krw / rate).toFixed(2);
 
   inputKrwAmount.value = parseFloat(newVal).toFixed(2);
-  inputForeignAmount.value = parseFloat(foreignAmount.value).toFixed(2);
+  inputForeignAmount.value = parseFloat(foreignAmount.value);
 });
 
 watch(foreignAmount, (newVal) => {
@@ -74,8 +74,19 @@ watch(foreignAmount, (newVal) => {
   }
   updatingFromForeign = true;
   krwAmount.value = (foreign * rate).toFixed(0);
-  inputForeignAmount.value = parseFloat(newVal);
+  inputForeignAmount.value = parseFloat(newVal).toFixed(2);
   inputKrwAmount.value = parseFloat(krwAmount.value);
+});
+
+// 기존 잔액이 없는 외화통화에 대한 환전 시 잔액 0 데이터 추가
+watch(selectedCurrencyCode, (newCode) => {
+  if (
+    foreignCurrencyAccount.value?.accountType === "외화예금" &&
+    foreignCurrencyAccount.value.balance &&
+    foreignCurrencyAccount.value.balance[newCode] === undefined
+  ) {
+    foreignCurrencyAccount.value.balance[newCode] = 0;
+  }
 });
 
 const router = useRouter();
@@ -106,7 +117,8 @@ const goToFinishView = () => {
           <div class="my-auto ml-5">
             <p class="subtitle2">{{ selectedCurrencyName }}</p>
             <p class="whitespace-nowrap">
-              잔액 : {{ foreignCurrencyAccount.balance }} {{ selectedCurrencyCode }}
+              잔액 : {{ foreignCurrencyAccount.balance[selectedCurrencyCode] || 0 }}
+              {{ selectedCurrencyCode }}
             </p>
           </div>
           <div class="flex gap-2 my-auto mr-5">

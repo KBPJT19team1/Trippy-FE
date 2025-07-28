@@ -1,10 +1,8 @@
 <script setup>
 import { useExchangeStore } from "@/stores/exchangeStore";
-import { storeToRefs } from "pinia";
 import { useRouter } from "vue-router";
 import NextButton from "@/components/common/NextButton.vue";
 import TrippyLogo from "@/assets/svg/trippy-logo.svg";
-import { Icon } from "@iconify/vue";
 
 const exchangeStore = useExchangeStore();
 const { inputForeignAmount, inputKrwAmount, selectedCurrencyCode } = exchangeStore;
@@ -14,13 +12,16 @@ const goToHomeView = () => {
   router.push("/");
 };
 </script>
+
 <template>
   <div class="flex flex-col h-full justify-center items-center gap-6">
     <div><TrippyLogo class="w-40 h-auto m-2" /></div>
+
     <div class="text-center title1">
       <p>{{ inputForeignAmount }} {{ selectedCurrencyCode }}</p>
       <p>환전이 완료되었습니다.</p>
     </div>
+
     <div class="flex justify-between text-gray-500 gap-6">
       <p>환전 금액</p>
       <div class="flex flex-row">

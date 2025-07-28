@@ -6,12 +6,21 @@ import PayIcon from "@/assets/svg/payment-icon.svg";
 import LogIcon from "@/assets/svg/log-icon.svg";
 
 const route = useRoute();
-const hiddenPrefixes = ["/group-account", "/personal-accounts", "/check/tickets", "/exchange"];
+const hiddenPrefixes = [
+  "/group-account",
+  "/personal-accounts",
+  "/check/tickets",
+  "/check/bouchers",
+  "/exchange",
+];
 const isHidden = computed(() => hiddenPrefixes.some((prefix) => route.path.startsWith(prefix)));
 </script>
 
 <template>
-  <div v-if="!isHidden" class="bg-white h-[90px] w-full fixed bottom-0 flex justify-center md:max-w-[375px] md:mx-auto">
+  <div
+    v-if="!isHidden"
+    class="bg-white h-[90px] w-full fixed bottom-0 flex justify-center md:max-w-[375px] md:mx-auto"
+  >
     <div class="h-[56px] mb-[34px] flex align-center items-center gap-14">
       <RouterLink to="/">
         <div class="text-gray-400 flex flex-col items-center hover:text-gray-600">

@@ -8,8 +8,6 @@ import PaymentView from "@/views/PaymentView.vue";
 import TravelLogsView from "@/views/TravelLogsView.vue";
 import MenuView from "@/views/MenuView.vue";
 
-import AirTicketView from "@/views/air-ticket/AirTicketView.vue";
-
 import GroupAccount from "./groupAccount.js";
 
 import ImportAccountView from "@/views/personal-accounts/ImportAccountView.vue";
@@ -120,6 +118,12 @@ const router = createRouter({
           name: "AirTicket",
           component: () => import("@/views/air-ticket/AirTicketView.vue"),
           meta: { title: "항공권 내역", tabs: ["이용전", "이용후"] },
+        },
+        {
+          path: "bouchers",
+          name: "bouchers",
+          component: () => import("@/views/boucher/BoucherView.vue"),
+          meta: { title: "예약 내역", tabs: ["숙소", "관광"] },
         },
       ],
     },

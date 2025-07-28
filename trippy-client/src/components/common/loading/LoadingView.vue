@@ -19,6 +19,8 @@ onMounted(() => {
 <template>
   <div class="flex flex-col h-full items-center justify-center gap-8 pb-2">
     <OnLoading />
-    <p class="body1">{{ props.description }}</p>
+    <div class="flex items-center justify-center h-9 bg-gray-500 rounded-full px-12">
+      <p class="caption1 text-white">{{ props.description }}</p>
+    </div>
   </div>
 </template>

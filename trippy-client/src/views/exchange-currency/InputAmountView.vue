@@ -5,6 +5,7 @@ import { storeToRefs } from "pinia";
 import { Icon } from "@iconify/vue";
 import triangle from "@/assets/svg/triangle.svg";
 import NextButton from "@/components/common/NextButton.vue";
+import { useRouter } from "vue-router";
 
 const accountStore = useExchangeStore();
 
@@ -14,6 +15,8 @@ const {
   selectedTodayRate,
   selectedCurrencyName,
   foreignCurrencyAccount,
+  inputForeignAmount,
+  inputKrwAmount,
 } = storeToRefs(accountStore);
 
 // div 부분 영역 클릭해도 입력칸 활성화되는 코드
@@ -34,6 +37,9 @@ const krwAmount = ref("");
 let updatingFromForeign = false;
 let updatingFromKrw = false;
 
+inputForeignAmount.value = foreignAmount.value;
+inputKrwAmount.value = krwAmount.value;
+
 watch(krwAmount, (newVal) => {
   if (updatingFromForeign) {
     updatingFromForeign = false;
@@ -49,6 +55,9 @@ watch(krwAmount, (newVal) => {
   }
   updatingFromKrw = true;
   foreignAmount.value = (krw / rate).toFixed(2);
+
+  inputKrwAmount.value = parseFloat(newVal).toFixed(2);
+  inputForeignAmount.value = parseFloat(foreignAmount.value).toFixed(2);
 });
 
 watch(foreignAmount, (newVal) => {
@@ -65,7 +74,14 @@ watch(foreignAmount, (newVal) => {
   }
   updatingFromForeign = true;
   krwAmount.value = (foreign * rate).toFixed(0);
+  inputForeignAmount.value = parseFloat(newVal);
+  inputKrwAmount.value = parseFloat(krwAmount.value);
 });
+
+const router = useRouter();
+const goToFinishView = () => {
+  router.push("/exchange-currency-finish");
+};
 </script>
 
 <template>
@@ -129,7 +145,7 @@ watch(foreignAmount, (newVal) => {
       </div>
     </div>
     <div>
-      <next-button title="확인" @click="goToAmountView"></next-button>
+      <next-button title="확인" @click="goToFinishView"></next-button>
     </div>
   </div>
 </template>

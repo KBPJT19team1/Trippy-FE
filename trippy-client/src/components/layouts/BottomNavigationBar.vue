@@ -6,10 +6,12 @@ import PayIcon from "@/assets/svg/payment-icon.svg";
 import LogIcon from "@/assets/svg/log-icon.svg";
 
 const route = useRoute();
+
 const hiddenPrefixes = [
   "/group-account",
   "/personal-accounts",
   "/check/tickets",
+  "/payment/settings",
   "/check/bouchers",
   "/exchange",
 ];

@@ -94,6 +94,11 @@ const router = createRouter({
           name: "map",
           component: () => import("@/views/MapView.vue"),
         },
+        {
+          path: "account-list",
+          name: "account-list",
+          component: () => import("@/views/AccountListview.vue"),
+        },
         ...GroupAccount,
       ],
     },

@@ -54,7 +54,7 @@ const goToAmountView = () => {
       </div>
     </div>
 
-    <next-button title="다음" @click="goToAmountView" :disabled="!selectedAccount"></next-button>
+    <NextButton title="다음" @click="goToAmountView" :disabled="!selectedAccount"></NextButton>
   </div>
 </template>
 

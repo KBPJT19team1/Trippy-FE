@@ -76,7 +76,7 @@ watch(foreignAmount, (newVal) => {
   updatingFromForeign = true;
   krwAmount.value = (foreign * rate).toFixed(0);
   inputForeignAmount.value = parseFloat(newVal).toFixed(2);
-  inputKrwAmount.value = parseFloat(krwAmount.value);
+  inputKrwAmount.value = parseFloat(krwAmount.value).toFixed(2);
 });
 
 // 기존 잔액이 없는 외화통화에 대한 환전 시 잔액 0 데이터 추가
@@ -126,7 +126,12 @@ const goToFinishView = () => {
               ref="foreignInputRef"
               type="text"
               v-model="foreignAmount"
-              @input="foreignAmount = foreignAmount.replace(/[^0-9]/g, '')"
+              @input="
+                foreignAmount = foreignAmount
+                  .replace(/[^0-9.]/g, '')
+                  .replace(/^0+(?=\d)/, '')
+                  .replace(/(\..*?)\..*/g, '$1')
+              "
               class="bg-transparent w-full sm:w-[6rem] text-right"
             />
             <p>{{ parseCurrencyCode(selectedCurrencyCode) }}</p>
@@ -148,7 +153,12 @@ const goToFinishView = () => {
               ref="krwInputRef"
               type="text"
               v-model="krwAmount"
-              @input="krwAmount = krwAmount.replace(/[^0-9]/g, '')"
+              @input="
+                krwAmount = krwAmount
+                  .replace(/[^0-9.]/g, '')
+                  .replace(/^0+(?=\d)/, '')
+                  .replace(/(\..*?)\..*/g, '$1')
+              "
               class="bg-transparent w-full sm:w-[6rem] text-right"
             />
             <p>KRW</p>

@@ -7,7 +7,7 @@ const props = defineProps({
     type: Object,
     required: true,
   },
-  ifGroupAccount: Boolean,
+  isGroupAccount: Boolean,
 });
 </script>
 
@@ -26,7 +26,7 @@ const props = defineProps({
 
     <div class="flex flex-col justify-end">
       <div class="flex gap-2 text-white">
-        <div class="flex items-center caption3" v-if="props.ifGroupAccount">
+        <div class="flex items-center caption3" v-if="props.isGroupAccount">
           <p>모으기</p>
           <Icon icon="material-symbols:arrow-back-ios-new-rounded" class="rotate-180" />
         </div>

@@ -10,7 +10,7 @@ const props = defineProps({
 const emit = defineEmits(["update:modelValue", "next"]);
 
 const handleClick = () => {
-  // SMS 인증 성공시
+  // 수행 성공 시
   if (props.isSuccess) {
     emit("update:modelValue", false);
     emit("next");

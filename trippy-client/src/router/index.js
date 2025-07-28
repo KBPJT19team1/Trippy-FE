@@ -7,15 +7,7 @@ import HomeView from "@/views/HomeView.vue";
 import PaymentView from "@/views/payment/PaymentView.vue";
 import TravelLogsView from "@/views/TravelLogsView.vue";
 import MenuView from "@/views/MenuView.vue";
-import MapView from "@/views/MapView.vue";
 
-import IdCaptureGuideView from "@/views/identification/IdCaptureGuideView.vue";
-import IdRegistrationView from "@/views/identification/IdRegistrationView.vue";
-
-import ExchangeRateListView from "@/views/exchange-rate/ExchangeRateListView.vue";
-import ExchangeCurrencySelectView from "@/views/exchange-currency/ExchangeCurrencySelectView.vue";
-
-import IDView from "@/views/identification/IdView.vue";
 import AirTicketView from "@/views/air-ticket/AirTicketView.vue";
 
 import GroupAccount from "./groupAccount.js";
@@ -85,27 +77,41 @@ const router = createRouter({
         {
           path: "identification/guide",
           name: "identification/guide",
-          component: IdCaptureGuideView,
+          component: () => import("@/views/identification/resident-card/CaptureGuideView.vue"),
         },
         {
           path: "identification/registration",
           name: "identification/registration",
-          component: IdRegistrationView,
+          component: () => import("@/views/identification/resident-card/RegistrationView.vue"),
         },
         {
           path: "exchange-rate",
           name: "ExchangeRate",
-          component: ExchangeRateListView,
+          component: () => import("@/views/exchange-rate/ExchangeRateListView.vue"),
+          meta: { title: "환율", bgColor: "white" },
         },
         {
           path: "exchange-currency",
           name: "ExchangeCurrency",
-          component: ExchangeCurrencySelectView,
+          component: () => import("@/views/exchange-currency/SelectView.vue"),
+          meta: { title: "환전", bgColor: "white" },
+        },
+        {
+          path: "exchange-currency-account",
+          name: "ExchangeCurrencySelectAccount",
+          component: () => import("@/views/exchange-currency/SelectAccountView.vue"),
+          meta: { title: "환전", bgColor: "white" },
+        },
+        {
+          path: "exchange-currency-amount",
+          name: "ExchangeCurrencyInputAmount",
+          component: () => import("@/views/exchange-currency/InputAmountView.vue"),
+          meta: { title: "환전", bgColor: "white" },
         },
         {
           path: "map",
           name: "map",
-          component: MapView,
+          component: () => import("@/views/MapView.vue"),
         },
         ...GroupAccount,
       ],
@@ -119,13 +125,14 @@ const router = createRouter({
         {
           path: "identification",
           name: "identification",
-          component: IDView,
+          component: () => import("@/views/identification/resident-card/ResidentCardView.vue"),
           meta: { tabs: ["주민등록", "여권"] },
         },
         {
           path: "tickets",
           name: "AirTicket",
-          component: AirTicketView,
+          component: () => import("@/views/air-ticket/AirTicketView.vue"),
+          meta: { title: "항공권 내역", tabs: ["이용전", "이용후"] },
         },
       ],
     },

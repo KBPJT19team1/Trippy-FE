@@ -6,12 +6,15 @@ import SecondStep from "@/components/personal-accounts/import-accounts/SecondSte
 import ThirdStep from "@/components/personal-accounts/import-accounts/ThirdStep.vue";
 import FourthStep from "@/components/personal-accounts/import-accounts/AgreeToTerms.vue";
 import PasswordInput from "@/components/common/inputs/PasswordInput.vue";
+import LoadingView from "@/components/common/loading/LoadingView.vue";
 import ChooseAccounts from "@/components/personal-accounts/import-accounts/SelectAccounts.vue";
 
-const views = [FirstStep, SecondStep, ThirdStep, FourthStep, PasswordInput, ChooseAccounts];
+const views = [FirstStep, SecondStep, ThirdStep, FourthStep, PasswordInput, LoadingView, ChooseAccounts];
 const currentIndex = ref(5);
 
 const currentView = computed(() => views[currentIndex.value]);
+
+const loadingDescription = "계좌 목록을 불러오고 있습니다.";
 
 function goNext() {
   if (currentIndex.value < views.length - 1) {
@@ -22,6 +25,10 @@ function goNext() {
 
 <template>
   <main class="w-full bg-white h-full">
-    <component :is="currentView" @next="goNext" />
+    <component
+      :is="currentView"
+      @next="goNext"
+      v-bind="currentView === LoadingView ? { description: loadingDescription } : {}"
+    />
   </main>
 </template>

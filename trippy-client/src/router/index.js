@@ -88,7 +88,7 @@ const router = createRouter({
         {
           path: "/personal-accounts/detail",
           name: "personal-accounts-detail",
-          component: () => import("@/views/personal-accounts/DetailView.vue"),
+          component: () => import("@/views/personal-accounts/AccountDetailView.vue"),
           meta: {
             title: "계좌 내역",
             bgColor: "white",

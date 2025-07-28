@@ -30,7 +30,7 @@ watch(showGroupAccount, async () => {
 </script>
 
 <template>
-  <div class="flex flex-col justify-between h-full">
+  <div class="flex flex-col justify-between h-full w-full">
     <div class="flex justify-between items-center mb-3">
       <ToggleSwitch :label="'모임통장 보기'" @click="showGroupAccount = !showGroupAccount" />
       <div

@@ -167,7 +167,7 @@ const goToFinishView = () => {
       </div>
     </div>
     <div>
-      <next-button title="확인" @click="goToFinishView"></next-button>
+      <NextButton title="확인" @click="goToFinishView"></NextButton>
     </div>
   </div>
 </template>

@@ -10,7 +10,7 @@ const onClick = () => {
 </script>
 
 <template>
-  <div class="bg-main-gradient w-[4rem] h-[4rem] rounded-[100%] flex items-center justify-center">
+  <div class="bg-main-gradient w-[4rem] h-[4rem] rounded-full flex items-center justify-center">
     <button @click="onClick">
       <Icon icon="material-symbols:add-2-rounded" class="size-10 text-white" />
     </button>

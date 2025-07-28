@@ -56,7 +56,7 @@ const error = ref("");
             "
             class="p-2"
           >
-            <Icon class="right-6 w-[2vw] h-auto text-gray-400" icon="material-symbols:check"></Icon>
+            <Icon class="right-6 w-6 h-6 text-gray-400" icon="material-symbols:check"></Icon>
           </button>
         </div>
       </li>

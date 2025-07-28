@@ -1,7 +1,8 @@
 <script setup>
-import { RouterLink, useRoute } from "vue-router";
-import { computed } from "vue";
+import { RouterLink } from "vue-router";
 import { Icon } from "@iconify/vue";
+import { useRoute } from "vue-router";
+import { computed } from "vue";
 import PayIcon from "@/assets/svg/payment-icon.svg";
 import LogIcon from "@/assets/svg/log-icon.svg";
 
@@ -11,8 +12,9 @@ const hiddenPrefixes = [
   "/group-account",
   "/personal-accounts",
   "/check/tickets",
-  "/exchange",
   "/payment/settings",
+  "/check/bouchers",
+  "/exchange",
 ];
 const isHidden = computed(() => hiddenPrefixes.some((prefix) => route.path.startsWith(prefix)));
 </script>

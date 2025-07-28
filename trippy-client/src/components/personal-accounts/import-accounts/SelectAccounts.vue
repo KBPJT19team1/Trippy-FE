@@ -1,8 +1,8 @@
 <script setup>
 import { ref, defineEmits, computed } from "vue";
 
-import { Icon } from "@iconify/vue";
 import { bankAccounts } from "@/_dummy/bankAccounts_dummy.js";
+import SelectAccountItem from "@/components/personal-accounts/SelectAccountItem.vue";
 import NextButton from "@/components/common/NextButton.vue";
 
 const emit = defineEmits(["next"]);
@@ -34,19 +34,8 @@ const handleClick = () => {
     <div class="flex flex-col gap-3 overflow-scroll mb-28">
       <div
         v-for="(item, index) in accountsData"
-        @click="() => toggleCheck(index)"
-        class="flex items-center justify-between p-4 bg-blue-100 rounded-xl active:bg-gray-200">
-        <div class="flex items-center gap-4">
-          <img :src="item.logo" class="size-9 bg-gray-100 rounded-full" />
-          <div>
-            <h3 class="subtitle1">{{ item.accountType }}</h3>
-            <p class="body1">{{ item.bankName }} {{ item.accountNumber }}</p>
-          </div>
-        </div>
-        <Icon
-          :icon="item.isChecked ? 'material-symbols:check-circle-rounded' : 'material-symbols:check-circle-outline-rounded'"
-          :class="['size-9', item.isChecked ? 'text-blue-400' : 'text-gray-400']"
-        />
+        @click="() => toggleCheck(index)">
+        <SelectAccountItem :data="item" />
       </div>
     </div>
     <div class="fixed bottom-0 left-0 right-0 z-50 w-full max-w-full pt-4 pb-[34px] px-4 bg-white md:max-w-[375px] md:mx-auto">

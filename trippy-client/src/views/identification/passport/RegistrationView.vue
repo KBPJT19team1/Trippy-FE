@@ -48,9 +48,7 @@ const passportId = ref("M12345678");
       <GenderSelect class="flex-1" label="성별" v-model="gender" />
     </div>
 
-    <div>
-      <CountrySelect :label="국적" v-model="nationality" />
-    </div>
+    <CountrySelect :label="국적" v-model="nationality" />
 
     <EditableField
       label="여권번호"

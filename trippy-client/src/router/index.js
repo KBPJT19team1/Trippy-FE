@@ -9,8 +9,8 @@ import PaymentView from "@/views/PaymentView.vue";
 import TravelLogsView from "@/views/TravelLogsView.vue";
 import MenuView from "@/views/MenuView.vue";
 
-import GroupAccount from "./groupAccount.js";
-import identification from "./identification.js";
+import GroupAccount from "@/router/groupAccount.js";
+import identification from "@/router/identification.js";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

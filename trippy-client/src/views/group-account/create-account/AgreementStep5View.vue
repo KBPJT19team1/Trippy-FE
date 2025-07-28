@@ -45,7 +45,7 @@ const handleNext = () => {
       v-model="isOpenModal"
       :title="modalTitle"
       :isSuccess="isCodeValid"
-      @next="router.push({ name: 'group-account-step6' })"
+      @next="router.push({ name: 'group-account-create-step6' })"
     />
   </div>
 </template>

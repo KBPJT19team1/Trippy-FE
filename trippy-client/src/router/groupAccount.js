@@ -1,42 +1,74 @@
 export default [
   {
-    path: "group-account",
-    name: "group-account-intro",
-    component: () => import("../views/group-account/CreateIntroView.vue"),
+    path: "/group-account/create",
+    name: "group-account-create",
+    component: () => import("../views/group-account/create-account/CreateIntroView.vue"),
+    meta: {
+      title: "모임계좌 만들기",
+      bgColor: "white",
+    },
   },
   {
-    path: "group-account/step1",
-    name: "group-account-step1",
-    component: () => import("../views/group-account/AgreementStep1View.vue"),
+    path: "/group-account/create/step1",
+    name: "group-account-create-step1",
+    component: () => import("../views/group-account/create-account/AgreementStep1View.vue"),
+    meta: {
+      title: "모임계좌 만들기",
+      bgColor: "white",
+    },
   },
   {
-    path: "group-account/step2",
-    name: "group-account-step2",
-    component: () => import("../views/group-account/AgreementStep2View.vue"),
+    path: "/group-account/create/step2",
+    name: "group-account-create-step2",
+    component: () => import("../views/group-account/create-account/AgreementStep2View.vue"),
+    meta: {
+      title: "모임계좌 만들기",
+      bgColor: "white",
+    },
   },
   {
-    path: "group-account/step3",
-    name: "group-account-step3",
-    component: () => import("../views/group-account/AgreementStep3View.vue"),
+    path: "/group-account/create/step3",
+    name: "group-account-create-step3",
+    component: () => import("../views/group-account/create-account/AgreementStep3View.vue"),
+    meta: {
+      title: "모임계좌 만들기",
+      bgColor: "white",
+    },
   },
   {
-    path: "/group-account/step4",
-    name: "group-account-step4",
-    component: () => import("../views/group-account/AgreementStep4View.vue"),
+    path: "/group-account/create/step4",
+    name: "group-account-create-step4",
+    component: () => import("../views/group-account/create-account/AgreementStep4View.vue"),
+    meta: {
+      title: "모임계좌 만들기",
+      bgColor: "white",
+    },
   },
   {
-    path: "/group-account/step5",
-    name: "group-account-step5",
-    component: () => import("../views/group-account/AgreementStep5View.vue"),
+    path: "/group-account/create/step5",
+    name: "group-account-create-step5",
+    component: () => import("../views/group-account/create-account/AgreementStep5View.vue"),
+    meta: {
+      title: "모임계좌 만들기",
+      bgColor: "white",
+    },
   },
   {
-    path: "/group-account/step6",
-    name: "group-account-step6",
-    component: () => import("../views/group-account/AgreementStep6View.vue"),
+    path: "/group-account/create/step6",
+    name: "group-account-create-step6",
+    component: () => import("../views/group-account/create-account/AgreementStep6View.vue"),
+    meta: {
+      title: "모임계좌 만들기",
+      bgColor: "white",
+    },
   },
   {
-    path: "/group-account/create-complete",
+    path: "/group-account/create/complete",
     name: "group-account-create-complete",
-    component: () => import("../views/group-account/CreateCompleteView.vue"),
+    component: () => import("../views/group-account/create-account/CreateCompleteView.vue"),
+    meta: {
+      title: "모임계좌 만들기",
+      bgColor: "white",
+    },
   },
 ];

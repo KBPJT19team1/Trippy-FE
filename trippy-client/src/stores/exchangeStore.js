@@ -47,6 +47,10 @@ export const useExchangeStore = defineStore("exchange", () => {
     return currencyToCountryMap[curUnit] || "un";
   };
 
+  const parseCurrencyCode = (code) => {
+    return code.replace(/\(.*\)/, "").trim(); // "JPY(100)" → "JPY"
+  };
+
   const selectedCurrencyCode = ref(null);
 
   const setSelectedCurrencyCode = (code) => {
@@ -98,5 +102,6 @@ export const useExchangeStore = defineStore("exchange", () => {
     foreignCurrencyAccount,
     inputForeignAmount,
     inputKrwAmount,
+    parseCurrencyCode,
   };
 });

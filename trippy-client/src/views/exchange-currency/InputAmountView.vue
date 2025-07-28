@@ -7,7 +7,7 @@ import triangle from "@/assets/svg/triangle.svg";
 import NextButton from "@/components/common/NextButton.vue";
 import { useRouter } from "vue-router";
 
-const accountStore = useExchangeStore();
+const exchangeStore = useExchangeStore();
 
 const {
   selectedAccount,
@@ -17,7 +17,8 @@ const {
   foreignCurrencyAccount,
   inputForeignAmount,
   inputKrwAmount,
-} = storeToRefs(accountStore);
+} = storeToRefs(exchangeStore);
+const { parseCurrencyCode } = exchangeStore;
 
 // div 부분 영역 클릭해도 입력칸 활성화되는 코드
 const foreignInputRef = ref(null);
@@ -99,13 +100,13 @@ const goToFinishView = () => {
   <div class="flex flex-col h-full justify-between">
     <div>
       <div class="w-full flex flex-col items-center p-4">
-        <div class="flex gap-12">
+        <div class="flex items-center gap-10">
           <p class="subtitle2">
             1 {{ selectedCurrencyCode }} = {{ selectedTodayRate.deal_bas_r }} 원
           </p>
-          <div class="flex text-gray-500">
+          <div class="flex text-gray-500 items-center">
             <a class="subtitle2">원하는 환율에 사기</a>
-            <Icon icon="ic:round-navigate-next" class="w-[1.3rem] h-[1.3rem]"></Icon>
+            <Icon icon="ic:round-navigate-next" class="w-8 h-auto"></Icon>
           </div>
         </div>
         <br />
@@ -118,7 +119,7 @@ const goToFinishView = () => {
             <p class="subtitle2">{{ selectedCurrencyName }}</p>
             <p class="whitespace-nowrap">
               잔액 : {{ foreignCurrencyAccount.balance[selectedCurrencyCode] || 0 }}
-              {{ selectedCurrencyCode }}
+              {{ parseCurrencyCode(selectedCurrencyCode) }}
             </p>
           </div>
           <div class="flex gap-2 my-auto mr-5">
@@ -129,7 +130,7 @@ const goToFinishView = () => {
               @input="foreignAmount = foreignAmount.replace(/[^0-9]/g, '')"
               class="bg-transparent w-full sm:w-[6rem] text-right"
             />
-            <p>{{ selectedCurrencyCode }}</p>
+            <p>{{ parseCurrencyCode(selectedCurrencyCode) }}</p>
           </div>
         </div>
 

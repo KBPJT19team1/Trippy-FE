@@ -1,5 +1,6 @@
 <script setup>
-import { defineProps } from "vue";
+import { defineProps, ref } from "vue";
+import AccommodationModal from "@/components/boucher/AccommodationModal.vue";
 
 const props = defineProps({
   data: {
@@ -7,6 +8,8 @@ const props = defineProps({
     required: true,
   },
 });
+
+const showModal = ref(false);
 
 function formatDate(info) {
   return `${new Date(info.date).getMonth() + 1}.${new Date(info.date).getDate()}(${info.dayOfWeek}) ${info.time}`;
@@ -38,9 +41,15 @@ function formatDate(info) {
 
     <!-- 버튼 -->
     <div class="mt-4">
-      <button class="w-full bg-blue-200 text-blue-400 py-3 rounded-xl text-button2 text-center">
+      <button
+        class="w-full bg-blue-200 text-blue-400 py-3 rounded-xl text-button2 text-center"
+        @click="showModal = true"
+      >
         바우처 보기
       </button>
     </div>
+
+    <!-- 모달 띄우기 -->
+    <AccommodationModal v-if="showModal" :data="props.data" @close="showModal = false" />
   </div>
 </template>

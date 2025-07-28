@@ -7,16 +7,10 @@ import HomeView from "@/views/HomeView.vue";
 import PaymentView from "@/views/PaymentView.vue";
 import TravelLogsView from "@/views/TravelLogsView.vue";
 import MenuView from "@/views/MenuView.vue";
-import MapView from "@/views/travel-logs/MapView.vue";
 import GroupAccount from "./groupAccount.js";
 
 import ImportAccountView from "@/views/personal-accounts/ImportAccountView.vue";
-import IdCaptureGuideView from "@/views/identification/IdCaptureGuideView.vue";
-import IdRegistrationView from "@/views/identification/IdRegistrationView.vue";
-import ExchangeRateListView from "@/views/exchange-rate/ExchangeRateListView.vue";
-import ExchangeCurrencySelectView from "@/views/exchange-currency/ExchangeCurrencySelectView.vue";
-import IdView from "@/views/identification/IdView.vue";
-import AirTicketView from "@/views/air-ticket/AirTicketView.vue";
+import IdView from "@/views/identification//resident-card/ResidentCardView.vue";
 import travelLog from "./travelLog.js";
 
 const router = createRouter({

@@ -39,7 +39,7 @@ const onReload = () => {
 <template>
   <main class="w-full flex flex-col gap-8 relative">
     <!-- 로딩 블러 오버레이 -->
-    <LoadingOverlay v-if="isLoading" message="예약한 항공권을 불러오고 있습니다." />
+    <LoadingOverlay v-if="isLoading" message="예약한 숙소내역을 불러오고 있습니다." />
 
     <!-- 항공권 없을 때 -->
     <div v-if="accommodations.length === 0" class="mt-[50%] flex justify-center">

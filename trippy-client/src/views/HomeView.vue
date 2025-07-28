@@ -5,13 +5,16 @@ import ToggleSwitch from "@/components/common/ToggleSwitch.vue";
 import AccountCard from "@/components/home/AccountCard.vue";
 import ShortcutItems from "@/components/home/ShortCutItems.vue";
 import ExchangeRateItems from "@/components/home/ExchangeRateItems.vue";
+import { ref } from "vue";
+
+const toggleGroupAccount = ref(false);
 </script>
 
 <template>
   <main class="w-full flex flex-col gap-8">
     <div class="flex flex-col gap-4">
-      <ToggleSwitch label="모임통장 보기" />
-      <AccountCard />
+      <ToggleSwitch label="모임통장 보기" @click="toggleGroupAccount = !toggleGroupAccount" />
+      <AccountCard :toggle-group-account="toggleGroupAccount" />
     </div>
 
     <div class="flex flex-col gap-1">

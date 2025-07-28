@@ -4,25 +4,25 @@ import copyIcon from "@/assets/svg/copy-icon.svg";
 import TrippyLogo from "@/assets/svg/trippy-logo.svg";
 import NextButton from "@/components/common/NextButton.vue";
 import AlertModal from "@/components/common/modals/AlertModal.vue";
-import router from "@/router";
 import { useGroupAccountStore } from "@/stores/groupAccountStore";
+import router from "@/router";
+
 const groupAcountStore = useGroupAccountStore();
-const createDateTime = ref("");
 
 const ifcopyModal = ref(false);
 
-onMounted(() => {
-  createDateTime.value = new Date()
-    .toLocaleString({ hour12: false })
-    .replace(/\. /g, ".")
-    .replace("오전", "")
-    .replace("오후", "");
-
-  let accountNumber = "191";
-  for (let i = 0; i < 11; i++) {
-    accountNumber += Math.floor(Math.random() * 10);
+const inviteLink = "https://www.naver.com/";
+const copyInviteLink = async () => {
+  try {
+    await navigator.clipboard.writeText(inviteLink);
+    ifcopyModal.value = true;
+  } catch (err) {
+    console.error("클립보드 복사 실패:", err);
   }
-  groupAcountStore.setGroupAccountNumber(accountNumber);
+};
+
+onMounted(() => {
+  groupAcountStore.setGroupAccountCreateDate();
 });
 </script>
 
@@ -44,12 +44,12 @@ onMounted(() => {
       <div class="flex justify-between w-full px-3 py-5 text-body2 border-b border-gray-300">
         <p>모임통장 개설일</p>
         <div class="flex flex-col items-end">
-          <p class="subtitle2">{{ createDateTime }}</p>
+          <p class="subtitle2">{{ groupAcountStore.groupAccountCreateDate }}</p>
         </div>
       </div>
       <div
         class="mr-4 py-3 subtitle2 flex items-center gap-1 justify-end hover:cursor-pointer"
-        @click="ifcopyModal = true"
+        @click="copyInviteLink"
       >
         <p>초대링크 복사</p>
 

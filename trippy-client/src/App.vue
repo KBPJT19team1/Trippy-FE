@@ -61,6 +61,14 @@ nav a:first-of-type {
   border: 0;
 }
 
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 @media (min-width: 1024px) {
   header {
     display: flex;

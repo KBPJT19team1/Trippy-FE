@@ -5,7 +5,7 @@ import { storeToRefs } from "pinia";
 
 import { useAccommodationStore } from "@/stores/accommodationStore";
 import dummyAccommodations from "@/_dummy/accommodation_dummy.json";
-import LoadingOverlay from "@/components/common/LoadingOverlay.vue";
+import LoadingOverlay from "@/components/common/loading/LoadingOverlay.vue";
 import QuickReloadButton from "@/components/common/QuickReloadButton.vue";
 import EmptyAccommodation from "@/components/boucher/EmptyAccommodation.vue";
 import AccommodationItem from "@/components/boucher/AccommodationItem.vue";

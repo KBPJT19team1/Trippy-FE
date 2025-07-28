@@ -42,7 +42,7 @@ const updateDate = (val) => {
 
 <template>
   <div class="mb-3 relative">
-    <label class="body2 block mb-1 relative z-10">{{ label }}</label>
+    <label class="body2 block mb-1 relative">{{ label }}</label>
     <VueDatePicker
       v-model="localDate"
       :enable-time-picker="false"
@@ -57,7 +57,14 @@ const updateDate = (val) => {
     <!-- 오른쪽 아이콘 -->
     <Icon
       icon="material-symbols:calendar-today-rounded"
-      class="absolute right-3 top-8 w-5 h-5 text-gray-500 pointer-events-none"
+      class="absolute right-3 top-[2.55rem] w-5 h-5 text-gray-500 pointer-events-none"
     />
   </div>
 </template>
+
+<style scoped>
+/* DatePicker의 input 필드 둥글게 */
+::v-deep(.dp__input) {
+  @apply rounded-xl h-[3.25rem] border-[1px] border-gray-300 text-gray-400 px-4 body1;
+}
+</style>

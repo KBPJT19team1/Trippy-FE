@@ -2,33 +2,43 @@
 import UnifiedAccountCard from "@/components/account/UnifiedAccountCard.vue";
 import ToggleSwitch from "@/components/common/ToggleSwitch.vue";
 import router from "@/router";
+import AccountIcon from "@/assets/svg/account-icon.svg";
 import { useAccountStore } from "@/stores/accountStore";
 import { Icon } from "@iconify/vue";
-import { onMounted, ref, computed } from "vue";
+import { onMounted, ref, watch, nextTick } from "vue";
 
 const accountStore = useAccountStore();
 
 const showGroupAccount = ref(false);
 
-const filteredAccountList = computed(() => {
-  if (showGroupAccount.value) {
-    return accountStore.accountList.filter((account) => account.type === "group");
-  } else {
-    return accountStore.accountList.filter((account) => account.type === "personal");
-  }
+const scrollContainer = ref(null);
+
+const accountList = ref([]);
+
+onMounted(async () => {
+  await accountStore.GetAccountList();
+  accountStore.FilterAccount(showGroupAccount.value);
+  accountList.value = accountStore.filterAccountList;
 });
 
-onMounted(() => {
-  accountStore.GetAccountList();
+// 토글 변화에 따라 계좌 목록 상단으로 이동 + 필터 적용
+watch(showGroupAccount, async () => {
+  accountStore.FilterAccount(showGroupAccount.value);
+  await nextTick();
+  if (scrollContainer.value) {
+    scrollContainer.value.scrollTop = 0;
+    accountList.value = accountStore.filterAccountList;
+  }
 });
 </script>
 
 <template>
-  <div class="h-full">
+  <div class="h-full overflow-hidden">
     <div class="flex justify-between items-center mb-3">
       <ToggleSwitch :label="'모임통장 보기'" @click="showGroupAccount = !showGroupAccount" />
       <div
-        class="flex"
+        v-if="accountList.length > 0"
+        class="flex hover:cursor-pointer"
         @click="
           showGroupAccount
             ? router.push({ name: 'group-account-create' })
@@ -40,9 +50,19 @@ onMounted(() => {
       </div>
     </div>
 
-    <div class="h-full overflow-scroll [&::-webkit-scrollbar]:hidden">
+    <div
+      v-if="accountList.length === 0"
+      class="flex flex-col h-full justify-center items-center mt-[-5rem] gap-3"
+    >
+      <AccountIcon />
+      <p class="text-gray-400 subtitle2">
+        {{ showGroupAccount ? "등록된 모임 계좌가 없습니다..." : "등록된 계좌가 없습니다..." }}
+      </p>
+    </div>
+
+    <div class="h-[38rem] overflow-scroll [&::-webkit-scrollbar]:hidden" ref="scrollContainer">
       <UnifiedAccountCard
-        v-for="(account, i) in filteredAccountList"
+        v-for="(account, i) in accountList"
         :key="i"
         :account="account"
         :ifGroupAccount="showGroupAccount"

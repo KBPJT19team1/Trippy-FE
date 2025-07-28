@@ -5,8 +5,18 @@ import accountsSample from "@/_dummy/accounts_sample.json";
 export const useAccountStore = defineStore("Account", () => {
   const accountList = ref([]);
 
-  const GetAccountList = () => {
+  const filterAccountList = ref([]);
+
+  const GetAccountList = async () => {
     accountList.value = accountsSample;
   };
-  return { accountList, GetAccountList };
+
+  const FilterAccount = (showGroupAccount) => {
+    if (showGroupAccount) {
+      filterAccountList.value = accountList.value.filter((account) => account.type === "group");
+    } else {
+      filterAccountList.value = accountList.value.filter((account) => account.type === "personal");
+    }
+  };
+  return { accountList, filterAccountList, GetAccountList, FilterAccount };
 });

@@ -21,7 +21,7 @@ const props = defineProps({
         <p class="body2">{{ props.account.bankName }}</p>
         <p class="body2">{{ props.account.account }}</p>
       </div>
-      <div class="body1">{{ props.account.balance }}</div>
+      <div class="body1">{{ props.account.balance.toLocaleString() }}원</div>
     </div>
 
     <div class="flex flex-col justify-end">

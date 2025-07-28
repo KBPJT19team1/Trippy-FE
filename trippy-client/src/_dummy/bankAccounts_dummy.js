@@ -11,6 +11,7 @@ export const bankAccounts = [
     accountNumber: "123-45-678901",
     accountType: "보통예금",
     balance: 1000000,
+    isChecked: true,
   },
   {
     bankCode: "NH",
@@ -19,6 +20,7 @@ export const bankAccounts = [
     accountNumber: "302-01-987654",
     accountType: "보통예금",
     balance: 2000000,
+    isChecked: true,
   },
   {
     bankCode: "SH",
@@ -27,6 +29,7 @@ export const bankAccounts = [
     accountNumber: "110-234-567890",
     accountType: "저축예금",
     balance: 3000000,
+    isChecked: true,
   },
   {
     bankCode: "HN",
@@ -35,6 +38,7 @@ export const bankAccounts = [
     accountNumber: "020-123-456789",
     accountType: "보통예금",
     balance: 4000000,
+    isChecked: true,
   },
   {
     bankCode: "KB",
@@ -43,5 +47,15 @@ export const bankAccounts = [
     accountNumber: "999-88-777777",
     accountType: "외화예금",
     balance: 50000,
+    isChecked: true,
+  },
+  {
+    bankCode: "SH",
+    bankName: "신한은행",
+    logo: shinhanLogo,
+    accountNumber: "110-234-567890",
+    accountType: "저축예금",
+    balance: 3000000,
+    isChecked: true,
   },
 ];

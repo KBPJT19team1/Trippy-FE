@@ -11,7 +11,7 @@ const bgColor = computed(() => route.meta.bgColor || "");
 
 <template>
   <div class="font-sans flex justify-center text-black">
-    <div :class="['relative w-[375px] h-[812px]', bgColor ? 'bg-white' : 'bg-gray-100']">
+    <div :class="['relative w-screen h-screen md:max-w-[365px]', bgColor ? 'bg-white' : 'bg-gray-100']">
       <TopNavigationBar />
 
       <div class="pt-[100px] pb-[34px] h-full">
@@ -59,6 +59,14 @@ nav a {
 
 nav a:first-of-type {
   border: 0;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 @media (min-width: 1024px) {

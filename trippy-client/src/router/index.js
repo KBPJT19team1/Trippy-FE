@@ -5,12 +5,16 @@ import TabViewLayout from "@/layouts/TabViewLayout.vue";
 import ImportAccountView from "@/views/personal-accounts/ImportAccountView.vue";
 
 import HomeView from "@/views/HomeView.vue";
-import PaymentView from "@/views/PaymentView.vue";
+import PaymentView from "@/views/payment/PaymentView.vue";
 import TravelLogsView from "@/views/TravelLogsView.vue";
 import MenuView from "@/views/MenuView.vue";
 
-import GroupAccount from "@/router/groupAccount.js";
 import identification from "@/router/identification.js";
+import GroupAccount from "./groupAccount.js";
+
+import ImportAccountView from "@/views/personal-accounts/ImportAccountView.vue";
+import IdView from "@/views/identification//resident-card/ResidentCardView.vue";
+import travelLog from "./travelLog.js";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +36,25 @@ const router = createRouter({
           component: PaymentView,
           meta: { title: "결제" },
         },
+        {
+          path: "/payment/settings",
+          name: "PaymentSettings",
+          component: () => import("@/views/payment/SettingsView.vue"),
+          meta: {
+            title: "카드 설정",
+            bgColor: "white",
+          },
+        },
+        {
+          path: "/payment/settings/:id/nickname",
+          name: "CardNickname",
+          component: () => import("@/views/payment/CardNicknameView.vue"),
+          meta: {
+            title: "별명 설정",
+            bgColor: "white",
+          },
+        },
+
         {
           path: "travel-logs",
           name: "travel-logs",
@@ -77,13 +100,9 @@ const router = createRouter({
           component: () => import("@/views/exchange-currency/InputAmountView.vue"),
           meta: { title: "환전", bgColor: "white" },
         },
-        {
-          path: "map",
-          name: "map",
-          component: () => import("@/views/MapView.vue"),
-        },
         ...GroupAccount,
         ...identification,
+        ...travelLog,
       ],
     },
     // TabViewLayout (탭 메뉴 사용하는 뷰)
@@ -95,13 +114,20 @@ const router = createRouter({
         {
           path: "identification",
           name: "identification",
-          component: () => import("@/views/identification/resident-card/ResidentCardView.vue"),
+          component: IdView,
           meta: { tabs: ["주민등록", "여권"] },
         },
         {
           path: "tickets",
           name: "AirTicket",
           component: () => import("@/views/air-ticket/AirTicketView.vue"),
+          meta: { title: "항공권 내역", tabs: ["이용전", "이용후"] },
+        },
+        {
+          path: "bouchers",
+          name: "bouchers",
+          component: () => import("@/views/boucher/BoucherView.vue"),
+          meta: { title: "예약 내역", tabs: ["숙소", "관광"] },
         },
       ],
     },

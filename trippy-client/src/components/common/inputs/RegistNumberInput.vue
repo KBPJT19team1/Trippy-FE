@@ -27,7 +27,7 @@ watch([front, back], () => {
         placeholder="예) 010345"
         v-model="front"
         maxlength="6"
-        class="w-full h-12 border-[1px] border-gray-300 rounded-xl px-4 text-gray-400"
+        class="w-full h-12 border-[1px] border-gray-300 rounded-xl px-4"
         @input="front = $event.target.value.replace(/[^0-9]/g, '')"
       />
       <span>-</span>

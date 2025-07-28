@@ -16,14 +16,12 @@ function handleClick() {
 </script>
 
 <template>
-  <div class="bg-white w-full">
-    <button
-      :class="[props.disabled ? 'bg-gray-400' : 'bg-main-gradient']"
-      :disabled="props.disabled"
-      class="text-gray-100 button1 flex justify-center items-center text-center h-12 w-full rounded-xl"
-      @click="handleClick"
-    >
-      {{ props.title }}
-    </button>
-  </div>
+  <button
+    :class="[props.disabled ? 'bg-gray-400' : 'bg-main-gradient']"
+    :disabled="props.disabled"
+    class="text-gray-100 button1 flex justify-center items-center text-center h-12 w-full rounded-xl"
+    @click="handleClick"
+  >
+    {{ props.title }}
+  </button>
 </template>

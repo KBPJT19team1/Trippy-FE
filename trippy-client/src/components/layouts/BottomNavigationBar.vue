@@ -1,15 +1,19 @@
 <script setup>
-import { RouterLink, useRoute } from "vue-router";
-import { computed } from "vue";
+import { RouterLink } from "vue-router";
 import { Icon } from "@iconify/vue";
+import { useRoute } from "vue-router";
+import { computed } from "vue";
 import PayIcon from "@/assets/svg/payment-icon.svg";
 import LogIcon from "@/assets/svg/log-icon.svg";
 
 const route = useRoute();
+
 const hiddenPrefixes = [
   "/group-account",
   "/personal-accounts",
-  "/tickets",
+  "/check/tickets",
+  "/payment/settings",
+  "/check/bouchers",
   "/exchange",
   "/passport/guide",
   "/passport/registration",
@@ -22,7 +26,7 @@ const isHidden = computed(() => hiddenPrefixes.some((prefix) => route.path.start
 <template>
   <div
     v-if="!isHidden"
-    class="bg-white h-[90px] w-full absolute fixed bottom-0 flex justify-center"
+    class="bg-white h-[90px] w-full fixed bottom-0 flex justify-center md:max-w-[375px] md:mx-auto"
   >
     <div class="h-[56px] mb-[34px] flex align-center items-center gap-14">
       <RouterLink to="/">

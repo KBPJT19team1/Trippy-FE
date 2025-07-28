@@ -50,7 +50,7 @@ const handleConfirm = () => {
         type="text"
         maxlength="20"
         :class="[
-          'w-full border border-gray-300 rounded-xl px-4 py-3 pr-10 body1 focus:outline-none appearance-none',
+          'w-full h-12 border border-gray-300 rounded-xl px-4 py-3 pr-10 body1 focus:outline-none appearance-none',
           isEdited ? 'text-black' : 'text-gray-400',
         ]"
       />

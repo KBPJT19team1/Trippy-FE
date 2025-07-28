@@ -4,7 +4,7 @@ import DefaultLayout from "@/layouts/DefaultLayout.vue";
 import TabViewLayout from "@/layouts/TabViewLayout.vue";
 
 import HomeView from "@/views/HomeView.vue";
-import PaymentView from "@/views/PaymentView.vue";
+import PaymentView from "@/views/payment/PaymentView.vue";
 import TravelLogsView from "@/views/TravelLogsView.vue";
 import MenuView from "@/views/MenuView.vue";
 
@@ -34,6 +34,25 @@ const router = createRouter({
           component: PaymentView,
           meta: { title: "결제" },
         },
+        {
+          path: "/payment/settings",
+          name: "PaymentSettings",
+          component: () => import("@/views/payment/SettingsView.vue"),
+          meta: {
+            title: "카드 설정",
+            bgColor: "white",
+          },
+        },
+        {
+          path: "/payment/settings/:id/nickname",
+          name: "CardNickname",
+          component: () => import("@/views/payment/CardNicknameView.vue"),
+          meta: {
+            title: "별명 설정",
+            bgColor: "white",
+          },
+        },
+
         {
           path: "travel-logs",
           name: "travel-logs",

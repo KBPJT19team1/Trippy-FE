@@ -1,6 +1,6 @@
 <<<<<<< HEAD
 <script setup>
-import PaymentCard from "@/components/payment/PaymentCard.vue";
+import PaymentCard from "@/components/payment/Card.vue";
 </script>
 =======
 <script setup></script>

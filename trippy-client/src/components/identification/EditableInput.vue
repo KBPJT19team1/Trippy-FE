@@ -17,10 +17,12 @@ const emit = defineEmits(["update:modelValue", "toggleEdit"]);
       <label class="body2">{{ label }}</label>
     </div>
 
-    <div class="flex items-center justify-between border rounded-xl border-gray-400 px-3 py-2">
+    <div
+      class="flex items-center justify-between border-[1px] rounded-xl border-gray-400 h-[3.25rem] px-4"
+    >
       <input
         type="text"
-        class="text-gray-800 body2 h-[2.45em]"
+        class="border-gray-300 text-gray-400 body1"
         :value="modelValue"
         :readonly="readonly"
         @input="

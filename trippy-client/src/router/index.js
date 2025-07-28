@@ -10,7 +10,6 @@ import TravelLogsView from "@/views/TravelLogsView.vue";
 import MenuView from "@/views/MenuView.vue";
 
 import GroupAccount from "./groupAccount.js";
-import Identification from "./identification.js";
 import identification from "./identification.js";
 
 const router = createRouter({

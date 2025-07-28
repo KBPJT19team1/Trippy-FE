@@ -1,5 +1,5 @@
 <script setup>
-import PaymentMethodItem from "./CardListItem.vue";
+import CardListItem from "./CardListItem.vue";
 
 const props = defineProps({
   cards: {
@@ -11,6 +11,6 @@ const props = defineProps({
 
 <template>
   <div class="flex flex-col gap-0 w-full">
-    <PaymentMethodItem v-for="card in cards" :key="card.id" :card="card" />
+    <CardListItem v-for="card in cards" :key="card.id" :card="card" />
   </div>
 </template>

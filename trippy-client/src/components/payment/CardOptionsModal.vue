@@ -3,20 +3,20 @@ import { useRouter } from "vue-router";
 import XButton from "@/assets/svg/x_button.svg";
 import { Icon } from "@iconify/vue";
 
-const props = defineProps({
-  card: Object,
-});
+const props = defineProps({ card: Object });
+const emit = defineEmits(["close", "set-main", "delete-card"]);
 
-const emit = defineEmits(["close"]);
-const router = useRouter();
+const router = useRouter(); // ✅ 꼭 setup 맨 위에서 선언해야 동작 보장됨
 
-const handleClose = () => {
-  emit("close");
-};
+const handleClose = () => emit("close");
 
 const goToNicknamePage = () => {
-  router.push(`/payment/settings/${props.card.id}/nickname`);
+  emit("close"); // 모달 먼저 닫고
+  router.push(`/payment/settings/${props.card.id}/nickname`); // 이동
 };
+
+const emitSetMain = () => emit("set-main");
+const emitDeleteCard = () => emit("delete-card");
 </script>
 
 <template>
@@ -42,11 +42,17 @@ const goToNicknamePage = () => {
           <span>별명 설정</span>
           <Icon icon="material-symbols:chevron-right-rounded" class="text-gray-400 w-7 h-7" />
         </li>
-        <li class="flex justify-between items-center py-4 text-base">
+        <li
+          class="flex justify-between items-center py-4 text-base cursor-pointer"
+          @click="emitSetMain"
+        >
           <span>주카드 설정</span>
           <Icon icon="material-symbols:chevron-right-rounded" class="text-gray-400 w-7 h-7" />
         </li>
-        <li class="flex justify-between items-center py-4 text-base text-red">
+        <li
+          class="flex justify-between items-center py-4 text-base text-red cursor-pointer"
+          @click="emitDeleteCard"
+        >
           <span>카드 삭제</span>
           <Icon icon="material-symbols:chevron-right-rounded" class="text-gray-400 w-7 h-7" />
         </li>

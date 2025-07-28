@@ -69,7 +69,6 @@ watch(showGroupAccount, async () => {
       </div>
     </div>
 
-      "
     <div class="flex justify-end mt-3" v-if="accountList.length === 0">
       <QuickAddButton
         @click="

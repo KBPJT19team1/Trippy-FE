@@ -18,8 +18,6 @@ const checkedMember = (index) => {
   checkedStatus.value[index] = !checkedStatus.value[index];
 };
 
-// 체크된 멤버 배열에 저장
-
 const toggleAllCheck = () => {
   const newState = !allChecked.value;
   checkedStatus.value = checkedStatus.value.map(() => newState);

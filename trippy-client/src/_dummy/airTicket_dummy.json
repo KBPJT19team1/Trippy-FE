@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "date": "2025-07-25",
+    "date": "2025-07-28",
     "dayOfWeek": "금",
     "reservationCode": "H48VNF",
     "departure": {
@@ -25,7 +25,7 @@
   },
   {
     "id": 2,
-    "date": "2025-07-25",
+    "date": "2025-07-30",
     "dayOfWeek": "금",
     "reservationCode": "A29XLM",
     "departure": {
@@ -70,5 +70,77 @@
       "baggageWeight": "0KG"
     },
     "used": true
+  },
+  {
+    "id": 4,
+    "date": "2025-07-25",
+    "dayOfWeek": "금",
+    "reservationCode": "H48VNF",
+    "departure": {
+      "city": "서울(인천)",
+      "code": "ICN",
+      "time": "18:15"
+    },
+    "arrival": {
+      "city": "오사카",
+      "code": "KIX",
+      "time": "15:15"
+    },
+    "flight": {
+      "airline": "에어서울",
+      "flightNo": "RS0713",
+      "seatType": "일반석",
+      "baggage": "무료수하물 1개",
+      "baggageWeight": "15KG"
+    },
+    "used": false
+  },
+  {
+    "id": 5,
+    "date": "2025-07-30",
+    "dayOfWeek": "금",
+    "reservationCode": "H48VNF",
+    "departure": {
+      "city": "서울(인천)",
+      "code": "ICN",
+      "time": "18:15"
+    },
+    "arrival": {
+      "city": "오사카",
+      "code": "KIX",
+      "time": "15:15"
+    },
+    "flight": {
+      "airline": "에어서울",
+      "flightNo": "RS0713",
+      "seatType": "일반석",
+      "baggage": "무료수하물 1개",
+      "baggageWeight": "15KG"
+    },
+    "used": false
+  },
+  {
+    "id": 6,
+    "date": "2025-07-29",
+    "dayOfWeek": "금",
+    "reservationCode": "H48VNF",
+    "departure": {
+      "city": "서울(인천)",
+      "code": "ICN",
+      "time": "18:15"
+    },
+    "arrival": {
+      "city": "오사카",
+      "code": "KIX",
+      "time": "15:15"
+    },
+    "flight": {
+      "airline": "에어서울",
+      "flightNo": "RS0713",
+      "seatType": "일반석",
+      "baggage": "무료수하물 1개",
+      "baggageWeight": "15KG"
+    },
+    "used": false
   }
 ]

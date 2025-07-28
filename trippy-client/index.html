@@ -3,7 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script>
+      (function () {
+        const viewport = document.querySelector('meta[name="viewport"]') || document.createElement('meta');
+        viewport.name = 'viewport';
+
+        if (window.innerWidth <= 768) {
+          viewport.content = 'width=device-width, initial-scale=1.0';
+        } else {
+          viewport.content = 'width=375, initial-scale=1.0';
+        }
+
+        if (!document.querySelector('meta[name="viewport"]')) {
+          document.head.appendChild(viewport);
+        }
+      })();
+    </script>
+
     <title>Vite App</title>
   </head>
   <body>

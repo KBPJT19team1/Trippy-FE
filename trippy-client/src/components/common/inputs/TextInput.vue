@@ -24,7 +24,7 @@ const onInput = (e) => {
       :placeholder="placeholder"
       :maxlength="label === '휴대폰 번호' ? 11 : undefined"
       @input="onInput"
-      class="w-full h-12 border-[1px] border-gray-300 rounded-xl px-4 text-gray-400"
+      class="w-full h-12 border-[1px] border-gray-300 rounded-xl px-4"
     />
   </div>
 </template>

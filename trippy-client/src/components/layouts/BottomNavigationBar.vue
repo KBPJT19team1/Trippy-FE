@@ -9,9 +9,9 @@ const route = useRoute();
 const hiddenPrefixes = [
   "/group-account",
   "/personal-accounts",
-  "/tickets",
+  "/check/tickets",
+  "/check/bouchers",
   "/exchange",
-  "/account-list",
 ];
 const isHidden = computed(() => hiddenPrefixes.some((prefix) => route.path.startsWith(prefix)));
 </script>
@@ -19,7 +19,7 @@ const isHidden = computed(() => hiddenPrefixes.some((prefix) => route.path.start
 <template>
   <div
     v-if="!isHidden"
-    class="bg-white h-[90px] w-full absolute fixed bottom-0 flex justify-center"
+    class="bg-white h-[90px] w-full fixed bottom-0 flex justify-center md:max-w-[375px] md:mx-auto"
   >
     <div class="h-[56px] mb-[34px] flex align-center items-center gap-14">
       <RouterLink to="/">

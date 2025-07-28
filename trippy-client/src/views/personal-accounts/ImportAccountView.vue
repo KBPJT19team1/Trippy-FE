@@ -8,9 +8,10 @@ import FourthStep from "@/components/personal-accounts/import-accounts/AgreeToTe
 import PasswordInput from "@/components/common/inputs/PasswordInput.vue";
 import LoadingView from "@/components/common/loading/LoadingView.vue";
 import ChooseAccounts from "@/components/personal-accounts/import-accounts/SelectAccounts.vue";
+import CompleteImport from "@/components/personal-accounts/import-accounts/CompleteImport.vue";
 
-const views = [FirstStep, SecondStep, ThirdStep, FourthStep, PasswordInput, LoadingView, ChooseAccounts];
-const currentIndex = ref(5);
+const views = [FirstStep, SecondStep, ThirdStep, FourthStep, PasswordInput, LoadingView, ChooseAccounts, CompleteImport];
+const currentIndex = ref(6);
 
 const currentView = computed(() => views[currentIndex.value]);
 

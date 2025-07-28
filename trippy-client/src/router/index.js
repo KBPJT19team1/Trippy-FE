@@ -113,6 +113,7 @@ const router = createRouter({
           path: "tickets",
           name: "AirTicket",
           component: () => import("@/views/air-ticket/AirTicketView.vue"),
+          meta: { title: "항공권 내역", tabs: ["이용전", "이용후"] },
         },
       ],
     },

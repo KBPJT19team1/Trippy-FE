@@ -17,9 +17,9 @@ const showReportModal = ref(false);
 
 function handleReportClick() {
   if (props.isReportGenerated) {
-    router.push("/report"); // ✅ 바로 리포트 페이지로 이동
+    router.push("/report");
   } else {
-    showReportModal.value = true; // ✅ 모달 띄우기
+    showReportModal.value = true;
   }
 }
 function cancel(event) {
@@ -55,19 +55,6 @@ function generateReport(event) {
       </div>
 
       <!-- 리포트 링크 & 인원 수 -->
-      <!-- <div class="flex justify-between items-center text-sm">
-        <div
-          to="/report"
-          class="flex items-center gap-1 hover:underline truncate"
-          :class="isReportGenerated ? 'text-blue-600' : 'text-gray-400'"
-          @click.stop="handleReportClick"
-        >
-          {{ props.isReportGenerated ? "여행 리포트 발행 완료" : "여행 리포트 발행하기" }}
-          <Icon icon="streamline:receipt-add" class="w-4 h-4" />
-        </div>
-        <span class="text-gray-500 flex items-center">👤 {{ memberCount }}</span>
-      </div> -->
-      <!-- 리포트 링크 & 인원 수 -->
       <div class="flex justify-between items-center text-sm">
         <button
           class="flex items-center gap-1 px-3 py-1 rounded-md transition font-medium cursor-pointer hover:bg-blue-50 focus:outline-none"
@@ -81,8 +68,11 @@ function generateReport(event) {
           {{ isReportGenerated ? "여행 리포트 발행 완료" : "여행 리포트 발행하기" }}
           <Icon icon="streamline:receipt-add" class="w-4 h-4" />
         </button>
-
-        <span class="text-gray-500 flex items-center">👤 {{ memberCount }}</span>
+        <span class="text-gray-500 flex items-center">
+          <Icon v-if="isReportGenerated" icon="ion:person" />
+          <Icon v-else icon="ic:sharp-people-alt" />
+          <span class="ml-1">{{ memberCount }}</span>
+        </span>
       </div>
     </div>
 

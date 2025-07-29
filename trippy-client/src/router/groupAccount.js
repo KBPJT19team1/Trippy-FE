@@ -1,3 +1,5 @@
+import { title } from "vue-carousel-3d";
+
 export default [
   {
     path: "/group-account/create",
@@ -95,6 +97,12 @@ export default [
     component: () => import("@/views/group-account/settle-request/SettleCompleteView.vue"),
     meta: {
       title: "정산 요청하기",
+    },
+    path: "/group-account/settings/:accountId",
+    name: "GroupAccountSettings",
+    componet: () => import("@/views/group-account/settings/GroupAccountSettingsWrapper.vue"),
+    meta: {
+      title: "계좌 설정",
       bgColor: "white",
     },
   },

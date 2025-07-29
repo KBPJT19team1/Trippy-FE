@@ -24,7 +24,10 @@ export default {
           400: "#236FFF",
         },
         purple: "#938AFF",
-        red: "#FF4242",
+        red: {
+          100: "#FCEDED",
+          200: "#FF4242",
+        },
         green: {
           100: '#E5F4E6',
           200: "#2AC430",

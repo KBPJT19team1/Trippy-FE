@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, defineProps, defineEmits, computed } from "vue";
+import { ref, defineProps, defineEmits, computed } from "vue";
 
 import { Icon } from "@iconify/vue";
 import { terms } from '@/_dummy/terms.js';

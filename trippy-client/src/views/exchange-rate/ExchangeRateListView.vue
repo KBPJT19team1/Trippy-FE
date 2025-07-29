@@ -47,7 +47,7 @@ const goToExchangeCurrencyView = () => {
             <span class="text-sm font-semibold">{{ item.deal_bas_r }}원</span>
             <div
               :class="{
-                'text-red':
+                'text-red-200':
                   parseFloat(item.deal_bas_r) - parseFloat(getYesterdayRate(item.cur_unit)) >= 0,
                 'text-blue-400':
                   parseFloat(item.deal_bas_r) - parseFloat(getYesterdayRate(item.cur_unit)) < 0,

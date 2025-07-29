@@ -34,7 +34,7 @@ import { numberWithCommas, formatDateToKorean, extractTime } from "@/assets/util
           v-for="(item, index) in data.transactions"
           class="flex justify-between">
           <div class="flex gap-2 items-center">
-            <CategoryChip :category="item.category" :isSelect="true" />
+            <CategoryChip :category="item.category" />
             <div class="flex flex-col gap-1">
               <p class="subtitle1">{{ item.description }}</p>
               <p class="body2 text-gray-500">{{ extractTime(item.time) }}</p>

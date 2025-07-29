@@ -1,6 +1,4 @@
 <script setup>
-import XButton from "@/assets/svg/x_button.svg";
-
 const props = defineProps({
   card: Object,
 });

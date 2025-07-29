@@ -1,4 +1,3 @@
-<!-- QrCode.vue -->
 <script setup>
 import QRImage from "@/assets/before-pay.png";
 </script>

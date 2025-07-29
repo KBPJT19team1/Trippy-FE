@@ -15,10 +15,12 @@ const hiddenPrefixes = [
   "/payment/settings",
   "/check/bouchers",
   "/exchange",
+  "/payment/add",
   "/account-list",
   "/passport/guide",
   "/passport/registration",
   "/check/identification",
+  "/identification",
 ];
 
 const isHidden = computed(() => hiddenPrefixes.some((prefix) => route.path.startsWith(prefix)));

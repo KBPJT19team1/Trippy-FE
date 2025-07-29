@@ -1,17 +1,18 @@
 <script setup>
-import { RouterLink, useRoute } from "vue-router";
+import { RouterLink, useRoute, useRouter } from "vue-router";
 import { computed, ref, watchEffect } from "vue";
 
 import { Icon } from "@iconify/vue";
 import TrippyLogo from "@/assets/svg/trippy-logo.svg";
 
 const route = useRoute();
-const pageTitle = ref("");
+const router = useRouter();
 
-watchEffect(() => {
-  pageTitle.value = route.meta.title || "";
-});
-// const pageTitle = computed(() => route.meta.title || "");
+const pageTitle = computed(() => route.meta.title || "");
+
+const goBack = () => {
+  router.back();
+};
 </script>
 
 <template>
@@ -20,9 +21,9 @@ watchEffect(() => {
       v-if="pageTitle == '예약 등록하기'"
       class="h-[56px] mt-11 flex items-center justify-between relative"
     >
-      <RouterLink :to="{ name: 'bouchers', query: { tab: '관광' } }" class="ml-4">
+      <button @click="goBack" class="ml-4">
         <Icon icon="material-symbols:close-rounded" class="w-6 h-6 hover:text-gray-500" />
-      </RouterLink>
+      </button>
       <h3 class="subtitle1 absolute left-1/2 -translate-x-1/2">{{ pageTitle }}</h3>
     </div>
 

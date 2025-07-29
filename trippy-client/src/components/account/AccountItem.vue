@@ -7,7 +7,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="flex items-center justify-between p-4 rounded-xl active:bg-blue-100">
+  <div class="flex w-full items-center justify-between p-4 rounded-xl active:bg-blue-100">
     <div class="flex items-center gap-4">
       <img :src="props.data.logo" class="size-9 bg-gray-100 rounded-full" />
       <div>

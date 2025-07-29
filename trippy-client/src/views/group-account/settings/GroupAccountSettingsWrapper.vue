@@ -27,7 +27,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="h-full w-full">
+  <div class="h-full w-full mt-[-1rem]">
     <OwnerSettings v-if="isOwner" :account="account" :member="member" />
     <MemberSettings v-else :account="account" :member="member" />
   </div>

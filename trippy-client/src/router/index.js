@@ -63,6 +63,14 @@ const router = createRouter({
             bgColor: "white",
           },
         },
+        {
+          path: "/payment/password",
+          name: "PaymentPassword",
+          component: () => import("@/views/payment/PasswordView.vue"),
+          meta: {
+            bgColor: "white",
+          },
+        },
 
         {
           path: "travel-logs",

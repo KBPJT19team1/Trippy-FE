@@ -25,7 +25,10 @@ export default {
         },
         purple: "#938AFF",
         red: "#FF4242",
-        green: "#38C83E",
+        green: {
+          100: '#E5F4E6',
+          200: "#2AC430",
+        },
       },
       backgroundImage: {
         "main-gradient":

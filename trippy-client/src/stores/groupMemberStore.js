@@ -6,8 +6,6 @@ export const useGroupMemberStore = defineStore("groupMember", () => {
   const groupMember = ref([]);
   const groupMemberError = ref(null);
 
-  const selectMembers = ref([]);
-
   const setGroupMember = async () => {
     try {
       groupMember.value = await peopleList;
@@ -16,8 +14,5 @@ export const useGroupMemberStore = defineStore("groupMember", () => {
     }
   };
 
-  const setSelectedMembers = (members) => {
-    selectMembers.value = members;
-  };
-  return { groupMember, groupMemberError, selectMembers, setGroupMember, setSelectedMembers };
+  return { groupMember, groupMemberError, setGroupMember };
 });

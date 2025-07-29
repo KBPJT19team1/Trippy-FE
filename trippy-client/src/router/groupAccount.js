@@ -89,4 +89,13 @@ export default [
       bgColor: "white",
     },
   },
+  {
+    path: "/group-settle/complete",
+    name: "group-settle-complete",
+    component: () => import("@/views/group-account/settle-request/SettleCompleteView.vue"),
+    meta: {
+      title: "정산 요청하기",
+      bgColor: "white",
+    },
+  },
 ];

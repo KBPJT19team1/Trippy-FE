@@ -3,10 +3,12 @@ import { onMounted, ref, computed } from "vue";
 import { Icon } from "@iconify/vue";
 import SettleMemberItem from "@/components/group-account/SettleMemberItem.vue";
 import { useGroupMemberStore } from "@/stores/groupMemberStore";
+import { useSettleStore } from "@/stores/useSettleStore";
 import NextButton from "@/components/common/NextButton.vue";
 import router from "@/router";
 
 const groupMemberStore = useGroupMemberStore();
+const settleStore = useSettleStore();
 
 const members = ref([]);
 const checkedStatus = ref([]);
@@ -26,7 +28,7 @@ const toggleAllCheck = () => {
 
 const onClick = () => {
   const checkedMembers = members.value.filter((member, i) => checkedStatus.value[i]);
-  groupMemberStore.setSelectedMembers(checkedMembers);
+  settleStore.setSelectedMembers(checkedMembers);
   router.push({ name: "group-settle-amount" });
 };
 

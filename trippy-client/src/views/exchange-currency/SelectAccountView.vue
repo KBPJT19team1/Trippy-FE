@@ -3,6 +3,7 @@ import { bankAccounts } from "@/_dummy/bankAccounts_dummy";
 import { useExchangeStore } from "@/stores/exchangeStore";
 import { storeToRefs } from "pinia";
 import { useRouter } from "vue-router";
+import AccountItem from "@/components/account/AccountItem.vue";
 import NextButton from "@/components/common/NextButton.vue";
 
 const accountStore = useExchangeStore();
@@ -41,14 +42,7 @@ const goToAmountView = () => {
             :key="account.accountNumber"
             @click="handleSelect(account)"
           >
-            <img :src="account.logo" :alt="account.bankName" />
-            <div class="flex-col">
-              <p class="flex gap-4 subtitle2">{{ account.accountType }}</p>
-              <div class="flex gap-2 body2">
-                <p>{{ account.bankName }}</p>
-                <p>{{ account.accountNumber }}</p>
-              </div>
-            </div>
+            <AccountItem :data="account" />
           </li>
         </ul>
       </div>

@@ -1,6 +1,6 @@
 <script setup>
-import { ref, watch, defineProps } from "vue";
-import { useRouter } from "vue-router";
+import { ref, watch, defineProps, onMounted, computed } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import { storeToRefs } from "pinia";
 
 import { useAccommodationStore } from "@/stores/accommodationStore";
@@ -21,7 +21,14 @@ import QuickAddButton from "@/components/buttons/QuickAddButton.vue";
 const props = defineProps({
   currentTab: { type: String, required: true },
 });
+// const currentTab = computed({
+//   get: () => route.query.tab || "숙소", // 기본값 '숙소'
+//   set: (val) => {
+//     router.replace({ query: { ...route.query, tab: val } });
+//   },
+// });
 
+const route = useRoute();
 const router = useRouter();
 const isLoading = ref(false);
 
@@ -43,6 +50,23 @@ watch(
   },
   { immediate: true },
 );
+// watch(
+//   () => currentTab.value,
+//   (tab) => {
+//     if (tab === "숙소") {
+//       accommodationStore.setAccommodations(dummyAccommodations);
+//     } else if (tab === "관광") {
+//       sightseeingStore.setSightseeing(dummySightseeing);
+//     }
+//   },
+//   { immediate: true },
+// );
+
+// onMounted(() => {
+//   if (route.query.tab === "관광") {
+//     currentTab.value = "관광";
+//   }
+// });
 
 const onReload = () => {
   isLoading.value = true;
@@ -58,6 +82,7 @@ const onReload = () => {
 
     <!-- 숙소 탭 -->
     <template v-if="props.currentTab === '숙소'">
+      <!-- <template v-if="currentTab === '숙소'"> -->
       <div v-if="accommodations.length === 0" class="mt-[50%] flex justify-center">
         <EmptyAccommodation />
       </div>
@@ -71,6 +96,7 @@ const onReload = () => {
     </template>
 
     <!-- 관광 탭 -->
+    <!-- <template v-else-if="currentTab === '관광'"> -->
     <template v-else-if="props.currentTab === '관광'">
       <div v-if="sightseeings.length === 0" class="mt-[50%] flex justify-center">
         <EmptySightseeing />

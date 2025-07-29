@@ -3,6 +3,27 @@ import SettingsIcon from "./SettingsIcon.vue";
 import QrCode from "./QrCode.vue";
 import PayButton from "./PayButton.vue";
 import CardCarousel from "./CardCarousel.vue";
+
+import plusCard from "@/assets/empty_card.png";
+import card1 from "@/assets/card1.png";
+import card2 from "@/assets/card2.png";
+import card3 from "@/assets/card3.png";
+
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+// 카드 리스트: 이걸 비우면 empty view가 보임
+const cards = ref([
+  { id: 1, image: card1, name: "KB국민카드_트래블러스" },
+  { id: 2, image: card2, name: "신한카드_디스커버" },
+  { id: 3, image: card3, name: "하나카드_위시올" },
+]);
+
+function goToAddCard() {
+  router.push("/payment/add");
+}
 </script>
 
 <template>
@@ -13,17 +34,31 @@ import CardCarousel from "./CardCarousel.vue";
     <div class="relative w-full h-full px-6 py-6">
       <SettingsIcon />
 
-      <!-- QR 코드: 상단에서 71px 위치 -->
-      <div class="absolute top-[71px] left-1/2 transform -translate-x-1/2">
-        <QrCode />
-      </div>
+      <!-- 카드 있을 경우 -->
+      <template v-if="cards.length > 0">
+        <div class="absolute top-[71px] left-1/2 transform -translate-x-1/2">
+          <QrCode />
+        </div>
 
-      <CardCarousel />
+        <CardCarousel :cards="[...cards, { id: 999, image: plusCard, isAddCard: true }]" />
 
-      <!-- 결제 버튼: 상단에서 500px 위치 -->
-      <div class="absolute top-[500px] left-1/2 transform -translate-x-1/2">
-        <PayButton />
-      </div>
+        <div class="absolute top-[500px] left-1/2 transform -translate-x-1/2">
+          <PayButton />
+        </div>
+      </template>
+
+      <!-- 카드 없을 경우 -->
+      <template v-else>
+        <div class="flex flex-col items-center justify-center h-full pt-[50px]">
+          <p class="title4 text-black mb-6">결제 수단을 추가해 주세요.</p>
+          <div
+            class="w-[160px] h-[240px] bg-gray-100 rounded-2xl flex items-center justify-center cursor-pointer"
+            @click="goToAddCard"
+          >
+            <span class="text-[40px] text-gray-500">＋</span>
+          </div>
+        </div>
+      </template>
     </div>
   </div>
 </template>

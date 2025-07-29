@@ -2,15 +2,16 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
 import TabViewLayout from "@/layouts/TabViewLayout.vue";
+import ImportAccountView from "@/views/personal-accounts/ImportAccountView.vue";
 
 import HomeView from "@/views/HomeView.vue";
 import PaymentView from "@/views/payment/PaymentView.vue";
 import TravelLogsView from "@/views/TravelLogsView.vue";
 import MenuView from "@/views/MenuView.vue";
 
+import identification from "@/router/identification.js";
 import GroupAccount from "./groupAccount.js";
 
-import ImportAccountView from "@/views/personal-accounts/ImportAccountView.vue";
 import IdView from "@/views/identification//resident-card/ResidentCardView.vue";
 import travelLog from "./travelLog.js";
 
@@ -75,16 +76,6 @@ const router = createRouter({
           },
         },
         {
-          path: "identification/guide",
-          name: "identification/guide",
-          component: () => import("@/views/identification/resident-card/CaptureGuideView.vue"),
-        },
-        {
-          path: "identification/registration",
-          name: "identification/registration",
-          component: () => import("@/views/identification/resident-card/RegistrationView.vue"),
-        },
-        {
           path: "exchange-rate",
           name: "ExchangeRate",
           component: () => import("@/views/exchange-rate/ExchangeRateListView.vue"),
@@ -115,6 +106,7 @@ const router = createRouter({
           meta: { title: "계좌 목록", bgColor: "wihte" },
         },
         ...GroupAccount,
+        ...identification,
         ...travelLog,
       ],
     },

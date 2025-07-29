@@ -46,7 +46,11 @@ export const bankAccounts = [
     logo: kookminLogo,
     accountNumber: "999-88-777777",
     accountType: "외화예금",
-    balance: 50000,
+    balance: {
+      USD: 50000,
+      EUR: 0,
+      JPY: 0,
+    },
     isChecked: true,
   },
   {

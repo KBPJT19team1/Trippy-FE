@@ -15,6 +15,7 @@ const hiddenPrefixes = [
   "/payment/settings",
   "/check/bouchers",
   "/exchange",
+  "/account-list",
   "/passport/guide",
   "/passport/registration",
   "/check/identification",

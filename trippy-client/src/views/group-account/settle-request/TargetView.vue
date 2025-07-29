@@ -4,6 +4,7 @@ import { Icon } from "@iconify/vue";
 import SettleMemberItem from "@/components/group-account/SettleMemberItem.vue";
 import { useGroupMemberStore } from "@/stores/groupMemberStore";
 import NextButton from "@/components/common/NextButton.vue";
+import router from "@/router";
 
 const groupMemberStore = useGroupMemberStore();
 
@@ -26,6 +27,7 @@ const toggleAllCheck = () => {
 const onClick = () => {
   const checkedMembers = members.value.filter((member, i) => checkedStatus.value[i]);
   groupMemberStore.setSelectedMembers(checkedMembers);
+  router.push({ name: "group-settle-amount" });
 };
 
 onMounted(async () => {

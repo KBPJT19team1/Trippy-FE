@@ -1,17 +1,26 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { useRouter } from "vue-router";
 import { Icon } from "@iconify/vue";
 import PhotoUploader from "@/components/travel-logs/PhotoUploader.vue";
+import DateRangePicker from "@/components/travel-logs/DateRangePicker.vue";
 
 // 이미지 import
 import defaultImage from "@/assets/image.png";
 
+const showCalendar = ref(false);
+const selectedRange = ref({ start: "", end: "" });
+
 const router = useRouter();
-const formattedDate = "2025.07.23(수) ~ 2025.07.30(수)";
 
 const imageFile = ref(null);
 const imageUrl = ref("");
+
+const formattedDate = computed(() =>
+  selectedRange.value.start && selectedRange.value.end
+    ? `${selectedRange.value.start} ~ ${selectedRange.value.end}`
+    : "날짜를 선택하세요",
+);
 </script>
 
 <template>
@@ -36,12 +45,31 @@ const imageUrl = ref("");
     <form class="px-4 py-6 space-y-4">
       <input type="text" placeholder="제목을 입력하여 주세요." class="input" />
 
-      <div class="relative">
+      <!-- <div class="relative">
         <input type="text" readonly :value="formattedDate" class="input" />
         <Icon
           icon="mdi:calendar"
           class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"
         />
+      </div> -->
+      <div class="relative">
+        <input
+          type="text"
+          readonly
+          :value="formattedDate"
+          class="input cursor-pointer"
+          @click="showCalendar = !showCalendar"
+        />
+        <div v-if="showCalendar" class="absolute z-50 mt-2">
+          <DateRangePicker
+            @update:range="
+              (val) => {
+                selectedRange.value = val;
+                showCalendar = false;
+              }
+            "
+          />
+        </div>
       </div>
 
       <input type="text" placeholder="여행지를 입력해주세요." class="input" />

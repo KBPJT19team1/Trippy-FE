@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from "vue";
+import { numberWithCommas } from "@/assets/utils/numbeWithCommas.js";
 
 const amount = defineModel();
 
@@ -7,7 +8,10 @@ const hiddenInput = ref(null);
 const isFocused = ref(false);
 
 const onInput = (event) => {
-  amount.value = event.target.value.replace(/[^0-9]/g, "").replace(/^0+/, "");
+  amount.value = event.target.value
+    .replace(/[^0-9]/g, "")
+    .replace(/^0+/, "")
+    .slice(0, 10);
 };
 
 const focusInput = () => {
@@ -24,7 +28,7 @@ const focusInput = () => {
       ]"
     >
       <div class="title4" :class="amount ? 'text-gray-600' : 'text-gray-400'">
-        <p>{{ amount ? `${Number(amount).toLocaleString()} 원` : "금액을 입력해 주세요" }}</p>
+        <p>{{ amount ? `${numberWithCommas(amount)} 원` : "금액을 입력해 주세요" }}</p>
       </div>
 
       <input

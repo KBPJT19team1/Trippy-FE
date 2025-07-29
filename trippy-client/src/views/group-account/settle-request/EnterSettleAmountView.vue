@@ -1,18 +1,9 @@
 <script setup>
+import AmountInput from "@/components/common/inputs/AmountInput.vue";
 import NextButton from "@/components/common/NextButton.vue";
 import { ref } from "vue";
 
 const amount = ref("");
-const hiddenInput = ref(null);
-const isFocused = ref(false);
-
-const onInput = (event) => {
-  amount.value = event.target.value.replace(/[^0-9]/g, "").replace(/^0+/, "");
-};
-
-const focusInput = () => {
-  hiddenInput.value?.focus();
-};
 </script>
 
 <template>
@@ -22,32 +13,8 @@ const focusInput = () => {
         <p class="title2">얼마를 요청할까요?</p>
       </div>
 
-      <div @click="focusInput" class="w-full flex justify-center mt-6">
-        <div
-          :class="[
-            'w-full h-full text-center py-3 border-b',
-            isFocused ? 'border-b-blue-500' : 'border-b-gray-400',
-          ]"
-        >
-          <div class="title4" :class="amount ? 'text-gray-600' : 'text-gray-400'">
-            <p>{{ amount ? `${Number(amount).toLocaleString()} 원` : "금액을 입력해 주세요" }}</p>
-          </div>
-
-          <input
-            type="text"
-            inputmode="numeric"
-            pattern="[0-9]*"
-            class="sr-only"
-            v-model="amount"
-            @input="onInput"
-            ref="hiddenInput"
-            @focus="isFocused = true"
-            @blur="isFocused = false"
-          />
-        </div>
-      </div>
+      <AmountInput v-model="amount" />
     </div>
-
     <NextButton :title="'요청하기'" :disabled="!amount" />
   </div>
 </template>

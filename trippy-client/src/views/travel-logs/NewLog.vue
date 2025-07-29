@@ -43,22 +43,39 @@ const formattedDate = computed(() =>
 
     <!-- 폼 영역 -->
     <form class="px-4 py-6 space-y-4">
-      <input type="text" placeholder="제목을 입력하여 주세요." class="input" />
-      <DateRangePicker
-        @update:range="
-          (val) => {
-            selectedRange.value = val;
-            showCalendar.value = false;
-          }
-        "
-      />
+      <!-- 제목 -->
+      <div>
+        <label class="form-label">제목</label>
+        <input type="text" placeholder="제목을 입력하여 주세요." class="input" />
+      </div>
 
-      <input type="text" placeholder="여행지를 입력해주세요." class="input" />
+      <!-- 여행 기간 -->
+      <div>
+        <label class="form-label">여행 기간</label>
+        <DateRangePicker
+          @update:range="
+            (val) => {
+              selectedRange.value = val;
+              showCalendar.value = false;
+            }
+          "
+        />
+      </div>
 
-      <select class="input text-gray-500">
-        <option disabled selected>계좌를 선택해주세요.</option>
-        <option>하나은행 123-456</option>
-      </select>
+      <!-- 여행지 -->
+      <div>
+        <label class="form-label">여행지</label>
+        <input type="text" placeholder="여행지를 입력해주세요." class="input" />
+      </div>
+
+      <!-- 계좌 선택 -->
+      <div>
+        <label class="form-label">결제 내역을 추적할 계좌</label>
+        <select class="input text-gray-500">
+          <option disabled selected>계좌를 선택해주세요.</option>
+          <option>하나은행 123-456</option>
+        </select>
+      </div>
 
       <button
         type="submit"

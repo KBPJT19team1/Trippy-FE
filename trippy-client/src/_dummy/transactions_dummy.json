@@ -1,0 +1,55 @@
+[
+  {
+    "transaction_id": 1,
+    "date": "2025-07-15T10:15:00",
+    "type": "withdraw",
+    "amount": 5000,
+    "balance_after": 820000,
+    "description": "현금 출금",
+    "category": "식비"
+  },
+  {
+    "transaction_id": 2,
+    "date": "2025-07-16T08:45:00",
+    "type": "deposit",
+    "amount": 150000,
+    "balance_after": 970000,
+    "description": "급여 이체"
+  },
+  {
+    "transaction_id": 3,
+    "date": "2025-07-18T13:20:00",
+    "type": "withdraw",
+    "amount": 32000,
+    "balance_after": 938000,
+    "description": "롯데백화점",
+    "category": "쇼핑"
+  },
+  {
+    "transaction_id": 4,
+    "date": "2025-07-20T19:05:00",
+    "type": "withdraw",
+    "amount": 74000,
+    "balance_after": 864000,
+    "description": "마트 장보기",
+    "category": "식비"
+  },
+  {
+    "transaction_id": 5,
+    "date": "2025-07-22T22:10:00",
+    "type": "deposit",
+    "amount": 50000,
+    "balance_after": 914000,
+    "description": "친구 송금",
+    "category": "기타"
+  },
+  {
+    "transaction_id": 6,
+    "date": "2025-07-25T17:30:00",
+    "type": "withdraw",
+    "amount": 18000,
+    "balance_after": 896000,
+    "description": "택시비",
+    "category": "교통"
+  }
+]

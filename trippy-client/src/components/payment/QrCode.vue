@@ -4,8 +4,8 @@ defineProps({
   isAuthenticated: Boolean,
 });
 
-import afterQr from "@/assets/default_qr.png"; // 인증 후 이미지
-import defaultQr from "@/assets/before-pay.png"; // 인증 전 이미지
+import afterQr from "@/assets/default_qr.png"; // 인증 후
+import defaultQr from "@/assets/before-pay.png"; // 인증 전
 </script>
 
 <template>

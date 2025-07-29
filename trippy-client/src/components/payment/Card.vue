@@ -1,4 +1,7 @@
 <script setup>
+import { ref, computed, watch, onMounted } from "vue";
+import { useRouter, useRoute } from "vue-router";
+
 import SettingsIcon from "./SettingsIcon.vue";
 import QrCode from "./QrCode.vue";
 import PayButton from "./PayButton.vue";
@@ -9,32 +12,39 @@ import card1 from "@/assets/card1.png";
 import card2 from "@/assets/card2.png";
 import card3 from "@/assets/card3.png";
 
-import { ref, computed, watch, onMounted } from "vue";
-import { useRouter, useRoute } from "vue-router";
-
 const router = useRouter();
 const route = useRoute();
 
-// 카드 리스트
 const cards = ref([
   { id: 1, image: card1, name: "KB국민카드_트래블러스" },
   { id: 2, image: card2, name: "신한카드_디스커버" },
   { id: 3, image: card3, name: "하나카드_위시올" },
 ]);
 
-// 현재 선택된 카드 ID
-const selectedCardId = ref(cards.value[0].id);
+const selectedCardId = ref(cards.value[0]?.id ?? null);
 
-// 인증 여부
-const qrEnabled = route.query.authenticated === "true";
+// ✅ 상태로 따로 뺌 (computed 말고 ref로 관리)
+const isAuthenticated = ref(route.query.authenticated === "true");
 
-// 타이머 관련
-const timeLeft = ref(180); // 180초 = 3분
+// ✅ 인증 변경 감지
+watch(
+  () => route.query.authenticated,
+  (newVal) => {
+    isAuthenticated.value = newVal === "true";
+    if (isAuthenticated.value) {
+      startTimer();
+    }
+  },
+);
+
+// 타이머
+const timeLeft = ref(180);
 let timer = null;
 
-// 타이머 시작
 const startTimer = () => {
-  if (!qrEnabled) return;
+  if (!isAuthenticated.value) return;
+  if (timer) clearInterval(timer);
+  timeLeft.value = 180;
   timer = setInterval(() => {
     if (timeLeft.value > 0) {
       timeLeft.value--;
@@ -45,7 +55,9 @@ const startTimer = () => {
 };
 
 onMounted(() => {
-  if (qrEnabled) startTimer();
+  if (isAuthenticated.value) {
+    startTimer();
+  }
 });
 
 function goToAddCard() {
@@ -64,7 +76,7 @@ function goToAddCard() {
       <template v-if="cards.length > 0">
         <!-- 타이머 -->
         <div
-          v-if="qrEnabled"
+          v-if="isAuthenticated"
           class="absolute text-[12px] text-gray-600 font-medium leading-none flex items-center gap-[4px]"
           style="width: 38px; height: 19px; left: 129px; top: 35px"
         >
@@ -78,9 +90,9 @@ function goToAddCard() {
           <img src="@/assets/reload.png" alt="reload" class="w-3 h-3" />
         </div>
 
-        <!-- QR코드 -->
+        <!-- QR 코드 -->
         <div class="absolute" style="width: 85px; height: 94px; left: 129px; top: 62px">
-          <QrCode :cardId="selectedCardId" :isAuthenticated="qrEnabled" />
+          <QrCode :cardId="selectedCardId" :isAuthenticated="isAuthenticated" />
         </div>
 
         <!-- 카드 캐러셀 -->

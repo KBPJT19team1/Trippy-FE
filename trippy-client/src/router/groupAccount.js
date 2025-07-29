@@ -1,5 +1,3 @@
-import { title } from "vue-carousel-3d";
-
 export default [
   {
     path: "/group-account/create",
@@ -100,7 +98,7 @@ export default [
     },
     path: "/group-account/settings/:accountId",
     name: "group-account-settings",
-    componet: () => import("@/views/group-account/settings/GroupAccountSettingsWrapper.vue"),
+    component: () => import("@/views/group-account/settings/GroupAccountSettingsWrapper.vue"),
     meta: {
       title: "계좌 설정",
       bgColor: "white",

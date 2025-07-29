@@ -20,11 +20,14 @@ import { numberWithCommas, formatDateToKorean, extractTime } from "@/assets/util
       </div>
     </div>
     <div class="bg-gray-100 h-4 mx-[-16px]"></div>
-    <div class="flex flex-col gap-4 py-4">
-      <div class="flex gap-1 items-center text-gray-500">
-        <p class="body2">전체</p>
-        <Icon icon="material-symbols:arrow-forward-ios-rounded" class="size-3 rotate-90" />
-      </div>
+    <div class="flex flex-col pt-4 gap-4">
+      <button class="flex items-center gap-2 text-gray-600">
+        <span class="body1">전체</span>
+        <Icon
+          icon="material-symbols:arrow-forward-ios-rounded"
+          class="size-3 rotate-90 text-gray-600"
+        />
+      </button>
 
       <div
         v-for="(data, index) in transactions"
@@ -33,7 +36,7 @@ import { numberWithCommas, formatDateToKorean, extractTime } from "@/assets/util
         <div
           v-for="(item, index) in data.transactions"
           class="flex justify-between">
-          <div class="flex gap-2 items-center">
+          <div class="flex gap-3 items-center">
             <CategoryChip :category="item.category" />
             <div class="flex flex-col gap-1">
               <p class="subtitle1">{{ item.description }}</p>

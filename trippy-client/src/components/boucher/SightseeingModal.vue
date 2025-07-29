@@ -1,9 +1,21 @@
 <script setup>
+import { onMounted, onUnmounted } from "vue";
+
 import { Icon } from "@iconify/vue";
 import dummyVoucher from "@/assets/dummy_voucher.png";
 
 defineProps({ imageUrl: String });
 const emit = defineEmits(["close"]);
+
+// 스크롤 막기
+onMounted(() => {
+  document.body.style.overflow = "hidden";
+});
+
+// 스크롤 복구
+onUnmounted(() => {
+  document.body.style.overflow = "";
+});
 </script>
 
 <template>

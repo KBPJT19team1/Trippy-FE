@@ -7,10 +7,10 @@ import SMSCertification from "@/components/personal-accounts/import-accounts/SMS
 import AgreeToTerms from "@/components/personal-accounts/import-accounts/AgreeToTerms.vue";
 import PasswordInput from "@/components/common/inputs/PasswordInput.vue";
 import LoadingView from "@/components/common/loading/LoadingView.vue";
-import ChooseAccounts from "@/components/personal-accounts/import-accounts/SelectAccounts.vue";
+import SelectAccount from "@/components/personal-accounts/import-accounts/SelectAccounts.vue";
 import CompleteImport from "@/components/personal-accounts/import-accounts/CompleteImport.vue";
 
-const views = [Intro, InputForm, SMSCertification, AgreeToTerms, PasswordInput, LoadingView, ChooseAccounts, CompleteImport];
+const views = [Intro, InputForm, SMSCertification, AgreeToTerms, PasswordInput, LoadingView, SelectAccount, CompleteImport];
 const currentIndex = ref(0);
 
 const currentView = computed(() => views[currentIndex.value]);

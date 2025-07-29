@@ -111,6 +111,11 @@ const router = createRouter({
           component: () => import("@/views/AccountListview.vue"),
           meta: { title: "계좌 목록", bgColor: "wihte" },
         },
+        {
+          path: "login",
+          name: "login",
+          component: () => import("@/views/login/LoginView.vue"),
+        },
         ...GroupAccount,
         ...identification,
         ...travelLog,

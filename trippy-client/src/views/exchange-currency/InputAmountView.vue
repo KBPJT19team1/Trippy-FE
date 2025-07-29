@@ -5,8 +5,9 @@ import { storeToRefs } from "pinia";
 import { Icon } from "@iconify/vue";
 import triangle from "@/assets/svg/triangle.svg";
 import NextButton from "@/components/common/NextButton.vue";
+import { useRouter } from "vue-router";
 
-const accountStore = useExchangeStore();
+const exchangeStore = useExchangeStore();
 
 const {
   selectedAccount,
@@ -14,7 +15,10 @@ const {
   selectedTodayRate,
   selectedCurrencyName,
   foreignCurrencyAccount,
-} = storeToRefs(accountStore);
+  inputForeignAmount,
+  inputKrwAmount,
+} = storeToRefs(exchangeStore);
+const { parseCurrencyCode } = exchangeStore;
 
 // div 부분 영역 클릭해도 입력칸 활성화되는 코드
 const foreignInputRef = ref(null);
@@ -34,6 +38,9 @@ const krwAmount = ref("");
 let updatingFromForeign = false;
 let updatingFromKrw = false;
 
+inputForeignAmount.value = foreignAmount.value;
+inputKrwAmount.value = krwAmount.value;
+
 watch(krwAmount, (newVal) => {
   if (updatingFromForeign) {
     updatingFromForeign = false;
@@ -49,6 +56,9 @@ watch(krwAmount, (newVal) => {
   }
   updatingFromKrw = true;
   foreignAmount.value = (krw / rate).toFixed(2);
+
+  inputKrwAmount.value = parseFloat(newVal).toFixed(2);
+  inputForeignAmount.value = parseFloat(foreignAmount.value);
 });
 
 watch(foreignAmount, (newVal) => {
@@ -65,23 +75,40 @@ watch(foreignAmount, (newVal) => {
   }
   updatingFromForeign = true;
   krwAmount.value = (foreign * rate).toFixed(0);
+  inputForeignAmount.value = parseFloat(newVal).toFixed(2);
+  inputKrwAmount.value = parseFloat(krwAmount.value).toFixed(2);
 });
+
+// 기존 잔액이 없는 외화통화에 대한 환전 시 잔액 0 데이터 추가
+watch(selectedCurrencyCode, (newCode) => {
+  if (
+    foreignCurrencyAccount.value?.accountType === "외화예금" &&
+    foreignCurrencyAccount.value.balance &&
+    foreignCurrencyAccount.value.balance[newCode] === undefined
+  ) {
+    foreignCurrencyAccount.value.balance[newCode] = 0;
+  }
+});
+
+const router = useRouter();
+const goToFinishView = () => {
+  router.push("/exchange-currency-finish");
+};
 </script>
 
 <template>
   <div class="flex flex-col h-full justify-between">
     <div>
       <div class="w-full flex flex-col items-center p-4">
-        <div class="flex gap-12">
-          <p class="subtitle2">
+        <div class="flex flex-wrap w-full items-center justify-between">
+          <p class="subtitle2 break-words">
             1 {{ selectedCurrencyCode }} = {{ selectedTodayRate.deal_bas_r }} 원
           </p>
-          <div class="flex text-gray-500">
-            <a class="subtitle2">원하는 환율에 사기</a>
-            <Icon icon="ic:round-navigate-next" class="w-[1.3rem] h-[1.3rem]"></Icon>
+          <div class="flex text-gray-500 break-words items-center">
+            <a class="subtitle2"> 원하는 환율에 사기</a>
+            <Icon icon="ic:round-navigate-next" class="w-8 h-auto"></Icon>
           </div>
         </div>
-        <br />
 
         <div
           class="flex justify-between w-full h-20 bg-gray-200 rounded-xl"
@@ -90,7 +117,8 @@ watch(foreignAmount, (newVal) => {
           <div class="my-auto ml-5">
             <p class="subtitle2">{{ selectedCurrencyName }}</p>
             <p class="whitespace-nowrap">
-              잔액 : {{ foreignCurrencyAccount.balance }} {{ selectedCurrencyCode }}
+              잔액 : {{ foreignCurrencyAccount.balance[selectedCurrencyCode] || 0 }}
+              {{ parseCurrencyCode(selectedCurrencyCode) }}
             </p>
           </div>
           <div class="flex gap-2 my-auto mr-5">
@@ -98,10 +126,15 @@ watch(foreignAmount, (newVal) => {
               ref="foreignInputRef"
               type="text"
               v-model="foreignAmount"
-              @input="foreignAmount = foreignAmount.replace(/[^0-9]/g, '')"
+              @input="
+                foreignAmount = foreignAmount
+                  .replace(/[^0-9.]/g, '')
+                  .replace(/^0+(?=\d)/, '')
+                  .replace(/(\..*?)\..*/g, '$1')
+              "
               class="bg-transparent w-full sm:w-[6rem] text-right"
             />
-            <p>{{ selectedCurrencyCode }}</p>
+            <p>{{ parseCurrencyCode(selectedCurrencyCode) }}</p>
           </div>
         </div>
 
@@ -120,7 +153,12 @@ watch(foreignAmount, (newVal) => {
               ref="krwInputRef"
               type="text"
               v-model="krwAmount"
-              @input="krwAmount = krwAmount.replace(/[^0-9]/g, '')"
+              @input="
+                krwAmount = krwAmount
+                  .replace(/[^0-9.]/g, '')
+                  .replace(/^0+(?=\d)/, '')
+                  .replace(/(\..*?)\..*/g, '$1')
+              "
               class="bg-transparent w-full sm:w-[6rem] text-right"
             />
             <p>KRW</p>
@@ -129,7 +167,7 @@ watch(foreignAmount, (newVal) => {
       </div>
     </div>
     <div>
-      <next-button title="확인" @click="goToAmountView"></next-button>
+      <NextButton title="확인" @click="goToFinishView"></NextButton>
     </div>
   </div>
 </template>

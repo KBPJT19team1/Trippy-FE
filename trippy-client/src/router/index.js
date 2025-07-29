@@ -99,6 +99,12 @@ const router = createRouter({
           component: () => import("@/views/exchange-currency/InputAmountView.vue"),
           meta: { title: "환전", bgColor: "white" },
         },
+        {
+          path: "account-list",
+          name: "account-list",
+          component: () => import("@/views/AccountListview.vue"),
+          meta: { title: "계좌 목록", bgColor: "wihte" },
+        },
         ...GroupAccount,
         ...identification,
         ...travelLog,

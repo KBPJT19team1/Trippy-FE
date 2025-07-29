@@ -10,8 +10,8 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="overflow-scroll">
-    <div class="flex flex-col gap-2 border-b border-b-gray-400 py-3 px-2">
+  <div class="w-full h-full overflow-scroll [&::-webkit-scrollbar]:hidden">
+    <div class="flex flex-col gap-2 border-b border-b-gray-400 pb-3 px-2">
       <div class="caption2">
         {{ `${props.account.accountBank}  ${props.account.accountNumber}` }}
       </div>

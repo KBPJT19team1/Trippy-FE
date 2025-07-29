@@ -1,5 +1,7 @@
 <script setup>
-import { ref } from "vue";
+/* 사용법
+  RegistrationView.vue 참고
+*/
 
 const props = defineProps({
   label: { type: String, required: true },

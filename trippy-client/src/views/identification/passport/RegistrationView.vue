@@ -4,7 +4,7 @@ import ActionButtons from "@/components/identification/ActionButtons.vue";
 import DocumentPreview from "@/components/identification/CapturePreview.vue";
 import CountrySelect from "@/components/identification/CountrySelect.vue";
 import DatePicker from "@/components/identification/DatePicker.vue";
-import EditableField from "@/components/identification/EditableInput.vue";
+import EditableField from "@/components/common/inputs/EditableInput.vue";
 import GenderSelect from "@/components/identification/GenderSelect.vue";
 import { ref } from "vue";
 

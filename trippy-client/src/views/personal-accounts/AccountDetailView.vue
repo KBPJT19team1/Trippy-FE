@@ -1,15 +1,14 @@
 <script setup>
-import { ref, watch } from "vue";
+import { ref } from "vue";
 
 import TransferButton from "@/components/common/TransferButton.vue";
-import TrasactionFilter from "@/components/account/TransactionFilter.vue";
-import CategoryChip from "@/components/common/CategoryChip.vue";
+import TransactionFilter from "@/components/account/TransactionFilter.vue";
+import TransactionItem from "@/components/account/TransactionItem.vue";
 import transactions from "@/_dummy/transactions_dummy.json";
-
-import { numberWithCommas, formatDateToKorean, extractTime } from "@/assets/utils/index.js";
 
 const filter = ref("all");
 
+// 거래 구분 필터 handle 함수
 const updateFilter = (newFilter) => {
   filter.value = newFilter;
   console.log(filter.value);
@@ -30,31 +29,11 @@ const updateFilter = (newFilter) => {
     </div>
     <div class="bg-gray-100 h-4 mx-[-16px]"></div>
     <div class="flex flex-col pt-4 gap-4">
-      <TrasactionFilter
+      <TransactionFilter
         :filter="filter"
         @update:filter="updateFilter"
       />
-      <div
-        v-for="(data, index) in transactions"
-        class="flex flex-col gap-3">
-        <p class="body2 text-gray-500">{{ formatDateToKorean(data.date) }}</p>
-        <div
-          v-for="(item, index) in data.transactions"
-          class="flex justify-between">
-          <div class="flex gap-3 items-center">
-            <CategoryChip :category="item.category" />
-            <div class="flex flex-col gap-1">
-              <p class="subtitle1">{{ item.description }}</p>
-              <p class="body2 text-gray-500">{{ extractTime(item.time) }}</p>
-            </div>
-          </div>
-          <div class="flex flex-col gap-1 items-end">
-            <p class="subtitle1">{{ item.type === "withdraw" ? `-${numberWithCommas(item.amount)}` : numberWithCommas(item.amount)}}원</p>
-            <p class="body2 text-gray-500">{{ numberWithCommas(item.balance_after) }}원</p>
-          </div>
-        </div>
-      </div>
-
+      <TransactionItem :transactions="transactions" />
     </div>
   </div>
 </template>

@@ -4,7 +4,6 @@
 import { Icon } from "@iconify/vue";
 
 defineEmits(["click"]);
-console.log("FloatingAddButton loaded"); // 확인용 로그
 </script>
 
 <template>

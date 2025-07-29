@@ -44,33 +44,14 @@ const formattedDate = computed(() =>
     <!-- 폼 영역 -->
     <form class="px-4 py-6 space-y-4">
       <input type="text" placeholder="제목을 입력하여 주세요." class="input" />
-
-      <!-- <div class="relative">
-        <input type="text" readonly :value="formattedDate" class="input" />
-        <Icon
-          icon="mdi:calendar"
-          class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-        />
-      </div> -->
-      <div class="relative">
-        <input
-          type="text"
-          readonly
-          :value="formattedDate"
-          class="input cursor-pointer"
-          @click="showCalendar = !showCalendar"
-        />
-        <div v-if="showCalendar" class="absolute z-50 mt-2">
-          <DateRangePicker
-            @update:range="
-              (val) => {
-                selectedRange.value = val;
-                showCalendar = false;
-              }
-            "
-          />
-        </div>
-      </div>
+      <DateRangePicker
+        @update:range="
+          (val) => {
+            selectedRange.value = val;
+            showCalendar.value = false;
+          }
+        "
+      />
 
       <input type="text" placeholder="여행지를 입력해주세요." class="input" />
 

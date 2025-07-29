@@ -1,17 +1,31 @@
 <script setup>
 import { RouterLink, useRoute } from "vue-router";
-import { computed } from "vue";
+import { computed, ref, watchEffect } from "vue";
 
 import { Icon } from "@iconify/vue";
 import TrippyLogo from "@/assets/svg/trippy-logo.svg";
 
 const route = useRoute();
+const pageTitle = ref("");
 
-const pageTitle = computed(() => route.meta.title || "");
+watchEffect(() => {
+  pageTitle.value = route.meta.title || "";
+});
+// const pageTitle = computed(() => route.meta.title || "");
 </script>
 
 <template>
   <div class="bg-white h-[100px] w-full fixed top-0 z-50 md:max-w-[375px] md:mx-auto">
+    <div
+      v-if="pageTitle == '예약 등록하기'"
+      class="h-[56px] mt-11 flex items-center justify-between relative"
+    >
+      <RouterLink :to="{ name: 'bouchers', query: { tab: '관광' } }" class="ml-4">
+        <Icon icon="material-symbols:close-rounded" class="w-6 h-6 hover:text-gray-500" />
+      </RouterLink>
+      <h3 class="subtitle1 absolute left-1/2 -translate-x-1/2">{{ pageTitle }}</h3>
+    </div>
+
     <div
       v-if="pageTitle === '홈'"
       class="h-[56px] px-4 mt-11 flex align-center items-center justify-between"
@@ -25,7 +39,7 @@ const pageTitle = computed(() => route.meta.title || "");
     </div>
 
     <div
-      v-if="pageTitle !== '홈'"
+      v-if="pageTitle !== '홈' && pageTitle !== '예약 등록하기'"
       class="h-[56px] mt-11 flex items-center justify-between relative"
     >
       <RouterLink to="/" class="ml-4">

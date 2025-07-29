@@ -98,4 +98,13 @@ export default [
       bgColor: "white",
     },
   },
+  {
+    path: "/group-account/settings",
+    name: "group-account-settings",
+    component: () => import("@/views/group-account/settings/GroupAccountSettingsWrapper.vue"),
+    meta: {
+      title: "계좌 설정",
+      bgColor: "white",
+    },
+  },
 ];

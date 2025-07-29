@@ -1,4 +1,3 @@
-<!-- trippy-client/src/components/payment/import-cards/Intro.vue -->
 <script setup>
 import { ref } from "vue";
 import TrippyLogo from "@/assets/svg/trippy-logo.svg";

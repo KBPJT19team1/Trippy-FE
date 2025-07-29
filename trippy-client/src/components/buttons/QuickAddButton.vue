@@ -2,7 +2,7 @@
 import { defineEmits } from "vue";
 import { Icon } from "@iconify/vue";
 
-const emit = defineEmits("click");
+const emit = defineEmits(["click"]);
 
 const onClick = () => {
   emit("click");

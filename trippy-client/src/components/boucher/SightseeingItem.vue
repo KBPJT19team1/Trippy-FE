@@ -1,11 +1,13 @@
 <script setup>
-import { computed } from "vue";
+import { ref, computed } from "vue";
 import { formatDateTimeToVoucher } from "@/assets/utils/formatDateTimeToVoucher.js";
+import SigntseeingModal from "@/components/boucher/SightseeingModal.vue";
 
 const props = defineProps({
   data: Object,
 });
 
+const showPreview = ref(false);
 const dateText = computed(() => formatDateTimeToVoucher(props.data.date));
 </script>
 
@@ -18,9 +20,15 @@ const dateText = computed(() => formatDateTimeToVoucher(props.data.date));
     </div>
     <button
       class="mt-2 w-full bg-blue-200 text-blue-400 py-2.5 text-button2 rounded-xl"
-      @click="$emit('click')"
+      @click="showPreview = true"
     >
       바우처 보기
     </button>
+
+    <SigntseeingModal
+      v-if="showPreview"
+      :image-url="props.data.voucherImage"
+      @close="showPreview = false"
+    />
   </div>
 </template>

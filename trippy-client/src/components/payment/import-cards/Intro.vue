@@ -1,9 +1,8 @@
-<!-- trippy-client/src/components/payment/import-cards/Intro.vue -->
 <script setup>
 import { ref } from "vue";
 import TrippyLogo from "@/assets/svg/trippy-logo.svg";
 import NextButton from "@/components/common/NextButton.vue";
-import TermsModal from "@/components/payment/import-cards/CustomTermsModal.vue";
+import TermsModal from "@/components/common/modals/TermsModal.vue";
 
 const emit = defineEmits(["next"]);
 const showTerms = ref(false);
@@ -35,6 +34,6 @@ const handleNext = () => {
     <NextButton title="카드 불러오기" @click="handleClick" />
 
     <!-- 모달 -->
-    <TermsModal v-model="showTerms" @next="handleNext" />
+    <TermsModal v-model="showTerms" type="card" @next="handleNext" />
   </div>
 </template>

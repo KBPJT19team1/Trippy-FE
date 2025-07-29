@@ -1,9 +1,17 @@
 <script setup>
+import { ref } from "vue";
+import router from "@/router";
 import AmountInput from "@/components/common/inputs/AmountInput.vue";
 import NextButton from "@/components/common/NextButton.vue";
-import { ref } from "vue";
+import { useSettleStore } from "@/stores/useSettleStore";
 
+const settleStore = useSettleStore();
 const amount = ref("");
+
+const onClick = () => {
+  settleStore.setSettleAmount(amount.value);
+  router.push({ name: "group-settle-complete" });
+};
 </script>
 
 <template>
@@ -15,7 +23,7 @@ const amount = ref("");
 
       <AmountInput v-model="amount" />
     </div>
-    <NextButton :title="'요청하기'" :disabled="!amount" />
+    <NextButton :title="'요청하기'" :disabled="!amount" @click="onClick" />
   </div>
 </template>
 

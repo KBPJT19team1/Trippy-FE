@@ -3,7 +3,7 @@
 import { ref } from "vue";
 import TrippyLogo from "@/assets/svg/trippy-logo.svg";
 import NextButton from "@/components/common/NextButton.vue";
-import TermsModal from "@/components/common/modals/TermsModal.vue";
+import TermsModal from "@/components/payment/import-cards/CustomTermsModal.vue";
 
 const emit = defineEmits(["next"]);
 const showTerms = ref(false);

@@ -9,7 +9,7 @@
         "amount": 5000,
         "balance_after": 820000,
         "description": "현금 출금",
-        "category": "식비"
+        "category": "식사"
       },
       {
         "transaction_id": 2,
@@ -18,7 +18,7 @@
         "amount": 12000,
         "balance_after": 808000,
         "description": "점심",
-        "category": "식비"
+        "category": "식사"
       }
     ]
   },
@@ -60,7 +60,7 @@
         "amount": 78000,
         "balance_after": 846000,
         "description": "롯데마트",
-        "category": "식비"
+        "category": "식사"
       },
       {
         "transaction_id": 6,
@@ -69,7 +69,7 @@
         "amount": 20000,
         "balance_after": 826000,
         "description": "배달의 민족",
-        "category": "식비"
+        "category": "식사"
       }
     ]
   },
@@ -83,7 +83,7 @@
         "amount": 50000,
         "balance_after": 876000,
         "description": "코레일",
-        "category": "교통비"
+        "category": "식사"
       }
     ]
   }

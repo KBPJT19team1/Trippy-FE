@@ -1,4 +1,3 @@
-<!-- trippy-client/src/components/payment/import-cards/Complete.vue -->
 <script setup>
 import { useRouter } from "vue-router";
 import TrippyLogo from "@/assets/svg/trippy-logo.svg";

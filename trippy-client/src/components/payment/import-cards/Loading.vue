@@ -1,4 +1,3 @@
-<!-- trippy-client/src/components/payment/import-cards/Loading.vue -->
 <script setup>
 import { onMounted } from "vue";
 import LoadingView from "@/components/common/loading/LoadingView.vue";

@@ -26,9 +26,9 @@ const handleNext = () => {
       <p class="body1">간편하게 내 카드 목록을 불러올 수 있어요.</p>
     </div>
 
-    <!-- 로고 -->
-    <div class="flex justify-center">
-      <TrippyLogo class="w-36" />
+    <!-- 로고  -->
+    <div class="flex-1 flex items-center justify-center">
+      <TrippyLogo class="w-64 h-36" />
     </div>
 
     <!-- 버튼 -->

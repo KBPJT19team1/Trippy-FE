@@ -3,6 +3,8 @@ import { Icon } from "@iconify/vue";
 import TransferButton from "@/components/common/TransferButton.vue";
 import CategoryChip from "@/components/common/CategoryChip.vue";
 import transactions from "@/_dummy/transactions_dummy.json";
+
+import { numberWithCommas, formatDateToKorean, extractTime } from "@/assets/utils/index.js";
 </script>
 
 <template>
@@ -27,7 +29,7 @@ import transactions from "@/_dummy/transactions_dummy.json";
       <div
         v-for="(data, index) in transactions"
         class="flex flex-col gap-3">
-        <p class="body2 text-gray-500">{{ data.date }}</p>
+        <p class="body2 text-gray-500">{{ formatDateToKorean(data.date) }}</p>
         <div
           v-for="(item, index) in data.transactions"
           class="flex justify-between">
@@ -35,12 +37,12 @@ import transactions from "@/_dummy/transactions_dummy.json";
             <CategoryChip :category="item.category" :isSelect="true" />
             <div class="flex flex-col gap-1">
               <p class="subtitle1">{{ item.description }}</p>
-              <p class="body2 text-gray-500">14:06</p>
+              <p class="body2 text-gray-500">{{ extractTime(item.time) }}</p>
             </div>
           </div>
           <div class="flex flex-col gap-1 items-end">
-            <p class="subtitle1">{{ item.type === "withdraw" ? `-${item.amount}` : item.amount}}원</p>
-            <p class="body2 text-gray-500">{{ item.balance_after }}원</p>
+            <p class="subtitle1">{{ item.type === "withdraw" ? `-${numberWithCommas(item.amount)}` : numberWithCommas(item.amount)}}원</p>
+            <p class="body2 text-gray-500">{{ numberWithCommas(item.balance_after) }}원</p>
           </div>
         </div>
       </div>

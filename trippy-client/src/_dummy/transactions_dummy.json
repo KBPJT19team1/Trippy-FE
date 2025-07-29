@@ -59,7 +59,7 @@
         "type": "withdraw",
         "amount": 78000,
         "balance_after": 846000,
-        "description": "마트 장보기",
+        "description": "롯데마트",
         "category": "식비"
       },
       {
@@ -68,7 +68,7 @@
         "type": "withdraw",
         "amount": 20000,
         "balance_after": 826000,
-        "description": "야식 배달",
+        "description": "배달의 민족",
         "category": "식비"
       }
     ]

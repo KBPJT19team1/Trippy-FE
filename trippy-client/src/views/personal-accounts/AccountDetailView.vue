@@ -32,7 +32,7 @@ import transactions from "@/_dummy/transactions_dummy.json";
         <p class="body2 text-gray-500">7월 28일</p>
         <div class="flex justify-between">
           <div class="flex gap-2 items-center">
-            <CategoryChip :title="data.category" :isSelect="true" />
+            <CategoryChip :category="data.category" :isSelect="true" />
             <div class="flex flex-col gap-1">
               <p class="subtitle1">{{ data.description }}</p>
               <p class="body2 text-gray-500">14:06</p>

@@ -2,7 +2,7 @@
 import { defineProps } from "vue";
 
 const props = defineProps({
-  title: String,
+  category: String,
   isSelect: Boolean,
 });
 </script>
@@ -10,8 +10,8 @@ const props = defineProps({
 <template>
   <div
     class="flex items-center justify-center w-14 h-7 rounded-full"
-    :class="[props.isSelect ? 'bg-blue-200 text-blue-400' : 'bg-gray-200 text-gray-500']"
+    :class="[props.category === '수입' ? 'bg-green-100 text-green-200' : 'bg-blue-200 text-blue-400']"
   >
-    <span class="caption2">{{ props.title }}</span>
+    <span class="caption2">{{ props.category }}</span>
   </div>
 </template>

@@ -86,17 +86,6 @@ const onReload = () => {
         <SightseeingItem v-for="item in sightseeings" :key="item.id" :data="item" />
       </div>
 
-      <!-- 💰 add 퀵버튼 컴포넌트 추가해야함~~!!!~!~!~!~!~!~!~!~!~~ -->
-      <!-- <div class="flex justify-end mt-3" v-if="accountList.length === 0">
-        <QuickAddButton
-          @click="
-            showGroupAccount
-              ? router.push({ name: 'group-account-create' })
-              : router.push({ name: 'import-personal-accounts' })
-          "
-        />
-      </div> -->
-
       <div class="fixed bottom-7 ml-72 z-50">
         <QuickAddButton @click="isModalOpen = true" />
       </div>

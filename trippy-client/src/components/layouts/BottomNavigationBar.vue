@@ -15,6 +15,7 @@ const hiddenPrefixes = [
   "/payment/settings",
   "/check/bouchers",
   "/exchange",
+  "/payment/add",
 ];
 const isHidden = computed(() => hiddenPrefixes.some((prefix) => route.path.startsWith(prefix)));
 </script>

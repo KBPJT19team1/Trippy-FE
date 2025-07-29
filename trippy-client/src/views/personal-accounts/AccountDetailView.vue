@@ -23,13 +23,11 @@ import transactions from "@/_dummy/transactions_dummy.json";
         <p class="body2">전체</p>
         <Icon icon="material-symbols:arrow-forward-ios-rounded" class="size-3 rotate-90" />
       </div>
-      <!-- 거래내역 리스트 -->
-      <!-- Todo: 거래내역 카테고리 칩 위치 고민 -->
 
       <div
         v-for="(data, index) in transactions"
-        class="flex flex-col gap-2">
-        <p class="body2 text-gray-500">{{ data.date}}</p>
+        class="flex flex-col gap-3">
+        <p class="body2 text-gray-500">{{ data.date }}</p>
         <div
           v-for="(item, index) in data.transactions"
           class="flex justify-between">

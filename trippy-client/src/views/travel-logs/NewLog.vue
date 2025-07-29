@@ -2,27 +2,34 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { Icon } from "@iconify/vue";
+import PhotoUploader from "@/components/travel-logs/PhotoUploader.vue";
+
+// 이미지 import
+import defaultImage from "@/assets/image.png";
 
 const router = useRouter();
-const formattedDate = "2025.07.23(수) ~ 2025.07.30(수)"; // 예시
+const formattedDate = "2025.07.23(수) ~ 2025.07.30(수)";
+
+const imageFile = ref(null);
+const imageUrl = ref("");
 </script>
 
-<!-- NewLog.vue -->
 <template>
   <div class="min-h-screen bg-white">
     <!-- 상단 헤더 -->
     <div class="relative">
-      <img src="@/assets/image.png" class="w-full h-48 object-cover" alt="배경" />
+      <div class="relative w-full">
+        <img
+          :src="imageUrl || defaultImage"
+          alt="여행 이미지"
+          class="w-full h-auto object-cover opacity-60"
+        />
+      </div>
       <button class="absolute top-4 left-4 text-black text-2xl" @click="router.back()">✕</button>
       <h1 class="absolute top-4 left-1/2 transform -translate-x-1/2 text-black font-bold text-lg">
         새 여행 로그
       </h1>
-      <div
-        class="absolute bottom-4 left-4 bg-white rounded-lg px-3 py-1 flex items-center gap-2 shadow"
-      >
-        <Icon icon="mdi:camera-outline" class="text-gray-500" />
-        <span class="text-gray-700 text-sm">0/1</span>
-      </div>
+      <PhotoUploader @update:imageUrl="imageUrl = $event" @update:imageFile="imageFile = $event" />
     </div>
 
     <!-- 폼 영역 -->

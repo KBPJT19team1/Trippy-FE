@@ -72,8 +72,8 @@ export default [
     },
   },
   {
-    path: "/group-account/settle-requst/target",
-    name: "group-account-settle-request-target",
+    path: "/group-settle/target",
+    name: "group-settle-target",
     component: () => import("@/views/group-account/settle-request/TargetView.vue"),
     meta: {
       title: "정산 요청하기",

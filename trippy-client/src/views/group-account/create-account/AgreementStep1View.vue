@@ -43,11 +43,11 @@ const toggleItem = (index) => {
   <div class="flex flex-col h-full w-full overflow-hidden justify-between">
     <div class="mx-1">
       <div>
-        <TrippyLogo class="w-64 m-auto mt-[4vh]" />
+        <TrippyLogo class="w-52 m-auto mt-2" />
         <AgreementCheck
           @click="toggleAllCheck"
           :class="[!allChecked ? 'bg-gray-400' : 'bg-main-gradient']"
-          class="mt-14 w-full"
+          class="mt-10 w-full"
           title="전체 동의"
         />
       </div>

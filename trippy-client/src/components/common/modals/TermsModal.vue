@@ -160,12 +160,13 @@ const handleNextClick = () => {
           </div>
         </div>
       </div>
-      <NextButton
-        title="다음"
-        class="px-4"
-        :disabled="!isNextEnabled"
-        @click="handleNextClick"
-      />
+      <div class="w-full px-4">
+        <NextButton
+          title="다음"
+          :disabled="!isNextEnabled"
+          @click="handleNextClick"
+        />
+      </div>
     </div>
   </div>
 </template>

@@ -1,13 +1,19 @@
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 
 import TransferButton from "@/components/common/TransferButton.vue";
+import TrasactionFilter from "@/components/account/TransactionFilter.vue";
 import CategoryChip from "@/components/common/CategoryChip.vue";
 import transactions from "@/_dummy/transactions_dummy.json";
 
 import { numberWithCommas, formatDateToKorean, extractTime } from "@/assets/utils/index.js";
 
-const currentFilter = ref("all");
+const filter = ref("all");
+
+const updateFilter = (newFilter) => {
+  filter.value = newFilter;
+  console.log(filter.value);
+};
 </script>
 
 <template>
@@ -24,15 +30,10 @@ const currentFilter = ref("all");
     </div>
     <div class="bg-gray-100 h-4 mx-[-16px]"></div>
     <div class="flex flex-col pt-4 gap-4">
-      <select
-        v-model="currentFilter"
-        class="w-fit bg-transparent ml-[-0.5rem] body1 text-gray-500"
-      >
-        <option value="all">전체</option>
-        <option value="deposit">입금</option>
-        <option value="withdraw">출금</option>
-      </select>
-
+      <TrasactionFilter
+        :filter="filter"
+        @update:filter="updateFilter"
+      />
       <div
         v-for="(data, index) in transactions"
         class="flex flex-col gap-3">

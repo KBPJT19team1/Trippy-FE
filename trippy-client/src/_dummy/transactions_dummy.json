@@ -14,7 +14,8 @@
     "type": "deposit",
     "amount": 150000,
     "balance_after": 970000,
-    "description": "급여 이체"
+    "description": "급여 이체",
+    "category": "수입"
   },
   {
     "transaction_id": 3,

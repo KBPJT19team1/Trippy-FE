@@ -144,6 +144,7 @@ const router = createRouter({
           path: "login",
           name: "login",
           component: () => import("@/views/login/LoginView.vue"),
+          meta: { bgColor: "white" },
         },
         ...GroupAccount,
         ...identification,

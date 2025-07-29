@@ -13,17 +13,13 @@ watch(
       currentTab.value = newTabs[0];
     }
   },
-  { immediate: true }
+  { immediate: true },
 );
 </script>
 
 <template>
   <div class="w-full">
-    <TabMenu
-      v-if="route.meta.tabs"
-      :tabs="route.meta.tabs"
-      v-model:tab="currentTab"
-    />
+    <TabMenu v-if="route.meta.tabs" :tabs="route.meta.tabs" v-model:tab="currentTab" />
 
     <div class="p-4">
       <RouterView :current-tab="currentTab" />

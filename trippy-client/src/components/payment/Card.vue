@@ -9,17 +9,44 @@ import card1 from "@/assets/card1.png";
 import card2 from "@/assets/card2.png";
 import card3 from "@/assets/card3.png";
 
-import { ref } from "vue";
-import { useRouter } from "vue-router";
+import { ref, computed, watch, onMounted } from "vue";
+import { useRouter, useRoute } from "vue-router";
 
 const router = useRouter();
+const route = useRoute();
 
-// 카드 리스트: 이걸 비우면 empty view가 보임
+// 카드 리스트
 const cards = ref([
   { id: 1, image: card1, name: "KB국민카드_트래블러스" },
   { id: 2, image: card2, name: "신한카드_디스커버" },
   { id: 3, image: card3, name: "하나카드_위시올" },
 ]);
+
+// 현재 선택된 카드 ID
+const selectedCardId = ref(cards.value[0].id);
+
+// 인증 여부
+const qrEnabled = route.query.authenticated === "true";
+
+// 타이머 관련
+const timeLeft = ref(180); // 180초 = 3분
+let timer = null;
+
+// 타이머 시작
+const startTimer = () => {
+  if (!qrEnabled) return;
+  timer = setInterval(() => {
+    if (timeLeft.value > 0) {
+      timeLeft.value--;
+    } else {
+      clearInterval(timer);
+    }
+  }, 1000);
+};
+
+onMounted(() => {
+  if (qrEnabled) startTimer();
+});
 
 function goToAddCard() {
   router.push("/payment/add");
@@ -34,20 +61,41 @@ function goToAddCard() {
     <div class="relative w-full h-full px-6 py-6">
       <SettingsIcon />
 
-      <!-- 카드 있을 경우 -->
       <template v-if="cards.length > 0">
-        <div class="absolute top-[71px] left-1/2 transform -translate-x-1/2">
-          <QrCode />
+        <!-- 타이머 -->
+        <div
+          v-if="qrEnabled"
+          class="absolute text-[12px] text-gray-600 font-medium leading-none flex items-center gap-[4px]"
+          style="width: 38px; height: 19px; left: 129px; top: 35px"
+        >
+          <span>
+            {{
+              Math.floor(timeLeft / 60)
+                .toString()
+                .padStart(2, "0")
+            }}:{{ (timeLeft % 60).toString().padStart(2, "0") }}
+          </span>
+          <img src="@/assets/reload.png" alt="reload" class="w-3 h-3" />
         </div>
 
-        <CardCarousel :cards="[...cards, { id: 999, image: plusCard, isAddCard: true }]" />
+        <!-- QR코드 -->
+        <div class="absolute" style="width: 85px; height: 94px; left: 129px; top: 62px">
+          <QrCode :cardId="selectedCardId" :isAuthenticated="qrEnabled" />
+        </div>
 
+        <!-- 카드 캐러셀 -->
+        <CardCarousel
+          :cards="[...cards, { id: 999, image: plusCard, isAddCard: true }]"
+          @selectCard="(id) => (selectedCardId.value = id)"
+        />
+
+        <!-- 결제 버튼 -->
         <div class="absolute top-[500px] left-1/2 transform -translate-x-1/2">
           <PayButton />
         </div>
       </template>
 
-      <!-- 카드 없을 경우 -->
+      <!-- 카드 없을 때 -->
       <template v-else>
         <div class="flex flex-col items-center justify-center h-full pt-[50px]">
           <p class="title4 text-black mb-6">결제 수단을 추가해 주세요.</p>

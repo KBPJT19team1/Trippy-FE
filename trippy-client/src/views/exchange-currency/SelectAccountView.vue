@@ -32,12 +32,11 @@ const goToAmountView = () => {
       <div v-else class="text-center border-b-2 border-b-gray-300 p-2 w-[20rem] mx-auto">
         <p class="title4 text-gray-400">계좌를 선택해 주세요</p>
       </div>
-      <br />
-      <div class="w-full h-[25rem] overflow-scroll">
+      <div class="w-auto h-[27rem] overflow-auto hide-scrollbar">
         <ul class="mx-3">
-          <h3 class="subtitle1 gap-8">내 계좌</h3>
+          <h3 class="subtitle1 gap-8 mt-5">내 계좌</h3>
           <li
-            class="flex gap-4 cursor-pointer my-2"
+            class="flex gap-4 cursor-pointer my-5"
             v-for="account in bankAccounts"
             :key="account.accountNumber"
             @click="handleSelect(account)"
@@ -55,8 +54,18 @@ const goToAmountView = () => {
       </div>
     </div>
 
-    <next-button title="다음" @click="goToAmountView" :disabled="!selectedAccount"></next-button>
+    <NextButton title="다음" @click="goToAmountView" :disabled="!selectedAccount"></NextButton>
   </div>
 </template>
 
-<style></style>
+<style>
+/* 스크롤바 숨기는 css */
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE, Edge */
+  scrollbar-width: none; /* Firefox */
+}
+</style>

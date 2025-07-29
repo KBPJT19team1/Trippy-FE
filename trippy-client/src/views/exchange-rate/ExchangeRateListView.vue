@@ -76,7 +76,7 @@ const goToExchangeCurrencyView = () => {
       </ul>
     </div>
     <div>
-      <next-button title="환전하기" @click="goToExchangeCurrencyView"></next-button>
+      <NextButton title="환전하기" @click="goToExchangeCurrencyView"></NextButton>
     </div>
   </div>
 </template>

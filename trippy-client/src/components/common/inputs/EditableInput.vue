@@ -1,5 +1,7 @@
 <script setup>
-import { ref } from "vue";
+/* 사용법
+  RegistrationView.vue 참고
+*/
 
 const props = defineProps({
   label: { type: String, required: true },
@@ -13,11 +15,16 @@ const emit = defineEmits(["update:modelValue", "toggleEdit"]);
 
 <template>
   <div class="mb-3">
-    <label class="body2">{{ label }}</label>
+    <div class="mb-1">
+      <label class="body2">{{ label }}</label>
+    </div>
 
-    <div class="flex items-center justify-between border rounded-md px-3 py-2">
+    <div
+      class="flex items-center justify-between border-[1px] rounded-xl border-gray-300 h-[3.25rem] px-4"
+    >
       <input
-        class="text-gray-800 body2"
+        type="text"
+        class="border-gray-300 text-gray-400 body1"
         :value="modelValue"
         :readonly="readonly"
         @input="

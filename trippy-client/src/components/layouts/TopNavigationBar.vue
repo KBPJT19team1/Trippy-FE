@@ -7,7 +7,6 @@ import TrippyLogo from "@/assets/svg/trippy-logo.svg";
 
 const route = useRoute();
 const router = useRouter();
-
 const pageTitle = computed(() => route.meta.title || "");
 
 const goBack = () => {
@@ -28,7 +27,7 @@ const goBack = () => {
     </div>
 
     <div
-      v-if="pageTitle === '홈'"
+      v-else-if="pageTitle === '홈'"
       class="h-[56px] px-4 mt-11 flex align-center items-center justify-between"
     >
       <TrippyLogo class="w-[62px] h-auto" />
@@ -39,10 +38,7 @@ const goBack = () => {
       </RouterLink>
     </div>
 
-    <div
-      v-if="pageTitle !== '홈' && pageTitle !== '예약 등록하기'"
-      class="h-[56px] mt-11 flex items-center justify-between relative"
-    >
+    <div v-else class="h-[56px] mt-11 flex items-center justify-between relative">
       <RouterLink to="/" class="ml-4">
         <Icon icon="material-symbols:arrow-back-ios-rounded" class="w-6 h-6 hover:text-gray-500" />
       </RouterLink>

@@ -2,6 +2,7 @@
 import { Icon } from "@iconify/vue";
 import TransferButton from "@/components/common/TransferButton.vue";
 import CategoryChip from "@/components/common/CategoryChip.vue";
+import transactions from "@/_dummy/transactions_dummy.json";
 </script>
 
 <template>
@@ -24,19 +25,22 @@ import CategoryChip from "@/components/common/CategoryChip.vue";
       </div>
       <!-- 거래내역 리스트 -->
       <!-- Todo: 거래내역 카테고리 칩 위치 고민 -->
-      <div class="flex flex-col gap-2">
+
+      <div
+        v-for="(data, index) in transactions"
+        class="flex flex-col gap-2">
         <p class="body2 text-gray-500">7월 28일</p>
         <div class="flex justify-between">
           <div class="flex gap-2 items-center">
-            <CategoryChip title="식비" :isSelect="true" />
+            <CategoryChip :title="data.category" :isSelect="true" />
             <div class="flex flex-col gap-1">
-              <p class="subtitle1">현금 출금</p>
+              <p class="subtitle1">{{ data.description }}</p>
               <p class="body2 text-gray-500">14:06</p>
             </div>
           </div>
           <div class="flex flex-col gap-1 items-end">
-            <p class="subtitle1">-100,000원</p>
-            <p class="body2 text-gray-500">254,200원</p>
+            <p class="subtitle1">{{ data.type === "withdraw" ? `-${data.amount}` : data.amount}}원</p>
+            <p class="body2 text-gray-500">{{ data.balance_after }}원</p>
           </div>
         </div>
       </div>

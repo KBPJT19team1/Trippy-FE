@@ -17,8 +17,7 @@ const dateRange = ref([]);
 </template>
 
 <style scoped>
-/* DatePicker의 input 필드에 스타일 적용 */
 :deep(.dp__input) {
-  @apply w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400;
+  @apply w-full border border-gray-300 rounded-lg px-4 py-3 pl-10 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400;
 }
 </style>

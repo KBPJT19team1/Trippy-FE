@@ -1,10 +1,13 @@
 <script setup>
-import { Icon } from "@iconify/vue";
+import { ref } from "vue";
+
 import TransferButton from "@/components/common/TransferButton.vue";
 import CategoryChip from "@/components/common/CategoryChip.vue";
 import transactions from "@/_dummy/transactions_dummy.json";
 
 import { numberWithCommas, formatDateToKorean, extractTime } from "@/assets/utils/index.js";
+
+const currentFilter = ref("all");
 </script>
 
 <template>
@@ -21,13 +24,14 @@ import { numberWithCommas, formatDateToKorean, extractTime } from "@/assets/util
     </div>
     <div class="bg-gray-100 h-4 mx-[-16px]"></div>
     <div class="flex flex-col pt-4 gap-4">
-      <button class="flex items-center gap-2 text-gray-600">
-        <span class="body1">전체</span>
-        <Icon
-          icon="material-symbols:arrow-forward-ios-rounded"
-          class="size-3 rotate-90 text-gray-600"
-        />
-      </button>
+      <select
+        v-model="currentFilter"
+        class="w-fit bg-transparent ml-[-0.5rem] body1 text-gray-500"
+      >
+        <option value="all">전체</option>
+        <option value="deposit">입금</option>
+        <option value="withdraw">출금</option>
+      </select>
 
       <div
         v-for="(data, index) in transactions"

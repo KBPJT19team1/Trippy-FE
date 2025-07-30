@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
 import TabViewLayout from "@/layouts/TabViewLayout.vue";
-import ImportAccountView from "@/views/personal-accounts/ImportAccountView.vue";
 
 import HomeView from "@/views/HomeView.vue";
 import PaymentView from "@/views/payment/PaymentView.vue";
@@ -45,6 +44,16 @@ const router = createRouter({
           },
         },
         {
+          path: "/payment/add",
+          name: "ImportCards",
+          component: () => import("@/views/payment/ImportCardView.vue"),
+          meta: {
+            title: "카드 불러오기",
+            bgColor: "white",
+          },
+        },
+
+        {
           path: "/payment/settings/:id/nickname",
           name: "CardNickname",
           component: () => import("@/views/payment/CardNicknameView.vue"),
@@ -69,9 +78,18 @@ const router = createRouter({
         {
           path: "/personal-accounts/import",
           name: "import-personal-accounts",
-          component: ImportAccountView,
+          component: () => import("@/views/personal-accounts/ImportAccountView.vue"),
           meta: {
             title: "계좌 불러오기",
+            bgColor: "white",
+          },
+        },
+        {
+          path: "/personal-accounts/detail",
+          name: "personal-accounts-detail",
+          component: () => import("@/views/personal-accounts/AccountDetailView.vue"),
+          meta: {
+            title: "계좌 내역",
             bgColor: "white",
           },
         },
@@ -109,7 +127,7 @@ const router = createRouter({
           path: "account-list",
           name: "account-list",
           component: () => import("@/views/AccountListview.vue"),
-          meta: { title: "계좌 목록", bgColor: "wihte" },
+          meta: { title: "계좌 목록", bgColor: "white" },
         },
         {
           path: "login",
@@ -145,6 +163,12 @@ const router = createRouter({
           name: "bouchers",
           component: () => import("@/views/boucher/BoucherView.vue"),
           meta: { title: "예약 내역", tabs: ["숙소", "관광"] },
+        },
+        {
+          path: "bouchers/sightseeing-register",
+          name: "SightseeingRegister",
+          component: () => import("@/views/boucher/SightseeingRegisterView.vue"),
+          meta: { title: "예약 등록하기", bgColor: "wihte" },
         },
       ],
     },

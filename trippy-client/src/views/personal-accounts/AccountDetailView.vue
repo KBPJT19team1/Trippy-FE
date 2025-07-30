@@ -41,6 +41,6 @@ const openModal = () => {
       />
       <TransactionItem :transactions="transactions" />
     </div>
-    <SelectAccountModal :is-modal-open="isModalOpen" />
+    <SelectAccountModal v-model="isModalOpen" />
   </div>
 </template>

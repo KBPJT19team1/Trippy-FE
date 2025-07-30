@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { defineEmits, ref } from "vue";
 import router from "@/router";
 import { numberWithCommas } from "@/assets/utils/index.js";
 import AmountInput from "@/components/common/inputs/AmountInput.vue";
@@ -7,9 +7,7 @@ import NextButton from "@/components/common/NextButton.vue";
 
 const amount = ref("");
 
-const onClick = () => {
-
-};
+const emit = defineEmits(["next"]);
 
 const onPressKey = (num) => {
   if (amount.value.length >= 10) return;
@@ -26,6 +24,10 @@ const onPressKey = (num) => {
 const onDelete = () => {
   if (!amount.value) return;
   amount.value = amount.value.slice(0, -1);
+};
+
+const onClick = () => {
+  emit("next");
 };
 </script>
 

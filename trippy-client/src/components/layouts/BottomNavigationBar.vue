@@ -22,6 +22,7 @@ const hiddenPrefixes = [
   "/check/identification",
   "/group-settle",
   "/identification",
+  "/payment/add",
   "/login",
 ];
 

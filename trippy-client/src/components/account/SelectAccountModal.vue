@@ -1,6 +1,8 @@
 <script setup>
+import { defineProps, defineEmits, ref, onMounted, onUnmounted } from "vue";
+import { useRouter } from "vue-router";
+
 import { Icon } from "@iconify/vue";
-import { defineProps, defineEmits, onMounted, onUnmounted } from "vue";
 import AccountItem from "@/components/account/AccountItem.vue";
 import { bankAccounts } from "@/_dummy/bankAccounts_dummy.js";
 
@@ -8,10 +10,19 @@ const props = defineProps({
   modelValue: Boolean,
 });
 
+const router = useRouter();
+
 const emit = defineEmits(["update:modelValue"]);
 
-const handleSelect = (account) => {
+const selectedAccount = ref("");
 
+const handleSelect = (account) => {
+  if (!account) return;
+
+  selectedAccount.value = account;
+  console.log(selectedAccount.value); // [임시] 데이터 확인용. 추후 API 연동 시 제거
+
+  router.push("/personal-accounts/add");
 };
 
 const closeModal = () => {

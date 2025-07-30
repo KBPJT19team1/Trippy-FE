@@ -8,10 +8,17 @@ import TrippyLogo from "@/assets/svg/trippy-logo.svg";
 const route = useRoute();
 
 const pageTitle = computed(() => route.meta.title || "");
+
+const hiddenPrefixes = ["/capture"];
+
+const isHidden = computed(() => hiddenPrefixes.some((prefix) => route.path.startsWith(prefix)));
 </script>
 
 <template>
-  <div class="bg-white h-[100px] w-full fixed top-0 z-50 md:max-w-[375px] md:mx-auto">
+  <div
+    v-if="!isHidden"
+    class="bg-white h-[100px] w-full fixed top-0 z-50 md:max-w-[375px] md:mx-auto"
+  >
     <div
       v-if="pageTitle === '홈'"
       class="h-[56px] px-4 mt-11 flex align-center items-center justify-between"

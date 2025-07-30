@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
 import TabViewLayout from "@/layouts/TabViewLayout.vue";
-import ImportAccountView from "@/views/personal-accounts/ImportAccountView.vue";
 
 import HomeView from "@/views/HomeView.vue";
 import PaymentView from "@/views/payment/PaymentView.vue";
@@ -79,9 +78,18 @@ const router = createRouter({
         {
           path: "/personal-accounts/import",
           name: "import-personal-accounts",
-          component: ImportAccountView,
+          component: () => import("@/views/personal-accounts/ImportAccountView.vue"),
           meta: {
             title: "계좌 불러오기",
+            bgColor: "white",
+          },
+        },
+        {
+          path: "/personal-accounts/detail",
+          name: "personal-accounts-detail",
+          component: () => import("@/views/personal-accounts/AccountDetailView.vue"),
+          meta: {
+            title: "계좌 내역",
             bgColor: "white",
           },
         },

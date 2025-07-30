@@ -96,7 +96,7 @@ const router = createRouter({
         {
           path: "/personal-accounts/add",
           name: "personal-accounts-add",
-          component: () => import("@/views/personal-accounts/AddMoney.vue"),
+          component: () => import("@/views/AmountInputView.vue"),
           meta: {
             title: "송금하기",
             bgColor: "white",

@@ -1,9 +1,15 @@
 <script setup>
-import { defineEmits, ref } from "vue";
-import router from "@/router";
+import { defineProps, defineEmits, ref } from "vue";
 import { numberWithCommas } from "@/assets/utils/index.js";
 import AmountInput from "@/components/common/inputs/AmountInput.vue";
 import NextButton from "@/components/common/NextButton.vue";
+
+const props = defineProps({
+  title: String,
+  type: String,
+});
+
+// type 은 add, send, settle 로 보내주기
 
 const amount = ref("");
 
@@ -35,8 +41,8 @@ const onClick = () => {
   <div class="flex flex-col w-full h-full justify-between">
     <div class="flex flex-col mb-4 grow items-center justify-center gap-4">
       <div class="flex flex-col gap-2 title2 text-center">
-        <p>내 국민은행 계좌로</p>
-        <p>얼마나 채울까요?</p>
+        <p v-if="props.type !== 'settle'">내 국민은행 계좌로</p>
+        <p>{{ props.title }}</p>
       </div>
       <AmountInput v-model="amount" />
       <div class="w-full flex justify-between">

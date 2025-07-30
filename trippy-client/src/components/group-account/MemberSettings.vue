@@ -2,6 +2,7 @@
 import { Icon } from "@iconify/vue";
 import { defineProps } from "vue";
 import ToggleSwitch from "../common/ToggleSwitch.vue";
+import router from "@/router";
 
 const props = defineProps({
   account: Object,
@@ -29,7 +30,11 @@ const props = defineProps({
       <p class="">모임멤버</p>
       <div class="flex items-center">
         {{ `(${member.length}명)` }}
-        <Icon icon="material-symbols:arrow-back-ios-new-rounded" class="rotate-180" />
+        <Icon
+          icon="material-symbols:arrow-back-ios-new-rounded"
+          class="rotate-180"
+          @click="router.push({ name: 'group-account-members' })"
+        />
       </div>
     </div>
     <div class="flex justify-between caption1 py-4 border-b border-b-gray-300 px-2">

@@ -25,8 +25,10 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="h-full w-full overflow-auto">
-    <SearchedMember v-model="searchedMember" />
+  <div class="h-full w-full">
+    <div class="h-12">
+      <SearchedMember v-model="searchedMember" />
+    </div>
 
     <div v-if="!searchedMember" class="px-2 mt-5">
       <div class="mb-4">

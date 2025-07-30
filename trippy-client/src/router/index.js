@@ -44,6 +44,16 @@ const router = createRouter({
           },
         },
         {
+          path: "/payment/add",
+          name: "ImportCards",
+          component: () => import("@/views/payment/ImportCardView.vue"),
+          meta: {
+            title: "카드 불러오기",
+            bgColor: "white",
+          },
+        },
+
+        {
           path: "/payment/settings/:id/nickname",
           name: "CardNickname",
           component: () => import("@/views/payment/CardNicknameView.vue"),
@@ -117,7 +127,7 @@ const router = createRouter({
           path: "account-list",
           name: "account-list",
           component: () => import("@/views/AccountListview.vue"),
-          meta: { title: "계좌 목록", bgColor: "wihte" },
+          meta: { title: "계좌 목록", bgColor: "white" },
         },
         ...GroupAccount,
         ...identification,
@@ -147,6 +157,12 @@ const router = createRouter({
           name: "bouchers",
           component: () => import("@/views/boucher/BoucherView.vue"),
           meta: { title: "예약 내역", tabs: ["숙소", "관광"] },
+        },
+        {
+          path: "bouchers/sightseeing-register",
+          name: "SightseeingRegister",
+          component: () => import("@/views/boucher/SightseeingRegisterView.vue"),
+          meta: { title: "예약 등록하기", bgColor: "wihte" },
         },
       ],
     },

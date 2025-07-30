@@ -6,7 +6,10 @@ import NextButton from "@/components/common/NextButton.vue";
 
 const props = defineProps({
   title: String,
-  type: String,
+  type: {
+    type: String,
+    required: false,
+  },
 });
 
 // type 은 add, send, settle 로 보내주기

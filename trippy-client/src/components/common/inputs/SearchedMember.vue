@@ -25,6 +25,7 @@ const focusInput = () => {
       v-model="searchedMember"
       class="w-full bg-gray-100 rounded-xl h-12"
       style="outline: none; border: none; box-shadow: none"
+      @input="searchedMember = $event.target.value.trim()"
       @focus="isFocused = true"
       @blur="isFocused = false"
     />

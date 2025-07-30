@@ -1,7 +1,14 @@
 <script setup>
-import { ref, computed, defineEmits } from "vue";
+import { ref, computed, defineEmits, defineProps } from "vue";
 import NextButton from "@/components/common/NextButton.vue";
 import AlertModal from "@/components/common/modals/AlertModal.vue";
+
+const props = defineProps({
+  currentPage: {
+    type: String,
+    required: false,
+  }
+});
 
 const tempPassword = "123456";
 const password = ref([]);
@@ -45,6 +52,10 @@ const handleClick = () => {
           :class="password.length >= n ? 'bg-main-gradient' : 'bg-gray-200'"
         ></div>
       </div>
+      <a
+        v-if="props.currentPage === 'login'"
+        class="caption2 text-blue-400 underline"
+      >혹시 비밀번호를 잊으셨나요?</a>
     </div>
     <div class="mb-2">
       <NextButton

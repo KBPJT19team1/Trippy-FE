@@ -94,6 +94,16 @@ const router = createRouter({
           },
         },
         {
+          path: "identification/guide",
+          name: "identification/guide",
+          component: () => import("@/views/identification/resident-card/CaptureGuideView.vue"),
+        },
+        {
+          path: "identification/registration",
+          name: "identification/registration",
+          component: () => import("@/views/identification/resident-card/RegistrationView.vue"),
+        },
+        {
           path: "exchange-rate",
           name: "ExchangeRate",
           component: () => import("@/views/exchange-rate/ExchangeRateListView.vue"),

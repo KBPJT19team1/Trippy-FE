@@ -1,6 +1,15 @@
 <script setup>
+import { defineEmits } from "vue";
+
+import { Icon } from "@iconify/vue";
 import NextButton from "@/components/common/NextButton.vue";
 import { numberWithCommas } from "@/assets/utils/index.js";
+
+const emit = defineEmits(["next"]);
+
+const onClick = () => {
+  emit("next");
+};
 </script>
 
 <template>
@@ -15,7 +24,10 @@ import { numberWithCommas } from "@/assets/utils/index.js";
       <div class="flex flex-col body2 gap-1 text-gray-500">
         <div class="flex justify-between">
           <p>받는 분에게 표시</p>
-          <p>홍길동</p>
+          <div class="flex gap-1 items-center">
+            <p>홍길동</p>
+            <Icon icon="material-symbols:arrow-forward-ios-rounded" class="size-3" />
+          </div>
         </div>
         <div class="flex justify-between">
           <p>출금 계좌</p>
@@ -29,6 +41,7 @@ import { numberWithCommas } from "@/assets/utils/index.js";
       <NextButton
         title="보내기"
         :disabled="false"
+        @click="onClick"
       />
     </div>
   </div>

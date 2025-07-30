@@ -1,5 +1,3 @@
-import { useGroupMemberStore } from "@/stores/groupMemberStore";
-
 export default [
   {
     path: "/group-account/create",

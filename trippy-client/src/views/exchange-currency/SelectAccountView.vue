@@ -32,7 +32,7 @@ const goToAmountView = () => {
       </p>
       <p v-else class="title4 text-gray-400">계좌를 선택해 주세요</p>
     </div>
-    <div class="w-full overflow-scroll hide-scrollbar">
+    <ul class="w-full overflow-scroll hide-scrollbar pb-12">
       <h3 class="subtitle1 ml-4 mb-1">내 계좌</h3>
       <li
         class="flex cursor-pointer"
@@ -42,7 +42,7 @@ const goToAmountView = () => {
       >
         <AccountItem :data="account" />
       </li>
-    </div>
+    </ul>
     <div class="fixed bottom-0 left-0 right-0 z-50 w-full max-w-full pt-4 pb-[34px] px-4 bg-white md:max-w-[375px] md:mx-auto">
       <NextButton
         title="다음"

@@ -62,6 +62,14 @@ const router = createRouter({
             bgColor: "white",
           },
         },
+        {
+          path: "/payment/password",
+          name: "PaymentPassword",
+          component: () => import("@/views/payment/PasswordView.vue"),
+          meta: {
+            bgColor: "white",
+          },
+        },
 
         {
           path: "travel-logs",
@@ -94,6 +102,16 @@ const router = createRouter({
           },
         },
         {
+          path: "identification/guide",
+          name: "identification/guide",
+          component: () => import("@/views/identification/resident-card/CaptureGuideView.vue"),
+        },
+        {
+          path: "identification/registration",
+          name: "identification/registration",
+          component: () => import("@/views/identification/resident-card/RegistrationView.vue"),
+        },
+        {
           path: "exchange-rate",
           name: "ExchangeRate",
           component: () => import("@/views/exchange-rate/ExchangeRateListView.vue"),
@@ -115,6 +133,12 @@ const router = createRouter({
           path: "exchange-currency-amount",
           name: "ExchangeCurrencyInputAmount",
           component: () => import("@/views/exchange-currency/InputAmountView.vue"),
+          meta: { title: "환전", bgColor: "white" },
+        },
+        {
+          path: "exchange-currency-password",
+          name: "ExchangeCurrencyPassword",
+          component: () => import("@/views/exchange-currency/PasswordInputView.vue"),
           meta: { title: "환전", bgColor: "white" },
         },
         {

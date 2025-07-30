@@ -19,9 +19,6 @@ const handleClick = () => {
       </div>
     </div>
 
-    <!-- 하단 버튼 -->
-    <div class="w-full pt-4 pb-[34px] px-4 bg-white md:max-w-[375px] md:mx-auto">
-      <NextButton title="확인" @click="handleClick" />
-    </div>
+    <NextButton title="확인" @click="handleClick" />
   </div>
 </template>

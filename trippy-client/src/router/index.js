@@ -150,6 +150,12 @@ const router = createRouter({
           component: () => import("@/views/boucher/BoucherView.vue"),
           meta: { title: "예약 내역", tabs: ["숙소", "관광"] },
         },
+        {
+          path: "bouchers/sightseeing-register",
+          name: "SightseeingRegister",
+          component: () => import("@/views/boucher/SightseeingRegisterView.vue"),
+          meta: { title: "예약 등록하기", bgColor: "wihte" },
+        },
       ],
     },
   ],

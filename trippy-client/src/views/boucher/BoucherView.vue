@@ -1,6 +1,6 @@
 <script setup>
-import { ref, computed, watch } from "vue";
-import { useRoute } from "vue-router";
+import { ref, watch, defineProps, onMounted, computed } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import { storeToRefs } from "pinia";
 
 import { useAccommodationStore } from "@/stores/accommodationStore";
@@ -17,39 +17,56 @@ import AccommodationItem from "@/components/boucher/AccommodationItem.vue";
 import SightseeingItem from "@/components/boucher/SightseeingItem.vue";
 import QuickAddButton from "@/components/buttons/QuickAddButton.vue";
 
+// props로 탭을 외부에서 제어
 const props = defineProps({
-  currentTab: {
-    type: String,
-    required: true,
-  },
+  currentTab: { type: String, required: true },
 });
+// const currentTab = computed({
+//   get: () => route.query.tab || "숙소", // 기본값 '숙소'
+//   set: (val) => {
+//     router.replace({ query: { ...route.query, tab: val } });
+//   },
+// });
 
 const route = useRoute();
+const router = useRouter();
 const isLoading = ref(false);
-const isModalOpen = ref(false);
 
-//숙소 store
+// 스토어
 const accommodationStore = useAccommodationStore();
-const { accommodations } = storeToRefs(accommodationStore);
-
-//관광 store
 const sightseeingStore = useSightseeingStore();
+const { accommodations } = storeToRefs(accommodationStore);
 const { sightseeings } = storeToRefs(sightseeingStore);
 
-// 탭 전환 시 더미 데이터 로드
+// props.currentTab 변경 시마다 더미 데이터 세팅
 watch(
   () => props.currentTab,
   (tab) => {
-    if (tab === "숙소") accommodationStore.setAccommodations(dummyAccommodations);
-    else if (tab === "관광") sightseeingStore.setSightseeing(dummySightseeing);
+    if (tab === "숙소") {
+      accommodationStore.setAccommodations(dummyAccommodations);
+    } else if (tab === "관광") {
+      sightseeingStore.setSightseeing(dummySightseeing);
+    }
   },
   { immediate: true },
 );
+// watch(
+//   () => currentTab.value,
+//   (tab) => {
+//     if (tab === "숙소") {
+//       accommodationStore.setAccommodations(dummyAccommodations);
+//     } else if (tab === "관광") {
+//       sightseeingStore.setSightseeing(dummySightseeing);
+//     }
+//   },
+//   { immediate: true },
+// );
 
-// 보여줄 목록
-const visibleList = computed(() => {
-  return currentTab.value === "숙소" ? accommodations.value : sightseeings.value;
-});
+// onMounted(() => {
+//   if (route.query.tab === "관광") {
+//     currentTab.value = "관광";
+//   }
+// });
 
 const onReload = () => {
   isLoading.value = true;
@@ -65,6 +82,7 @@ const onReload = () => {
 
     <!-- 숙소 탭 -->
     <template v-if="props.currentTab === '숙소'">
+      <!-- <template v-if="currentTab === '숙소'"> -->
       <div v-if="accommodations.length === 0" class="mt-[50%] flex justify-center">
         <EmptyAccommodation />
       </div>
@@ -78,7 +96,8 @@ const onReload = () => {
     </template>
 
     <!-- 관광 탭 -->
-    <template v-else>
+    <!-- <template v-else-if="currentTab === '관광'"> -->
+    <template v-else-if="props.currentTab === '관광'">
       <div v-if="sightseeings.length === 0" class="mt-[50%] flex justify-center">
         <EmptySightseeing />
       </div>
@@ -87,7 +106,7 @@ const onReload = () => {
       </div>
 
       <div class="fixed bottom-7 ml-72 z-50">
-        <QuickAddButton @click="isModalOpen = true" />
+        <QuickAddButton @click="router.push({ name: 'SightseeingRegister' })" />
       </div>
     </template>
   </main>

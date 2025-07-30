@@ -6,7 +6,7 @@ import SettingsIcon from "./SettingsIcon.vue";
 import QrCode from "./QrCode.vue";
 import PayButton from "./PayButton.vue";
 import CardCarousel from "./CardCarousel.vue";
-import PaymentNotification from "./PaymentNotification.vue"; // ✅ 알림 컴포넌트
+import PaymentNotification from "./PaymentNotification.vue"; // 알림 컴포넌트
 
 import plusCard from "@/assets/empty_card.png";
 import card1 from "@/assets/card1.png";
@@ -24,13 +24,13 @@ const cards = ref([
 
 const selectedCardId = ref(cards.value[0]?.id ?? null);
 
-// ✅ 인증 상태
+// 인증 상태
 const isAuthenticated = ref(route.query.authenticated === "true");
 
-// ✅ 결제 완료 알림 상태
+// 결제 완료 알림 상태
 const isPaymentComplete = ref(false);
 
-// ✅ 알림 표시 함수
+// 알림 표시 함수
 function showPaymentNotification() {
   isPaymentComplete.value = true;
   setTimeout(() => {
@@ -38,15 +38,15 @@ function showPaymentNotification() {
   }, 2000);
 }
 
-// ✅ 카드 선택 시 처리
+// 카드 선택 시 처리
 function handleSelectCard(id) {
   selectedCardId.value = id;
   if (isAuthenticated.value) {
-    showPaymentNotification(); // ✅ 인증됐을 때만 알림 표시
+    showPaymentNotification(); // 인증됐을 때만 알림 표시
   }
 }
 
-// ✅ 인증 변경 감지
+// 인증 변경 감지
 watch(
   () => route.query.authenticated,
   (newVal) => {
@@ -57,7 +57,7 @@ watch(
   },
 );
 
-// ✅ 타이머
+// 타이머
 const timeLeft = ref(180);
 let timer = null;
 
@@ -88,7 +88,7 @@ function goToAddCard() {
 
 <template>
   <div>
-    <!-- ✅ 결제 완료 알림 -->
+    <!-- 결제 완료 알림 -->
     <PaymentNotification :visible="isPaymentComplete" />
 
     <div

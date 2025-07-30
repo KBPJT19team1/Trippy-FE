@@ -10,7 +10,7 @@ import "swiper/css";
 
 const activeIndex = ref(0);
 const router = useRouter();
-const emit = defineEmits(["selectCard"]); // ✅ 이벤트 선언
+const emit = defineEmits(["selectCard"]); // 이벤트 선언
 
 function onSlideChange(swiper) {
   activeIndex.value = swiper.realIndex;

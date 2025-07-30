@@ -40,11 +40,6 @@
     <div class="absolute bottom-[12.5rem] w-full text-center text-white body1">
       빛 반사에 유의하여 촬영해주세요.
     </div>
-
-    <!-- 안내 텍스트 -->
-    <div class="absolute bottom-[8rem] w-full text-center text-white body1">
-      {{ size }}
-    </div>
   </div>
 </template>
 
@@ -56,7 +51,6 @@ const video = ref(null);
 const detected = ref(false);
 const guideBox = ref({ left: 0, top: 0, width: 0, height: 0 });
 let captured = false; // 중복 캡처 방지용
-let size = ref("");
 
 let stream, canvas, ctx;
 
@@ -170,7 +164,6 @@ function startDetection() {
         let rect = cv.boundingRect(approx);
         let aspect = rect.width / rect.height; // 가로 세로 비율
         let area = cv.contourArea(approx); // 면적
-        size.value = aspect;
 
         if (area > 40000 && aspect > 1.4 && aspect < 1.8) {
           // // 신분증 비율 1.6:1 , 오차 +-0.2

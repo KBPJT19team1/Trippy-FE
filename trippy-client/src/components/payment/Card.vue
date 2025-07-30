@@ -23,7 +23,7 @@ const cards = ref([
 
 const selectedCardId = ref(cards.value[0]?.id ?? null);
 
-// ✅ 상태로 따로 뺌 (computed 말고 ref로 관리)
+// ✅ 인증 상태 ref
 const isAuthenticated = ref(route.query.authenticated === "true");
 
 // ✅ 인증 변경 감지
@@ -37,7 +37,7 @@ watch(
   },
 );
 
-// 타이머
+// ✅ 타이머
 const timeLeft = ref(180);
 let timer = null;
 
@@ -50,6 +50,7 @@ const startTimer = () => {
       timeLeft.value--;
     } else {
       clearInterval(timer);
+      isAuthenticated.value = false; // ✅ 인증 종료
     }
   }, 1000);
 };

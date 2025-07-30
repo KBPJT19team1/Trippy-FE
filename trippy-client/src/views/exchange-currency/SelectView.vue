@@ -1,8 +1,9 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { useExchangeStore } from "@/stores/exchangeStore.js";
 import { Icon } from "@iconify/vue";
 import { useRouter } from "vue-router";
+import NextButton from "@/components/common/NextButton.vue";
 
 //수출입은행 현재환율api 인증키
 const authkey = "수출입은행 현재환율 api 인증키 부분";
@@ -25,7 +26,7 @@ const error = ref("");
 </script>
 
 <template>
-  <div class="w-11/12 flex flex-col h-full">
+  <div class="w-full h-full mx-auto flex flex-col">
     <h3 class="font-semibold text-xl">어떤 돈으로 환전할까요?</h3>
     <br />
 
@@ -49,18 +50,25 @@ const error = ref("");
           <span class="font-semibold text-sm text-gray-600 px-4">{{ item.cur_nm }}</span>
         </div>
         <div>
-          <button
-            @click="
-              handleSelect(item.cur_unit);
-              goToAccountView();
-            "
-            class="p-2"
-          >
-            <Icon class="right-6 w-6 h-6 text-gray-400" icon="material-symbols:check"></Icon>
+          <button @click="handleSelect(item.cur_unit)" class="p-2">
+            <Icon
+              :class="[
+                'right-6 w-8 h-8',
+                item.cur_unit === exchangeStore.selectedCurrencyCode
+                  ? 'text-blue-500'
+                  : 'text-gray-400',
+              ]"
+              icon="material-symbols:check"
+            ></Icon>
           </button>
         </div>
       </li>
     </ul>
+    <div
+      class="fixed bottom-0 left-0 right-0 z-50 w-full pt-4 pb-[34px] px-4 bg-white md:max-w-[375px] md:mx-auto"
+    >
+      <NextButton title="다음" @click="goToAccountView" />
+    </div>
   </div>
 </template>
 

@@ -6,7 +6,10 @@ import NextButton from "@/components/common/NextButton.vue";
 import { numberWithCommas } from "@/assets/utils/index.js";
 
 const props = defineProps({
-  type: String,
+  type: {
+    type: String,
+    required: Boolean,
+  },
 });
 
 const router = useRouter();

@@ -91,8 +91,8 @@ watch(selectedCurrencyCode, (newCode) => {
 });
 
 const router = useRouter();
-const goToFinishView = () => {
-  router.push("/exchange-currency-finish");
+const goToPasswordView = () => {
+  router.push("/exchange-currency-password");
 };
 </script>
 
@@ -167,7 +167,7 @@ const goToFinishView = () => {
       </div>
     </div>
     <div>
-      <NextButton title="확인" @click="goToFinishView"></NextButton>
+      <NextButton title="확인" @click="goToPasswordView"></NextButton>
     </div>
   </div>
 </template>

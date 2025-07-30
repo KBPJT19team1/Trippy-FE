@@ -126,6 +126,12 @@ const router = createRouter({
           meta: { title: "환전", bgColor: "white" },
         },
         {
+          path: "exchange-currency-password",
+          name: "ExchangeCurrencyPassword",
+          component: () => import("@/views/exchange-currency/PasswordInputView.vue"),
+          meta: { title: "환전", bgColor: "white" },
+        },
+        {
           path: "exchange-currency-finish",
           name: "ExchangeCurrencyFinish",
           component: () => import("@/views/exchange-currency/FinishExchangeView.vue"),

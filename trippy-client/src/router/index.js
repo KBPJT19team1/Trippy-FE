@@ -14,6 +14,7 @@ import GroupAccount from "./groupAccount.js";
 
 import IdView from "@/views/identification//resident-card/ResidentCardView.vue";
 import travelLog from "./travelLog.js";
+import NoPaddingLayout from "@/layouts/NoPaddingLayout.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -127,6 +128,17 @@ const router = createRouter({
           name: "bouchers",
           component: () => import("@/views/boucher/BoucherView.vue"),
           meta: { title: "예약 내역", tabs: ["숙소", "관광"] },
+        },
+      ],
+    },
+    {
+      path: "/capture",
+      component: NoPaddingLayout,
+      children: [
+        {
+          path: "",
+          name: "capture",
+          component: () => import("@/views/identification/CaptureView.vue"),
         },
       ],
     },

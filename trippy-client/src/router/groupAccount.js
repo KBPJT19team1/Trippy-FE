@@ -107,4 +107,13 @@ export default [
       bgColor: "white",
     },
   },
+  {
+    path: "/group-account/detail",
+    name: "group-account-detail",
+    component: () => import("@/views/group-account/detail/AccountDetailView.vue"),
+    meta: {
+      title: "계좌 설정",
+      bgColor: "white",
+    },
+  },
 ];

@@ -5,6 +5,8 @@ export const useGroupJoinStore = defineStore("groupJoin", () => {
   const userId = ref("");
   //모임통장 계좌
   const groupAccountNumber = ref("");
+  //모임통장 이름
+  const groupAccountName = ref("떠나자");
   //대표계좌
   const representativeAccount = ref("");
   //대표계좌 은행
@@ -23,6 +25,7 @@ export const useGroupJoinStore = defineStore("groupJoin", () => {
     representativeAccount,
     representativeAccountBank,
     userRole,
+    groupAccountName,
     setRepresentativeAccount,
   };
 });

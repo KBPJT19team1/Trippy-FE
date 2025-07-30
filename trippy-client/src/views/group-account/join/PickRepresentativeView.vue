@@ -18,7 +18,7 @@ const selectAccount = (account) => {
 
 const onClick = () => {
   groupJoinStore.setRepresentativeAccount(selectAccountNumber.value, selectAccountBank.value);
-  router.push({ name: "group-account-create-complete" });
+  router.push({ name: "group-join-complete" });
 };
 </script>
 
@@ -35,7 +35,7 @@ const onClick = () => {
         :accountNumber="selectAccountNumber"
       />
     </div>
-    <NextButton :title="'다음'" :disabled="!selectAccountBank" @click="onClick" />
+    <NextButton :title="'참여완료하기'" :disabled="!selectAccountBank" @click="onClick" />
   </div>
 </template>
 

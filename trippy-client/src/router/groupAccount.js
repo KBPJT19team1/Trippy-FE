@@ -125,4 +125,13 @@ export default [
       bgColor: "white",
     },
   },
+  {
+    path: "/group-join/complete",
+    name: "group-join-complete",
+    component: () => import("@/views/group-account/join/JoinComplete.vue"),
+    meta: {
+      title: "모임계좌 참여하기",
+      bgColor: "white",
+    },
+  },
 ];

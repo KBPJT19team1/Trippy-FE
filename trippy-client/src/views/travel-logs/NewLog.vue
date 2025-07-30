@@ -56,7 +56,6 @@ const formattedDate = computed(() =>
 
       <!-- 여행 기간 -->
       <div>
-        <label class="form-label">여행 기간</label>
         <DateRangePicker
           @update:range="
             (val) => {
@@ -70,8 +69,7 @@ const formattedDate = computed(() =>
 
       <!-- 여행지 -->
       <div>
-        <label class="form-label">여행지</label>
-        <input type="text" placeholder="여행지를 입력해주세요." class="input" />
+        <NameInput v-model="travelPlace" label="여행지" placeholder="여행지를 입력해주세요" />
       </div>
 
       <!-- 계좌 선택 -->

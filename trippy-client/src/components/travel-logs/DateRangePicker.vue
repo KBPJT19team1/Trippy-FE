@@ -12,12 +12,11 @@ const dateRange = ref([]);
     format="yyyy.MM.dd"
     :enable-time-picker="false"
     @update:model-value="$emit('update:range', { start: dateRange[0], end: dateRange[1] })"
-    input-class-name="custom-datepicker-input"
   />
 </template>
 
 <style scoped>
 :deep(.dp__input) {
-  @apply w-full border border-gray-300 rounded-lg px-4 py-3 pl-10 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400;
+  @apply body2 text-gray-400 w-full h-12 border border-gray-300 rounded-xl px-4;
 }
 </style>

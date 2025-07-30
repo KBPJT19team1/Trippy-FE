@@ -4,6 +4,8 @@ import { useRouter } from "vue-router";
 import { Icon } from "@iconify/vue";
 import PhotoUploader from "@/components/travel-logs/PhotoUploader.vue";
 import DateRangePicker from "@/components/travel-logs/DateRangePicker.vue";
+import NameInput from "@/components/common/inputs/NameInput.vue";
+import DateInput from "@/components/common/inputs/DateInput.vue";
 
 // 이미지 import
 import defaultImage from "@/assets/image.png";
@@ -45,8 +47,11 @@ const formattedDate = computed(() =>
     <form class="px-4 py-6 space-y-4">
       <!-- 제목 -->
       <div>
-        <label class="form-label">제목</label>
-        <input type="text" placeholder="제목을 입력하여 주세요." class="input" />
+        <NameInput
+          v-model="travelName"
+          label="여행 제목"
+          placeholder="여행의 제목을 입력해주세요"
+        />
       </div>
 
       <!-- 여행 기간 -->
@@ -60,6 +65,7 @@ const formattedDate = computed(() =>
             }
           "
         />
+        <!-- <DateInput v-model="selectedDate" label="예약 날짜" /> -->
       </div>
 
       <!-- 여행지 -->

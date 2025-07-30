@@ -112,7 +112,7 @@ export default [
     name: "group-join-agreement",
     component: () => import("@/views/group-account/join/AgreeTermsView.vue"),
     meta: {
-      title: "모임 참여하기",
+      title: "모임계좌 참여하기",
       bgColor: "white",
     },
   },

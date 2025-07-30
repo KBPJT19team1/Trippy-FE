@@ -41,7 +41,9 @@ function showPaymentNotification() {
 // ✅ 카드 선택 시 처리
 function handleSelectCard(id) {
   selectedCardId.value = id;
-  showPaymentNotification(); // ✅ 카드 클릭 시 알림 표시
+  if (isAuthenticated.value) {
+    showPaymentNotification(); // ✅ 인증됐을 때만 알림 표시
+  }
 }
 
 // ✅ 인증 변경 감지

@@ -98,7 +98,7 @@ export default [
     },
   },
   {
-    path: "/group-account/settings/:accountId",
+    path: "/group-account/settings",
     name: "group-account-settings",
     component: () => import("@/views/group-account/settings/GroupAccountSettingsWrapper.vue"),
     meta: {
@@ -111,7 +111,7 @@ export default [
     name: "group-account-detail",
     component: () => import("@/views/group-account/detail/AccountDetailView.vue"),
     meta: {
-      title: "계좌 설정",
+      title: "계좌 내역",
       bgColor: "white",
     },
   },

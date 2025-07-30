@@ -35,9 +35,20 @@ onMounted(async () => {
         <p class="caption1 text-gray-500 mb-1">모임주</p>
         <p class="body2">{{ leaderMember.name }}</p>
       </div>
-      <div>
+      <div v-if="!members.length == 0">
         <p class="caption1 text-gray-500 mb-1">멤버</p>
         <p class="body2 mb-1" v-for="member in members" :key="member.id">{{ member.name }}</p>
+      </div>
+      <div v-else>
+        <div>
+          <p class="caption1 text-gray-500 mb-1">멤버</p>
+        </div>
+        <div class="flex flex-col items-center mt-32 gap-3">
+          <p class="subtitle2">아직 참여중인 멤버가 없어요!</p>
+          <button class="w-24 h-8 caption2 text-white bg-main-gradient rounded-[0.6rem]">
+            초대하기
+          </button>
+        </div>
       </div>
     </div>
 

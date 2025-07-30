@@ -1,22 +1,28 @@
 <script setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 
 import TransferButton from "@/components/common/TransferButton.vue";
 import TransactionFilter from "@/components/account/TransactionFilter.vue";
 import TransactionItem from "@/components/account/TransactionItem.vue";
 import transactions from "@/_dummy/transactions_dummy.json";
+import { useGroupAccountStore } from "@/stores/groupAccountStore";
 import { Icon } from "@iconify/vue";
 import router from "@/router";
 
 const filter = ref("all");
+const groupAccountStore = useGroupAccountStore();
 
-const role = ref("leader");
+const role = ref("");
 
 // 거래 구분 필터 handle 함수
 const updateFilter = (newFilter) => {
   filter.value = newFilter;
   console.log(filter.value);
 };
+
+onMounted(() => {
+  role.value = groupAccountStore.userRoleInGroupAccount;
+});
 </script>
 
 <template>

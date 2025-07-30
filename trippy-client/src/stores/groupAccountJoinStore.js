@@ -11,8 +11,10 @@ export const useGroupJoinStore = defineStore("groupJoin", () => {
   const representativeAccount = ref("");
   //대표계좌 은행
   const representativeAccountBank = ref("");
-  // 모임원 분류
+  //모임원 분류
   const userRole = ref("member");
+  //가입 시간
+  const joinDateTime = ref("2025.07.29 13:13:13");
 
   const setRepresentativeAccount = (number, bank) => {
     representativeAccount.value = number;
@@ -26,6 +28,7 @@ export const useGroupJoinStore = defineStore("groupJoin", () => {
     representativeAccountBank,
     userRole,
     groupAccountName,
+    joinDateTime,
     setRepresentativeAccount,
   };
 });

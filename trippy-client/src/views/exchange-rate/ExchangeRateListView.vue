@@ -23,7 +23,7 @@ const goToExchangeCurrencyView = () => {
     <div v-else-if="error" class="text-center text-red-500">{{ error }}</div>
     <div
       v-else
-      class="overflow-scroll flex-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+      class="overflow-scroll flex-1 mb-12 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
     >
       <ul class="divide-y divide-gray-200">
         <li
@@ -76,7 +76,7 @@ const goToExchangeCurrencyView = () => {
       </ul>
     </div>
     <div
-      class="fixed bottom-0 left-0 right-0 z-50 w-full pt-4 pb-[34px] px-4 bg-white md:max-w-[375px] md:mx-auto"
+      class="fixed bottom-0 left-0 right-0 z-50 w-full max-w-full pt-4 pb-[34px] px-4 bg-white md:max-w-[375px] md:mx-auto"
     >
       <NextButton title="환전하기" @click="goToExchangeCurrencyView" />
     </div>

@@ -126,6 +126,7 @@ const goToPasswordView = () => {
               ref="foreignInputRef"
               type="text"
               v-model="foreignAmount"
+              maxlength="10"
               @input="
                 foreignAmount = foreignAmount
                   .replace(/[^0-9.]/g, '')
@@ -153,6 +154,7 @@ const goToPasswordView = () => {
               ref="krwInputRef"
               type="text"
               v-model="krwAmount"
+              maxlength="10"
               @input="
                 krwAmount = krwAmount
                   .replace(/[^0-9.]/g, '')

@@ -27,13 +27,15 @@ const error = ref("");
 
 <template>
   <div class="w-full h-full mx-auto flex flex-col">
-    <h3 class="font-semibold text-xl">어떤 돈으로 환전할까요?</h3>
-    <br />
+    <h3 class="font-semibold text-xl m-1">어떤 돈으로 환전할까요?</h3>
 
     <div v-if="loading">데이터 불러오는 중...</div>
     <div v-else-if="error" class="text-center text-red-500">{{ error }}</div>
 
-    <ul v-else class="divide-y divide-gray-200 flex-1 overflow-auto hide-scrollbar">
+    <ul
+      v-else
+      class="divide-y divide-gray-200 flex-1 mb-12 overflow-auto hide-scrollbar::-webkit-scrollbar"
+    >
       <li
         v-for="item in todayRates"
         :key="item.cur_unit"
@@ -55,7 +57,7 @@ const error = ref("");
               :class="[
                 'right-6 w-8 h-8',
                 item.cur_unit === exchangeStore.selectedCurrencyCode
-                  ? 'text-blue-500'
+                  ? 'text-blue-400'
                   : 'text-gray-400',
               ]"
               icon="material-symbols:check"
@@ -65,7 +67,7 @@ const error = ref("");
       </li>
     </ul>
     <div
-      class="fixed bottom-0 left-0 right-0 z-50 w-full pt-4 pb-[34px] px-4 bg-white md:max-w-[375px] md:mx-auto"
+      class="fixed bottom-0 left-0 right-0 z-50 w-full max-w-full pt-4 pb-[34px] px-4 bg-white md:max-w-[375px] md:mx-auto"
     >
       <NextButton title="다음" @click="goToAccountView" />
     </div>

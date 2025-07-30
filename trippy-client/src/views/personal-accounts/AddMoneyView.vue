@@ -12,7 +12,7 @@ const views =  [
   { component: ConfirmTransfer },
   { component: CompleteTransfer },
 ];
-const currentIndex = ref(3);
+const currentIndex = ref(0);
 
 const currentView = computed(() => views[currentIndex.value]);
 

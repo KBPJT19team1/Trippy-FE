@@ -87,7 +87,12 @@ function goToAddCard() {
                 .padStart(2, "0")
             }}:{{ (timeLeft % 60).toString().padStart(2, "0") }}
           </span>
-          <img src="@/assets/reload.png" alt="reload" class="w-3 h-3" />
+          <img
+            src="@/assets/reload.png"
+            alt="reload"
+            class="w-3 h-3 cursor-pointer"
+            @click="startTimer"
+          />
         </div>
 
         <!-- QR 코드 -->

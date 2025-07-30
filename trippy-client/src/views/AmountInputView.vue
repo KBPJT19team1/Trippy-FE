@@ -11,12 +11,21 @@ const onClick = () => {
 
 };
 
-const onPressKey = (n) => {
+const onPressKey = (num) => {
+  if (amount.value.length >= 10) return;
 
+  if (amount.value === "0") {
+    amount.value = String(num);
+  } else {
+    amount.value += String(num);
+  }
+
+  console.log(amount.value);
 };
 
 const onDelete = () => {
-
+  if (!amount.value) return;
+  amount.value = amount.value.slice(0, -1);
 };
 </script>
 
@@ -50,7 +59,12 @@ const onDelete = () => {
       >
         {{ n }}
       </button>
-      <div></div>
+      <button
+        class="h-12 title2 font-normal rounded-lg active:bg-blue-100"
+        @click="() => onPressKey('00')"
+      >
+        00
+      </button>
       <button
         class="h-12 title2 font-normal rounded-lg active:bg-blue-100"
         @click="() => onPressKey(0)"

@@ -95,11 +95,10 @@ export default [
     component: () => import("@/views/group-account/settle-request/SettleCompleteView.vue"),
     meta: {
       title: "정산 요청하기",
-      bgColor: "white",
     },
   },
   {
-    path: "/group-account/settings",
+    path: "/group-account/settings/:accountId",
     name: "group-account-settings",
     component: () => import("@/views/group-account/settings/GroupAccountSettingsWrapper.vue"),
     meta: {

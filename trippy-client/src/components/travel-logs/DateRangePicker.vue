@@ -26,6 +26,6 @@ const props = defineProps({
 
 <style scoped>
 :deep(.dp__input) {
-  @apply body2 text-gray-400 w-full h-12 border border-gray-300 rounded-xl px-4;
+  @apply body2 text-gray-400 w-full h-12 border border-gray-300 rounded-xl px-10;
 }
 </style>

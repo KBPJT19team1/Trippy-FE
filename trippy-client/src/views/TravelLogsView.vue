@@ -54,13 +54,6 @@ function handleGroupClick() {
 
 <template>
   <main class="relative w-full flex flex-col gap-8">
-    <!-- 배경 오버레이 -->
-    <!-- <div
-      v-if="showOptions"
-      class="fixed inset-0 bg-black bg-opacity-40 z-20"
-      @click="showOptions = false"
-    ></div> -->
-
     <!-- 비어 있을 경우 화면 -->
     <EmptyState v-if="travelLogs.length === 0" />
 

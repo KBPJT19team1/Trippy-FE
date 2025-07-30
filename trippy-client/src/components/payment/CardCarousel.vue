@@ -10,6 +10,7 @@ import "swiper/css";
 
 const activeIndex = ref(0);
 const router = useRouter();
+const emit = defineEmits(["selectCard"]); // ✅ 이벤트 선언
 
 function onSlideChange(swiper) {
   activeIndex.value = swiper.realIndex;
@@ -32,7 +33,7 @@ function goToAddCard() {
         <div
           class="flex flex-col items-center transition-all duration-300 ease-in-out transform cursor-pointer"
           :class="index === activeIndex ? 'scale-100 opacity-100' : 'scale-90 opacity-50'"
-          @click="card.isAddCard ? goToAddCard() : null"
+          @click="card.isAddCard ? goToAddCard() : emit('selectCard', card.id)"
         >
           <img :src="card.image" alt="카드" class="w-[180px] rounded-xl" />
           <p

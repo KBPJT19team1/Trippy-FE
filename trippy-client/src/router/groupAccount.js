@@ -1,3 +1,5 @@
+import { useGroupMemberStore } from "@/stores/groupMemberStore";
+
 export default [
   {
     path: "/group-account/create",
@@ -112,6 +114,15 @@ export default [
     component: () => import("@/views/group-account/detail/AccountDetailView.vue"),
     meta: {
       title: "계좌 내역",
+      bgColor: "white",
+    },
+  },
+  {
+    path: "/group-account/members",
+    name: "group-account-members",
+    component: () => import("@/views/group-account/settings/MemberListView.vue"),
+    meta: {
+      title: "참여중 멤버",
       bgColor: "white",
     },
   },

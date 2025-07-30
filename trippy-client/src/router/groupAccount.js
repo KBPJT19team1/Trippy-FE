@@ -72,6 +72,33 @@ export default [
     },
   },
   {
+    path: "/group-settle/target",
+    name: "group-settle-target",
+    component: () => import("@/views/group-account/settle-request/TargetView.vue"),
+    meta: {
+      title: "정산 요청하기",
+      bgColor: "white",
+    },
+  },
+  {
+    path: "/group-settle/amount",
+    name: "group-settle-amount",
+    component: () => import("@/views/group-account/settle-request/EnterSettleAmountView.vue"),
+    meta: {
+      title: "정산 요청하기",
+      bgColor: "white",
+    },
+  },
+  {
+    path: "/group-settle/complete",
+    name: "group-settle-complete",
+    component: () => import("@/views/group-account/settle-request/SettleCompleteView.vue"),
+    meta: {
+      title: "정산 요청하기",
+      bgColor: "white",
+    },
+  },
+  {
     path: "/group-account/settings",
     name: "group-account-settings",
     component: () => import("@/views/group-account/settings/GroupAccountSettingsWrapper.vue"),

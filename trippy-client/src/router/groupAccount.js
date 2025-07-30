@@ -96,6 +96,8 @@ export default [
     meta: {
       title: "정산 요청하기",
     },
+  },
+  {
     path: "/group-account/settings/:accountId",
     name: "group-account-settings",
     component: () => import("@/views/group-account/settings/GroupAccountSettingsWrapper.vue"),

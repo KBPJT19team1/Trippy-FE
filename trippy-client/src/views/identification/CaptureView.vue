@@ -1,5 +1,13 @@
 <template>
   <div class="relative w-screen h-screen bg-black overflow-hidden">
+    <div class="absolute top-[60px] w-full text-center text-white body1 z-10">
+      <Icon
+        icon="material-symbols:close-rounded"
+        class="absolute left-4 top-[0.75rem] -translate-y-[0.8rem] w-[1.5rem] h-[1.5rem]"
+      />
+      <span>주민등록증 사진 촬영</span>
+    </div>
+
     <!-- 카메라 영상 -->
     <video
       ref="video"
@@ -32,15 +40,23 @@
     <div class="absolute bottom-[12.5rem] w-full text-center text-white body1">
       빛 반사에 유의하여 촬영해주세요.
     </div>
+
+    <!-- 안내 텍스트 -->
+    <div class="absolute bottom-[8rem] w-full text-center text-white body1">
+      {{ size }}
+    </div>
   </div>
 </template>
 
 <script setup>
+import { Icon } from "@iconify/vue";
 import { ref, onMounted, nextTick } from "vue";
 
 const video = ref(null);
 const detected = ref(false);
 const guideBox = ref({ left: 0, top: 0, width: 0, height: 0 });
+let captured = false; // 중복 캡처 방지용
+let size = ref("");
 
 let stream, canvas, ctx;
 
@@ -154,9 +170,10 @@ function startDetection() {
         let rect = cv.boundingRect(approx);
         let aspect = rect.width / rect.height; // 가로 세로 비율
         let area = cv.contourArea(approx); // 면적
+        size.value = aspect;
 
-        if (area > 1000 && aspect > 1.2 && aspect < 1.8) {
-          // // 신분증 비율 1.6:1
+        if (area > 40000 && aspect > 1.4 && aspect < 1.8) {
+          // // 신분증 비율 1.6:1 , 오차 +-0.2
           foundRectangle = true;
         }
       }
@@ -165,7 +182,45 @@ function startDetection() {
       contour.delete();
     }
 
-    detected.value = foundRectangle;
+    detected.value = foundRectangle; // 감지 여부
+
+    ////////////////////////////////////////
+    // 신분증이 감지되면 이미지 PNG로 저장
+    if (foundRectangle && !captured) {
+      captured = true; // 한 번만 캡처
+
+      // 캡처용 캔버스 생성
+      const captureCanvas = document.createElement("canvas");
+      captureCanvas.width = ORI_BOX_W;
+      captureCanvas.height = ORI_BOX_H;
+      const captureCtx = captureCanvas.getContext("2d");
+
+      // 비디오 프레임에서 중앙 영역만 추출
+      captureCtx.drawImage(
+        video.value,
+        boxX,
+        boxY,
+        ORI_BOX_W,
+        ORI_BOX_H, // 원본 비디오 좌표
+        0,
+        0,
+        ORI_BOX_W,
+        ORI_BOX_H, // 캔버스에 맞춰서 그리기
+      );
+
+      // PNG 데이터 URL 생성
+      const imageDataUrl = captureCanvas.toDataURL("image/png");
+
+      // PNG 파일로 다운로드
+      const link = document.createElement("a");
+      link.href = imageDataUrl;
+      link.download = "captured_id.png"; // 저장할 파일명
+      link.click();
+
+      //console.log("PNG 저장 완료");
+    }
+
+    ////////////////////////////////////////
 
     // 수동 메모리 해제 (OpenCV)
     src.delete();

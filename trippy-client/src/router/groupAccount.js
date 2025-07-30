@@ -107,4 +107,13 @@ export default [
       bgColor: "white",
     },
   },
+  {
+    path: "/group-join/agreement",
+    name: "group-join-agreement",
+    component: () => import("@/views/group-account/join/AgreeTermsView.vue"),
+    meta: {
+      title: "모임 참여하기",
+      bgColor: "white",
+    },
+  },
 ];

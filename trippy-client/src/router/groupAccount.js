@@ -108,10 +108,19 @@ export default [
   },
   {
     path: "/send/select-recipient",
-    name: "SendSelectRecipient",
+    name: "send-select-recipient",
     component: () => import("@/views/group-account/transfer/SelectRecipientView.vue"),
     meta: {
-      title: "받는 사람 선택",
+      title: "송금하기",
+      bgColor: "white",
+    },
+  },
+  {
+    path: "/send/amount",
+    name: "send-amount",
+    component: () => import("@/views/group-account/transfer/EnterAmountView.vue"),
+    meta: {
+      title: "송금하기",
       bgColor: "white",
     },
   },

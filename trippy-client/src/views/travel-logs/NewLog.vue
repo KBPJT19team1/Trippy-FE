@@ -5,7 +5,8 @@ import { Icon } from "@iconify/vue";
 import PhotoUploader from "@/components/travel-logs/PhotoUploader.vue";
 import DateRangePicker from "@/components/travel-logs/DateRangePicker.vue";
 import NameInput from "@/components/common/inputs/NameInput.vue";
-import DateInput from "@/components/common/inputs/DateInput.vue";
+import { bankAccounts } from "@/_dummy/bankAccounts_dummy";
+import AccountItem from "@/components/account/AccountItem.vue";
 
 // 이미지 import
 import defaultImage from "@/assets/image.png";
@@ -23,6 +24,11 @@ const formattedDate = computed(() =>
     ? `${selectedRange.value.start} ~ ${selectedRange.value.end}`
     : "날짜를 선택하세요",
 );
+
+const selectedAccount = ref(null);
+const handleSelect = (account) => {
+  selectedAccount.value = account;
+};
 </script>
 
 <template>
@@ -73,14 +79,30 @@ const formattedDate = computed(() =>
       </div>
 
       <!-- 계좌 선택 -->
-      <div>
-        <label class="form-label">결제 내역을 추적할 계좌</label>
-        <select class="input text-gray-500">
-          <option disabled selected>계좌를 선택해주세요.</option>
-          <option>하나은행 123-456</option>
-        </select>
-      </div>
 
+      <div class="flex flex-col gap-2 mt-4">
+        <!-- 라벨 -->
+        <label class="body2 text-black px-1">결제 내역을 추적할 계좌</label>
+        <!-- 테두리 박스 안 계좌 목록 -->
+        <div class="border border-gray-400 rounded-xl overflow-hidden">
+          <ul class="flex flex-col">
+            <li
+              v-for="account in bankAccounts"
+              :key="account.accountNumber"
+              @click="handleSelect(account)"
+              :class="[
+                'cursor-pointer transition',
+                selectedAccount?.accountNumber === account.accountNumber
+                  ? 'bg-gradient-to-r from-blue-400 to-blue-600 text-white'
+                  : 'hover:bg-gray-100',
+              ]"
+            >
+              <AccountItem :data="account" />
+            </li>
+          </ul>
+        </div>
+      </div>
+      
       <button
         type="submit"
         class="w-full py-3 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-xl font-bold"

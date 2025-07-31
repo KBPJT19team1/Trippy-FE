@@ -75,7 +75,9 @@ function handleGroupClick() {
     </div>
 
     <!-- 플로팅 버튼 -->
-    <FloatingAddButton @click="toggleOptions" />
+    <div class="fixed bottom-7 right-6 md:right-10 z-50">
+      <FloatingAddButton @click="toggleOptions" />
+    </div>
 
     <!-- 여행 선택 모달 -->
     <TravelOptions

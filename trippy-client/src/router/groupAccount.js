@@ -106,4 +106,13 @@ export default [
       bgColor: "white",
     },
   },
+  {
+    path: "/send/select-recipient",
+    name: "SendSelectRecipient",
+    component: () => import("@/views/group-account/transfer/SelectRecipientView.vue"),
+    meta: {
+      title: "받는 사람 선택",
+      bgColor: "white",
+    },
+  },
 ];

@@ -31,7 +31,7 @@ const focusInput = () => {
   <div @click="focusInput" class="w-full flex justify-center">
     <div
       :class="[
-        'w-full h-full py-3 border-b',
+        'w-full h-full py-2 border-b',
         isFocused ? 'border-b-blue-500' : 'border-b-gray-400',
       ]"
     >

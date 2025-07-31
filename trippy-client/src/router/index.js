@@ -111,6 +111,15 @@ const router = createRouter({
           },
         },
         {
+          path: "/personal-accounts/send",
+          name: "personal-accounts-send",
+          component: () => import("@/views/personal-accounts/SendMoneyView.vue"),
+          meta: {
+            title: "송금하기",
+            bgColor: "white",
+          },
+        },
+        {
           path: "identification/guide",
           name: "identification/guide",
           component: () => import("@/views/identification/resident-card/CaptureGuideView.vue"),

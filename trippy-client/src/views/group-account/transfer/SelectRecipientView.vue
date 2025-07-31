@@ -43,7 +43,10 @@ onMounted(async () => {
   <div class="flex flex-col mt-20">
     <div class="border-b border-gray-300 h-20 flex flex-col items-center">
       <p class="title2">누구한테 정산을 요청할까요?</p>
-      <button class="my-3 button1 text-gray-500 flex items-center">
+      <button
+        class="my-3 button1 text-gray-500 flex items-center"
+        @click="router.push({ name: 'personal-accounts-send' })"
+      >
         계좌번호 직접 입력하기
         <Icon icon="material-symbols:arrow-back-ios-new-rounded" class="rotate-180" />
       </button>

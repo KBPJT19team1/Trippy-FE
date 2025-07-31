@@ -50,7 +50,7 @@ const handleSelect = (account) => {
     </div>
 
     <!-- 폼 영역 -->
-    <form class="px-4 py-6 space-y-4">
+    <form class="px-4 py-6 space-y-4 pb-24">
       <!-- 제목 -->
       <div>
         <NameInput
@@ -84,7 +84,7 @@ const handleSelect = (account) => {
         <!-- 라벨 -->
         <label class="body2 text-black px-1">결제 내역을 추적할 계좌</label>
         <!-- 테두리 박스 안 계좌 목록 -->
-        <div class="border border-gray-400 rounded-xl overflow-hidden">
+        <div class="border border-gray-300 rounded-xl overflow-hidden">
           <ul class="flex flex-col">
             <li
               v-for="account in bankAccounts"
@@ -102,13 +102,16 @@ const handleSelect = (account) => {
           </ul>
         </div>
       </div>
-      
-      <button
-        type="submit"
-        class="w-full py-3 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-xl font-bold"
-      >
-        로그 생성하기
-      </button>
+
+      <!-- 고정 하단 버튼 -->
+      <div class="sticky bottom-0 z-50 bg-white px-4 pt-2">
+        <button
+          type="submit"
+          class="w-full py-3 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-xl font-bold"
+        >
+          로그 생성하기
+        </button>
+      </div>
     </form>
   </div>
 </template>

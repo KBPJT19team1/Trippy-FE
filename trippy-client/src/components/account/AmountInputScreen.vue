@@ -12,7 +12,7 @@ const props = defineProps({
   },
 });
 
-// type 은 add, send, settle 로 보내주기
+// type 은 personal-add/group-add, personal-send/group-send, settle 로 보내주기
 
 const amount = ref("");
 

@@ -168,6 +168,12 @@ const router = createRouter({
           component: () => import("@/views/login/LoginView.vue"),
           meta: { bgColor: "white" },
         },
+        {
+          path: "app-setting",
+          name: "app-setting",
+          component: () => import("@/views/AppSettingView.vue"),
+          meta: { title: "설정", bgColor: "white" },
+        },
         ...GroupAccount,
         ...identification,
         ...travelLog,

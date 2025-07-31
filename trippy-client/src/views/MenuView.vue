@@ -10,7 +10,10 @@ import { Icon } from "@iconify/vue";
       <Icon icon="material-symbols:arrow-back-ios-new-rounded" class="rotate-180" />
     </div>
 
-    <div class="flex justify-between caption1 py-4 border-b border-b-gray-300 px-2">
+    <div
+      class="flex justify-between caption1 py-4 border-b border-b-gray-300 px-2"
+      @click="router.push({ name: 'app-setting' })"
+    >
       <p class="">설정</p>
       <Icon icon="material-symbols:arrow-back-ios-new-rounded" class="rotate-180" />
     </div>

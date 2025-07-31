@@ -110,34 +110,32 @@ const goToPasswordView = () => {
           </div>
         </div>
 
-        <div
-          class="flex justify-between w-full h-20 bg-gray-200 rounded-xl"
-          @click="focusForeignInput"
-        >
-          <div class="my-auto ml-5">
-            <p class="subtitle2">{{ selectedCurrencyName }}</p>
-            <p class="whitespace-nowrap">
-              잔액 : {{ foreignCurrencyAccount.balance[selectedCurrencyCode] || 0 }}
-              {{ parseCurrencyCode(selectedCurrencyCode) }}
-            </p>
-          </div>
-          <div class="flex gap-2 my-auto mr-5">
-            <input
-              ref="foreignInputRef"
-              type="text"
-              v-model="foreignAmount"
-              maxlength="10"
-              @input="
-                foreignAmount = foreignAmount
-                  .replace(/[^0-9.]/g, '')
-                  .replace(/^0+(?=\d)/, '')
-                  .replace(/(\..*?)\..*/g, '$1')
-              "
-              class="bg-transparent w-full sm:w-[6rem] text-right"
-            />
-            <p>{{ parseCurrencyCode(selectedCurrencyCode) }}</p>
-          </div>
+        <div class="flex justify-between gap-4 mb-0 m-8" @click="focusForeignInput">
+          <p class="subtitle2">{{ selectedCurrencyName }}</p>
+          <p class="whitespace-nowrap">
+            잔액 : {{ foreignCurrencyAccount.balance[selectedCurrencyCode] || 0 }}
+            {{ parseCurrencyCode(selectedCurrencyCode) }}
+          </p>
         </div>
+        <div class="flex justify-end w-full h-auto bg-gray-200 rounded-xl">
+          <input
+            ref="foreignInputRef"
+            type="text"
+            v-model="foreignAmount"
+            maxlength="10"
+            @input="
+              foreignAmount = foreignAmount
+                .replace(/[^0-9.]/g, '')
+                .replace(/^0+(?=\d)/, '')
+                .replace(/(\..*?)\..*/g, '$1')
+            "
+            class="bg-transparent border-nonde focus:outline-none text-right"
+          />
+          <p class="mx-4">
+            {{ parseCurrencyCode(selectedCurrencyCode) }}
+          </p>
+        </div>
+        <!-- 원래 코드 -->
 
         <div class="flex flex-col justify-center my-2">
           <triangle class="m-1"></triangle>

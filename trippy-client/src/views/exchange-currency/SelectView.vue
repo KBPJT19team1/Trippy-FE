@@ -78,14 +78,4 @@ const error = ref("");
   </div>
 </template>
 
-<style scoped>
-/* 스크롤바 숨기는 css */
-
-.hide-scrollbar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
-}
-.hide-scrollbar {
-  -ms-overflow-style: none; /* IE, Edge */
-  scrollbar-width: none; /* Firefox */
-}
-</style>
+<style scoped></style>

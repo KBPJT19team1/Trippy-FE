@@ -16,6 +16,14 @@ const hiddenInput = ref(null);
 const isFocused = ref(false);
 
 const onInput = (event) => {
+  if (props.type === "account") {
+    inputValue.value = event.target.value
+      .replace(/[^0-9]/g, "")
+      .replace(/^0+/, "");
+
+    return;
+  }
+
   inputValue.value = event.target.value
     .replace(/[^0-9]/g, "")
     .replace(/^0+/, "")

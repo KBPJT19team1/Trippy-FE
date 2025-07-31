@@ -1,5 +1,5 @@
 <template>
-  <div class="absolute inset-0 z-40" @click.self="$emit('close')">
+  <div class="flex inset-0 z-40" @click.self="$emit('close')">
     <div
       class="absolute bottom-40 right-5 bg-gradient-to-b from-blue-500 to-blue-600 text-white rounded-xl shadow-lg overflow-hidden w-40"
       @click.stop

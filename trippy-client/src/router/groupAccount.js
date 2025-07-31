@@ -169,4 +169,13 @@ export default [
       bgColor: "white",
     },
   },
+  {
+    path: "/send/password",
+    name: "send-password",
+    component: () => import("@/views/group-account/transfer/EnterPasswordView.vue"),
+    meta: {
+      title: "송금하기",
+      bgColor: "white",
+    },
+  },
 ];

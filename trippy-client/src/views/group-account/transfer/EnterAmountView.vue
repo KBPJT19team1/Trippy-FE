@@ -4,12 +4,11 @@ import { numberWithCommas } from "@/assets/utils/index.js";
 import AmountInput from "@/components/common/inputs/AmountInput.vue";
 import NextButton from "@/components/common/NextButton.vue";
 import NumberKeypad from "@/components/common/NumberKeypad.vue";
+import router from "@/router";
 
 const amount = ref("");
 
 const isChecked = ref(true);
-
-const emit = defineEmits(["next"]);
 
 const onPressKey = (num) => {
   if (amount.value.length >= 10) return;
@@ -38,7 +37,7 @@ const onDelete = () => {
 
 const onClick = () => {
   //api 연결할 때 금액 저장하는 스토어 호출에서 저장하기
-  emit("next");
+  router.push({ name: "send-password" });
 };
 </script>
 

@@ -6,6 +6,7 @@ import { Icon } from "@iconify/vue";
 import triangle from "@/assets/svg/triangle.svg";
 import NextButton from "@/components/common/NextButton.vue";
 import { useRouter } from "vue-router";
+import NumberKeypad from "@/components/common/NumberKeypad.vue";
 
 const exchangeStore = useExchangeStore();
 
@@ -37,6 +38,9 @@ const krwAmount = ref("");
 
 let updatingFromForeign = false;
 let updatingFromKrw = false;
+
+// 현재 선택된 입력창 (foreign or krw)
+const activeInput = ref("foreign");
 
 inputForeignAmount.value = foreignAmount.value;
 inputKrwAmount.value = krwAmount.value;
@@ -94,6 +98,26 @@ const router = useRouter();
 const goToPasswordView = () => {
   router.push("/exchange-currency-password");
 };
+
+const onPressKey = (num) => {
+  if (activeInput.value === "foreign") {
+    if (foreignAmount.value.length < 10) {
+      foreignAmount.value += String(num);
+    }
+  } else if (activeInput.value === "krw") {
+    if (krwAmount.value.length < 10) {
+      krwAmount.value += String(num);
+    }
+  }
+};
+
+const onDeleteKey = () => {
+  if (activeInput.value === "foreign") {
+    foreignAmount.value = foreignAmount.value.slice(0, -1);
+  } else if (activeInput.value === "krw") {
+    krwAmount.value = krwAmount.value.slice(0, -1);
+  }
+};
 </script>
 
 <template>
@@ -120,7 +144,7 @@ const goToPasswordView = () => {
         </div>
         <!-- 금액 입력칸 -->
         <div
-          class="flex justify-end w-full h-16 border border-solid border-gray-400 rounded-lg"
+          class="flex justify-end w-full h-16 border border-solid border-blue-400 rounded-lg"
           @click="focusForeignInput"
         >
           <input
@@ -159,7 +183,7 @@ const goToPasswordView = () => {
         </div>
         <!-- 입력칸 -->
         <div
-          class="flex justify-end w-full h-16 border border-solid border-gray-400 rounded-lg"
+          class="flex justify-end w-full h-16 border border-solid border-blue-400 rounded-lg"
           @click="focusKrwInput"
         >
           <input
@@ -179,11 +203,16 @@ const goToPasswordView = () => {
         </div>
       </div>
     </div>
-
-    <div>
-      <NextButton title="확인" @click="goToPasswordView"></NextButton>
-    </div>
     <!-- 키패드 컴포넌트 삽입  -->
+    <div class="mx-[-1rem] mb-2">
+      <NextButton
+        :title="'확인'"
+        :disabled="!foreignAmount"
+        :isRounded="false"
+        @click="goToPasswordView"
+      />
+    </div>
+    <NumberKeypad @press-key="onPressKey" @delete="onDeleteKey" type="amount" />
   </div>
 </template>
 

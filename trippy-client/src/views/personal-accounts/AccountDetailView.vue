@@ -4,14 +4,20 @@ import { ref } from "vue";
 import TransferButton from "@/components/common/TransferButton.vue";
 import TransactionFilter from "@/components/account/TransactionFilter.vue";
 import TransactionItem from "@/components/account/TransactionItem.vue";
+import SelectAccountModal from "@/components/account/SelectAccountModal.vue";
 import transactions from "@/_dummy/transactions_dummy.json";
 
 const filter = ref("all");
+const isModalOpen = ref(false);
 
 // 거래 구분 필터 handle 함수
 const updateFilter = (newFilter) => {
   filter.value = newFilter;
   console.log(filter.value);
+};
+
+const openModal = () => {
+  isModalOpen.value = true;
 };
 </script>
 
@@ -23,7 +29,7 @@ const updateFilter = (newFilter) => {
         <h1 class="title1">23,456,789원</h1>
       </div>
       <div class="flex gap-4">
-        <TransferButton type="add" />
+        <TransferButton type="add" @click="openModal" />
         <TransferButton type="send" />
       </div>
     </div>
@@ -35,5 +41,6 @@ const updateFilter = (newFilter) => {
       />
       <TransactionItem :transactions="transactions" />
     </div>
+    <SelectAccountModal v-model="isModalOpen" />
   </div>
 </template>

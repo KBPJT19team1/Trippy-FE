@@ -62,6 +62,14 @@ const router = createRouter({
             bgColor: "white",
           },
         },
+        {
+          path: "/payment/password",
+          name: "PaymentPassword",
+          component: () => import("@/views/payment/PasswordView.vue"),
+          meta: {
+            bgColor: "white",
+          },
+        },
 
         {
           path: "travel-logs",
@@ -92,6 +100,25 @@ const router = createRouter({
             title: "계좌 내역",
             bgColor: "white",
           },
+        },
+        {
+          path: "/personal-accounts/add",
+          name: "personal-accounts-add",
+          component: () => import("@/views/personal-accounts/AddMoneyView.vue"),
+          meta: {
+            title: "송금하기",
+            bgColor: "white",
+          },
+        },
+        {
+          path: "identification/guide",
+          name: "identification/guide",
+          component: () => import("@/views/identification/resident-card/CaptureGuideView.vue"),
+        },
+        {
+          path: "identification/registration",
+          name: "identification/registration",
+          component: () => import("@/views/identification/resident-card/RegistrationView.vue"),
         },
         {
           path: "exchange-rate",

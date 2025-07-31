@@ -56,7 +56,7 @@ const goToAmountView = () => {
 <style>
 /* 스크롤바 숨기는 css */
 
-.hide-scrollbar::-webkit-scrollbar {
+.hide-scrollbar::-webkit-scrollbar {/
   display: none; /* Chrome, Safari, Opera */
 }
 .hide-scrollbar {

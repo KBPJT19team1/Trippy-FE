@@ -1,7 +1,6 @@
 <script setup>
 import router from "@/router";
-import { defineProps } from "vue";
-import { defineEmits } from "vue";
+import { defineProps, defineEmits } from "vue";
 
 const props = defineProps({
   groupInviteData: Object,

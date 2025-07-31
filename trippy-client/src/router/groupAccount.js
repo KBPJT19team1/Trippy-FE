@@ -142,4 +142,13 @@ export default [
       bgColor: "white",
     },
   },
+  {
+    path: "/group-account/members",
+    name: "group-account-members",
+    component: () => import("@/views/group-account/settings/MemberListView.vue"),
+    meta: {
+      title: "참여중 멤버",
+      bgColor: "white",
+    },
+  },
 ];

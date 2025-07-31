@@ -178,4 +178,22 @@ export default [
       bgColor: "white",
     },
   },
+  {
+    path: "/send/transfer-review",
+    name: "send-transfer-review",
+    component: () => import("@/views/group-account/transfer/TransferReviewView.vue"),
+    meta: {
+      title: "송금하기",
+      bgColor: "white",
+    },
+  },
+  {
+    path: "/send/complete",
+    name: "send-complete",
+    component: () => import("@/views/group-account/transfer/TransferCompleteView.vue"),
+    meta: {
+      title: "송금하기",
+      bgColor: "white",
+    },
+  },
 ];

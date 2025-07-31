@@ -11,7 +11,7 @@ const groupAcountStore = useGroupAccountStore();
 
 const ifcopyModal = ref(false);
 
-const inviteLink = "https://www.naver.com/";
+const inviteLink = "http://172.30.1.9:5173/invite?token=test123";
 const copyInviteLink = async () => {
   try {
     await navigator.clipboard.writeText(inviteLink);
@@ -20,6 +20,34 @@ const copyInviteLink = async () => {
     console.error("클립보드 복사 실패:", err);
   }
 };
+
+const shareToKakao = () => {
+  window.Kakao.Link.sendDefault({
+    objectType: "text",
+    text: "Trippy에서 모임통장을 만들었어요!",
+    link: {
+      webUrl: inviteLink,
+      mobileWebUrl: inviteLink,
+    },
+    buttons: [
+      {
+        title: "지금 참여하기",
+        link: {
+          webUrl: inviteLink,
+          mobileWebUrl: inviteLink,
+        },
+      },
+    ],
+  });
+};
+
+onMounted(() => {
+  if (!window.Kakao.isInitialized()) {
+    window.Kakao.init(import.meta.env.VITE_KAKAO_JS_KEY);
+  }
+
+  groupAcountStore.setGroupAccountCreateDate();
+});
 
 onMounted(() => {
   groupAcountStore.setGroupAccountCreateDate();
@@ -55,6 +83,9 @@ onMounted(() => {
 
         <copyIcon />
       </div>
+
+      <!-- 카카오톡 공유 버튼 (메인 기능) -->
+      <div @click="shareToKakao">카카오톡으로 초대하기</div>
     </div>
     <AlertModal
       :title="'초대링크가 복사되었습니다'"

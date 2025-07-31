@@ -1,13 +1,32 @@
 <script setup>
 import { RouterLink } from "vue-router";
 import { Icon } from "@iconify/vue";
+import { useRoute } from "vue-router";
+import { onMounted, ref } from "vue";
 import ToggleSwitch from "@/components/common/ToggleSwitch.vue";
 import AccountCard from "@/components/home/AccountCard.vue";
 import ShortcutItems from "@/components/home/ShortCutItems.vue";
 import ExchangeRateItems from "@/components/home/ExchangeRateItems.vue";
-import { ref } from "vue";
+import GroupAccountJoinModal from "@/components/common/modals/GroupAccountJoinModal.vue";
+
+const route = useRoute();
+const inviteInfo = ref(null);
+const showInviteModal = ref(false);
 
 const toggleGroupAccount = ref(false);
+
+onMounted(() => {
+  const token = route.query.token;
+  if (token) {
+    inviteInfo.value = {
+      accountName: "제주 여행 계좌",
+      inviter: "예성",
+      token,
+      deadline: "2025-8-16",
+    };
+    showInviteModal.value = true;
+  }
+});
 </script>
 
 <template>
@@ -38,5 +57,12 @@ const toggleGroupAccount = ref(false);
         <ExchangeRateItems />
       </div>
     </div>
+
+    <GroupAccountJoinModal
+      v-if="showInviteModal"
+      :groupInviteData="inviteInfo"
+      :To="'/group-join/agreement'"
+      @click="showInviteModal = false"
+    />
   </main>
 </template>

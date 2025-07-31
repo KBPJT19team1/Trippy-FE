@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch } from "vue";
+import { ref, watch, computed } from "vue";
 import { useExchangeStore } from "@/stores/exchangeStore";
 import { storeToRefs } from "pinia";
 import { Icon } from "@iconify/vue";
@@ -7,6 +7,7 @@ import triangle from "@/assets/svg/triangle.svg";
 import NextButton from "@/components/common/NextButton.vue";
 import { useRouter } from "vue-router";
 import NumberKeypad from "@/components/common/NumberKeypad.vue";
+import { numberWithCommas } from "@/assets/utils";
 
 const exchangeStore = useExchangeStore();
 
@@ -40,6 +41,32 @@ const krwAmount = ref("");
 
 let updatingFromForeign = false;
 let updatingFromKrw = false;
+
+const displayForeignAmount = computed({
+  get() {
+    return numberWithCommas(foreignAmount.value);
+  },
+  set(val) {
+    const numeric = val
+      .replace(/[^0-9.]/g, "")
+      .replace(/^0+(?=\d)/, "")
+      .replace(/(\..*?)\..*/g, "$1");
+    foreignAmount.value = numeric;
+  },
+});
+
+const displayKrwAmount = computed({
+  get() {
+    return numberWithCommas(krwAmount.value);
+  },
+  set(val) {
+    const numeric = val
+      .replace(/[^0-9.]/g, "")
+      .replace(/^0+(?=\d)/, "")
+      .replace(/(\..*?)\..*/g, "$1");
+    krwAmount.value = numeric;
+  },
+});
 
 // 현재 선택된 입력창 (foreign or krw)
 const activeInput = ref("foreign");
@@ -80,9 +107,9 @@ watch(foreignAmount, (newVal) => {
     return;
   }
   updatingFromForeign = true;
-  krwAmount.value = (foreign * rate).toFixed(0);
+  krwAmount.value = (foreign * rate).toFixed(2);
   inputForeignAmount.value = parseFloat(newVal).toFixed(2);
-  inputKrwAmount.value = parseFloat(krwAmount.value).toFixed(2);
+  inputKrwAmount.value = parseFloat(krwAmount.value);
 });
 
 // 기존 잔액이 없는 외화통화에 대한 환전 시 잔액 0 데이터 추가
@@ -138,7 +165,7 @@ const onDeleteKey = () => {
         <div class="flex gap-4 mb-0 ml-4 mr-8 text-left">
           <p class="subtitle2">{{ selectedCurrencyName }}</p>
           <p class="whitespace-nowrap caption2 text-gray-500">
-            잔액 : {{ foreignCurrencyAccount.balance[selectedCurrencyCode] || 0 }}
+            잔액 : {{ numberWithCommas(foreignCurrencyAccount.balance[selectedCurrencyCode]) || 0 }}
             {{ parseCurrencyCode(selectedCurrencyCode) }}
           </p>
         </div>
@@ -150,14 +177,8 @@ const onDeleteKey = () => {
           <input
             ref="foreignInputRef"
             type="text"
-            v-model="foreignAmount"
-            maxlength="10"
-            @input="
-              foreignAmount = foreignAmount
-                .replace(/[^0-9.]/g, '')
-                .replace(/^0+(?=\d)/, '')
-                .replace(/(\..*?)\..*/g, '$1')
-            "
+            v-model="displayForeignAmount"
+            maxlength="13"
             class="bg-transparent border-nonde focus:outline-none text-right"
           />
           <p class="mx-4 self-center">
@@ -178,7 +199,7 @@ const onDeleteKey = () => {
         <div class="flex gap-4 mb-0 ml-4 mr-8">
           <p class="subtitle2">대한민국 원</p>
           <p class="whitespace-nowrap caption2 text-gray-500">
-            잔액 : {{ selectedAccount.balance }} 원
+            잔액 : {{ numberWithCommas(selectedAccount.balance) }} 원
           </p>
         </div>
         <!-- 입력칸 -->
@@ -189,14 +210,8 @@ const onDeleteKey = () => {
           <input
             ref="krwInputRef"
             type="text"
-            v-model="krwAmount"
-            maxlength="10"
-            @input="
-              krwAmount = krwAmount
-                .replace(/[^0-9.]/g, '')
-                .replace(/^0+(?=\d)/, '')
-                .replace(/(\..*?)\..*/g, '$1')
-            "
+            v-model="displayKrwAmount"
+            maxlength="13"
             class="bg-transparent w-full sm:w-[6rem] border-none focus:outline-none text-right"
           />
           <p class="mx-4 self-center">KRW</p>

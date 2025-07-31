@@ -2,9 +2,17 @@
 import { ref, computed } from "vue";
 
 import SendFormScreen from "@/components/personal-accounts/SendFormScreen.vue";
+import AmountInputScreen from "@/components/account/AmountInputScreen.vue";
+import PasswordInput from "@/components/common/inputs/PasswordInput.vue";
+import ConfirmTransfer from "@/components/account/ConfirmTransfer.vue";
+import CompleteTransfer from "@/components/account/CompleteTransfer.vue";
 
 const views = [
   { component: SendFormScreen },
+  { component: AmountInputScreen, props: { title: "얼마를 보낼까요?", type: "send" }},
+  { component: PasswordInput },
+  { component: ConfirmTransfer },
+  { component: CompleteTransfer },
 ];
 const currentIndex = ref(0);
 

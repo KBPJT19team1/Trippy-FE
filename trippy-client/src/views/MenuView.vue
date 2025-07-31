@@ -5,7 +5,10 @@ import { Icon } from "@iconify/vue";
 
 <template>
   <main>
-    <div class="flex justify-between caption1 py-4 border-b border-b-gray-300 px-2">
+    <div
+      class="flex justify-between caption1 py-4 border-b border-b-gray-300 px-2"
+      @click="router.push({ name: 'my-page' })"
+    >
       <p class="">마이페이지</p>
       <Icon icon="material-symbols:arrow-back-ios-new-rounded" class="rotate-180" />
     </div>

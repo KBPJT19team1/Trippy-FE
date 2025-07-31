@@ -174,6 +174,12 @@ const router = createRouter({
           component: () => import("@/views/AppSettingView.vue"),
           meta: { title: "설정", bgColor: "white" },
         },
+        {
+          path: "my-page",
+          name: "my-page",
+          component: () => import("@/views/MyPageView.vue"),
+          meta: { title: "마이페이지", bgColor: "white" },
+        },
         ...GroupAccount,
         ...identification,
         ...travelLog,

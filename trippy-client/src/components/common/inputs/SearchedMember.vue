@@ -2,20 +2,13 @@
 import { Icon } from "@iconify/vue";
 import { ref } from "vue";
 
-const hiddenInput = ref(null);
 const isFocused = ref(false);
-
 const searchedMember = defineModel();
-
-const focusInput = () => {
-  hiddenInput.value?.focus();
-};
 </script>
 
 <template>
   <div
     class="flex items-center bg-gray-100 rounded-xl h-13 gap-2"
-    @click="focusInput"
     :class="isFocused ? 'border border-blue-400' : ''"
   >
     <Icon icon="material-symbols:search-rounded" class="size-6 ml-2" />

@@ -165,7 +165,7 @@ const onDeleteKey = () => {
         <div class="flex gap-4 mb-0 ml-4 mr-8 text-left">
           <p class="subtitle2">{{ selectedCurrencyName }}</p>
           <p class="whitespace-nowrap caption2 text-gray-500">
-            잔액 : {{ foreignCurrencyAccount.balance[selectedCurrencyCode] || 0 }}
+            잔액 : {{ numberWithCommas(foreignCurrencyAccount.balance[selectedCurrencyCode]) || 0 }}
             {{ parseCurrencyCode(selectedCurrencyCode) }}
           </p>
         </div>

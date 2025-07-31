@@ -4,6 +4,7 @@ import AmountInput from "@/components/common/inputs/AmountInput.vue";
 import SelectInput from "@/components/common/inputs/SelectInput.vue";
 
 const account = ref("");
+const bank = ref("");
 </script>
 
 <template>
@@ -11,7 +12,7 @@ const account = ref("");
     <div class="flex flex-col gap-8">
       <h2 class="title2">어떤 계좌로 보낼까요?</h2>
       <AmountInput v-model="account" type="account" />
-      <SelectInput />
+      <SelectInput v-model="bank" />
     </div>
   </div>
 </template>

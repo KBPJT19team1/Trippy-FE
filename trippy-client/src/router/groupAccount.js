@@ -98,7 +98,7 @@ export default [
     },
   },
   {
-    path: "/group-account/settings/:accountId",
+    path: "/group-account/settings",
     name: "group-account-settings",
     component: () => import("@/views/group-account/settings/GroupAccountSettingsWrapper.vue"),
     meta: {
@@ -130,6 +130,15 @@ export default [
     component: () => import("@/views/group-account/join/JoinComplete.vue"),
     meta: {
       title: "모임계좌 참여하기",
+      bgColor: "white",
+    },
+  },
+  {
+    path: "/group-account/detail",
+    name: "group-account-detail",
+    component: () => import("@/views/group-account/detail/AccountDetailView.vue"),
+    meta: {
+      title: "계좌 내역",
       bgColor: "white",
     },
   },

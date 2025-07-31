@@ -26,9 +26,11 @@ const foreignInputRef = ref(null);
 const krwInputRef = ref(null);
 
 const focusForeignInput = () => {
+  activeInput.value = "foreign";
   foreignInputRef.value?.focus();
 };
 const focusKrwInput = () => {
+  activeInput.value = "krw";
   krwInputRef.value?.focus();
 };
 
@@ -100,21 +102,19 @@ const goToPasswordView = () => {
 };
 
 const onPressKey = (num) => {
-  if (activeInput.value === "foreign") {
-    if (foreignAmount.value.length < 10) {
-      foreignAmount.value += String(num);
-    }
-  } else if (activeInput.value === "krw") {
-    if (krwAmount.value.length < 10) {
-      krwAmount.value += String(num);
-    }
+  if (activeInput.value === "foreign" && foreignAmount.value.length < 10) {
+    foreignAmount.value += String(num);
+  }
+  if (activeInput.value === "krw" && krwAmount.value.length < 10) {
+    krwAmount.value += String(num);
   }
 };
 
 const onDeleteKey = () => {
   if (activeInput.value === "foreign") {
     foreignAmount.value = foreignAmount.value.slice(0, -1);
-  } else if (activeInput.value === "krw") {
+  }
+  if (activeInput.value === "krw") {
     krwAmount.value = krwAmount.value.slice(0, -1);
   }
 };

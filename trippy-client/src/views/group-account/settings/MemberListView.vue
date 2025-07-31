@@ -1,6 +1,6 @@
 <script setup>
 import { computed, onMounted, ref } from "vue";
-import SearchedMember from "@/components/common/inputs/SearchedMember.vue";
+import SearchedMember from "@/components/common/inputs/SearchInput.vue";
 import { useGroupMemberStore } from "@/stores/groupMemberStore";
 
 const memberStore = useGroupMemberStore();

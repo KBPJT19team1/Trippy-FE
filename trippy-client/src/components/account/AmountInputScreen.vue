@@ -3,6 +3,7 @@ import { defineProps, defineEmits, ref } from "vue";
 import { numberWithCommas } from "@/assets/utils/index.js";
 import AmountInput from "@/components/common/inputs/AmountInput.vue";
 import NextButton from "@/components/common/NextButton.vue";
+import NumberKeypad from "@/components/common/NumberKeypad.vue";
 
 const props = defineProps({
   title: String,
@@ -61,34 +62,10 @@ const onClick = () => {
         @click="onClick"
       />
     </div>
-    <div class="grid grid-cols-3 w-full gap-2">
-      <button
-        v-for="n in 9"
-        :key="n"
-        class="h-12 title2 font-normal rounded-lg active:bg-blue-100"
-        @click="() => onPressKey(n)"
-      >
-        {{ n }}
-      </button>
-      <button
-        class="h-12 title2 font-normal rounded-lg active:bg-blue-100"
-        @click="() => onPressKey('00')"
-      >
-        00
-      </button>
-      <button
-        class="h-12 title2 font-normal rounded-lg active:bg-blue-100"
-        @click="() => onPressKey(0)"
-      >
-        0
-      </button>
-      <button
-        class="h-12 title2 font-normal rounded-lg active:bg-blue-100"
-        @click="onDelete"
-      >
-        ←
-      </button>
-    </div>
+    <NumberKeypad
+      @press-key="onPressKey"
+      @delete="onDelete"
+      type="amount" />
   </div>
 </template>
 

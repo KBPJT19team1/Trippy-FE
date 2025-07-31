@@ -98,11 +98,56 @@ export default [
     },
   },
   {
-    path: "/group-account/settings/:accountId",
+    path: "/group-account/settings",
     name: "group-account-settings",
     component: () => import("@/views/group-account/settings/GroupAccountSettingsWrapper.vue"),
     meta: {
       title: "계좌 설정",
+      bgColor: "white",
+    },
+  },
+  {
+    path: "/group-join/agreement",
+    name: "group-join-agreement",
+    component: () => import("@/views/group-account/join/AgreeTermsView.vue"),
+    meta: {
+      title: "모임계좌 참여하기",
+      bgColor: "white",
+    },
+  },
+  {
+    path: "/group-join/select-account",
+    name: "group-join-select-account",
+    component: () => import("@/views/group-account/join/PickRepresentativeView.vue"),
+    meta: {
+      title: "모임계좌 참여하기",
+      bgColor: "white",
+    },
+  },
+  {
+    path: "/group-join/complete",
+    name: "group-join-complete",
+    component: () => import("@/views/group-account/join/JoinComplete.vue"),
+    meta: {
+      title: "모임계좌 참여하기",
+      bgColor: "white",
+    },
+  },
+  {
+    path: "/group-account/detail",
+    name: "group-account-detail",
+    component: () => import("@/views/group-account/detail/AccountDetailView.vue"),
+    meta: {
+      title: "계좌 내역",
+      bgColor: "white",
+    },
+  },
+  {
+    path: "/group-account/members",
+    name: "group-account-members",
+    component: () => import("@/views/group-account/settings/MemberListView.vue"),
+    meta: {
+      title: "참여중 멤버",
       bgColor: "white",
     },
   },

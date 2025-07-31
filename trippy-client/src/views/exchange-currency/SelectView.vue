@@ -34,7 +34,7 @@ const error = ref("");
 
     <ul
       v-else
-      class="divide-y divide-gray-200 flex-1 mb-12 overflow-auto hide-scrollbar::-webkit-scrollbar"
+      class="divide-y divide-gray-200 w-full flex-1 mb-12 overflow-auto hide-scrollbar::-webkit-scrollbar"
     >
       <li
         v-for="item in todayRates"
@@ -69,7 +69,11 @@ const error = ref("");
     <div
       class="fixed bottom-0 left-0 right-0 z-50 w-full max-w-full pt-4 pb-[34px] px-4 bg-white md:max-w-[375px] md:mx-auto"
     >
-      <NextButton title="다음" @click="goToAccountView" />
+      <NextButton
+        title="다음"
+        @click="goToAccountView"
+        :disabled="!exchangeStore.selectedCurrencyCode"
+      />
     </div>
   </div>
 </template>

@@ -1,20 +1,13 @@
 <script setup>
-import { defineProps, defineEmits, ref } from "vue";
+import { ref, watch } from "vue";
 import { numberWithCommas } from "@/assets/utils/index.js";
 import AmountInput from "@/components/common/inputs/AmountInput.vue";
 import NextButton from "@/components/common/NextButton.vue";
-
-const props = defineProps({
-  title: String,
-  type: {
-    type: String,
-    required: false,
-  },
-});
-
-// type 은 personal-add/group-add, personal-send/group-send, settle 로 보내주기
+import NumberKeypad from "@/components/common/NumberKeypad.vue";
 
 const amount = ref("");
+
+const isChecked = ref(true);
 
 const emit = defineEmits(["next"]);
 
@@ -30,12 +23,21 @@ const onPressKey = (num) => {
   console.log(amount.value);
 };
 
+watch(isChecked, (newVal) => {
+  if (!newVal) {
+    amount.value = 15000 / 4;
+  } else {
+    amount.value = "";
+  }
+});
+
 const onDelete = () => {
   if (!amount.value) return;
   amount.value = amount.value.slice(0, -1);
 };
 
 const onClick = () => {
+  //api 연결할 때 금액 저장하는 스토어 호출에서 저장하기
   emit("next");
 };
 </script>
@@ -46,8 +48,20 @@ const onClick = () => {
       <div class="flex flex-col gap-2 title2 text-center">
         <p>얼마를 보낼까요?</p>
         <div class="flex gap-3 subtitle2 text-gray-400">
-          <button class="border-b border-b-gray-400">직접 입력하기</button>
-          <button class="border-b border-b-gray-400">1/N나누기</button>
+          <button
+            class="border-b border-b-gray-400"
+            :class="isChecked ? 'text-blue-400 border-b-blue-400' : ''"
+            @click="isChecked = !isChecked"
+          >
+            직접 입력하기
+          </button>
+          <button
+            class="border-b border-b-gray-400"
+            :class="isChecked ? '' : 'text-blue-400 border-b-blue-400'"
+            @click="isChecked = !isChecked"
+          >
+            1/N나누기
+          </button>
         </div>
       </div>
       <AmountInput v-model="amount" />
@@ -57,33 +71,9 @@ const onClick = () => {
       </div>
     </div>
     <div class="mx-[-1rem] mb-2">
-      <NextButton :title="'요청하기'" :disabled="!amount" :isRounded="false" @click="onClick" />
+      <NextButton :title="'보내기'" :disabled="!amount" :isRounded="false" @click="onClick" />
     </div>
-    <div class="grid grid-cols-3 w-full gap-2">
-      <button
-        v-for="n in 9"
-        :key="n"
-        class="h-12 title2 font-normal rounded-lg active:bg-blue-100"
-        @click="() => onPressKey(n)"
-      >
-        {{ n }}
-      </button>
-      <button
-        class="h-12 title2 font-normal rounded-lg active:bg-blue-100"
-        @click="() => onPressKey('00')"
-      >
-        00
-      </button>
-      <button
-        class="h-12 title2 font-normal rounded-lg active:bg-blue-100"
-        @click="() => onPressKey(0)"
-      >
-        0
-      </button>
-      <button class="h-12 title2 font-normal rounded-lg active:bg-blue-100" @click="onDelete">
-        ←
-      </button>
-    </div>
+    <NumberKeypad @press-key="onPressKey" @delete="onDelete" type="amount" />
   </div>
 </template>
 

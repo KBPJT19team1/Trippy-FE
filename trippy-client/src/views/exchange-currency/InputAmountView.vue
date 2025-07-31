@@ -98,93 +98,92 @@ const goToPasswordView = () => {
 
 <template>
   <div class="flex flex-col h-full justify-between">
-    <div>
-      <div class="w-full flex flex-col items-center p-4">
-        <div class="flex flex-wrap w-full items-center justify-between m-6">
-          <p class="subtitle2 break-words">
-            1 {{ selectedCurrencyCode }} = {{ selectedTodayRate.deal_bas_r }} 원
+    <div class="w-full flex flex-col items-center p-4">
+      <div class="flex flex-wrap w-full items-center justify-between m-6">
+        <p class="subtitle2 break-words">
+          1 {{ selectedCurrencyCode }} = {{ selectedTodayRate.deal_bas_r }} 원
+        </p>
+        <div class="flex text-gray-500 break-words items-center">
+          <a class="subtitle2"> 원하는 환율에 사기</a>
+          <Icon icon="ic:round-navigate-next" class="w-8 h-auto"></Icon>
+        </div>
+      </div>
+
+      <!-- 잔액 내역 표시 칸 -->
+      <div class="flex flex-col w-full">
+        <div class="flex gap-4 mb-0 ml-4 mr-8 text-left">
+          <p class="subtitle2">{{ selectedCurrencyName }}</p>
+          <p class="whitespace-nowrap caption2 text-gray-500">
+            잔액 : {{ foreignCurrencyAccount.balance[selectedCurrencyCode] || 0 }}
+            {{ parseCurrencyCode(selectedCurrencyCode) }}
           </p>
-          <div class="flex text-gray-500 break-words items-center">
-            <a class="subtitle2"> 원하는 환율에 사기</a>
-            <Icon icon="ic:round-navigate-next" class="w-8 h-auto"></Icon>
-          </div>
         </div>
-
-        <!-- 잔액 내역 표시 칸 -->
-        <div class="flex flex-col w-full">
-          <div class="flex gap-4 mb-0 ml-4 mr-8 text-left">
-            <p class="subtitle2">{{ selectedCurrencyName }}</p>
-            <p class="whitespace-nowrap caption2 text-gray-500">
-              잔액 : {{ foreignCurrencyAccount.balance[selectedCurrencyCode] || 0 }}
-              {{ parseCurrencyCode(selectedCurrencyCode) }}
-            </p>
-          </div>
-          <!-- 금액 입력칸 -->
-          <div
-            class="flex justify-end w-full h-16 border border-solid border-gray-400 rounded-lg"
-            @click="focusForeignInput"
-          >
-            <input
-              ref="foreignInputRef"
-              type="text"
-              v-model="foreignAmount"
-              maxlength="10"
-              @input="
-                foreignAmount = foreignAmount
-                  .replace(/[^0-9.]/g, '')
-                  .replace(/^0+(?=\d)/, '')
-                  .replace(/(\..*?)\..*/g, '$1')
-              "
-              class="bg-transparent border-nonde focus:outline-none text-right"
-            />
-            <p class="mx-4 self-center">
-              {{ parseCurrencyCode(selectedCurrencyCode) }}
-            </p>
-          </div>
+        <!-- 금액 입력칸 -->
+        <div
+          class="flex justify-end w-full h-16 border border-solid border-gray-400 rounded-lg"
+          @click="focusForeignInput"
+        >
+          <input
+            ref="foreignInputRef"
+            type="text"
+            v-model="foreignAmount"
+            maxlength="10"
+            @input="
+              foreignAmount = foreignAmount
+                .replace(/[^0-9.]/g, '')
+                .replace(/^0+(?=\d)/, '')
+                .replace(/(\..*?)\..*/g, '$1')
+            "
+            class="bg-transparent border-nonde focus:outline-none text-right"
+          />
+          <p class="mx-4 self-center">
+            {{ parseCurrencyCode(selectedCurrencyCode) }}
+          </p>
         </div>
+      </div>
 
-        <!-- 가운데 구분 삼각형 -->
-        <div class="flex flex-col justify-center my-2">
-          <triangle class="mb-0 m-1"></triangle>
-          <triangle class="scale-y-[-1] mt-1 m-1"></triangle>
+      <!-- 가운데 구분 삼각형 -->
+      <div class="flex flex-col justify-center my-2">
+        <triangle class="mb-0 m-1"></triangle>
+        <triangle class="scale-y-[-1] mt-1 m-1"></triangle>
+      </div>
+      <!-- 가운데 구분 삼각형 -->
+
+      <!-- 잔액 표시 -->
+      <div class="flex flex-col w-full">
+        <div class="flex gap-4 mb-0 ml-4 mr-8">
+          <p class="subtitle2">대한민국 원</p>
+          <p class="whitespace-nowrap caption2 text-gray-500">
+            잔액 : {{ selectedAccount.balance }} 원
+          </p>
         </div>
-        <!-- 가운데 구분 삼각형 -->
-
-        <!-- 잔액 표시 -->
-        <div class="flex flex-col w-full">
-          <div class="flex gap-4 mb-0 ml-4 mr-8">
-            <p class="subtitle2">대한민국 원</p>
-            <p class="whitespace-nowrap caption2 text-gray-500">
-              잔액 : {{ selectedAccount.balance }} 원
-            </p>
-          </div>
-          <!-- 입력칸 -->
-          <div
-            class="flex justify-end w-full h-16 border border-solid border-gray-400 rounded-lg"
-            @click="focusKrwInput"
-          >
-            <input
-              ref="krwInputRef"
-              type="text"
-              v-model="krwAmount"
-              maxlength="10"
-              @input="
-                krwAmount = krwAmount
-                  .replace(/[^0-9.]/g, '')
-                  .replace(/^0+(?=\d)/, '')
-                  .replace(/(\..*?)\..*/g, '$1')
-              "
-              class="bg-transparent w-full sm:w-[6rem] border-none focus:outline-none text-right"
-            />
-            <p class="mx-4 self-center">KRW</p>
-          </div>
+        <!-- 입력칸 -->
+        <div
+          class="flex justify-end w-full h-16 border border-solid border-gray-400 rounded-lg"
+          @click="focusKrwInput"
+        >
+          <input
+            ref="krwInputRef"
+            type="text"
+            v-model="krwAmount"
+            maxlength="10"
+            @input="
+              krwAmount = krwAmount
+                .replace(/[^0-9.]/g, '')
+                .replace(/^0+(?=\d)/, '')
+                .replace(/(\..*?)\..*/g, '$1')
+            "
+            class="bg-transparent w-full sm:w-[6rem] border-none focus:outline-none text-right"
+          />
+          <p class="mx-4 self-center">KRW</p>
         </div>
       </div>
     </div>
-  </div>
 
-  <div>
-    <NextButton title="확인" @click="goToPasswordView"></NextButton>
+    <div>
+      <NextButton title="확인" @click="goToPasswordView"></NextButton>
+    </div>
+    <!-- 키패드 컴포넌트 삽입  -->
   </div>
 </template>
 

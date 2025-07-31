@@ -21,7 +21,7 @@ const goToAmountView = () => {
 </script>
 
 <template>
-  <div>
+  <div class="flex flex-col justify-between w-full">
     <div class="flex h-full flex-col justify-between gap-8 mb-6">
       <h2 class="text-center title2 mt-8">환전할 계좌를 선택해주세요</h2>
       <div class="text-center border-b-2 border-gray-300 w-full">
@@ -51,13 +51,11 @@ const goToAmountView = () => {
 </template>
 
 <style>
-/* 스크롤바 숨기는 css */
-
-.hide-scrollbar::-webkit-scrollbar {/
-  display: none; /* Chrome, Safari, Opera */
-}
 .hide-scrollbar {
-  -ms-overflow-style: none; /* IE, Edge */
   scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 </style>

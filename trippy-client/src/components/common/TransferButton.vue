@@ -1,13 +1,16 @@
 <script setup>
-import { defineProps } from "vue";
+import { defineProps, defineEmits } from "vue";
 
 const props = defineProps({
   type: String,
 });
+
+const emit = defineEmits(["click"]);
 </script>
 
 <template>
   <button
+    @click="emit('click')"
     class="w-full h-12 button1 rounded-xl"
     :class="[type==='add' ? 'bg-blue-200 text-blue-400' : 'bg-main-gradient text-white']"
   >

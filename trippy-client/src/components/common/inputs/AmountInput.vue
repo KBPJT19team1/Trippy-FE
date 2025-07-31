@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-import { numberWithCommas } from "@/assets/utils/numbeWithCommas.js";
+import { numberWithCommas } from "@/assets/utils/index.js";
 
 const amount = defineModel();
 
@@ -20,7 +20,7 @@ const focusInput = () => {
 </script>
 
 <template>
-  <div @click="focusInput" class="w-full flex justify-center mt-6">
+  <div @click="focusInput" class="w-full flex justify-center">
     <div
       :class="[
         'w-full h-full text-center py-3 border-b',

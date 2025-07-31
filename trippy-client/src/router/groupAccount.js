@@ -106,4 +106,31 @@ export default [
       bgColor: "white",
     },
   },
+  {
+    path: "/group-join/agreement",
+    name: "group-join-agreement",
+    component: () => import("@/views/group-account/join/AgreeTermsView.vue"),
+    meta: {
+      title: "모임계좌 참여하기",
+      bgColor: "white",
+    },
+  },
+  {
+    path: "/group-join/select-account",
+    name: "group-join-select-account",
+    component: () => import("@/views/group-account/join/PickRepresentativeView.vue"),
+    meta: {
+      title: "모임계좌 참여하기",
+      bgColor: "white",
+    },
+  },
+  {
+    path: "/group-join/complete",
+    name: "group-join-complete",
+    component: () => import("@/views/group-account/join/JoinComplete.vue"),
+    meta: {
+      title: "모임계좌 참여하기",
+      bgColor: "white",
+    },
+  },
 ];

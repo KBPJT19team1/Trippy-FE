@@ -1,19 +1,6 @@
 <script setup>
-import { ref, watch } from "vue";
 import router from "@/router";
 import AmountInputScreen from "@/components/account/AmountInputScreen.vue";
-
-const amount = ref("");
-
-const isChecked = ref(true);
-
-watch(isChecked, (newVal) => {
-  if (!newVal) {
-    amount.value = 15000 / 4;
-  } else {
-    amount.value = "";
-  }
-});
 
 const onClick = () => {
   //api 연결할 때 금액 저장하는 스토어 호출에서 저장하기

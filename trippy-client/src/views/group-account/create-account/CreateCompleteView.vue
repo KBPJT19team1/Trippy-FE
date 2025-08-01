@@ -5,13 +5,15 @@ import TrippyLogo from "@/assets/svg/trippy-logo.svg";
 import NextButton from "@/components/common/NextButton.vue";
 import AlertModal from "@/components/common/modals/AlertModal.vue";
 import { useGroupAccountStore } from "@/stores/groupAccountStore";
+import { useGroupJoinStore } from "@/stores/groupAccountJoinStore";
 import router from "@/router";
 
 const groupAcountStore = useGroupAccountStore();
+const groupJoinStore = useGroupJoinStore();
 
 const ifcopyModal = ref(false);
 
-const inviteLink = "http://172.30.1.9:5173/invite?token=test123";
+const inviteLink = groupJoinStore.inviteLink;
 const copyInviteLink = async () => {
   try {
     await navigator.clipboard.writeText(inviteLink);
@@ -22,23 +24,7 @@ const copyInviteLink = async () => {
 };
 
 const shareToKakao = () => {
-  window.Kakao.Link.sendDefault({
-    objectType: "text",
-    text: "Trippy에서 모임통장을 만들었어요!",
-    link: {
-      webUrl: inviteLink,
-      mobileWebUrl: inviteLink,
-    },
-    buttons: [
-      {
-        title: "지금 참여하기",
-        link: {
-          webUrl: inviteLink,
-          mobileWebUrl: inviteLink,
-        },
-      },
-    ],
-  });
+  groupJoinStore.shareToKakao();
 };
 
 onMounted(() => {

@@ -29,6 +29,30 @@ export const useGroupJoinStore = defineStore("groupJoin", () => {
     representativeAccountBank.value = bank;
   };
 
+  //초대 링크 주소: 나중에 배 포완료되고 백에서 토큰 만들어서 가져와서 주소 만들기
+  const inviteLink = "http://10.10.0.22:5173/?token=test123";
+
+  //초대 보내는 내용
+  const shareToKakao = () => {
+    window.Kakao.Link.sendDefault({
+      objectType: "text",
+      text: "Trippy에서 모임통장을 만들었어요!",
+      link: {
+        webUrl: inviteLink,
+        mobileWebUrl: inviteLink,
+      },
+      buttons: [
+        {
+          title: "지금 참여하기",
+          link: {
+            webUrl: inviteLink,
+            mobileWebUrl: inviteLink,
+          },
+        },
+      ],
+    });
+  };
+
   return {
     userId,
     groupAccountNumber,
@@ -38,6 +62,8 @@ export const useGroupJoinStore = defineStore("groupJoin", () => {
     groupAccountName,
     joinDateTime,
     inviteInfo,
+    inviteLink,
+    shareToKakao,
     setInviteInfo,
     setRepresentativeAccount,
   };

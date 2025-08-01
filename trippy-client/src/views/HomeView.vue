@@ -8,12 +8,19 @@ import AccountCard from "@/components/home/AccountCard.vue";
 import ShortcutItems from "@/components/home/ShortCutItems.vue";
 import ExchangeRateItems from "@/components/home/ExchangeRateItems.vue";
 import GroupAccountJoinModal from "@/components/common/modals/GroupAccountJoinModal.vue";
+import router from "@/router";
 
 const route = useRoute();
 const inviteInfo = ref(null);
 const showInviteModal = ref(false);
 
 const toggleGroupAccount = ref(false);
+
+const closeShowInviteModal = () => {
+  const { token, ...restQuery } = route.query;
+  router.replace({ query: { ...restQuery } });
+  showInviteModal.value = false;
+};
 
 onMounted(() => {
   const token = route.query.token;
@@ -62,7 +69,7 @@ onMounted(() => {
       v-if="showInviteModal"
       :groupInviteData="inviteInfo"
       :To="'/group-join/agreement'"
-      @click="showInviteModal = false"
+      @click="closeShowInviteModal"
     />
   </main>
 </template>

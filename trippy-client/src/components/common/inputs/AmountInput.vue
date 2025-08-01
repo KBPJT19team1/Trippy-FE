@@ -65,6 +65,7 @@ const focusInput = () => {
         v-model="inputValue"
         @input="onInput"
         ref="hiddenInput"
+        readonly
         @focus="isFocused = true"
         @blur="isFocused = false"
       />

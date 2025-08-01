@@ -65,7 +65,8 @@ const onClick = () => {
     <NumberKeypad
       @press-key="onPressKey"
       @delete="onDelete"
-      type="amount" />
+      type="amount"
+    />
   </div>
 </template>
 
